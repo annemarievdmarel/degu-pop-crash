@@ -1,0 +1,25 @@
+---
+title: "summarize capture data"
+author: "Annemarie van der Marel"
+date: "2023-10-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## import data
+
+```{r}
+trapdata <- read.csv("./data/degu_capture.csv") 
+```
+
+## summarize capture data
+
+```{r}
+
+```
+
