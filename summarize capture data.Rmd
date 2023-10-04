@@ -14,12 +14,64 @@ library(tidyverse)
 ## import data
 
 ```{r}
-trapdata <- read.csv("./data/degu_capture.csv") 
+trap <- read.csv("./data/degu_capture.csv") 
+
+str(trap)
+  
 ```
+
+
 
 ## summarize capture data
+Look at dates of mating, gestation, lactation, first day of juvenile emergence
 
 ```{r}
+levels(as.factor(trap$breeding_status_2))
+levels(as.factor(trap$notes))
+```
+
+```{r field season}
+
+fieldseason <- trap %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date)) #, range=range(date)
+
 
 ```
+
+
+
+```{r}
+pupemerge <- trap %>%
+  filter(notes=="pup") %>%
+  arrange(julian_date) %>%
+  group_by(year) %>%
+  slice(1, n()) %>%
+  ungroup
+  
+```
+
+
+
+## Plot distribution of trapping
+Distribution of trapping (histogram of trapping days) years 2009-2019
+```{r}
+
+trapdist <- ggplot(trap, aes(date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year*season, 
+             nrow = 10, ncol = 2)
+
+trapdist
+```
+
+```{r per year and season}
+plot_s11 <- trap %>%
+  filter(year==2011, season=="spring") %>%
+  ggplot( aes(date)) +
+  geom_histogram(stat = "count")+
+  scale_x_date(date_breaks = "1 month", date_labels = "%y-%j") 
+
+```
+
 
