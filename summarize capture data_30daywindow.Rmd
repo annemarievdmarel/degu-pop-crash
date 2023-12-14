@@ -1,0 +1,1119 @@
+---
+title: "summarize capture data"
+author: "Annemarie van der Marel"
+date: "2023-10-03"
+output:
+  pdf_document: default
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+sessionInfo()
+```
+
+# import data
+
+```{r import}
+
+trapdata <- read.csv("./data/degu_capture_09-20.csv") %>% dplyr::select(-X)
+    #,col_types = cols(date = col_date(format = "%Y-%m-%d"))) 
+
+str(trapdata)
+
+
+```
+
+# select first capture
+
+```{r}
+
+unique(trapdata$capture)
+trap <- trapdata %>%
+  filter(capture==1)
+
+unique(trap$capture)
+```
+
+
+
+# seasons
+
+
+```{r julian dates,  eval=FALSE, include=FALSE } 
+dates <- read_csv("./data/dates.csv", col_types = cols(date = col_date(format = "%Y-%m-%d"))) 
+
+ trap_dates <- trap %>% select(julian_date, date) %>% distinct() 
+
+ dates <- dates %>% left_join(trap_dates)  
+
+
+``` 
+
+```{r number of days, eval=FALSE, include=FALSE} 
+
+ maxdays <- dates %>%  
+  pivot_wider(id_cols=period, 
+              names_from=time,  
+              values_from = julian_date  
+             ) %>% 
+  mutate(length=end-start) 
+
+ maxdays 
+```
+
+
+
+
+
+
+# summarize capture dates
+
+
+```{r field season}
+
+fieldseason <- trap %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date)) %>%
+  mutate(status="trapping")  
+
+
+```
+
+
+## fall distribution
+
+```{r fall trapping distribution}
+
+fall <- trap %>%
+  filter( season=="fall") %>% 
+  group_by(year) %>%
+  summarize(start=min(date), end=max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date))
+fall
+
+trapdist_fall <- trap %>%
+  filter( season=="fall") %>%  
+  ggplot(aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") +
+  scale_x_continuous(limits = c(124, 203), n.breaks = 8 ) +
+  geom_vline(xintercept = c(155, 174), color="orange")
+trapdist_fall 
+
+ndays_fallwindow<- 174-155
+
+```
+
+fall dates trapping:
+2013-06-03 = julian 155
+2009-06-23 = julian 174
+
+max of 19 day period , constraint by trapping in 2009 and 2013 but we can make the window larger as 
+this period data are too sparse. 
+
+## spring distribution
+```{r spring trapping distribution}
+spring <- trap %>%
+  filter(season=="spring") %>% 
+  group_by(year) %>%
+  summarize(start=min(date), end=max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date))
+spring
+
+
+trapdist_spring <- trap %>%
+  filter(season=="spring") %>%
+  ggplot( aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") +
+  scale_x_continuous(limits = c(230, 320), n.breaks = 9 ) +      # fall trapping
+  geom_vline(xintercept = c(244, 300), color="lightgreen") 
+trapdist_spring
+
+ndays_springwindow<- 300-244
+
+```
+
+
+spring dates trapping:
+2009-09-01 = julian 244
+2013-10-26 = julian 300
+
+max of 59 days
+
+
+## breeding season
+Look at dates of mating, gestation, lactation, first day of juvenile emergence
+
+
+```{r}
+levels(as.factor(trap$breeding_status_2))
+#levels(as.factor(trap$notes))
+```
+We do not have much data on mating, just one copulatory plug observation. 
+
+
+```{r gestation}
+
+levels(as.factor(trap$breeding_status_2))
+
+check_gestation <- trap %>%
+  group_by(breeding_status_2) %>%
+  tally()
+write.csv(check_gestation, "breeding_status.csv") 
+
+
+gestation <- c("Preñada", "Prenada?","prenada?", "P", "preñada", "preñada?" , "preñada???" )
+
+check_pregnancy <- trap %>%
+  filter(breeding_status_2 %in% gestation)
+
+pregnancy <- trap %>%
+  filter(breeding_status_2 %in% gestation) %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date)) %>%
+  mutate(status="gestation") 
+
+
+
+```
+Gestation start, at least observed, was in fall earliest on 2018-07-02 (julian 185) and latest 	
+2017-07-11 (julian 194). 
+
+first in spring was 2018-08-10 (224) and the last one in spring was 2009-10-25 (julian 298). 
+
+
+```{r lactation}
+levels(as.factor(trap$breeding_status_2))
+
+milk <- c("lactante reciente?", "lactante, X", "lactante", "lactante, no preñada", 
+          "lactante, preñada?", "lactante?, X", "lactante reciente", "lactante, no preñada?",
+          "lactante, secresión sang.")
+
+lactation <- trap %>%
+  filter(breeding_status_2 %in% milk) %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date)) %>%
+  mutate(status="lactation") 
+
+
+```
+
+Lactation start, at least observed, was latest on 2011-09-14 (Julian 257) and stopped earliest on 2010-10-19 (julian 292. 
+
+
+```{r juvenile emergence}
+
+levels(as.factor(trap$status))
+levels(as.factor(trap$age))
+
+# pupemerge <- trap %>%
+#   filter(notes=="pup") %>%
+#   arrange(julian_date) %>%
+#   group_by(year) %>%
+#   slice(1, n()) %>%
+#   ungroup
+
+pupemerge <- trap %>%
+  filter(status=="new", grepl('pup', notes)) %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date)) 
+
+check <- trap %>%
+  filter(year==2017)
+pupemerge.age <- trap %>%
+  filter(status=="new", age %in% c("P", "Pup")) %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date)) 
+
+pups <- bind_rows(pupemerge, 
+                  pupemerge.age) %>%
+  mutate(status="juvenile_emergence") 
+  
+  
+```
+
+pup emergence start was latest on 2019-10-04 (julian 279) . 
+
+```{r weaning}
+
+postlactation <- c("post lactante, no preñada?", "postlactante, preñada", 
+                   "post lactante, preñada?", "post lactante", "post lactante, no preñada?!",
+                   "post lactante, X", "postlactante", "postlactante, preñada?", 
+                   "post lactante, no preñada", "post lactante?", "postlactante, no preñada", 
+                   "postlactante, X" )
+
+weaning <- trap %>%
+  filter(breeding_status_2 %in% postlactation) %>%
+  group_by(season, year) %>%
+  summarize(start = min(date), end= max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date)) %>%
+  mutate(status="weaning") 
+
+```
+weaning start, at least observed, was latest on 2009-10-21 (294) and stopped earliest on 2013-10-26 (300). 
+
+
+```{r combine dates}
+ 
+fieldseason_dates <- bind_rows(fieldseason, 
+                              pregnancy, 
+                              lactation, 
+                              pups, 
+                              weaning)
+
+write.csv(fieldseason_dates, "./data/fieldseason_dates.csv")
+
+```
+
+#total trap effort
+
+```{r}
+trap_effort_total <- trap %>%
+  group_by(season, year) %>%
+  summarize(total_days=length(unique(date)),
+            total_ids=length(unique(ear_tag_id))) %>%
+  pivot_longer(cols = c("total_days", "total_ids"), names_to = "trap", values_to = "total" )
+trap_effort_total$trap[trap_effort_total$trap=="total_days"]<- "days"
+trap_effort_total$trap[trap_effort_total$trap=="total_ids"]<- "ids"
+# 2020, no degus captured
+trap_effort_total$total[48]<- 0 #[trap_effort_total$year==2020,trap_effort_total$total==ids]
+trap_effort_total$total[24]<- 0
+
+trapeffort_wide <- trap_effort_total %>%
+  pivot_wider(names_from = trap, 
+              values_from = total)
+
+
+write.csv(trapeffort_wide, "data/total trap effort.csv")
+
+```
+
+
+
+# Plot distribution of trapping
+
+
+Distribution of trapping (histogram of trapping days) years 2009-2020
+
+```{r plot}
+
+trapdist <- trap %>%
+  #filter(!year %in% c(2009, 2010)) %>%
+  ggplot( aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  labs(x="julian date") +
+  #theme_classic()+
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1, strip.position = "right") +
+  scale_x_continuous(limits = c(130, 320), n.breaks = 20 ) +
+  geom_vline(xintercept = c(155, 174), color="orange") +      # fall trapping / select fall
+  #geom_text(x=157.5, y = 120, label="fall", color="orange", size=3) +
+  geom_vline(xintercept = c(244, 300), color="lightgreen") +  # spring trapping
+  #geom_text(x=247, y = 120, label="spring", color="lightgreen", size=3) +
+  geom_vline(xintercept = c(194, 248), color="pink") +        # gestation 
+  #geom_text(x=197, y = 120, label="gest", color="pink", size=3) +
+  geom_vline(xintercept = c(257, 292), color="lightblue") +   # lactation
+  #geom_text(x=260, y = 120, label="lact", color="lightblue", size=3) +
+  geom_vline(xintercept = c(279), color="yellow") +            # juvenile emergence
+  geom_vline(xintercept = c(279, 298), color="red")            # select spring
+  #geom_text(x=282, y = 120, label="pup", color="yellow", size=3) 
+  #geom_vline(xintercept = c(294, 300), color="purple")        # weaning
+trapdist
+
+ggsave( "./data/plot_trapping distribution.png")
+
+```
+
+
+
+
+# 30-day periods
+
+fall dates trapping:
+2013-06-03 = julian 155
+2009-06-23 = julian 174
+
+choose 154 + 30 = 184
+
+spring, perhaps from juvenile emergence onward
+2019-10-04 = julian 279 + 30 = 309
+
+
+## fall distribution
+
+```{r fall select}
+
+fall.select <- trap %>% 
+  filter( season=="fall", between(julian_date, 154, 184)) %>%
+  group_by(year) %>%
+  summarize(start=min(date), end=max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date))
+fall.select
+
+select_fall <- trap %>%
+  filter( season=="fall", between(julian_date, 154, 184)) %>%  
+  ggplot(aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") +
+  scale_x_continuous(limits = c(150, 190), n.breaks = 8 ) 
+select_fall 
+
+
+fall_distr <- trap %>%
+  filter( season=="fall") %>%  
+  ggplot(aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") 
+   
+fall_distr
+
+
+```
+
+
+
+## spring distribution
+```{r spring select}
+
+spring.select <- trap %>% 
+  filter( season=="spring", between(julian_date, 279, 309)) %>%
+  group_by(year) %>%
+  summarize(start=min(date), end=max(date),
+            start.jd=min(julian_date), end.jd=max(julian_date))
+spring.select
+
+
+
+spring_distr <- trap %>%
+  filter(season=="spring") %>%
+  ggplot( aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right")  
+spring_distr
+
+
+
+select_spring <- trap %>%
+  filter(season=="spring", between(julian_date, 279, 309)) %>%
+  ggplot( aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") +
+  scale_x_continuous(limits = c(275, 310), n.breaks = 9 ) 
+select_spring
+
+
+
+```
+
+## Plot distribution of trapping
+
+
+Distribution of trapping (histogram of trapping days) years 2009-2020 of the 2 30 day windows
+
+```{r plot}
+
+trapdist30d <- trap %>%
+  #filter(!year %in% c(2009, 2010)) %>%
+  ggplot( aes(julian_date)) +
+  geom_histogram(stat = "count") +
+  labs(x="julian date") +
+  #theme_classic()+
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1, strip.position = "right") +
+  scale_x_continuous(limits = c(130, 320), n.breaks = 20 ) +
+  geom_vline(xintercept = c(154, 184), color="orange") +      # fall trapping / select fall
+  #geom_text(x=157.5, y = 120, label="fall", color="orange", size=3) +
+  geom_vline(xintercept = c(279, 309), color="lightgreen")   # spring trapping
+  
+trapdist30d
+
+ggsave( "./data/plot_trapping distribution 30-days.png")
+
+```
+
+## visualize trap effort
+
+fall<- filter( season=="fall", between(julian_date, 154, 184)
+season=="spring", between(julian_date, 279, 309)
+
+
+are the same individuals trapped outside and inside these windows?
+
+```{r include trap window category}
+
+trapwindow <- trap %>%
+  group_by(year) %>%
+  mutate(window = if_else(between(julian_date, 154, 184), "fall", 
+                          if_else(between(julian_date, 279, 309), "spring", "exclude")))
+```
+
+
+
+By year and season, is the trapping effort (days of trapping) and number of trapped individuals  by all individuals similar? 
+
+By window
+```{r}
+
+trap_effortXwindow <- trapwindow %>%
+  group_by(season, year, window) %>%
+  summarize(n_days=length(unique(date)),
+            n_ids=length(unique(ear_tag_id))) %>%
+  filter(window!="exclude") %>%
+  arrange(year)
+# 2020, no degus captured
+trap_effortXwindow$n_ids[trap_effortXwindow$year==2020]<- 0
+
+
+plotXwindow <- ggplot(trapwindow, aes(x=window)) +
+  geom_histogram(stat = "count") +
+  facet_wrap(~year, #*season
+             nrow = 12, ncol = 1,
+             strip.position = "right") 
+plotXwindow 
+```
+
+By the two selected windows
+
+```{r}
+trap_effortXselectwindow <- trapwindow %>%
+  group_by(season,  window, year) %>%
+  #filter(window %in% c("mating", "lactation", "pups")) %>%
+  summarize(n_days=length(unique(date)),
+            n_ids=length(unique(ear_tag_id))) %>%
+  pivot_longer(cols = c("n_days", "n_ids"), names_to = "trap", values_to = "count" ) 
+
+trap_effortXselectwindow$trap[trap_effortXselectwindow$trap=="n_days"]<- "days"
+trap_effortXselectwindow$trap[trap_effortXselectwindow$trap=="n_ids"]<- "ids"
+
+# 2020, no degus captured
+trap_effortXselectwindow$count[24]<- 0
+trap_effortXselectwindow$count[48]<- 0
+trap_effortXselectwindow$count[72]<- 0
+
+
+# combine total trap effort and by window
+trapeffort <- left_join(trap_effortXselectwindow, trap_effort_total, by=c("season", "year", "trap")) 
+
+# plots
+plotfall <- trapeffort %>%
+  filter(window=="fall") %>% 
+  ggplot( aes(x=year, y=count, fill=trap)) +
+  geom_col(stat = "identity", position = "dodge") +
+  labs(y="count", title = "fall") +
+  theme_classic() +
+  #scale_y_continuous(limits = c(0, 130) ) +
+  scale_x_continuous(limits = c(2008, 2020), n.breaks =12 ) +
+  scale_fill_manual(values = c("#004D40", "#ff6600ff")) +
+  geom_text(aes(label = count), 
+            position=position_dodge(width = 0.9),
+             vjust = -0.3, colour = "black", size=3.5) +
+    geom_text(aes(label = total, y=0), 
+            position=position_dodge(width = 0.9),
+             vjust = -0.3, colour="white", size=3)
+plotfall
+ggsave("trappingeffort_fall.png")
+
+
+plotspring <- trapeffort %>%
+  filter(window=="spring") %>% 
+  ggplot( aes(x=year, y=count, fill=trap)) +
+  geom_col(stat = "identity", position = "dodge") +
+  labs(y="count", title = "spring") +
+  theme_classic() +
+  scale_x_continuous(limits = c(2008, 2020), n.breaks =12 ) +
+  # scale_y_continuous(limits = c(0, 130) ) +
+  scale_fill_manual(values = c("#004D40", "lightblue")) +
+  geom_text(aes(label = count), 
+            position=position_dodge(width = 0.9),
+             vjust = -0.3, colour = "black", size=3.5) +
+    geom_text(aes(label = total, y=0), 
+            position=position_dodge(width = 0.9),
+             vjust = -0.3, colour="white", size=3)
+plotspring
+ggsave("trappingeffort_spring.png")
+
+
+```
+
+```{r}
+ggpubr::ggarrange(plotfall,
+          plotspring, 
+
+          ncol=1)
+ggsave("trappingeffort_2x30daywindows.png")
+```
+
+
+
+## same individuals per window?
+Are the same individuals captured in the time window in yellow window of 19-days as before this window in 2009 and 2018 and 2019?
+
+As you can see, we are constrained by a 19-day trapping window in the fall (by the start of trapping on 2013-06-03 and the end of trapping on 2009-06-23). Yet, some of the trapping effort is much bigger before the start date of trapping in other years (e.g., 2009 and 2018). Especially, we would miss individuals in fall 2018. Should we perhaps have two windows per season, accounting for dif-ferences in trapping design (timing of max trapping effort)? If so, would it matter if for some years we do not have trapping data at all for those time periods?
+ 
+Sampling before the said window is not necessarily a problem. If animals marked prior to the sam-pling windows are alive when the sampling window begins they enter the study as newly marked individuals. So they become a part of the study.
+
+
+compare missing ids before and after our chosen 2 x 30 day windows
+
+ids per period/season/year
+
+```{r fall}
+year <- unique(trap$year)
+season_select <- "fall"
+
+#make empty dataframe to write loop results into
+ids_fall_period <- data.frame(season=character(),
+                       year=character(),
+                       period=character(),
+                       #period_19d=character(),
+                       #period_after=character(),
+                       ear_tag_id=character(),
+                       sex=character(),
+                       age=character())
+#i=2009
+
+for (i in year) {
+  #r.seed <- run
+  #set.seed(r.seed)
+  run <- i
+        
+ids_trapped_fall <- trap %>% 
+  mutate(period=if_else(between(julian_date, 155, 174), "select", 
+                        if_else(julian_date < 155, "before", "after"))) %>%
+  filter(year == i, season == season_select) %>%
+  group_by(period, ear_tag_id) %>%
+  slice(1)  %>%
+  dplyr::select(season, period, year, ear_tag_id, sex, age)
+
+  ids_trapped_fall <- as.data.frame(ids_trapped_fall)
+  ids_fall_period <- rbind.data.frame(ids_fall_period, ids_trapped_fall)
+  
+}
+```
+
+
+
+
+```{r fall}
+
+
+run <- unique(trap$year)
+season_select <- "fall"
+
+#make empty dataframe to write loop results into
+missingids <- data.frame(season=character(),
+                       year=character(),
+                       period=character(),
+                       n=numeric())
+#i=2009
+#run="2009"
+#run <- i
+
+for (i in run) {
+  #r.seed <- run
+  #set.seed(r.seed)
+  #
+
+ids_select <- trap %>%
+  filter(season=="fall") %>%
+  mutate(period=if_else(between(julian_date, 154, 184), "select", 
+                        if_else(julian_date<154, "before", "after"))) %>%
+  filter( year== i, period=="select")  %>%
+  distinct(ear_tag_id) %>%
+  arrange(ear_tag_id)#%>%
+  #rename(select.id=ear_tag_id)
+
+ids_before <- trap %>%
+   filter(season=="fall") %>%
+  mutate(period=if_else(between(julian_date, 154, 184), "select", 
+                        if_else(julian_date<154, "before", "after"))) %>%
+  filter( year==i, period=="before")  %>%
+  distinct(ear_tag_id)%>%
+  arrange(ear_tag_id) #%>%
+ # rename(before.id=ear_tag_id)
+
+ids_after <- trap %>%
+   filter(season=="fall") %>%
+  mutate(period=if_else(between(julian_date, 154, 184), "select", 
+                        if_else(julian_date<154, "before", "after"))) %>%
+  filter( year==i, period=="after")  %>%
+  distinct(ear_tag_id)%>%
+  arrange(ear_tag_id) 
+
+# ids that are missing in the selected 19 day period that were captured before this window
+idsmissing_select <- anti_join(ids_before, ids_select ) %>% #return all rows from x without a match in y.
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idsmissing_select", 
+         year=i, season=season_select)
+
+# ids that are first trapped in the selected 19 day window
+idstrapped_select <- anti_join(ids_select, ids_before) %>%
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idstrapped_select", 
+         year=i, season=season_select)
+
+# ids that are missing in the selected 19 day period that were captured after this window
+idsmissing_after <- anti_join(ids_after, ids_select) %>%
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idsmissing_after", 
+         year=i, season=season_select)
+
+# total_trapped in window
+idsfall <- trap %>%
+  filter(season=="fall") %>%
+  mutate(period=if_else(between(julian_date, 154, 184), "select", 
+                        if_else(julian_date<154, "before", "after"))) %>%
+  filter( year== i, period=="select") %>%
+  summarize(n=n_distinct(ear_tag_id)) %>% 
+  mutate(period="ndegus", 
+         year=i, season=season_select)
+
+# total_trapped 
+idsall <- trap %>%
+  filter(season=="fall",  year== i) %>%
+  summarize(n=n_distinct(ear_tag_id)) %>% 
+  mutate(period="total_ndegus", 
+         year=i, season=season_select)
+
+# trap nights in window
+daysfall <- trap %>%
+  filter(season=="fall") %>%
+  mutate(period=if_else(between(julian_date, 154, 184), "select", 
+                        if_else(julian_date<154, "before", "after"))) %>%
+  filter( year== i, period=="select") %>%
+  summarize(n=length(unique(date))) %>% 
+  mutate(period="trapdays", 
+         year=i, season=season_select)
+
+# total trapnights per season
+daysall <- trap %>%
+  filter(season=="fall",  year== i) %>%
+  summarize(n=length(unique(date))) %>% 
+  mutate(period="total_trapdays", 
+         year=i, season=season_select)
+
+
+  ids_fall <- bind_rows(idsmissing_select,idstrapped_select, idsmissing_after, idsfall, idsall, daysfall, daysall  )
+  missingids <- rbind.data.frame(missingids, ids_fall)
+  
+}
+
+# in 2020 no degus were trapped at all. 
+missingids$n[79] <-0
+missingids$n[81] <-0
+missingids$n[82] <-0
+
+ids_fall_wide <- missingids %>%
+  pivot_wider(
+                             names_from = period, 
+                             values_from = n)  %>%
+  mutate(trap_effort=ndegus/total_ndegus, 
+         month="jun") 
+
+
+
+```
+
+
+```{r spring}
+
+
+run <- unique(trap$year)
+season_select <- "spring"
+
+#make empty dataframe to write loop results into
+missingids.spring <- data.frame(season=character(),
+                       year=character(),
+                       period=character(),
+                       n=numeric())
+#i=2009
+#run="2009"
+#run <- i
+
+for (i in run) {
+  #r.seed <- run
+  #set.seed(r.seed)
+  #
+        
+ids_select <- trap %>%
+  filter(season=="spring") %>%
+  mutate(period=if_else(between(julian_date, 279, 298), "select", 
+                        if_else(julian_date < 279, "before", "after"))) %>%
+  filter( year== i, period=="select")  %>%
+  distinct(ear_tag_id) %>%
+  arrange(ear_tag_id)#%>%
+  #rename(select.id=ear_tag_id)
+
+ids_before <- trap %>%
+   filter(season=="spring") %>%
+  mutate(period=if_else(between(julian_date, 279, 298), "select", 
+                        if_else(julian_date < 279, "before", "after"))) %>%
+  filter( year==i, period=="before")  %>%
+  distinct(ear_tag_id)%>%
+  arrange(ear_tag_id) #%>%
+ # rename(before.id=ear_tag_id)
+
+ids_after <- trap %>%
+   filter(season=="spring") %>%
+  mutate(period=if_else(between(julian_date, 279, 298), "select", 
+                        if_else(julian_date < 279, "before", "after"))) %>%
+  filter( year==i, period=="after")  %>%
+  distinct(ear_tag_id)%>%
+  arrange(ear_tag_id) 
+
+# ids that are missing in the selected 19 day period that were captured before this window
+idsmissing_select <- anti_join(ids_before, ids_select ) %>% #return all rows from x without a match in y.
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idsmissing_select", 
+         year=i, season=season_select)
+
+# ids that are first trapped in the selected 19 day window
+idstrapped_select <- anti_join(ids_select, ids_before) %>%
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idstrapped_select", 
+         year=i, season=season_select)
+
+# ids that are missing in the selected 19 day period that were captured after this window
+idsmissing_after <- anti_join(ids_after, ids_select) %>%
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="idsmissing_after", 
+         year=i, season=season_select)
+
+# total_trapped in windowd
+idsspring <- trap %>%
+  filter(season=="spring") %>%
+  mutate(period=if_else(between(julian_date, 279, 298), "select", 
+                        if_else(julian_date < 279, "before", "after")))  %>%
+  filter( year== i, period=="select") %>%
+  summarize(n=n_distinct(ear_tag_id)) %>% 
+  mutate(period="ndegus", 
+         year=i, season=season_select)
+
+# total_trapped 
+idsall <- trap %>%
+  filter(season=="spring",  year== i) %>%
+  summarize(n=n_distinct(ear_tag_id)) %>% 
+  mutate(period="total_ndegus", 
+         year=i, season=season_select)
+
+# trap nights in window
+daysspring <- trap %>%
+  filter(season=="spring") %>%
+  mutate(period=if_else(between(julian_date, 279, 298), "select", 
+                        if_else(julian_date<279, "before", "after"))) %>%
+  filter( year== i, period=="select") %>%
+  summarize(n=length(unique(date))) %>% 
+  mutate(period="trapdays", 
+         year=i, season=season_select)
+
+# total trapnights per season
+daysall <- trap %>%
+  filter(season=="spring",  year== i) %>%
+  summarize(n=length(unique(date))) %>% 
+  mutate(period="total_trapdays", 
+         year=i, season=season_select)
+
+  ids_spring <- bind_rows(idsmissing_select,idstrapped_select, idsmissing_after, idsspring, idsall, daysspring, daysall)
+  missingids.spring <- rbind.data.frame(missingids.spring, ids_spring)
+  
+}
+
+# in 2020 no degus were trapped at all. 
+missingids.spring$n[81] <-0
+missingids.spring$n[82] <-0
+
+ids_spring_wide <- missingids.spring %>%
+  pivot_wider(names_from = period, 
+              values_from = n) %>%
+  mutate(trap_effort=ndegus/total_ndegus, 
+         month="oct")
+
+
+```
+
+combine
+```{r}
+
+ids30days <- bind_rows(ids_fall_wide, 
+                       ids_spring_wide) %>% 
+  mutate(seasonid= )
+
+write.csv(ids30days, "unique ids select 30day window.csv") 
+```
+have to change 2020 to 0 ids overall and trap effort of 0.0
+
+
+## compares 30 day windows between fall and spring
+
+```{r seasons}
+
+
+run <- unique(trap$year)
+season_select <- unique(trap$season)
+
+#make empty dataframe to write loop results into
+missingidsXseason <- data.frame(season=character(),
+                       year=character(),
+                       period=character(),
+                       n=numeric())
+#i=2009
+#run="2009"
+#run <- i
+
+for (i in run) {
+  #r.seed <- run
+  #set.seed(r.seed)
+  #
+  
+  ids_fall <- trap %>% 
+    filter( year== i, between(julian_date, 154, 184)) %>%
+  distinct(ear_tag_id) %>%
+  arrange(ear_tag_id) 
+
+    ids_spring <- trap %>% 
+    filter( year== i, between(julian_date, 279, 309)) %>%
+  distinct(ear_tag_id) %>%
+  arrange(ear_tag_id)    
+
+# ids that are missing in the selected 19 day period that were captured before this window
+idsmissing_fall <- anti_join(ids_fall, ids_spring ) %>% #return all rows from x without a match in y.
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="ids.unique.in.fall", 
+         year=i)
+
+idsmissing_spring <- anti_join( ids_spring, ids_fall ) %>% #return all rows from x without a match in y.
+  summarize(n=length(ear_tag_id)) %>% 
+  mutate(period="ids.unique.in.spring", 
+         year=i)
+
+
+  idsXseason <- bind_rows(idsmissing_fall,idsmissing_spring  )
+  missingidsXseason<- rbind.data.frame(missingidsXseason, idsXseason)
+  
+}
+
+idsXseason <- missingidsXseason %>%
+  pivot_wider(names_from = period, 
+              values_from = n) 
+
+
+```
+
+
+# summary capture data
+
+```{r}
+
+capture_summary <- bind_rows(ids_fall_wide, 
+                       ids_spring_wide) %>% 
+  unite(seasonid, c("season", "month", "year"), remove = FALSE) %>%
+  select(seasonid, season, year, month, 
+         ndegus, total_ndegus, trap_effort,
+         trapdays, total_trapdays, 
+         idsmissing_select, idstrapped_select, idsmissing_after) %>%
+  arrange(year) %>%
+   mutate(seasonkey=1:24) %>%
+  select(seasonkey, everything())
+
+write.csv(capture_summary, "results/capture_summary.csv") 
+```
+
+We can add the environmental data to this file
+
+# Mark recapture data
+
+fall 
+julian dates: 154 - 184
+dates : 20xx-06-03 - 20xx-07-03
+
+spring 
+julian dates: 279 - 309
+dates: 20xx-10-04 - 20xx-11-05
+
+
+## ready data
+add column: date_death -> only when in the notes the degu is persumed death, some deaths occured for second caputre so use original trap file then make selection (search on 'muer' and 'depr')
+
+
+```{r add date deaths}
+
+unique(trapdata$notes)
+
+deaths<- read.csv("data/degus_deaths.csv") %>%
+  dplyr::select(  ear_tag_id,  date_death)
+#deaths$date <- as.Date(deaths$date)
+deaths$ear_tag_id <- as.character(deaths$ear_tag_id)
+
+markrecap_death <- trapdata %>% 
+  left_join(deaths, by=c("ear_tag_id"))
+
+check <- markrecap_death %>%
+  filter(date_death!="NA")  %>%
+  group_by(ear_tag_id) %>%
+  slice(1)
+
+# 10 missing perhaps because of subsequent captures so here i use unfiltered trapdata file. 
+
+check <- deaths %>% left_join(markrecap) 
+check <- check %>%  filter(julian_date=="NA")
+
+death_degus_missing <- c("1501", "1554", "1688", "1644", "1709", 
+  "3124", "3164", "6689", "6499", "6701")                   
+
+check_trap <- trapdata %>% 
+  filter(ear_tag_id %in% death_degus_missing)
+
+```
+
+add columns vulva -> 0=closed, 1=semi, 2=open
+           
+
+```{r}
+unique(markrecap_death$breeding_status_1)
+
+vulvasumm <- markrecap_death %>%
+  group_by(breeding_status_1) %>% 
+  tally()
+
+markrecap_death$breeding_status_1[markrecap_death$breeding_status_1=="open!"] <- "open"
+
+markrecap_breed <- markrecap_death %>%
+  mutate(vulva=if_else(breeding_status_1=="close", 0, 
+                       if_else(breeding_status_1=="open", 2, 
+                              if_else(breeding_status_1=="semi", 1, NA))))
+check <- markrecap_breed %>% filter(breeding_status_1=="semi")
+check <- markrecap_breed %>% filter(breeding_status_1=="open")
+check <- markrecap_breed %>% filter(breeding_status_1=="close")
+
+
+```
+
+ female_breeding <- for pregnant/lactating/ definitely pregnant = 1/ lact or pregn =4, ? = NS
+ see breeding codes
+
+```{r}
+unique(markrecap_breed$breeding_status_2)
+length(unique(markrecap_breed$breeding_status_2))
+
+breedsumm <- markrecap_breed %>%
+  group_by(breeding_status_2) %>% 
+  tally()
+
+pregnant <- c("preñada", "Preñada", "no lactante, preñada"  )
+lactating <- c("lactante",  "lactante, secresión sang.", 
+               "lactante reciente", "lactante, no preñada", "lactante, X" )
+postlactating <- c("post lactante",  "post lactante, no preñada" , "post lactante, X" , "postlactante", 
+                    "postlactante, no preñada", "postlactante, X" )
+lact.preg <- c("lactante, preñada", "post lactante, preñada", "preñada, con leche", "postlactante, preñada",
+               "post lactante, preñada?", "post lactante, no preñada?!", 
+                   "post lactante, no preñada?","postlactante, preñada?",
+               "lactante, preñada?"  ,"lactante, no preñada?!", "post lactante?, preñada")
+breedingstatus_unclear <- c("x", "P", "P?", "tapón mucoso", "?" , "preñada?", "preñada???",  "prenada?",
+                            "lactante reciente?","post lactante?" , "lactante?, X", "Preñada?" )  
+nonbreeding <- c("no lactante, no preñada!", "no preñada, no lactante" , "no preñada, no lactante, no preñada", 
+                 "no lactante", "no lactante, no preñada"  )
+na <- c("NA", NA)  
+
+check <- length(pregnant)+length(lactating)+length(postlactating)+length(nonbreeding) +
+  length(lact.preg)+length(na)+length(breedingstatus_unclear) # 1 missing
+
+# create coding scheme
+breeding <- c("pregnant", "lactating", "postlactating", "lact.preg", "breedingstatus_unclear", "nonbreeding", "na" )
+code <- c(1, 2, 3, 4, 5, 0, NA)
+description <- c("definitely pregnant", "definitely lactating", "definitely postlactating",
+                 "both pregnant and/or (post)lactating", "either breeding status with question marks or unknown abbreviation",
+                 "female is not pregnant nor lactating", "NA" )
+breeding_codes <- data.frame(breeding, code, description)
+write.csv(breeding_codes, "data/breeding status 2 codes.csv")
+
+# create new column
+markrecap_breed1 <- markrecap_breed %>%
+  mutate(breeding_status=if_else(breeding_status_2 %in% nonbreeding, 0, 
+                       if_else(breeding_status_2 %in% pregnant, 1, 
+                              if_else(breeding_status_2 %in% lactating, 2, 
+                                      if_else(breeding_status_2 %in% postlactating, 3, 
+                                              if_else(breeding_status_2 %in% lact.preg, 4,
+                                                      if_else(breeding_status_2 %in% breedingstatus_unclear, 5, NA)))))))
+check <- markrecap_breed1 %>% group_by(breeding_status_2) %>% slice(1)
+
+
+```
+ 
+
+filter on first capture only, order chronologically 
+```{r}
+
+markrecap <- markrecap_breed1 %>%
+  arrange(year, season, date, julian_date) %>%
+  filter(capture==1) %>%
+  mutate(orderkey=1:n())
+
+```
+
+
+
+select season 
+add column: seasonID -> "season-year-month", with NA's to rows that do not fall within the 30-day period
+
+```{r add seasonid}
+
+markrecap_30daywindow <- markrecap %>%
+  group_by(year) %>%
+  mutate(window = if_else(between(julian_date, 154, 184), "jun", 
+                          if_else(between(julian_date, 279, 309), "oct", NA))) %>%
+  unite(seasonid, c("season", "window", "year"), remove = FALSE) %>%
+  ungroup()
+  
+
+```
+
+select relevant columns and remove unnecessary columns
+remove: orden_libreta, grid, burrow location.  
+
+```{r}
+
+str(markrecap_30daywindow)
+
+trap <- markrecap_30daywindow %>%
+  dplyr::select(orderkey,window, seasonid, season,  year, date, julian_date, 
+                trap_type, ear_tag_id, sex, radio_collar, weight, w_collar, 
+                status, age, vulva, breeding_status, date_death, notes) %>%
+  rename(id=ear_tag_id)
+
+str(trap)
+```
+
+write file
+
+```{r}
+write.csv(trap, "data/degu_markrecapture.csv")
+```
+
+ 
+
+
+# Environmental data
+potentially add avg group size to temporal file
+
