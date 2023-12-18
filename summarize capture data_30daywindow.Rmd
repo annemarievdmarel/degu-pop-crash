@@ -953,9 +953,10 @@ julian dates: 279 - 309
 dates: 20xx-10-04 - 20xx-11-05
 
 
-## ready data
+## certain death
 add column: date_death -> only when in the notes the degu is persumed death, some deaths occured for second caputre so use original trap file then make selection (search on 'muer' and 'depr')
 
+include a column where you use indicator variable (0 = no known death; 1 = known to have died just before the sampling occasion.
 
 ```{r add date deaths}
 
@@ -967,7 +968,8 @@ deaths<- read.csv("data/degus_deaths.csv") %>%
 deaths$ear_tag_id <- as.character(deaths$ear_tag_id)
 
 markrecap_death <- trapdata %>% 
-  left_join(deaths, by=c("ear_tag_id"))
+  left_join(deaths, by=c("ear_tag_id")) #%>%
+  #mutate(known_death=if_else(is.na(date_death),0, 1))
 
 check <- markrecap_death %>%
   filter(date_death!="NA")  %>%
@@ -986,7 +988,7 @@ check_trap <- trapdata %>%
   filter(ear_tag_id %in% death_degus_missing)
 
 ```
-
+## breeding status
 add columns vulva -> 0=closed, 1=semi, 2=open
            
 
@@ -1012,6 +1014,8 @@ check <- markrecap_breed %>% filter(breeding_status_1=="close")
 
  female_breeding <- for pregnant/lactating/ definitely pregnant = 1/ lact or pregn =4, ? = NS
  see breeding codes
+preñada? ->	Se palpa preñez dudosa
+x	-> No se palpa preñez
 
 ```{r}
 unique(markrecap_breed$breeding_status_2)
@@ -1042,8 +1046,10 @@ check <- length(pregnant)+length(lactating)+length(postlactating)+length(nonbree
 # create coding scheme
 breeding <- c("pregnant", "lactating", "postlactating", "lact.preg", "breedingstatus_unclear", "nonbreeding", "na" )
 code <- c(1, 2, 3, 4, 5, 0, NA)
-description <- c("definitely pregnant", "definitely lactating", "definitely postlactating",
-                 "both pregnant and/or (post)lactating", "either breeding status with question marks or unknown abbreviation",
+description <- c("definitely pregnant", "definitely lactating", 
+                 "definitely postlactating, female was pregnant and lactating this spring before this point",
+                 "both pregnant and/or (post)lactating", 
+                 "either breeding status with question marks or unknown abbreviation",
                  "female is not pregnant nor lactating", "NA" )
 breeding_codes <- data.frame(breeding, code, description)
 write.csv(breeding_codes, "data/breeding status 2 codes.csv")
@@ -1061,11 +1067,12 @@ check <- markrecap_breed1 %>% group_by(breeding_status_2) %>% slice(1)
 
 ```
  
-
+## first capture only
 filter on first capture only, order chronologically 
 ```{r}
 
-markrecap <- markrecap_breed1 %>%
+markrecap <- markrecap_breed1 %>% 
+  select(-orderkey) %>%
   arrange(year, season, date, julian_date) %>%
   filter(capture==1) %>%
   mutate(orderkey=1:n())
@@ -1073,9 +1080,10 @@ markrecap <- markrecap_breed1 %>%
 ```
 
 
-
+## season and sessionID
 select season 
 add column: seasonID -> "season-year-month", with NA's to rows that do not fall within the 30-day period
+add column: sessionid -> fall 2009 =1 , spring 2009=2
 
 ```{r add seasonid}
 
@@ -1085,27 +1093,55 @@ markrecap_30daywindow <- markrecap %>%
                           if_else(between(julian_date, 279, 309), "oct", NA))) %>%
   unite(seasonid, c("season", "window", "year"), remove = FALSE) %>%
   ungroup()
-  
 
+unique(markrecap_30daywindow$seasonid)
+
+seasons <- markrecap_30daywindow %>%
+  filter(window!="NA") %>% 
+  group_by(year, seasonid) %>%
+  tally() %>%
+  arrange(year) %>% 
+  ungroup() %>% 
+  mutate(seasonkey=1:n()) %>%
+  select(seasonkey, seasonid)
+
+markrecap_key <- seasons %>% full_join(markrecap_30daywindow)
+unique(markrecap_key$seasonkey)
+unique(markrecap_key$seasonid)
+
+trapkey <- seasons %>% 
+  left_join(markrecap_30daywindow) %>%
+  group_by(seasonkey) %>%
+  slice(1) %>%
+  select(seasonkey, seasonid, season, window, year) %>% 
+  ungroup()
+
+write.csv(trapkey, "./data/seasonkey.csv")
 ```
 
+## clean up
 select relevant columns and remove unnecessary columns
 remove: orden_libreta, grid, burrow location.  
 
 ```{r}
 
-str(markrecap_30daywindow)
+str(markrecap_key)
 
-trap <- markrecap_30daywindow %>%
-  dplyr::select(orderkey,window, seasonid, season,  year, date, julian_date, 
+trap <- markrecap_key %>%
+  dplyr::select(orderkey,seasonkey, seasonid, season, window, year, date, julian_date, 
                 trap_type, ear_tag_id, sex, radio_collar, weight, w_collar, 
                 status, age, vulva, breeding_status, date_death, notes) %>%
-  rename(id=ear_tag_id)
+  arrange(orderkey)
+  #rename(id=ear_tag_id)
+
+# grouping variables should be factor (sex, age)
+trap$sex <- as.factor(trap$sex)
+trap$age <- as.factor(trap$age)
 
 str(trap)
 ```
 
-write file
+##write file
 
 ```{r}
 write.csv(trap, "data/degu_markrecapture.csv")
@@ -1114,6 +1150,4 @@ write.csv(trap, "data/degu_markrecapture.csv")
  
 
 
-# Environmental data
-potentially add avg group size to temporal file
 
