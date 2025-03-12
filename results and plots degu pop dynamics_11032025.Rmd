@@ -1,0 +1,2855 @@
+---
+title: "Rmd_degu_results and plots_v1"
+author: "Annemarie van der Marel"
+date: "2024-04-04"
+output: html_document
+---
+
+Population demographic results without and with environmental covariates
+
+# load libraries
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyr); library(ggplot2); library(cowplot); library(lubridate)
+library(ggpubr); library(RMark); library(dplyr); 
+library(lattice);  library(Hmisc); library(plyr)
+library(dplyr); library(akima);
+library(metR); library(tidyverse);library(scales)
+
+#rm(list = ls(all = TRUE))
+#20 March 2024 - Degu prelim results (no covars)
+
+theme_degu <-
+  function() {
+    ggpubr::theme_pubr(base_size = 14, legend = "bottom") +
+      theme(#axis.text.x = element_text(angle = 35, vjust = 0.5),
+            legend.title = element_blank(),
+            axis.text = element_text(size = 11))
+  }
+
+# color selection
+F <- "#762a83"
+M <- "#7fbf7b"
+
+wet <- "#40B0A6"
+dry <- "#E1BE6A"
+
+survival <- "#D41159"
+recruitment <-"#1A85FF"
+
+  # environmental covariates with 3, included in model
+temp <- "#fd8d3c"     
+temp_cv3 <- "#fed976"
+temp_max <- "#f03b20"
+rain_sum3 <- "#1E88E5"
+rain_sum_lag3 <- "#08519c"
+rain_cv3 <- "#9ecae1"
+rain_cv_lag3 <-"#6baed6"
+gpp_avg3 <- "#006d2c"
+oni_avg3 <-  "#bdbdbd" 
+lai <- "#a1d99b"  
+et <- "#D81B60"
+```
+
+
+
+# Raw data, encounter history etc
+
+using updated results with gpp in correct units
+
+```{r encounter history}
+load("degu_formatted_data_ddl_20240320.RData")
+
+#Original dataset
+head(work5)
+table(work5$sex)
+nrow(work5)
+table(work5$sex,work5$season)
+
+#Unique animals
+unique_animals = dplyr::distinct(work5, id, .keep_all = T)
+nrow(unique_animals)
+table(unique_animals$sex)
+table(unique_animals$season)
+table(unique_animals$sex, unique_animals$season)
+
+#Formatted data
+formatted_data = pradel.process$data
+head(formatted_data)
+nrow(formatted_data)
+table(formatted_data$sex)
+
+
+# Output lambda based on the top 2-var models
+nchar(pradel.process$data$ch)[1] # 22 occassions, 21 intervals
+
+```
+
+
+# Models without covariates
+
+## CMR results object
+
+```{r}
+load("results_models without covariates/degu_results_no_Covars_20240320.RData")
+
+degu.results
+
+# write.csv(
+#   degu.results$model.table,
+#   "degu_model_table_no_covr_20240320.csv",
+#   row.names = TRUE
+# )
+```
+
+##Model comparison table
+
+```{r}
+degu.model.table = degu.results$model.table
+
+nrow(degu.model.table) #1103 models!
+#View(degu.model.table)
+
+#Top 3 models:
+# Phi(~year2 + season2 * sex)p(~year2)f(~year2 + season2 * sex)
+# Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 + season2 * sex)
+# Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 + season2 * sex)
+#Find the top model
+kk = as.numeric(rownames(degu.results$model.table))[1] #Find the top model
+
+#Look at the results based on the top model
+round(degu.results[[kk]]$results$real[1:4], 3)
+degu.results[[kk]]$results$beta
+degu.results[[kk]]$results$AICc
+
+#Look at the results based on the second model
+ll = as.numeric(rownames(degu.results$model.table))[2] 
+round(degu.results[[ll]]$results$real[1:4], 3)
+degu.results[[ll]]$results$beta
+degu.results[[ll]]$results$AICc
+```
+
+
+##Summary + Plot estimates based on top models
+
+```{r}
+Phi.info = pradel.ddl$Phi
+f.info = pradel.ddl$f 
+p.info = pradel.ddl$p
+
+
+# Output lambda based on the top 2-var models
+nchar(pradel.process$data$ch)[1] # 22 occassions, 21 intervals
+```
+
+
+
+### phi-survival 
+based on current top model
+
+```{r summary phi}
+Phi.test= summary.mark(degu.results[[kk]],
+                       parameter = "Phi",se = T) #, showall = F
+
+Phi.estimates = Phi.test$reals$Phi
+Phi.estimates.covar = merge(Phi.estimates,Phi.info, all.x = T, by = "time")
+Phi.estimates.covar2 = distinct(Phi.estimates.covar, estimate, season,.keep_all = T)
+
+table(Phi.estimates.covar2$season)
+Phi.estimates.covar2$season2 = factor(Phi.estimates.covar2$season2)
+Phi.estimates.covar2$sex = factor(Phi.estimates.covar2$group.x)
+
+#write.csv(Phi.estimates.covar2,  "degu_Phi_estimate2.csv")
+#Phi.estimates.covar2 <- read.csv("./results_models without covariates/degu_Phi_estimate2.csv")
+#View(Phi.estimates.covar2)
+head(Phi.estimates.covar2)
+
+# overall
+
+round(mean(Phi.estimates.covar2$estimate), 3)
+round(mean(Phi.estimates.covar2$se), 3)
+round(sd(Phi.estimates.covar2$estimate), 3)
+length(Phi.estimates.covar2$estimate)
+
+round(sd(Phi.estimates.covar2$estimate), 3)/sqrt(length(Phi.estimates.covar2$estimate))
+
+# by Season, sex and seasonXsex
+phi_summ <- Phi.estimates.covar2 %>% 
+  #dplyr::group_by(sex) %>% # not working
+  dplyr::filter(season2=="nonbreeding") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+
+phi_summ <- Phi.estimates.covar2 %>% 
+  #dplyr::group_by(season2, sex) %>% # not working
+  #dplyr::filter(season2=="nonbreeding") %>% 
+  dplyr::filter(sex=="M") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+phi_summ <- Phi.estimates.covar2 %>% 
+  #dplyr::group_by(season2, sex) %>% # not working
+  #dplyr::filter(season2=="nonbreeding") %>% 
+  dplyr::filter(season2=="breeding", sex=="M") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+
+
+
+```
+
+
+
+
+
+```{r plot phi}
+
+
+phi.plot1 <- ggplot(Phi.estimates.covar2, 
+                   aes(x=seasonkey, y=estimate, fill=sex, color = sex)) + 
+  geom_line(position = position_dodge(.1)) +
+  geom_point( position = position_dodge(.1)) +
+  #facet_grid(.~year2)+
+  #facet_grid(.~season)+
+  geom_errorbar(aes(ymin=lcl, ymax=ucl),position = position_dodge(.1))+
+  theme_degu()+
+  theme(legend.position = "bottom")+
+  #ylim(0.5, 1.0)+
+   scale_x_continuous(breaks = seq(from = 1, to = 22, by = 1))+
+  labs(x = "Trapping Window", y = expression(phi)) +
+    scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+ phi.plot1 
+
+
+
+
+```
+
+```{r}
+
+# plot the following just for the x-axis labels
+phi.estimates.covar2<- Phi.estimates.covar2 %>% 
+  unite(axislabel, season1, year2, sep=" ", remove = FALSE)
+phi.estimates.covar2$axislabel <- factor(phi.estimates.covar2$axislabel, 
+                        levels = c("fall 2009", "spring 2009",
+                                   "fall 2010", "spring 2010",
+                                   "fall 2011", "spring 2011",
+                                   "fall 2012", "spring 2012",
+                                   "fall 2013", "spring 2013",
+                                   "fall 2014", "spring 2014",
+                                   "fall 2015", "spring 2015",
+                                   "fall 2016", "spring 2016",
+                                   "fall 2017", "spring 2017",
+                                   "fall 2018", "spring 2018",
+                                   "fall 2019", "spring 2019",
+                                   "fall 2020", "spring 2020"),
+                        labels = c("Jun 2009", "Oct 2009",
+                                   "Jun 2010", "Oct 2010",
+                                   "Jun 2011", "Oct 2011",
+                                   "Jun 2012", "Oct 2012",
+                                   "Jun 2013", "Oct 2013",
+                                   "Jun 2014", "Oct 2014",
+                                   "Jun 2015", "Oct 2015",
+                                   "Jun 2016", "Oct 2016",
+                                   "Jun 2017", "Oct 2017",
+                                   "Jun 2018", "Oct 2018",
+                                   "Jun 2019", "Oct 2019",
+                                   "Jun 2020", "Oct 2020"))
+
+
+phi.plot.x <- ggplot(phi.estimates.covar2, 
+                   aes(x=axislabel, y=estimate, fill=sex, color = sex)) + 
+  geom_line(position = position_dodge(.1)) +
+  geom_point( position = position_dodge(.1)) +
+  #facet_grid(.~year2)+
+  #facet_grid(.~season)+
+  geom_errorbar(aes(ymin=lcl, ymax=ucl),position = position_dodge(.1))+
+  theme_degu()+
+  theme(legend.position = "bottom",
+        axis.text.x = element_text(size=9))+
+  #ylim(0.5, 1.0)+
+  labs(x = "Trapping Window", y = expression(phi)) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_x_discrete(labels = label_wrap(6))
+  
+phi.plot.x
+```
+
+
+
+### f-recruitment rate 
+```{r plot f}
+#Top model
+#Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)
+#f(~year2 * season2 + sex)
+
+f.test= summary.mark(degu.results[[kk]],
+                     parameter = "f",se = T) #, showall = F
+
+f.estimates = f.test$reals$f
+f.estimates.covar = merge(f.estimates,f.info, all.x = T, by = "time")
+f.estimates.covar2 = distinct(f.estimates.covar, estimate,se,  season, sex.x, .keep_all = T)
+
+table(f.estimates.covar2$season)
+f.estimates.covar2$season2 = factor(f.estimates.covar2$season2)
+f.estimates.covar2$sex = factor(f.estimates.covar2$sex.x)
+
+write.csv(f.estimates.covar2,  "degu_f_estimate2.csv")
+#View(f.estimates.covar2)
+head(f.estimates.covar2)
+f.estimates.covar2 = distinct(f.estimates.covar2)
+
+# by Season, sex and seasonXsex
+f_summ <- f.estimates.covar2 %>% 
+  #dplyr::group_by(sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  dplyr::filter(sex=="M", season2=="nonbreeding") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+
+
+```
+
+
+
+```{r}
+f.estimates.covar2<- f.estimates.covar2 %>% 
+  unite(axislabel, season1, year2, sep=" ", remove = FALSE)
+f.estimates.covar2$axislabel <- factor(f.estimates.covar2$axislabel, 
+                        levels = c("fall 2009", "spring 2009",
+                                   "fall 2010", "spring 2010",
+                                   "fall 2011", "spring 2011",
+                                   "fall 2012", "spring 2012",
+                                   "fall 2013", "spring 2013",
+                                   "fall 2014", "spring 2014",
+                                   "fall 2015", "spring 2015",
+                                   "fall 2016", "spring 2016",
+                                   "fall 2017", "spring 2017",
+                                   "fall 2018", "spring 2018",
+                                   "fall 2019", "spring 2019",
+                                   "fall 2020", "spring 2020"))
+
+
+f.plot2 <-ggplot(f.estimates.covar2, aes(axislabel, y=estimate, fill=sex, color=sex)) +
+  geom_line(position = position_dodge(.3)) +
+  geom_point( position = position_dodge(.3)) +
+  geom_errorbar(aes(ymin=lcl, ymax=ucl),position = position_dodge(.3))+
+  theme_degu()+
+  theme(legend.position = "bottom")+
+  #ylim(0.5, 1.0)+
+  scale_x_continuous(breaks = seq(from = 1, to = 22, by = 1))+
+  labs(x = "Trapping Window", y = expression(f)) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_x_discrete(labels = label_wrap(6)) 
+
+f.plot2
+
+f.plot1 <-ggplot(f.estimates.covar2, aes(x=seasonkey, y=estimate, fill=sex, color=sex)) +
+  geom_line(position = position_dodge(.5)) +
+  geom_point( position = position_dodge(.5)) +
+  geom_errorbar(aes(ymin=lcl, ymax=ucl),position = position_dodge(.5))+
+  theme_degu()+
+  theme(legend.position = "bottom")+
+  #ylim(0.5, 1.0)+
+  scale_x_continuous(breaks = seq(from = 1, to = 22, by = 1))+
+  labs(x = "Trapping Window", y = expression(f)) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+
+f.plot1
+
+ggsave("top_f_20240320_v3.png", dpi = 600, height = 5, width = 7, units = "in")
+```
+
+```{r}
+
+# by Season, sex and seasonXsex
+f_summ_m_nonbreed <- as_tibble(f.estimates.covar2) %>% 
+  #dplyr::group_by(season, sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  dplyr::filter(sex=="M", season2=="nonbreeding") %>% 
+  summarize(estimate=round(mean(estimate), 3),
+            lcl=round(mean(lcl), 3),
+            ucl=round(mean(ucl), 3)) %>% 
+  mutate(sex="male", season="nonbreeding")
+f_summ_f_nonbreed <- as_tibble(f.estimates.covar2) %>% 
+  #dplyr::group_by(season, sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  dplyr::filter(sex=="F", season2=="nonbreeding") %>% 
+  summarize(estimate=round(mean(estimate), 3),
+            lcl=round(mean(lcl), 3),
+            ucl=round(mean(ucl), 3))%>% 
+  mutate(sex="female", season="nonbreeding")
+f_summ_m_breed <- as_tibble(f.estimates.covar2) %>% 
+  #dplyr::group_by(season, sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  dplyr::filter(sex=="M", season2=="breeding") %>% 
+  summarize(estimate=round(mean(estimate), 3),
+            lcl=round(mean(lcl), 3),
+            ucl=round(mean(ucl), 3))%>% 
+  mutate(sex="male", season="breeding")
+f_summ_f_breed <- as_tibble(f.estimates.covar2) %>% 
+  #dplyr::group_by(season, sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  dplyr::filter(sex=="F", season2=="breeding") %>% 
+  summarize(estimate=round(mean(estimate), 3),
+            lcl=round(mean(lcl), 3),
+            ucl=round(mean(ucl), 3))%>% 
+  mutate(sex="female", season="breeding")
+f_summ_seasonXsex <- bind_rows(f_summ_f_breed,
+                               f_summ_f_nonbreed,
+                               f_summ_m_breed,
+                               f_summ_m_nonbreed)           
+
+f.plot.seasonXsex <- ggplot(f_summ_seasonXsex , 
+                   aes(season, y=estimate, fill=sex)) + 
+  geom_bar(stat="identity", position=position_dodge(), color="black") +
+  #facet_grid(.~season)+
+  geom_errorbar(aes(ymin=lcl, ymax=ucl), width=.3, position = position_dodge(.9), color="black")+
+  theme_classic()+
+  #ylim(0.5, 1.0)+
+  labs(x = "Season", y = "Recruitment") +
+  scale_fill_manual(values =  c("#7CAE00","#FFCC00"))
+
+f.plot.seasonXsex
+```
+
+
+
+### p-capture probability
+
+```{r plot p}
+#
+
+top.p.test= summary.mark(degu.results[[kk]],
+                         parameter = "p",se = T, showall = FALSE)
+
+top.p.estimates = top.p.test$reals$p
+top.p.estimates.covar = left_join(top.p.estimates,p.info, by = c("time", "sex"))
+top.p.estimates.covar2 = top.p.estimates.covar
+
+top.p.estimates.covar2$season = factor(top.p.estimates.covar2$season)
+
+#write.csv(top.p.estimates.covar2,  "p_estimates_20240320.csv")
+
+arrange(top.p.estimates.covar2, time, year)
+View(top.p.estimates.covar2)
+
+top.p.estimates.covar2$time = as.numeric(top.p.estimates.covar2$time)
+
+
+# by Season, sex and seasonXsex
+p_summ <- top.p.estimates.covar2 %>% 
+  #dplyr::group_by(sex) %>% # not working
+  #dplyr::filter(season2=="breeding") %>%
+  #dplyr::filter(sex=="M", season2=="nonbreeding") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+
+
+```
+
+
+```{r}
+ggplot(top.p.estimates.covar2)+
+  geom_line(aes(time,estimate),alpha=0.5)+
+  geom_point(aes(x = time, y = estimat),position = position_dodge(0.4),size = 1.2)+
+  geom_errorbar(aes(time,ymax=ucl,ymin=lcl),alpha=0.7)+
+  #facet_grid(.~sex)+
+  ggpubr::theme_pubr(legend = "right",base_size=20)+
+  xlab("Sampling occassion") + ylab("p")+
+  #ylim(c(.3,1))+
+  #scale_x_continuous(breaks = seq(from = 1, to = 98, by = 6))+
+  theme_degu()
+
+p.plot <- ggplot(top.p.estimates.covar2)+
+  geom_line(aes(year2, estimate),alpha=0.5)+
+  geom_point(aes(x = year2, y = estimate),position = position_dodge(0.4),size = 1.2, color="black")+
+  geom_errorbar(aes(year2,ymax=ucl,ymin=lcl),alpha=0.7,color="cyan4")+
+  xlab("Year") + ylab("p")+
+  theme_degu() +
+  scale_y_continuous(limits=c(0.0, 1.0))
+  #ylim(c(.3,1))+
+  #scale_x_continuous(breaks = seq(from = 1, to = 98, by = 6))+
+p.plot
+
+ggsave("time_specific_p_estimates.png", dpi = 300, height = 5, width = 7, units = "in")
+```
+
+### lambda-population growth 
+
+```{r Plot lambda}
+
+degu.results[[kk]]$results$derived$`Lambda Population Change`
+female.lambda = degu.results[[kk]]$results$derived$`Lambda Population Change`[1:21,]
+male.lambda = degu.results[[kk]]$results$derived$`Lambda Population Change`[22:42,]
+
+female.lambda$sex = "F"
+male.lambda$sex = "M"
+lambda.time = rbind(female.lambda, male.lambda)
+lambda.time.with.covar = cbind(Phi.info[1:42,],lambda.time)
+
+lambda.time.with.covar = data.frame(lambda.time.with.covar)
+lambda.time.with.covar$season = factor(lambda.time.with.covar$season)
+lambda.time.with.covar$sex = factor(lambda.time.with.covar$sex)
+#View(lambda.time.with.covar)
+write.csv(lambda.time.with.covar, "lambda_with_covar.csv")
+#View(lambda.time.with.covar)
+
+str(lambda.time.with.covar)
+
+lambda.time.with.covar2 = as.data.frame(lambda.time.with.covar)
+lambda.time.with.covar2$sex = as.factor(lambda.time.with.covar2$sex.1)
+lambda.time.with.covar2$season = as.factor(lambda.time.with.covar2$season)
+lambda.time.with.covar2$year = as.integer(lambda.time.with.covar2$year2)
+lambda.time.with.covar3 = lambda.time.with.covar2[1:21,]
+
+# summary
+
+# by Season, sex and seasonXsex
+l_summ <- lambda.time.with.covar3 %>% 
+  #dplyr::group_by(season2) %>% # not working
+  dplyr::filter(season2=="breeding") %>%
+  #dplyr::filter(sex=="M", season2=="nonbreeding") %>% 
+  summarize(mean=round(mean(estimate), 3),
+            sd=round(sd(estimate), 3),
+            n=length(estimate),
+            se=round(sd/sqrt(n),3))
+
+
+```
+
+
+```{r}
+ggplot(lambda.time.with.covar3, aes(x = year2, y = estimate))+
+  geom_line(alpha=0.6, size = 1.2)+
+  geom_point()+
+  geom_errorbar(aes(ymin=lcl, ymax=ucl), width=.3, position = position_dodge(.9), color="black")+
+  #geom_ribbon(aes(year,ymax=ucl,ymin=lcl),alpha=0.7,fill="cyan4")+
+  facet_grid(.~season)+
+  ggpubr::theme_pubr(legend = "right",base_size=16)+
+  xlab("Year") + ylab(expression(lambda))+
+  #ylim(c(.5,1.65))+
+  #scale_x_continuous(breaks = seq(from = 2009, to = 2019, by = 1))+
+  #  scale_color_manual(values=c("#34273B", "#D95B42"))+
+  # scale_fill_manual(values=c("#34273B", "#D95B42"))+
+  theme(axis.text.x = element_text(angle=45,vjust = 0.8), legend.title = element_blank())+
+  geom_hline(yintercept=1, linetype="dashed", color = "red", size=1)+
+  theme_degu()
+
+ggplot(lambda.time.with.covar3, 
+                   aes(x=seasonkey, y=estimate)) + 
+  geom_line(color="darkgrey") +
+  geom_point(color="black") +
+  geom_errorbar(aes(ymin=lcl, ymax=ucl))+
+  ggpubr::theme_pubr(legend = "right",base_size=16)+
+  xlab("Year") + ylab(expression(lambda))+
+  theme(axis.text.x = element_text(angle=45,vjust = 0.8), legend.title = element_blank())+
+  geom_hline(yintercept=1, linetype="dashed", color = "red", size=1)+
+  theme_degu() +
+  scale_y_continuous(limits=c(0.0, 1.75))
+
+lambda.time.with.covar3$year <- factor(lambda.time.with.covar3$year2,labels = c("'09", "'10", 
+                                       "'11", "'12", 
+                                       "'13", "'14", 
+                                       "'15", "'16", 
+                                       "'17", "'18", 
+                                       "'19"))
+
+l.plot <- ggplot(lambda.time.with.covar3)+
+  geom_line(aes(x = year, y = estimate),alpha=0.5, size = 1.2)+
+  geom_ribbon(aes(year,ymax=ucl,ymin=lcl),alpha=0.5,fill="cyan4")+
+  #facet_grid(.~season)+
+  ggpubr::theme_pubr(legend = "right",base_size=16)+
+  xlab("Year") + ylab(expression(lambda))+
+  theme_degu()+
+  geom_hline(yintercept=1, linetype="dashed", color = "red", size=0.8, alpha=0.8) +
+  scale_y_continuous(limits=c(0.0, 1.8))
+  #ylim(c(.5,1.65))+
+  #scale_x_continuous(breaks = seq(from = 2009, to = 2019, by = 1))+
+  #  scale_color_manual(values=c("#34273B", "#D95B42"))+
+  # scale_fill_manual(values=c("#34273B", "#D95B42"))+
+
+l.plot
+
+ggsave("time_specific_lambda_20240320.png", dpi = 300, height = 5, width = 7, units = "in")
+```
+
+
+
+
+
+## beta estimates based on topmodel
+
+```{r}
+
+topmodel.beta <- degu.results[[kk]]$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction")) 
+  #mutate(x= gsub(x, "year2",""))
+  #mutate(x = stringr::str_remove(x, " [year2]"))
+
+write.csv(topmodel.beta,"./results_models without covariates/beta_estimates.csv")
+topmodel.beta <- read.csv("./results_models without covariates/beta_estimates.csv")
+
+topmodel.beta$y <- factor(topmodel.beta$y, 
+                          levels = c("Phi", "p", "f"), 
+                          labels = c("Survival", "p", 
+                                     "Recruitment"))
+topmodel.beta$x <- factor(topmodel.beta$x, 
+                          levels=c("Intercept", "2010", "2011", "2012",
+                                   "2013", "2014", "2015", "2016", "2017", 
+                                   "2018", "2019", "males", "spring", "spring:males"),
+                       labels=c("Intercept", "2010", "2011", "2012",
+                                   "2013", "2014", "2015", "2016", "2017", 
+                                   "2018", "2019", "males", "Oct", "Oct:males"))
+
+# capture probability
+topmodel.beta %>% 
+  filter(x!="Intercept", y=="p") %>% 
+  mutate(x=fct_rev(x)) %>% 
+ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=1.5) +
+  #facet_grid(.~y) +
+  facet_wrap(.~y, nrow=2)+
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+
+# survival and recruitment
+fig.betatopmodel <- topmodel.beta %>% 
+  filter(x!="Intercept", y!="p") %>% 
+  mutate(x=fct_rev(x)) %>% 
+ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=1.5) +
+  #facet_grid(.~y) +
+  facet_wrap(.~y, nrow=2)+
+  theme_degu() +
+  coord_flip() +
+  theme( #strip.background  = element_rect(fill = "white",linewidth = 0.1),
+    #strip.text = element_blank,
+    strip.background = element_blank()) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.betatopmodel 
+
+ggsave("./results_models without covariates/fig_betatopmodel.pdf", width= 250, height=125, units="mm")
+```
+## highlight population crash
+ after feedback November 2024
+
+```{r}
+time <- read.csv("data/trappingwindows.csv") %>% 
+  unite(axislabel, season, year, sep=" ", remove = FALSE)
+```
+
+
+```{r number of captures}
+mna <- read.csv("results_models without covariates/Degu_MNA.csv") %>% 
+  dplyr::select(-X) %>% 
+  add_row(time=23:24, no_captures=c(0,0)) %>% 
+  left_join(time, by="time")
+glimpse(mna)
+
+#detach(package:plyr)
+mna_summ <- mna %>% 
+  dplyr::group_by(season) %>% 
+  dplyr::summarize(mean=mean(no_captures),
+            sd=sd(no_captures),
+            n=length(no_captures), 
+            se=sd/sqrt(n))
+
+
+mna$axislabel <- factor(mna$axislabel, 
+                        levels = c("fall 2009", "spring 2009",
+                                   "fall 2010", "spring 2010",
+                                   "fall 2011", "spring 2011",
+                                   "fall 2012", "spring 2012",
+                                   "fall 2013", "spring 2013",
+                                   "fall 2014", "spring 2014",
+                                   "fall 2015", "spring 2015",
+                                   "fall 2016", "spring 2016",
+                                   "fall 2017", "spring 2017",
+                                   "fall 2018", "spring 2018",
+                                   "fall 2019", "spring 2019",
+                                   "fall 2020", "spring 2020"))
+
+mna$year <- factor(mna$year,labels = c("'09", "'10", 
+                                       "'11", "'12", 
+                                       "'13", "'14", 
+                                       "'15", "'16", 
+                                       "'17", "'18", 
+                                       "'19", "'20"))
+
+plot_captures <- ggplot(mna, aes(x=axislabel, y=no_captures )) +
+  geom_point(aes(group=season, color=season), size=3) + # group=season
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  geom_line() + #aes(color="black")
+  theme_classic() +
+  theme(legend.position="none") +
+  labs(x = "Trapping window",  y = "Number of captures") +
+  scale_x_discrete(labels = label_wrap(6)) 
+  #scale_x_continuous(breaks = seq(from = 1, to = 24, by = 1)) 
+
+plot_captures
+
+
+plot_captures1 <- ggplot() +
+  geom_point(filter(mna, season=="fall"),mapping=  aes(x=year, y=no_captures), size=3, color="#40B0A6") + # group=season
+  #geom_line(filter(mna, season=="fall"),mapping=  aes(x=year, y=no_captures), linewidth=1, color="#40B0A6") + #aes(color="black")
+  
+   geom_point(filter(mna, season=="spring"),mapping=  aes(x=year, y=no_captures), size=3, color="#E1BE6A") + # group=season
+ # geom_line(filter(mna, season=="spring"),mapping=  aes(x=year, y=no_captures), linewidth=1, color="#E1BE6A") +
+  
+  theme_degu() +
+  labs(x = "Trapping window",  y = "Number of captures") 
+plot_captures1
+
+
+```
+
+
+
+```{r population rate}
+
+
+pop <- read.csv("results_models without covariates/pop_estimates_POPAN_withCI.csv") %>%  
+  dplyr::select(-X) %>% 
+  add_row(time=23:24, N=c(0,0), se=c(0,0),LCL=c(0,0), UCL=c(0,0)) %>% 
+  left_join(time)
+glimpse(pop)
+
+#detach(package:plyr)
+pop_summ <- pop %>% 
+  dplyr::group_by(year) %>% 
+  dplyr::summarize(mean=mean(N),
+            sd=sd(N),
+            n=length(N), 
+            se=sd/sqrt(n))
+
+pop_summ <- pop %>% 
+  dplyr::group_by(season) %>% 
+  dplyr::summarize(mean=mean(N),
+            sd=sd(N),
+            n=length(N), 
+            se=sd/sqrt(n))
+
+pop$axislabel <- factor(pop$axislabel, 
+                        levels = c("fall 2009", "spring 2009",
+                                   "fall 2010", "spring 2010",
+                                   "fall 2011", "spring 2011",
+                                   "fall 2012", "spring 2012",
+                                   "fall 2013", "spring 2013",
+                                   "fall 2014", "spring 2014",
+                                   "fall 2015", "spring 2015",
+                                   "fall 2016", "spring 2016",
+                                   "fall 2017", "spring 2017",
+                                   "fall 2018", "spring 2018",
+                                   "fall 2019", "spring 2019",
+                                   "fall 2020", "spring 2020"))
+
+pop$year <- factor(pop$year,labels = c("'09", "'10", 
+                                       "'11", "'12", 
+                                       "'13", "'14", 
+                                       "'15", "'16", 
+                                       "'17", "'18", 
+                                       "'19", "'20"))
+
+
+plot_poprate <- ggplot(pop, aes(x=axislabel, y=N)) + 
+  geom_point(aes(group=season, color=season)) +  
+  geom_errorbar(aes(group=season, color=season, ymin = LCL, ymax = UCL)) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  theme_classic() + 
+  labs(x = "Trapping window",  y = "Population size\n estimate (95% CI)") +
+  scale_x_discrete(labels = label_wrap(6)) 
+
+plot_poprate
+
+popfall <- filter(pop, season=="fall")
+popspring <- filter(pop, season!="fall")
+
+
+plot_poprate1 <- ggplot() +
+  ggplot2::geom_point(data=popfall, mapping= aes(x=year, y=N), color="#40B0A6") +
+  geom_errorbar(popfall,mapping= aes(x=year, y=N, ymin = LCL, ymax = UCL), color="#40B0A6") +
+  
+  ggplot2::geom_point(popspring, mapping=aes(x=year, y=N), color="#E1BE6A") +  
+  geom_errorbar(popspring, mapping =aes(x=year, y=N, ymin = LCL, ymax = UCL), color="#E1BE6A") +
+  
+  theme_degu() + 
+  # scale_x_continuous(breaks = seq(from = 2009, to = 2020, by = 1)) +
+  labs(x = "Year",  y = "Population size\n estimate (95% CI)") 
+plot_poprate1
+
+```
+
+
+
+
+## save plots
+```{r}
+save.image("degu_plots_20240404.RData")
+
+#rm(list=ls())
+# files = list.files(full.names = T, pattern = "tmp")
+# files = list.files(full.names = T, pattern = "inp")
+# files = list.files(full.names = T, pattern = "vcv")
+#files = list.files(full.names = T, pattern = "res")
+#files = list.files(full.names = T, pattern = "out")
+file.remove(files)
+
+```
+
+
+### fig. phi and f
+
+```{r}
+plot.phi.f <- ggarrange(phi.plot1 + rremove("xlab"), f.plot1 +rremove("xlab"), 
+                        labels = "auto",
+                        nrow=2, ncol=1, 
+                        common.legend = TRUE, 
+                        legend = "none")
+
+plot.xlabel <- ggarrange(phi.plot.x, phi.plot.x, 
+                        labels = "auto",
+                        nrow=2, ncol=1)
+
+ggarrange(plot.phi.f, fig.betatopmodel+rremove("xlab") ,
+          phi.plot.x , nrow = 2, ncol=2, 
+          labels = "auto",
+           widths = c(2.2,1.25),
+          heights = c(2,1))
+
+ggsave("results_models without covariates/plotxlabel_phi_f_03022025.pdf", dpi = 300 , width= 250, height=200, units="mm")
+
+# for x label
+ggarrange(plot.xlabel, fig.betatopmodel ,
+          labels = "auto", widths = c(2.2,1.25))
+
+ggsave("results_models without covariates/plot_xlabel_13122024.pdf", dpi = 300 , width= 250, height=125, units="mm")
+```
+
+
+
+
+### fig: pop growth+est & trapping
+```{r}
+ggpubr::ggarrange(p.plot+ rremove("xlab"), l.plot, 
+                  labels = "auto", ncol=1, align = "hv",
+                  common.legend = TRUE, legend = "bottom")
+
+
+
+ggsave("results_models without covariates/plot_captures+popsize_19022025.pdf", dpi = 300 , width= 125, height=75, units="mm")
+```
+
+
+
+# Models with covariates, year, season and sex
+
+Check models with and without certain covariates (eg. Season or year). 
+Can also check univariate models (models with only one covariate). 
+Can plot with observed values instead of normalized values. Perhaps plot with year and another year*season. 
+
+
+##CMR results object
+```{r load data}
+#First, load the image file that contains everything we need
+
+load("./results_updated models with covars/degu_results_COVAR_20250222.RData")
+
+# write.csv(
+#   degu.results_COVAR$model.table,
+#   "results_updated models with covars/degu_model_table_covr_20250222.csv",
+#   row.names = TRUE
+# )
+
+
+#Find top and second models. 
+xx = as.numeric(rownames(degu.results_COVAR$model.table))[1] #Find the top model
+mm = as.numeric(rownames(degu.results_COVAR$model.table))[2] #Find second model
+
+#You can use the same approach for getting estimates or plotting results - just replace the xx and mm below with the model number you want to output. 
+# you can find model number in the model selection table: degu.results_COVAR$model.table; 
+# you can use View()
+# or just check the excel file.
+# View(degu.results_COVAR$model.table)
+
+top.model = degu.results_COVAR[[xx]]
+second.model = degu.results_COVAR[[mm]]
+
+#To find real and beta parameters
+topmodelresultsbeta <- top.model$results$beta
+topmodelresultsreal <-top.model$results$real
+
+#write.csv(topmodelresultsbeta, "results_updated models with covars/topmodelresults.csv")
+#write.csv(topmodelresultsreal, "results_updated models with covars/topmodelresultsreal.csv")
+
+
+second.model$results$beta
+second.model$results$real
+
+
+
+
+```
+
+## covariate file
+
+```{r}
+covars <- read.csv("./data/covariates_select_scaled_v10_avg.csv") %>% 
+  filter(year2!=2020)
+
+covars$season2 <- factor(covars$season2, levels = c("wet", "dry") )
+
+covarssum <- covars %>% 
+  dplyr::group_by(year2, season2) %>% 
+  summarize(min=min(rain_sum),
+            max=max(rain_sum))
+
+ggplot(covars, aes(x=year2, y=rain_sum)) +
+         geom_point() +
+         facet_grid(~season)
+
+obsmean_rain_sum <- mean(covars$rain_sum)
+obssd_rain_sum <- sd(covars$rain_sum)
+
+obsmean_rain_cv_lag <- mean(covars$rain_cv_lag)
+obssd_rain_cv_lag <- sd(covars$rain_cv_lag)
+
+# environemntal covars
+temp_raw <- read.csv("./data/monthly_data_Pudahuel.csv") %>% 
+  filter(year!="2020")
+temp_raw$precipitation_mm[temp_raw$precipitation_mm==-999.0] <- NA
+
+2019-1976
+
+
+
+annual <- temp_raw %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(temp_avg=mean(avgT_C), 
+            temp_mMax=mean(maxT_C),
+            rain_mm=sum(precipitation_mm, na.rm = T))
+
+rainavg43years <- mean(annual$rain_mm, na.rm = T)
+round(rainavg43years)
+
+study <- temp_raw %>%
+  filter(year>2008) %>% 
+  dplyr::group_by(year) %>%
+  dplyr::summarize(temp_avg=mean(avgT_C), 
+            temp_mMax=mean(maxT_C),
+            rain_mm=sum(precipitation_mm, na.rm = T))
+rainavg12years <- round(mean(study$rain_mm, na.rm=T))
+```
+The long-term yearly average of cumulative amount of rainfall between 1976 and 2019 was 247 mm. The rainfall that fell between 2009 and 2019 that correspond to our data set was 153 mm. 
+
+##Summary + plots
+
+For plotting survival and recruitment as a function of a climatic covariate,
+you need to supply the covariate data. For our case, we standardized all covars to 
+mean of 0 and SD of 1. Below, I am just generating data between -2 to 2, but you may
+want to replace the range by actual observed range. 
+
+### Beta estimates
+
+```{r beta estimates based on top model}
+
+topmodel.beta <- top.model$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  filter(y!="p")
+
+
+write.csv(topmodel.beta,"./results_updated models with covars/beta_estimates.csv")
+topmodel.beta <- read.csv("./results_updated models with covars/beta_estimates.csv")
+
+topmodel.beta$y <- factor(topmodel.beta$y, 
+                          levels = c("Phi",  "f"), 
+                          labels = c("Survival", 
+                                     "Recruitment"))
+range(topmodel.beta$lcl)
+range(topmodel.beta$ucl)
+
+fig.beta <- topmodel.beta %>% 
+  #filter(y=="Survival") %>% 
+  mutate(x=fct_rev(x)) %>% 
+ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+  scale_y_continuous(limits = c(-15, 15)) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.beta
+
+
+fig.phi.beta<- topmodel.beta %>% 
+  filter(y=="Survival") %>% 
+  mutate( 
+         x=factor(x, 
+                  levels = c("Intercept", "P",  "Males", "Nonbreeding", "P:Nonbreeding", 
+                             "2010",  "2011", "2012", "2013", "2014", "2015", "2016",
+                             "2017", "2018", "2019")),
+         x1=fct_rev(x)) %>% 
+ggplot( aes(x=x1, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+  scale_y_continuous(limits = c(-10, 10)) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.phi.beta
+
+
+fig.f.beta<- topmodel.beta%>% 
+  filter(y=="Recruitment") %>% 
+   mutate( 
+         x=factor(x, 
+                  levels = c("Intercept", "Males", "Nonbreeding",  
+                             "2010",  "2011", "2012", "2013", "2014", "2015", "2016",
+                             "2017", "2018", "2019",
+                             "2010:Nonbreeding",  "2011:Nonbreeding", "2012:Nonbreeding", "2013:Nonbreeding", "2014:Nonbreeding", "2015:Nonbreeding", "2016:Nonbreeding",
+                             "2017:Nonbreeding", "2018:Nonbreeding", "2019:Nonbreeding")),
+         x1=fct_rev(x)) %>% 
+ggplot( aes(x=x1, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+   scale_y_continuous(limits = c(-4, 4)) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.f.beta
+
+```
+
+```{r}
+ggpubr::ggarrange(fig.phi.beta, fig.f.beta, 
+                  common.legend = TRUE, legend="bottom", labels = "auto",
+                  nrow=1, ncol=2)
+
+ggsave("./results_updated models with covars/plot_beta.estimates.pdf", dpi = 300 , width= 250, height=160, units="mm")
+```
+
+```{r beta estimates based on 2nd model}
+
+secondmodel.beta <- second.model$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  filter(y!="p")
+
+fig.f.beta2<- secondmodel.beta %>% 
+  filter(y=="f") %>% 
+   mutate( 
+         # x=factor(x,
+         #          levels = c("(Intercept)", "rain_cv_lag2", "sexM", "season2nonbreeding",
+         #                     "year22010",  "year22011", "year22012", "year22013",
+         #                     "year22014", "year22015", "year22016",
+         #                     "year22017", "year22018", "year22019"),
+         #          levels = c("Intercept", "P_lag", "Males", "Nonbreeding",
+         #                     "2010",  "2011", "2012", "2013", "2014", "2015", "2016",
+         #                     "2017", "2018", "2019")),
+         x1=fct_rev(x)) %>% 
+ggplot( aes(x=x1, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+   scale_y_continuous(limits = c(-4, 4)) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.f.beta2
+
+```
+
+
+###phi-survival
+
+```{r}
+rain_sum_seq = seq(from = -2, to = 2, by = 0.01)
+#rain_sum_seq = seq(from = min(covars$rain_sum2), to = max(covars$rain_sum2), by = 0.01)
+
+table(pradel.ddl$Phi$year2)
+
+Phi.top.covar_model =  predict_real(model = top.model, 
+                                    df = pradel.ddl$Phi,
+                                    parameter = "Phi", replicate=TRUE,se = T,
+                                    data = data.frame(rain_sum2 =rain_sum_seq))  
+#Phi.top.covar_model$rain_sum_orig <- rain_sum_orig
+
+range(Phi.top.covar_model$rain_sum2)
+range(covars$rain_sum)
+range(covars$rain_sum2)
+head(Phi.top.covar_model)
+
+# summary
+# by Season, sex and seasonXsex
+phi_rain_summ <- Phi.top.covar_model %>% 
+  dplyr::group_by(year2) %>% # not working
+  dplyr::filter(season2=="nonbreeding") %>%
+  #dplyr::filter(sex=="M", season2=="nonbreeding") %>% 
+  summarize(mean=round(mean(real), 3),
+            sd=round(sd(real), 3),
+            n=length(real),
+            se=round(sd/sqrt(n),3))
+
+
+
+```
+
+####plot survival X precipitation
+```{r}
+range(Phi.top.covar_model$rain_sum2)
+
+plot_survival_rainsum <- ggplot(Phi.top.covar_model , aes(x = rain_sum2, y = real, group = season2))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  xlab("Standardized cumulative amount of precipitation")+
+  ylab("Survival (95% CI)")+
+  #scale_x_continuous(limits = c(-1.6, 1.6), breaks = c(-1, 0,1))+
+  #scale_x_continuous( breaks = c( 0.0, 0.5,1.0))+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  #facet_grid(sex~year2)+
+  facet_grid(season2~year2)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text.y = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_survival_rainsum
+
+
+```
+
+
+
+#### plot rainfall by year and season
+
+```{r}
+covars$season2 <- factor(covars$season2, 
+                         levels = c("wet", "dry"),
+                         labels = c("B", "NB"))
+
+plot_rainsum <- ggplot(covars , aes(x = season2, y =rain_sum, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  xlab("Season")+
+  ylab("Precipitation (mm)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year2)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_rainsum
+```
+
+
+
+
+####plot MS
+
+```{r}
+
+ggpubr::ggarrange(plot_survival_rainsum, plot_rainsum, 
+                  common.legend = TRUE, legend="bottom", labels = "auto",
+                  nrow=2, ncol=1)
+
+ggsave("./results_updated models with covars/plot_survival_rainfallXseasonXyear.pdf", dpi = 300 , width= 250, height=160, units="mm")
+```
+
+
+
+### f_recruitment
+f, based on the 2nd model
+rain_cv_lag_orig = std*z+m
+```{r}
+
+# 
+# rain_cv_lag_orig =  obssd_rain_cv_lag * rain_cv_lag2  + obsmean_rain_cv_lag
+# f.2nd.covar_model_orig =  predict_real(model = second.model, 
+#                                   df = pradel.ddl$f,
+#                                   parameter = "f", replicate=TRUE,se = T,
+#                                   data = data.frame(rain_cv_lag2 = rain_cv_lag_orig))
+
+rain_cv_lag2 = seq(from = -2, to = 2, by = 0.01)
+f.2nd.covar_model =  predict_real(model = second.model, 
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv_lag2 = rain_cv_lag2)) 
+head(f.2nd.covar_model)
+
+plot_f_cv <- ggplot(f.2nd.covar_model, aes(x = rain_cv_lag2, y = real))+
+  geom_line(aes(color = season2))+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl,fill = season2), alpha = 0.3)+
+  xlab("Standardized lag in precipitation CV")+
+  ylab("Recruitment")+
+  facet_grid(~year2)+
+  #facet_grid(season2~year2)+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #ylim(0.1, 0.8)+
+  #facet_grid(rows = season, cols = phases)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_f_cv
+
+```
+
+
+plot rain CV by year and season
+```{r}
+plot_raincv <- ggplot(covars, aes(x=seasonkey, y=rain_cv_lag)) +
+  geom_line(color="#6987B4FF") +  geom_point(color="#6987B4FF") +
+  theme_degu() +
+  labs(x = "Trapping window", y="Lag in rainfall CV") +
+  scale_x_continuous(breaks = seq(from = 1, to = 22, by = 1),
+                     labels=c("2009F", "2009S",
+                                           "2010F", "2010S",
+                                           "2011F", "2011S",
+                                           "2012F", "2012S",
+                                           "2013F", "2013S",
+                                           "2014F", "2014S",
+                                           "2015F", "2015S",
+                                           "2016F", "2016S",
+                                           "2017F", "2017S",
+                                           "2018F", "2018S",
+                                           "2019F", "2019S"))
+
+plot_raincv
+
+
+covars$season2 <- factor(covars$season2, 
+                         levels = c("wet", "dry"),
+                         labels = c("B", "NB"))
+
+plot_raincvlag <- ggplot(covars , aes(x = season2, y =rain_cv_lag, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  xlab("Season")+
+  ylab("Lag in P CV")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year2)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_raincvlag
+
+
+plot_raincvlag2 <- ggplot(covars , aes(x = season2, y =rain_cv_lag2, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  xlab("Season")+
+  ylab("Lag in rainfall CV")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year2)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_raincvlag2
+
+```
+
+```{r}
+ggpubr::ggarrange(plot_f_cv, plot_raincvlag, 
+                   common.legend = TRUE, legend="bottom", labels = "auto",
+                  nrow=2, ncol=1)
+
+ggsave("results_updated models with covars/plot_f_raincvlagXseasonXyear.pdf", dpi = 300 , width= 250, height=125, units="mm")
+#height = 5, width = 8, units = "in")
+```
+
+
+
+# Models with covariates excluding year
+2025-02-24
+```{r}
+#Code for Annemarie. First load the data
+
+load("./results_updated models with covars/degu_covar_model_results_no_yr_20250222.RData")
+
+# write.csv(
+#   degu.results_COVAR.NO_YR$model.table,
+#   "results_updated models with covars/degu_model_table_covr_no_yr_20250222.csv",
+#   row.names = TRUE
+# )
+
+
+degu.results_COVAR.NO_YR
+aa = as.numeric(rownames(degu.results_COVAR.NO_YR$model.table))[1] #Find the top model
+top.model.noyear = degu.results_COVAR.NO_YR[[aa]]
+
+#To find real and beta parameters
+top.model.noyear$results$beta
+top.model.noyear$results$real
+
+
+
+```
+Either plot covars ranging from -2 to 2 or convert back to original values = (original value +mean of original value)/ variance of original value. 
+```{r}
+
+# For plotting survival and recruitment as a function of a climatic covariate,
+# you need to supply the covariate data. For our case, we standardadized all covars to
+# mean of 0 and SD of 1. Below, I am just generating data between -2 to 2, but you may
+# want to replace the range by actual observed range. You can also plot the results
+# against real values of rainfall etc - just add observed mean to standaradized value
+# and multiply that by observed SD.
+
+oni_avg2 = gpp_avg2 = rain_cv_lag2 = rain_sum2 = temp_cv2 = rain_sum_lag2 = rain_cv2 = seq(from = -2, to = 2, by = 0.01)
+
+table(pradel.ddl$Phi$year2)
+table(pradel.ddl$Phi$time)
+
+```
+
+## top model results
+
+###phi-survival
+
+
+```{r}
+
+Phi.top.covarnoyear_model =  predict_real(model = top.model.noyear,
+                                    df = pradel.ddl$Phi,
+                                    parameter = "Phi", replicate=TRUE,se = T,
+                                    data = data.frame(gpp_avg2 = gpp_avg2))
+
+head(Phi.top.covarnoyear_model)
+
+Phi.top.covarnoyear_model$sex <- factor(Phi.top.covarnoyear_model$sex,
+                                        levels = c("F", "M"),
+                                        labels = c("Female", "Male"))
+
+Phi.top.covarnoyear_model$season2 <- factor(Phi.top.covarnoyear_model$season2,
+                                        levels = c("breeding", "nonbreeding"),
+                                        labels = c("Breeding", "Nonbreeding"))
+
+phi_plot_ny <- ggplot(Phi.top.covarnoyear_model, aes(x = gpp_avg2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Standardized gross primary production")+
+  ylab("Survival")+
+  facet_grid(sex~season2)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+    facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) #c("#7CAE00","#FFCC00"
+  #   scale_fill_manual(values =  c("#7CAE00","#FFCC00")) +
+  # scale_color_manual(values =  c("#7CAE00","#FFCC00")) 
+phi_plot_ny  
+
+# strength of GPP on survival 
+intercept= 6.0706504 # breeding and female
+gpp_slope = -2.1335752 + 2.5873789 # slightly positive 
+
+plot.new()
+plot(1, type="n", xlab="", ylab="", xlim=c(0, 10), ylim=c(0, 10))
+abline(a = intercept, b = gpp_slope)
+
+```
+
+
+
+### f-recruitment
+```{r}
+f.top.covar_model.noyear =  predict_real(model = top.model.noyear,
+                                    df = pradel.ddl$f,
+                                    parameter = "f", replicate=TRUE,se = T,
+                                    data = data.frame(gpp_avg2 = gpp_avg2))
+glimpse(f.top.covar_model.noyear)
+f.top.covar_model.noyear$sex <- factor(f.top.covar_model.noyear$sex,
+                                        levels = c("F", "M"),
+                                        labels = c("Female", "Male"))
+
+f.top.covar_model.noyear$season2 <- factor(f.top.covar_model.noyear$season,
+                                        levels = c("breeding", "nonbreeding"),
+                                        labels = c("Breeding", "Nonbreeding"))
+
+
+f_plot_ny <- ggplot(f.top.covar_model.noyear, aes(x = gpp_avg2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Standardized gross primary production")+
+  ylab("Recruitment")+
+  facet_grid(sex~season2)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+    facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b"))
+f_plot_ny
+```
+### beta estimates
+```{r beta estimates based on top model}
+
+topmodel.beta.noyear <- top.model.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  filter(y!="p")
+topmodel.beta.noyear 
+
+write.csv(topmodel.beta.noyear,"./results_updated models with covars/beta_estimates.noyear.csv")
+topmodel.beta.noyear <- read.csv("./results_updated models with covars/beta_estimates.noyear.csv")
+
+topmodel.beta.noyear$y <- factor(topmodel.beta.noyear$y, 
+                          levels = c("Phi",  "f"), 
+                          labels = c("Survival", 
+                                     "Recruitment"))
+
+                              
+fig.phi.beta.noyear <- topmodel.beta.noyear %>% 
+  filter(y=="Survival") %>% 
+  mutate( x=factor(x, 
+                  levels = c("Intercept", "GPP", "Nonbreeding", "Males", "GPP:Nonbreeding")),
+          x1=fct_rev(x)) %>% 
+ggplot( aes(x=x1, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.phi.beta.noyear
+
+
+fig.f.beta.noyear <- topmodel.beta.noyear %>% 
+  filter(y=="Recruitment") %>% 
+  mutate(x=factor(x, 
+                  levels = c("Intercept", "GPP", "Nonbreeding")),
+         x1=fct_rev(x)) %>% 
+ggplot( aes(x=x1, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+   geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl),linewidth=1) +
+  facet_wrap(.~y) +
+  theme_degu() +
+  coord_flip() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  labs(y="Beta estimates (95% CI)", x="")
+fig.f.beta.noyear
+
+```
+ 
+### plot
+
+
+```{r}
+
+ggarrange( phi_plot_ny, fig.phi.beta.noyear, 
+           f_plot_ny, fig.f.beta.noyear,
+           labels = "auto", widths = c(2.2,1.25), 
+           common.legend = TRUE, align = "hv")
+
+ggsave("results_updated models with covars/plot_topmodel_noyear.pdf", dpi = 300 , width= 250, height=200, units="mm")
+           
+
+```
+
+
+
+ 
+
+
+
+## other environmental covariates
+### phi-survival
+what environmental factors affect recruitment
+
+top models: 
+gpp_avg 
+
+#### multivariate models
+
+```{r cv_temp}
+# model# 893	~temp_cv2 + season2 31	31	17614.98867	85.897	0
+
+
+phi.cvtemp.noyear = degu.results_COVAR.NO_YR[[893]]
+
+
+phi.cvtemp.noyear.model =  predict_real(model = phi.cvtemp.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(temp_cv2 = temp_cv2))
+
+
+phi_plot.NY_cvtemp <-ggplot(phi.cvtemp.noyear.model, aes(x = temp_cv2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("T CV")+
+  ylab("Survival")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+phi_plot.NY_cvtemp 
+
+
+    
+    
+# beta estimates 
+
+phi_beta.NY_cvtemp <- phi.cvtemp.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+```
+
+```{r rain_sum}
+# model# 759 ~rain_sum2 + season2 + sex		20	17651.50663	122.4149593	0	837.0889
+
+
+
+phi.rainsum.noyear = degu.results_COVAR.NO_YR[[759]]
+
+
+phi.rainsum.noyear.model =  predict_real(model = phi.rainsum.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum2 = rain_sum2))
+
+
+phi_plot.NY_rainsum <-ggplot(phi.rainsum.noyear.model, aes(x = rain_sum2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P (mm)")+
+  ylab("Survival")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+phi_plot.NY_rainsum1 <-ggplot(phi.rainsum.noyear.model, 
+                              aes(x = rain_sum2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P (mm)")+
+  ylab("Survival")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b"))
+
+# beta estimates 
+
+phi_beta.NY_rainsum <- phi.rainsum.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+phi_beta.NY_rainsum
+```
+
+```{r rain_cv}
+# model# 524		~rain_cv2 * season2 + sex	21	17661.25698	132.165306	0	844.81429
+
+
+
+phi.raincv.noyear = degu.results_COVAR.NO_YR[[524]]
+
+
+phi.raincv.noyear.model =  predict_real(model = phi.raincv.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv2 = rain_cv2))
+
+
+phi_plot.NY_cvrain <-ggplot(phi.raincv.noyear.model, aes(x = rain_cv2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P CV")+
+  ylab("Survival")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+
+phi_plot.NY_cvrain1 <-ggplot(phi.raincv.noyear.model, 
+                              aes(x = rain_cv2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P CV")+
+  ylab("Survival")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b"))
+
+ 
+# beta estimates 
+
+phi_beta.NY_raincv <- phi.raincv.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_raincv
+```
+
+```{r rain_sum_lag}
+# model# 647 ~rain_sum_lag2 * season2 + sex		21	17671.58098	142.489306	0	855.13797
+
+
+
+
+phi.rainlag.noyear = degu.results_COVAR.NO_YR[[647]]
+
+
+phi.rainlag.noyear.model =  predict_real(model = phi.rainlag.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum_lag2 = rain_sum_lag2))
+
+phi_plot.NY_rainlag <-ggplot(phi.rainlag.noyear.model, aes(x = rain_sum_lag2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P")+
+  ylab("Survival")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+phi_plot.NY_rainlag1 <-ggplot(phi.rainlag.noyear.model, 
+                              aes(x = rain_sum_lag2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P")+
+  ylab("Survival")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b"))
+ 
+# beta estimates 
+
+phi_beta.NY_rainlag <- phi.rainlag.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+
+```
+
+```{r rain_cv_lag}
+#420	~rain_cv_lag2 * season2 + sex	21	17586.43498	57.34330604	2.94105195482335e-13	769.99195
+
+
+phi.raincvlag.noyear = degu.results_COVAR.NO_YR[[420]]
+
+
+#Phi
+
+Phi.raincvlag.covar_model.noyear =  predict_real(model = phi.raincvlag.noyear,
+                                    df = pradel.ddl$Phi,
+                                    parameter = "Phi", replicate=TRUE,se = T,
+                                    data = data.frame(rain_cv_lag2 = rain_cv_lag2))
+
+head(Phi.raincvlag.covar_model.noyear)
+
+
+phi_plot.NY_raincvlag <- ggplot(Phi.raincvlag.covar_model.noyear, aes(x = rain_cv_lag2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P CV")+
+  ylab("Survival")+
+  facet_grid(~season)+
+   theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+phi_plot.NY_raincvlag1 <-ggplot(Phi.raincvlag.covar_model.noyear, 
+                              aes(x = rain_cv_lag2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P CV")+
+  ylab("Survival")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b"))
+
+# beta estimates 
+
+phi_beta.NY_raincvlag <- phi.raincvlag.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_raincvlag
+```
+
+
+```{r oni_avg}
+# model# 197	~oni_avg2 + season2		30	17655.69209	126.6004137	0	820.96601
+
+
+
+phi.oni.noyear = degu.results_COVAR.NO_YR[[197]]
+
+
+phi.oni.noyear.model =  predict_real(model = phi.oni.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(oni_avg2 = oni_avg2))
+
+phi_plot.NY_oni <-ggplot(phi.oni.noyear.model, aes(x = oni_avg2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("ONI")+
+  ylab("Survival")+
+  facet_grid(~season2)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+ 
+# beta estimates 
+
+phi_beta.NY_oni <- phi.oni.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_oni 
+```
+
+
+##### plot significant effects
+
+```{r}
+ggarrange(phi_plot.NY_cvtemp,
+          phi_plot.NY_oni + rremove('ylab'),
+          phi_plot.NY_rainsum1 ,
+          phi_plot.NY_cvrain1 + rremove('ylab'), 
+          phi_plot.NY_rainlag1 ,
+          phi_plot.NY_raincvlag1 + rremove('ylab'),
+          
+          labels="auto", ncol=2,nrow=3,
+          common.legend = TRUE, legend = "bottom")
+
+ggsave("./results_updated models with covars/fig_phi_signcovars_noyear_v2.pdf", width= 250, height=250, units="mm", dpi=300)
+```
+
+
+#### univariate models
+
+```{r cv_temp}
+# 854	~temp_cv2		28	17823.6196	294.5279267	0	992.96508
+
+
+phi.cvtemp1.noyear = degu.results_COVAR.NO_YR[[854]]
+
+
+phi.cvtemp1.noyear.model =  predict_real(model = phi.cvtemp1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(temp_cv2 = temp_cv2))
+
+
+ 
+
+phi_plot.NY_tempcv1 <-ggplot(phi.cvtemp1.noyear.model, aes(x = temp_cv2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#fed976", fill="#fed976")+
+   labs(x = "Scaled T CV", y ="Survival")+
+  annotate("text", x = 0, y = 0.85, label = "Model 854") +
+  theme_degu()  +
+   scale_y_continuous(limits = c(0.75, 0.9))
+phi_plot.NY_tempcv1 
+ 
+# beta estimates 
+
+phi_beta.NY_cvtemp1 <- phi.cvtemp1.noyear$results$beta %>%  # significanbt
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_cvtemp1 
+
+plot_phi_beta.NY_cvtemp1 <- phi_beta.NY_cvtemp1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", linewidth=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_sum}
+
+# 657	~rain_sum2	29	17765.75673	236.6650563	0	933.0674
+
+
+
+phi.rainsum1.noyear = degu.results_COVAR.NO_YR[[657]]
+
+phi.rainsum1.noyear.model =  predict_real(model = phi.rainsum1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum2 = rain_sum2))
+
+
+phi_plot.NY_rainsum1 <-ggplot(phi.rainsum1.noyear.model, aes(x = rain_sum2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1E88E5", fill="#1E88E5")+
+    labs(x = "Scaled P", y ="Survival")+
+  annotate("text", x = 0, y = 0.85, label = "Model 657") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.75, 0.9))
+
+ 
+# beta estimates 
+
+phi_beta.NY_rainsum1 <- phi.rainsum1.noyear$results$beta %>% # significant
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_rainsum1
+
+plot_phi_beta.NY_rainsum1 <- phi_beta.NY_rainsum1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+```
+
+
+
+
+
+```{r rain_cv}
+# 432	~rain_cv2		27	17847.5897	318.4980239	0	1018.969
+
+phi.raincv1.noyear = degu.results_COVAR.NO_YR[[432]]
+
+
+phi.raincv1.noyear.model =  predict_real(model = phi.raincv1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv2 = rain_cv2))
+
+
+phi_plot.NY_cvrain1 <-ggplot(phi.raincv1.noyear.model, aes(x = rain_cv2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#9ecae1", fill="#9ecae1")+
+  labs(x = "Scaled P CV", y ="Survival")+
+  annotate("text", x = 0, y = 0.85, label = "Model 432") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.75, 0.9))
+
+ 
+# beta estimates 
+
+phi_beta.NY_raincv1 <- phi.raincv1.noyear$results$beta %>%  # significant
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_raincv1
+
+plot_phi_beta.NY_raincv1 <- phi_beta.NY_raincv1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_sum_lag}
+
+# 540	~rain_sum_lag2		30	17863.91509	334.8234137	0	1029.1886
+
+
+phi.rainlag1.noyear = degu.results_COVAR.NO_YR[[540]]
+
+
+phi.rainlag1.noyear.model =  predict_real(model = phi.rainlag1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum_lag2 = rain_sum_lag2))
+
+phi_plot.NY_rainlag1 <-ggplot(phi.rainlag1.noyear.model, aes(x = rain_sum_lag2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.6, color="#08519c", fill="#08519c")+
+  labs(x = "Scaled lag in P", y ="Survival")+
+  annotate("text", x = 0, y = 0.85, label = "Model 540") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.75, 0.9))
+
+ 
+# beta estimates 
+
+phi_beta.NY_rainlag1 <- phi.rainlag1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+phi_beta.NY_rainlag1  # significant
+
+plot_phi_beta.NY_rainlagi1 <- phi_beta.NY_rainlag1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_cv_lag}
+# model# 295	~rain_cv_lag2	27	17697.5637	168.4720239	0	868.94289
+
+
+
+
+
+phi.raincvlag1.noyear = degu.results_COVAR.NO_YR[[295]]
+
+
+phi.raincvlag1.noyear.model =  predict_real(model = phi.raincvlag1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv_lag2 = rain_cv_lag2))
+
+
+phi_plot.NY_cvrainlag1 <-ggplot(phi.raincvlag1.noyear.model, aes(x = rain_cv_lag2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#6baed6", fill="#6baed6")+
+  labs(x = "Scaled lag in P CV", y ="Survival")+
+  annotate("text", x = 0, y = 0.85, label = "Model 295") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.75, 0.9))
+
+ 
+# beta estimates 
+
+phi_beta.NY_raincvlag1 <- phi.raincvlag1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+plot_phi_beta.NY_raincvlag1 <- phi_beta.NY_raincvlag1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+plot_phi_beta.NY_raincvlag1 
+
+```
+
+```{r gpp_avg}
+# #8	~gpp_avg2	28	17762.3306	233.2389267	0	931.67561
+
+
+phi.gpp1.noyear = degu.results_COVAR.NO_YR[[8]]
+
+
+phi.gpp1.noyear.model =  predict_real(model = phi.gpp1.noyear,
+                                  df = pradel.ddl$Phi,
+                                  parameter = "Phi", replicate=TRUE,se = T,
+                                  data = data.frame(gpp_avg2 = gpp_avg2))
+
+
+phi_plot.NY_gpp1 <-ggplot(phi.gpp1.noyear.model, aes(x = gpp_avg2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#006d2c", fill="#006d2c")+
+  labs(x = "Scaled GPP" , y ="Survival")+  # expression("Scaled GPP avg"~(gCm^2))
+  theme_degu() +
+  annotate("text", x = 0, y = 0.85, label = "Model 8") +
+   scale_y_continuous(limits = c(0.75, 0.9))
+
+ 
+# beta estimates 
+
+phi_beta.NY_gpp1 <- phi.gpp1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+plot_phi_beta.NY_gpp1 <- phi_beta.NY_gpp1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+
+
+```{r oni_avg}
+# 177	~oni_avg2		27	17885.1507	356.0590239	0	1056.5296
+
+
+
+
+phi.oni1.noyear = degu.results_COVAR.NO_YR[[177]]
+
+phi.oni1.noyear.model =  predict_real(model = phi.oni1.noyear,
+                                    df = pradel.ddl$Phi,
+                                    parameter = "Phi", replicate=TRUE,se = T,
+                                    data = data.frame(oni_avg2 = oni_avg2))
+
+
+phi_plot.NY_oni1 <- ggplot(phi.oni1.noyear.model, aes(x = oni_avg2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#D41159", fill="#D41159")+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#bdbdbd" , fill="#bdbdbd" )+
+ labs(x = "Scaled ONI", y ="Survival")+
+   annotate("text", x = 0, y = 0.85, label = "Model 177") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.75, 0.90))
+
+phi_plot.NY_oni1
+  
+
+# beta estimates 
+
+phi_beta.NY_oni1 <- phi.oni1.noyear$results$beta %>%  # significant
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="Phi")
+
+plot_phi_beta.NY_oni1 <-phi_beta.NY_oni1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+
+```
+
+
+```{r}
+plot_phi_unicovars <- ggarrange(phi_plot.NY_tempcv1,
+   phi_plot.NY_rainsum1, phi_plot.NY_cvrain1, 
+  phi_plot.NY_rainlag1, phi_plot.NY_cvrainlag1,
+  phi_plot.NY_gpp1,
+  phi_plot.NY_oni1,
+  labels="auto"
+)
+
+plot_phi_unicovars
+
+ggsave("fig.phi.unicovars.colorsXcovars.pdf")
+```
+
+### f-recruitment
+what environmental factors affect recruitment
+
+top models: 
+gpp_avg 
+
+#### multivariate models
+
+
+```{r cv_temp}
+# model# 422 ~temp_cv2 + season2	19	17612.9255	83.83383041	0
+
+
+f.cvtemp.noyear = degu.results_COVAR.NO_YR[[422]]
+
+
+f.cvtemp.noyear.model =  predict_real(model = f.cvtemp.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(temp_cv2 = temp_cv2))
+
+f_plot.NY_cvtemp <-ggplot(f.cvtemp.noyear.model, aes(x = temp_cv2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("T CV")+
+  ylab("Recruitment")+
+  facet_grid(~season2)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+f_plot.NY_cvtemp 
+
+
+ 
+# beta estimates 
+
+f_beta.NY_cvtemp <- f.cvtemp.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+f_beta.NY_cvtemp
+```
+
+```{r rain_sum}
+# model# 421 ~rain_sum2 + season2 + sex		20	17596.31463	67.22295928	2.10456941192122e-15	781.89698
+
+
+
+f.rain.noyear = degu.results_COVAR.NO_YR[[421]]
+
+
+f.rain.noyear.model =  predict_real(model = f.rain.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum_lag2 = rain_sum_lag2))
+
+
+
+f_plot.NY_rain <-ggplot(f.rain.noyear.model, aes(x = rain_sum2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P (mm)")+
+  ylab("Recruitment")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+f_plot.NY_rain1 <-ggplot(f.rain.noyear.model, 
+                              aes(x = rain_sum2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P (mm)")+
+  ylab("Recruitment")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+f_plot.NY_rain1
+
+# beta estimates 
+
+f_beta.NY_rainl <- f.rain.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+f_beta.NY_rainl
+```
+```{r rain_cv}
+# model# 155  ~rain_cv2 + season2		31	17604.40167	75.31	0
+
+
+f.raincv.noyear = degu.results_COVAR.NO_YR[[155]]
+
+
+f.raincv.noyear.model =  predict_real(model = f.raincv.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv2 = rain_cv2))
+
+
+f_plot.NY_cvrain <-ggplot(f.raincv.noyear.model, aes(x = rain_cv2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("P CV")+
+  ylab("Recruitment")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+ 
+# beta estimates 
+
+f_beta.NY_raincv <- f.raincv.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+f_beta.NY_raincv
+
+```
+
+```{r rain_sum_lag}
+# model# 141 ~rain_sum_lag2 * season2 + sex		32	17548.94449	19.85281638	4.06873202993968e-05	710.14146
+
+
+
+f.rainlag.noyear = degu.results_COVAR.NO_YR[[141]]
+
+
+f.rainlag.noyear.model =  predict_real(model = f.rainlag.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum_lag2 = rain_sum_lag2))
+
+
+f_plot.NY_rainlag <-ggplot(f.rainlag.noyear.model, aes(x = rain_sum_lag2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in rainfall sum")+
+  ylab("Recruitment")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+f_plot.NY_rainlag1 <-ggplot(f.rainlag.noyear.model, 
+                              aes(x = rain_sum_lag2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P (mm)")+
+  ylab("Recruitment")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+f_plot.NY_rainlag1
+
+ 
+# beta estimates 
+
+f_beta.NY_rainlag <- f.rainlag.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+f_beta.NY_rainlag 
+
+```
+
+
+
+
+```{r rain_cv_lag}
+# model# 420  ~rain_cv_lag2 * season2 + sex	21	17586.43498	57.34330604	2.94105195482335e-13	769.99195
+
+
+f.raincvlag.noyear = degu.results_COVAR.NO_YR[[420]]
+
+
+f.raincvlag.noyear.model =  predict_real(model = f.raincvlag.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv_lag2 = rain_cv_lag2))
+
+
+f_plot.NY_cvrainlag <-ggplot(f.raincvlag.noyear.model, aes(x = rain_cv_lag2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Previous season's rainfall CV")+
+  ylab("Recruitment")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+f_plot.NY_raincvlag1 <-ggplot(f.raincvlag.noyear.model, 
+                              aes(x = rain_cv_lag2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("Lag in P CV")+
+  ylab("Recruitment")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+f_plot.NY_raincvlag1
+
+
+ 
+# beta estimates 
+
+f_beta.NY_raincvlag <- f.raincvlag.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+f_beta.NY_raincvlag
+```
+
+```{r oni_avg}
+# model# 418  ~oni_avg2 + season2 + sex		20	17600.74963	71.65795928	0
+
+
+f.oni.noyear = degu.results_COVAR.NO_YR[[418]]
+
+
+f.oni.noyear.model =  predict_real(model = f.oni.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(oni_avg2 = oni_avg2))
+
+
+f_plot.NY_oni <-ggplot(f.oni.noyear.model, aes(x = oni_avg2, y = real, color=season, fill=season))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("ONI")+
+  ylab("Recruitment")+
+  facet_grid(~season)+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+   scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) 
+
+ 
+f_plot.NY_oni1 <-ggplot(f.oni.noyear.model, 
+                              aes(x = oni_avg2, y = real, color=sex, fill=sex))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3)+
+  xlab("ONI")+
+  ylab("Recruitment")+
+  theme_degu() +
+  theme( strip.background  = element_rect(fill = "white",linewidth = 0.1)) +
+  facet_grid(sex~season2)+
+  scale_fill_manual(values =  c("#762a83","#7fbf7b")) +
+  scale_color_manual(values =  c("#762a83","#7fbf7b")) 
+f_plot.NY_oni1
+
+# beta estimates 
+
+f_beta.NY_oni <- f.oni.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+f_beta.NY_oni 
+
+```
+
+
+##### plot all environmental effects
+
+```{r}
+ggarrange(f_plot.NY_cvtemp,    
+          f_plot.NY_cvrain+ rremove('ylab'),
+          f_plot.NY_rain1 ,
+          f_plot.NY_rainlag1 + rremove('ylab'),
+       
+          f_plot.NY_raincvlag1 ,
+          f_plot.NY_oni1 + rremove('ylab'),
+          labels="auto", ncol=2,nrow=3,
+          common.legend = TRUE, legend = "bottom")
+
+ggsave("./results_updated models with covars/fig_f_signcovars_v2.pdf", width= 250, height=250, units="mm", dpi=300)
+```
+
+
+#### univariate models
+
+```{r cv_temp}
+#144	f(~temp_cv2)	29	17988.11973	459.0280563	0	1155.4297
+
+
+
+f.cvtemp1.noyear = degu.results_COVAR.NO_YR[[144]]
+
+
+f.cvtemp1.noyear.model =  predict_real(model = f.cvtemp1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(temp_cv2 = temp_cv2))
+
+
+ 
+
+f_plot.NY_tempcv1 <-ggplot(f.cvtemp1.noyear.model, aes(x = temp_cv2, y = real, color=))+
+  geom_line()+
+ geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+   #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#fed976", fill="#fed976")+
+ labs(x = "Scaled T CV", y ="Recruitment")+
+   annotate("text", x = 0, y = 0.35, label = "Model 144") +
+  theme_degu() +
+  scale_y_continuous(limits = c(0.0, 0.4))
+f_plot.NY_tempcv1 
+ 
+# beta estimates 
+
+f_beta.NY_cvtemp1 <- f.cvtemp1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_cvtemp1 <- f_beta.NY_cvtemp1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_sum}
+
+#415	f(~rain_sum2)	30	17816.39409	287.3024137	0	981.66789
+
+
+f.rainsum1.noyear = degu.results_COVAR.NO_YR[[415]]
+
+f.rainsum1.noyear.model =  predict_real(model = f.rainsum1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum2 = rain_sum2))
+
+
+f_plot.NY_rainsum1 <-ggplot(f.rainsum1.noyear.model, aes(x = rain_sum2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+   #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1E88E5", fill="#1E88E5")+
+   labs(x = "Scaled P", y ="Recruitment")+
+   annotate("text", x = 0, y = 0.35, label = "Model 415") +
+  theme_degu()+
+  scale_y_continuous(limits = c(0.0, 0.4))
+
+ 
+# beta estimates 
+
+f_beta.NY_rainsum1 <- f.rainsum1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_rainsum1 <- f_beta.NY_rainsum1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+```
+
+
+
+
+
+```{r rain_cv}
+# 333	f(~rain_cv2)	28	17875.6036	346.5119267	0	1044.9489
+
+
+
+f.raincv1.noyear = degu.results_COVAR.NO_YR[[333]]
+
+
+f.raincv1.noyear.model =  predict_real(model = f.raincv1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv2 = rain_cv2))
+
+
+f_plot.NY_cvrain1 <-ggplot(f.raincv1.noyear.model, aes(x = rain_cv2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#9ecae1", fill="#9ecae1")+
+   labs(x = "Scaled P CV", y ="Recruitment")+
+  theme_degu() +
+   annotate("text", x = 0, y = 0.35, label = "Model 333") +
+  scale_y_continuous(limits = c(0.0, 0.4))
+
+ 
+# beta estimates 
+
+f_beta.NY_raincv1 <- f.raincv1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_raincv1 <- f_beta.NY_raincv1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_sum_lag}
+# 156	f(~rain_sum_lag2)	30	17913.51509	384.4234137	0	1078.7889
+
+
+
+
+f.rainlag1.noyear = degu.results_COVAR.NO_YR[[156]]
+
+
+f.rainlag1.noyear.model =  predict_real(model = f.rainlag1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_sum_lag2 = rain_sum_lag2))
+
+f_plot.NY_rainlag1 <-ggplot(f.rainlag1.noyear.model, aes(x = rain_sum_lag2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.6, color="#08519c", fill="#08519c")+
+   labs(x = "Scaled lag in P", y ="Recruitment")+
+  theme_degu() +
+   annotate("text", x = 0, y = 0.35, label = "Model 156") +
+   scale_y_continuous(limits = c(0.0, 0.4))
+
+ 
+# beta estimates 
+
+f_beta.NY_rainlag1 <- f.rainlag1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_rainlagi1 <- f_beta.NY_rainlag1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+```{r rain_cv_lag}
+# model# 150	f(~rain_cv_lag2)	30	17922.46709	393.3754137	0	1087.7406
+
+
+
+f.raincvlag1.noyear = degu.results_COVAR.NO_YR[[150]]
+
+
+f.raincvlag1.noyear.model =  predict_real(model = f.raincvlag1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(rain_cv_lag2 = rain_cv_lag2))
+
+
+f_plot.NY_cvrainlag1 <-ggplot(f.raincvlag1.noyear.model, aes(x = rain_cv_lag2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+  # geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#6baed6", fill="#6baed6")+
+  labs(x = "Scaled lag in P CV", y ="Recruitment")+
+  theme_degu() +
+   annotate("text", x = 0, y = 0.35, label = "Model 150") +
+  scale_y_continuous(limits = c(0.0, 0.4))
+
+ 
+# beta estimates 
+
+f_beta.NY_raincvlag1 <- f.raincvlag1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_raincvlagi1 <- f_beta.NY_raincvlag1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+```
+
+```{r gpp_avg}
+# model# 404	f(~gpp_avg2)	29	17854.05073	324.9590563	0	1021.3608
+
+
+
+f.gpp1.noyear = degu.results_COVAR.NO_YR[[404]]
+
+
+f.gpp1.noyear.model =  predict_real(model = f.gpp1.noyear,
+                                  df = pradel.ddl$f,
+                                  parameter = "f", replicate=TRUE,se = T,
+                                  data = data.frame(gpp_avg2 = gpp_avg2))
+
+
+f_plot.NY_gpp1 <-ggplot(f.gpp1.noyear.model, aes(x = gpp_avg2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#006d2c", fill="#006d2c")+
+  labs(x = "Scaled GPP" , y ="Recruitment")+  # expression("Scaled GPP avg"~(gCm^2))
+  theme_degu() +
+    annotate("text", x = 0, y = 0.35, label = "Model 404") +
+  scale_y_continuous(limits = c(0.0, 0.4))
+f_plot.NY_gpp1 
+ 
+# beta estimates 
+
+f_beta.NY_gpp1 <- f.gpp1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_gpp1 <- f_beta.NY_gpp1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+```
+
+
+
+```{r oni_avg}
+# 131	f(~oni_avg2)	29	17969.53173	440.4400563	0	1136.8424
+
+
+f.oni1.noyear = degu.results_COVAR.NO_YR[[131]]
+
+f.oni1.noyear.model =  predict_real(model = f.oni1.noyear,
+                                    df = pradel.ddl$f,
+                                    parameter = "f", replicate=TRUE,se = T,
+                                    data = data.frame(oni_avg2 = oni_avg2))
+
+
+f_plot.NY_oni1 <- ggplot(f.oni1.noyear.model, aes(x = oni_avg2, y = real))+
+  geom_line()+
+  geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#1A85FF", fill="#1A85FF")+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl), alpha = 0.3, color="#bdbdbd" , fill="#bdbdbd" )+
+  labs(x = "Scaled ONI", y ="Recruitment")+
+   annotate("text", x = 0, y = 0.35, label = "Model 131") +
+  theme_degu() +
+   scale_y_continuous(limits = c(0.0, 0.4)) 
+
+f_plot.NY_oni1
+  
+
+# beta estimates 
+
+f_beta.NY_oni1 <- f.oni1.noyear$results$beta %>%
+  tibble::rownames_to_column("variable") %>% 
+  separate(variable, c("y", "x", "interaction"), sep=":") %>% 
+  #unite(x, x, interaction, sep=":") %>% 
+  filter(y=="f")
+
+plot_f_beta.NY_oni1 <- f_beta.NY_oni1 %>% 
+  filter(x!="(Intercept)") %>% 
+  ggplot( aes(x=x, y=estimate)) +
+  geom_hline(yintercept=0, linetype="dashed", color = "grey", size=0.8, alpha=0.8) +
+  geom_point(size=3) +
+  geom_linerange(aes(ymin = lcl, ymax = ucl), linewidth=2) +
+  theme_degu() +
+  coord_flip() +
+  scale_y_continuous(limits = c(-1, 1)) +
+  labs(x="", y="") +
+  scale_x_discrete( expand = expansion(mult = c(0.001, 0.05))) # Adjust limits
+
+
+```
+
+
+```{r}
+plot_f_unicovars <- ggarrange(f_plot.NY_tempcv1,
+   f_plot.NY_rainsum1, f_plot.NY_cvrain1, 
+  f_plot.NY_rainlag1, f_plot.NY_cvrainlag1,
+  f_plot.NY_gpp1,
+  f_plot.NY_oni1,
+  labels="auto"
+)
+
+plot_f_unicovars
+
+ggsave("fig.f.unicovars.colorsXcovars.pdf")
+```
+### plot combined
+
+
+```{r}
+plot_unicovars <- ggarrange(
+  phi_plot.NY_tempcv1 + rremove("xlab"),  f_plot.NY_tempcv1,
+  phi_plot.NY_rainsum1, f_plot.NY_rainsum1,
+  phi_plot.NY_cvrain1,  f_plot.NY_cvrain1,
+  phi_plot.NY_rainlag1, f_plot.NY_rainlag1, 
+  phi_plot.NY_cvrainlag1, f_plot.NY_cvrainlag1,
+  phi_plot.NY_gpp1,     f_plot.NY_gpp1,
+  phi_plot.NY_oni1,     f_plot.NY_oni1,
+ ncol=2, nrow=7
+)
+plot_unicovars
+ggsave("./results_updated models with covars/fig_unicovars_nox_2colors_v2_axes.pdf",  dpi=300) 
+
+plot_unicovars.phi.f.clrs <- ggarrange(
+  phi_plot.NY_tempcv1 + rremove("xlab") +rremove("ylab") ,  f_plot.NY_tempcv1+ rremove("xlab")+rremove("ylab"),
+  phi_plot.NY_rainsum1+ rremove("xlab")+rremove("ylab"), f_plot.NY_rainsum1+ rremove("xlab")+rremove("ylab"),
+  phi_plot.NY_cvrain1+ rremove("xlab")+rremove("ylab"),  f_plot.NY_cvrain1+ rremove("xlab")+rremove("ylab"),
+  phi_plot.NY_rainlag1+ rremove("xlab")+rremove("ylab"), f_plot.NY_rainlag1+ rremove("xlab")+rremove("ylab"), 
+  phi_plot.NY_cvrainlag1+ rremove("xlab")+rremove("ylab"), f_plot.NY_cvrainlag1+ rremove("xlab")+rremove("ylab"),
+  phi_plot.NY_gpp1+ rremove("xlab")+rremove("ylab"),     f_plot.NY_gpp1+ rremove("xlab")+rremove("ylab"),
+  phi_plot.NY_oni1+ rremove("xlab")+rremove("ylab"),     f_plot.NY_oni1+ rremove("xlab")+rremove("ylab"),
+ ncol=2, nrow=7
+)
+
+#width= 250, height=125, units="mm",
+plot_unicovars.phi.f.clrs 
+ggsave("./results_updated models with covars/fig_unicovars_nox_2colors_v2.pdf",  dpi=300)
+```
+
+
+

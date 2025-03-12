@@ -1,0 +1,1104 @@
+"","Phi","p","f","model","npar","AICc","DeltaAICc","weight","Deviance"
+"845","~year2 + season2 * sex","~year2","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~year2)f(~year2 + season2 * sex)",39,17439.702738657,0,0.271112203147229,586.59356
+"723","~year2 + season2 + sex","~time + sex","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 + season2 * sex)",50,17439.7527996965,0.050061039524735,0.264410349137163,564.04023
+"854","~year2 + season2 * sex","~year2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 + season2 * sex)",40,17440.9624357035,1.25969704649469,0.144414010257721,585.80485
+"713","~year2 + season2 + sex","~time","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~time)f(~year2 + season2 * sex)",49,17441.8436504854,2.14091182845004,0.09295140732501,568.1921
+"725","~year2 + season2 + sex","~time + sex","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 * season2 + sex)",58,17442.5641417706,2.86140311362396,0.0648340684011466,550.31737
+"770","~year2 + season2 + sex","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",58,17442.6781417706,2.97540311362536,0.0612418765045838,550.43139
+"838","~year2 + season2 * sex","~time + sex","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2 * season2 + sex)",59,17443.6475952526,3.94485659560087,0.0377167567241083,549.32755
+"877","~year2 + season2 * sex","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",59,17443.6545952526,3.95185659560229,0.0375849788214001,549.33451
+"769","~year2 + season2 + sex","~year2 * season2 + sex","~year2 * season2","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 * season2)",57,17445.7019489051,5.99921024812284,0.013503212834676,555.52613
+"732","~year2 + season2 + sex","~year2","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~year2)f(~year2 + season2 * sex)",38,17448.0872806169,8.38454195988743,0.00409702782051296,597.02626
+"614","~year2 + season2","~time + sex","~year2 * season2 + sex","Phi(~year2 + season2)p(~time + sex)f(~year2 * season2 + sex)",57,17448.7909489051,9.08821024812278,0.00288183615519422,558.61492
+"767","~year2 + season2 + sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",50,17448.8087996965,9.10606103952159,0.00285622907382906,573.09563
+"747","~year2 + season2 + sex","~year2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 * season2 + sex)",47,17452.3301018799,12.6273632229422,0.000491079700020621,582.79713
+"746","~year2 + season2 + sex","~year2 + sex","~year2 * season2","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 * season2)",46,17453.5397002122,13.8369615552001,0.000268219927860706,586.06423
+"857","~year2 + season2 * sex","~year2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 * season2 + sex)",48,17454.2177515924,14.5150129353715,0.000191097081733257,582.62577
+"766","~year2 + season2 + sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",49,17454.4756504854,14.7729118284515,0.000167977851382218,580.82429
+"828","~year2 + season2 * sex","~time","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~time)f(~year2 + season2 * sex)",50,17454.7347996965,15.0320610395247,0.000147563343074049,579.02215
+"864","~year2 + season2 * sex","~year2 * season2","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 + season2 * sex)",50,17454.7347996965,15.0320610395247,0.000147563343074049,579.02212
+"836","~year2 + season2 * sex","~time + sex","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2 + season2 * sex)",51,17454.8172003643,15.1144617073114,0.000141607223626718,577.042
+"875","~year2 + season2 * sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",51,17454.8172003643,15.1144617073114,0.000141607223626718,577.04188
+"613","~year2 + season2","~time + sex","~year2 * season2","Phi(~year2 + season2)p(~time + sex)f(~year2 * season2)",56,17455.5170155062,15.8142768492471,9.97981477278073e-05,567.4105
+"874","~year2 + season2 * sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",50,17455.5817996965,15.8790610395226,9.6617272363103e-05,579.86923
+"630","~year2 + season2","~year2 + sex","~year2 * season2 + sex","Phi(~year2 + season2)p(~year2 + sex)f(~year2 * season2 + sex)",46,17455.6987002122,15.9959615551998,9.11318419216991e-05,588.22279
+"651","~year2 + season2","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",49,17455.7326504854,16.0299118284493,8.95979225335409e-05,582.08128
+"722","~year2 + season2 + sex","~time + sex","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 + season2 + sex)",49,17456.0556504854,16.3529118284496,7.6235873572605e-05,582.40386
+"653","~year2 + season2","~year2 * season2 + sex","~year2 * season2","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 * season2)",56,17456.0960155062,16.393276849245,7.4712665051619e-05,567.98988
+"627","~year2 + season2","~year2 + sex","~year2 + season2 * sex","Phi(~year2 + season2)p(~year2 + sex)f(~year2 + season2 * sex)",38,17456.8652806169,17.1625419598895,5.0856964154899e-05,605.80437
+"844","~year2 + season2 * sex","~year2","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~year2)f(~year2 + season2 + sex)",38,17457.5542806169,17.851541959888,3.60359506016667e-05,606.49299
+"721","~year2 + season2 + sex","~time + sex","~year2 + season2","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 + season2)",48,17458.0267515924,18.324012935369,2.8453796042848e-05,586.43488
+"629","~year2 + season2","~year2 + sex","~year2 * season2","Phi(~year2 + season2)p(~year2 + sex)f(~year2 * season2)",45,17458.9645454545,19.26180679756,1.78033145234729e-05,593.54468
+"626","~year2 + season2","~year2 + sex","~year2 + season2 + sex","Phi(~year2 + season2)p(~year2 + sex)f(~year2 + season2 + sex)",37,17460.6220604595,20.9193218025066,7.77277424757564e-06,611.60725
+"744","~year2 + season2 + sex","~year2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 + season2 * sex)",39,17460.810738657,21.1080000000002,7.07302355223226e-06,607.70167
+"610","~year2 + season2","~time + sex","~year2 + season2 + sex","Phi(~year2 + season2)p(~time + sex)f(~year2 + season2 + sex)",48,17461.1837515924,21.4810129353718,5.86957119103827e-06,589.59213
+"650","~year2 + season2","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",48,17461.1837515924,21.4810129353718,5.86957119103827e-06,589.59184
+"625","~year2 + season2","~year2 + sex","~year2 + season2","Phi(~year2 + season2)p(~year2 + sex)f(~year2 + season2)",36,17462.9560770626,23.2533384055714,2.41964018478627e-06,615.98559
+"693","~year2 + season2 + sex","~season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 * season2 + sex)",38,17463.2902806169,23.5875419598888,2.04729020595795e-06,612.22846
+"712","~year2 + season2 + sex","~time","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~time)f(~year2 + season2 + sex)",48,17464.4167515924,24.714012935372,1.16565315763344e-06,592.82448
+"783","~year2 + season2 * sex","~1","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~1)f(~year2 * season2 + sex)",37,17464.6820604595,24.9793218025043,1.02084135657612e-06,615.66661
+"809","~year2 + season2 * sex","~season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 * season2 + sex)",39,17465.354738657,25.6520000000019,7.29269484478839e-07,612.24608
+"703","~year2 + season2 + sex","~sex","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~sex)f(~year2 + season2 * sex)",29,17465.5017285887,25.7989899316744,6.77594049162823e-07,632.81177
+"756","~year2 + season2 + sex","~year2 * season2","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 + season2 * sex)",49,17465.5356504854,25.8329118284491,6.66198325791614e-07,591.88361
+"692","~year2 + season2 + sex","~season2 + sex","~year2 * season2","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 * season2)",37,17466.0190604595,26.3163218025074,5.23157426600385e-07,617.00427
+"649","~year2 + season2","~year2 * season2 + sex","~year2 + season2","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 + season2)",47,17466.3791018799,26.6763632229413,4.36968764506268e-07,596.8456
+"609","~year2 + season2","~time + sex","~year2 + season2","Phi(~year2 + season2)p(~time + sex)f(~year2 + season2)",47,17466.3871018799,26.6843632229429,4.35224380541661e-07,596.85359
+"819","~year2 + season2 * sex","~sex","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~sex)f(~year2 + season2 * sex)",30,17466.8920859728,27.1893473158634,3.38109453159213e-07,632.16598
+"690","~year2 + season2 + sex","~season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 + season2 * sex)",30,17467.5200859729,27.817347315864,2.46995389133308e-07,632.79355
+"808","~year2 + season2 * sex","~season2 + sex","~year2 * season2","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 * season2)",38,17468.0652806169,28.3625419598902,1.88062122478806e-07,617.00432
+"806","~year2 + season2 * sex","~season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 + season2 * sex)",31,17468.8766722993,29.1739336423489,1.2534582354929e-07,632.11286
+"582","~year2 + season2","~season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2)p(~season2 + sex)f(~year2 * season2 + sex)",37,17469.1980604595,29.4953218025075,1.06738554189775e-07,620.18279
+"780","~year2 + season2 * sex","~1","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~1)f(~year2 + season2 * sex)",29,17469.5067285887,29.8039899316755,9.14734129377265e-08,636.81682
+"843","~year2 + season2 * sex","~year2","~year2 + season2","Phi(~year2 + season2 * sex)p(~year2)f(~year2 + season2)",37,17469.8730604595,30.1703218025068,7.61635061194585e-08,620.85778
+"639","~year2 + season2","~year2 * season2","~year2 + season2 * sex","Phi(~year2 + season2)p(~year2 * season2)f(~year2 + season2 * sex)",48,17470.5437515924,30.8410129353688,5.44638325928424e-08,598.95193
+"793","~year2 + season2 * sex","~season2","~year2 + season2 * sex","Phi(~year2 + season2 * sex)p(~season2)f(~year2 + season2 * sex)",30,17471.4290859728,31.7263473158637,3.49832602664812e-08,636.70281
+"731","~year2 + season2 + sex","~year2","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~year2)f(~year2 + season2 + sex)",37,17472.5570604595,32.8543218025043,1.99032378725249e-08,623.54191
+"664","~year2 + season2 + sex","~1","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~1)f(~year2 + season2 * sex)",28,17472.6805990353,32.977860378287,1.87110290311432e-08,642.02581
+"667","~year2 + season2 + sex","~1","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~1)f(~year2 * season2 + sex)",36,17473.3860770626,33.6833384055681,1.31493736212629e-08,626.41547
+"742","~year2 + season2 + sex","~year2 + sex","~year2 + season2","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 + season2)",37,17473.6030604595,33.9003218025064,1.17974384294526e-08,624.58805
+"620","~year2 + season2","~year2","~year2 + season2 * sex","Phi(~year2 + season2)p(~year2)f(~year2 + season2 * sex)",37,17474.0760604595,34.3733218025045,9.31273134354528e-09,625.06124
+"706","~year2 + season2 + sex","~sex","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~sex)f(~year2 * season2 + sex)",37,17474.4280604595,34.7253218025071,7.80982397867379e-09,625.41272
+"702","~year2 + season2 + sex","~sex","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~sex)f(~year2 + season2 + sex)",28,17474.7815990353,35.0788603782894,6.54442235333808e-09,644.12658
+"705","~year2 + season2 + sex","~sex","~year2 * season2","Phi(~year2 + season2 + sex)p(~sex)f(~year2 * season2)",36,17475.2880770626,35.5853384055699,5.08031935170978e-09,628.31839
+"853","~year2 + season2 * sex","~year2 + sex","~year2 + season2","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 + season2)",38,17475.6532806169,35.95054195989,4.23241328517068e-09,624.59172
+"818","~year2 + season2 * sex","~sex","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~sex)f(~year2 + season2 + sex)",29,17475.8297285887,36.1269899316758,3.8750104557951e-09,643.13952
+"822","~year2 + season2 * sex","~sex","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~sex)f(~year2 * season2 + sex)",38,17476.4872806169,36.7845419598889,2.7892488967784e-09,625.42604
+"581","~year2 + season2","~season2 + sex","~year2 * season2","Phi(~year2 + season2)p(~season2 + sex)f(~year2 * season2)",36,17476.6150770626,36.9123384055711,2.61659570623905e-09,629.64495
+"821","~year2 + season2 * sex","~sex","~year2 * season2","Phi(~year2 + season2 * sex)p(~sex)f(~year2 * season2)",37,17477.3280604595,37.6253218025049,1.83195266064136e-09,628.31291
+"595","~year2 + season2","~sex","~year2 * season2 + sex","Phi(~year2 + season2)p(~sex)f(~year2 * season2 + sex)",36,17477.8300770626,38.1273384055712,1.42528832148857e-09,630.86042
+"835","~year2 + season2 * sex","~time + sex","~year2 + season2","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2 + season2)",49,17478.2066504854,38.5039118284512,1.18067630329683e-09,604.5553
+"611","~year2 + season2","~time + sex","~year2 + season2 * sex","Phi(~year2 + season2)p(~time + sex)f(~year2 + season2 * sex)",49,17478.6856504854,38.9829118284506,9.29217367625649e-10,605.03369
+"592","~year2 + season2","~sex","~year2 + season2 * sex","Phi(~year2 + season2)p(~sex)f(~year2 + season2 * sex)",28,17478.9335990353,39.2308603782876,8.20873007112019e-10,648.27938
+"591","~year2 + season2","~sex","~year2 + season2 + sex","Phi(~year2 + season2)p(~sex)f(~year2 + season2 + sex)",27,17480.0426962025,40.3399575455442,4.71453197011177e-10,651.42213
+"862","~year2 + season2 * sex","~year2 * season2","~year2 + season2","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 + season2)",48,17480.6217515924,40.9190129353701,3.5293790615128e-10,609.02968
+"715","~year2 + season2 + sex","~time","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~time)f(~year2 * season2 + sex)",57,17480.7089489051,41.0062102481243,3.37880905171587e-10,590.53276
+"758","~year2 + season2 + sex","~year2 * season2","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 * season2 + sex)",57,17480.7089489051,41.0062102481243,3.37880905171587e-10,590.53311
+"730","~year2 + season2 + sex","~year2","~year2 + season2","Phi(~year2 + season2 + sex)p(~year2)f(~year2 + season2)",36,17480.7890770626,41.0863384055701,3.24611604016598e-10,633.81889
+"579","~year2 + season2","~season2 + sex","~year2 + season2 * sex","Phi(~year2 + season2)p(~season2 + sex)f(~year2 + season2 * sex)",29,17480.9677285887,41.2649899316748,2.96872763134003e-10,648.27761
+"827","~year2 + season2 * sex","~time","~year2 + season2","Phi(~year2 + season2 * sex)p(~time)f(~year2 + season2)",48,17481.4057515924,41.7030129353698,2.38481595159111e-10,609.81443
+"689","~year2 + season2 + sex","~season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 + season2 + sex)",29,17482.6037285887,42.900989931677,1.31013928247968e-10,649.91404
+"867","~year2 + season2 * sex","~year2 * season2","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 * season2 + sex)",58,17482.6271417706,42.9244031136222,1.29489144203357e-10,590.37963
+"850","~year2 + season2 * sex","~year2 + sex","~season2 * sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~season2 * sex)",30,17482.9950859729,43.2923473158662,1.07729660764387e-10,648.26917
+"556","~year2 + season2","~1","~year2 * season2 + sex","Phi(~year2 + season2)p(~1)f(~year2 * season2 + sex)",35,17484.0803293051,44.3775906481496,6.26149008054323e-11,639.15349
+"779","~year2 + season2 * sex","~1","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~1)f(~year2 + season2 + sex)",28,17484.1915990353,44.4888603782892,5.92264609034395e-11,653.53685
+"805","~year2 + season2 * sex","~season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 + season2 + sex)",30,17484.6370859729,44.934347315866,4.74001288929737e-11,649.91061
+"866","~year2 + season2 * sex","~year2 * season2","~year2 * season2","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 * season2)",57,17484.8709489051,45.1682102481245,4.21693427464821e-11,594.69484
+"830","~year2 + season2 * sex","~time","~year2 * season2","Phi(~year2 + season2 * sex)p(~time)f(~year2 * season2)",57,17484.8719489051,45.1692102481247,4.2148263345394e-11,594.6962
+"619","~year2 + season2","~year2","~year2 + season2 + sex","Phi(~year2 + season2)p(~year2)f(~year2 + season2 + sex)",36,17485.0510770626,45.3483384055689,3.85374078914256e-11,638.08122
+"602","~year2 + season2","~time","~year2 + season2 * sex","Phi(~year2 + season2)p(~time)f(~year2 + season2 * sex)",48,17485.0627515924,45.360012935369,3.8313110112665e-11,613.47061
+"688","~year2 + season2 + sex","~season2 + sex","~year2 + season2","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 + season2)",28,17485.3875990353,45.6848603782892,3.25692443019963e-11,654.73337
+"594","~year2 + season2","~sex","~year2 * season2","Phi(~year2 + season2)p(~sex)f(~year2 * season2)",35,17485.7613293051,46.0585906481501,2.70179992237417e-11,640.83491
+"604","~year2 + season2","~time","~year2 * season2 + sex","Phi(~year2 + season2)p(~time)f(~year2 * season2 + sex)",56,17485.9650155062,46.2622768492474,2.44018800672598e-11,597.85865
+"735","~year2 + season2 + sex","~year2","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~year2)f(~year2 * season2 + sex)",46,17486.6427002122,46.9399615551993,1.73886523259289e-11,619.16736
+"841","~year2 + season2 * sex","~year2","~season2 * sex","Phi(~year2 + season2 * sex)p(~year2)f(~season2 * sex)",29,17487.4047285887,47.7019899316765,1.187937425077e-11,654.71527
+"804","~year2 + season2 * sex","~season2 + sex","~year2 + season2","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 + season2)",29,17487.4237285887,47.7209899316767,1.17670545586602e-11,654.73386
+"590","~year2 + season2","~sex","~year2 + season2","Phi(~year2 + season2)p(~sex)f(~year2 + season2)",26,17487.6940189816,47.991280324637,1.02795701358392e-11,661.10572
+"578","~year2 + season2","~season2 + sex","~year2 + season2 + sex","Phi(~year2 + season2)p(~season2 + sex)f(~year2 + season2 + sex)",28,17488.6545990353,48.951860378289,6.358982731915e-12,658.00041
+"847","~year2 + season2 * sex","~year2","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~year2)f(~year2 * season2 + sex)",47,17488.6981018799,48.9953632229444,6.22215926000013e-12,619.16501
+"755","~year2 + season2 + sex","~year2 * season2","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 + season2 + sex)",48,17489.2647515924,49.5620129353701,4.68699727809939e-12,617.67339
+"734","~year2 + season2 + sex","~year2","~year2 * season2","Phi(~year2 + season2 + sex)p(~year2)f(~year2 * season2)",45,17489.3395454545,49.63680679756,4.51495494161954e-12,623.91973
+"792","~year2 + season2 * sex","~season2","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~season2)f(~year2 + season2 + sex)",29,17489.7567285887,50.0539899316755,3.66490949289823e-12,657.06685
+"555","~year2 + season2","~1","~year2 * season2","Phi(~year2 + season2)p(~1)f(~year2 * season2)",34,17491.0788160677,51.3760774106668,1.89223732830813e-12,648.19511
+"863","~year2 + season2 * sex","~year2 * season2","~year2 + season2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 + season2 + sex)",49,17491.1816504854,51.4789118284498,1.79740272382583e-12,617.5296
+"677","~year2 + season2 + sex","~season2","~year2 + season2 * sex","Phi(~year2 + season2 + sex)p(~season2)f(~year2 + season2 * sex)",29,17491.3867285887,51.6839899316765,1.62223307277588e-12,658.69709
+"618","~year2 + season2","~year2","~year2 + season2","Phi(~year2 + season2)p(~year2)f(~year2 + season2)",35,17491.8023293051,52.0995906481512,1.31785218896834e-12,646.8758
+"711","~year2 + season2 + sex","~time","~year2 + season2","Phi(~year2 + season2 + sex)p(~time)f(~year2 + season2)",47,17492.3521018799,52.6493632229431,1.00111761849047e-12,622.81905
+"754","~year2 + season2 + sex","~year2 * season2","~year2 + season2","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 + season2)",47,17492.3551018799,52.6523632229437,9.99617067756836e-13,622.82171
+"680","~year2 + season2 + sex","~season2","~year2 * season2 + sex","Phi(~year2 + season2 + sex)p(~season2)f(~year2 * season2 + sex)",37,17492.7880604595,53.085321802504,8.0504081952827e-13,643.77254
+"641","~year2 + season2","~year2 * season2","~year2 * season2","Phi(~year2 + season2)p(~year2 * season2)f(~year2 * season2)",55,17493.6823404255,53.9796017685476,5.14786885574125e-13,607.64495
+"663","~year2 + season2 + sex","~1","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~1)f(~year2 + season2 + sex)",27,17493.9056962025,54.2029575455454,4.60390532087894e-13,665.28515
+"778","~year2 + season2 * sex","~1","~year2 + season2","Phi(~year2 + season2 * sex)p(~1)f(~year2 + season2)",27,17494.6636962025,54.9609575455434,3.15158318854178e-13,666.04333
+"796","~year2 + season2 * sex","~season2","~year2 * season2 + sex","Phi(~year2 + season2 * sex)p(~season2)f(~year2 * season2 + sex)",38,17494.8332806169,55.1305419598903,2.89536944848675e-13,643.77202
+"679","~year2 + season2 + sex","~season2","~year2 * season2","Phi(~year2 + season2 + sex)p(~season2)f(~year2 * season2)",36,17495.3910770626,55.6883384055691,2.19068547273129e-13,648.42068
+"601","~year2 + season2","~time","~year2 + season2 + sex","Phi(~year2 + season2)p(~time)f(~year2 + season2 + sex)",47,17495.7291018799,56.0263632229435,1.85003042964869e-13,626.19555
+"638","~year2 + season2","~year2 * season2","~year2 + season2 + sex","Phi(~year2 + season2)p(~year2 * season2)f(~year2 + season2 + sex)",47,17495.7361018799,56.0333632229413,1.84356664137489e-13,626.20272
+"577","~year2 + season2","~season2 + sex","~year2 + season2","Phi(~year2 + season2)p(~season2 + sex)f(~year2 + season2)",27,17495.9116962025,56.2089575455429,1.68860868425693e-13,667.29062
+"701","~year2 + season2 + sex","~sex","~year2 + season2","Phi(~year2 + season2 + sex)p(~sex)f(~year2 + season2)",27,17496.1166962025,56.4139575455447,1.52410130189201e-13,667.49602
+"751","~year2 + season2 + sex","~year2 * season2","~season2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~season2 * sex)",39,17496.329738657,56.6270000000004,1.37009995753829e-13,643.22103
+"553","~year2 + season2","~1","~year2 + season2 * sex","Phi(~year2 + season2)p(~1)f(~year2 + season2 * sex)",27,17496.8076962025,57.1049575455436,1.07885999786838e-13,668.18699
+"762","~year2 + season2 + sex","~year2 * season2 + sex","~season2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~season2 * sex)",40,17497.6334357035,57.9306970464932,7.13933952543933e-14,642.47589
+"332","~season2 * sex","~time","~year2 + season2 * sex","Phi(~season2 * sex)p(~time)f(~year2 + season2 * sex)",40,17497.9874357035,58.2846970464925,5.98119432926097e-14,642.83044
+"817","~year2 + season2 * sex","~sex","~year2 + season2","Phi(~year2 + season2 * sex)p(~sex)f(~year2 + season2)",28,17498.1455990353,58.4428603782872,5.52641101835771e-14,667.49134
+"569","~year2 + season2","~season2","~year2 * season2 + sex","Phi(~year2 + season2)p(~season2)f(~year2 * season2 + sex)",36,17498.4970770626,58.7943384055689,4.63575737488013e-14,651.52648
+"566","~year2 + season2","~season2","~year2 + season2 * sex","Phi(~year2 + season2)p(~season2)f(~year2 + season2 * sex)",28,17498.7755990353,59.0728603782882,4.03311327583333e-14,668.12112
+"662","~year2 + season2 + sex","~1","~year2 + season2","Phi(~year2 + season2 + sex)p(~1)f(~year2 + season2)",26,17500.9580189816,61.2552803246363,1.35435947387648e-14,674.37017
+"241","~season2 + sex","~time + sex","~year2 + season2 * sex","Phi(~season2 + sex)p(~time + sex)f(~year2 + season2 * sex)",40,17501.4494357035,61.746697046492,1.05931266508045e-14,646.29243
+"274","~season2 + sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",40,17501.4834357035,61.7806970464953,1.0414565567259e-14,646.32633
+"600","~year2 + season2","~time","~year2 + season2","Phi(~year2 + season2)p(~time)f(~year2 + season2)",46,17502.7377002122,63.0349615552004,5.56264162183445e-15,635.2615
+"637","~year2 + season2","~year2 * season2","~year2 + season2","Phi(~year2 + season2)p(~year2 * season2)f(~year2 + season2)",46,17502.7387002122,63.0359615552006,5.55986099623729e-15,635.26331
+"266","~season2 + sex","~year2 * season2","~year2 + season2 * sex","Phi(~season2 + sex)p(~year2 * season2)f(~year2 + season2 * sex)",39,17503.272738657,63.5700000000033,4.25695401624439e-15,650.16424
+"552","~year2 + season2","~1","~year2 + season2 + sex","Phi(~year2 + season2)p(~1)f(~year2 + season2 + sex)",26,17504.9930189816,65.2902803246361,1.8011290577312e-15,678.40518
+"568","~year2 + season2","~season2","~year2 * season2","Phi(~year2 + season2)p(~season2)f(~year2 * season2)",35,17505.7373293051,66.0345906481489,1.24142332091326e-15,660.8113
+"666","~year2 + season2 + sex","~1","~year2 * season2","Phi(~year2 + season2 + sex)p(~1)f(~year2 * season2)",35,17506.0623293051,66.3595906481496,1.05522979755693e-15,661.1357
+"870","~year2 + season2 * sex","~year2 * season2 + sex","~season2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~season2 + sex)",40,17506.2664357035,66.5636970464948,0,651.10847
+"645","~year2 + season2","~year2 * season2 + sex","~season2 + sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~season2 + sex)",38,17507.1042806169,67.4015419598873,0,656.04307
+"343","~season2 * sex","~year2","~year2 + season2 * sex","Phi(~season2 * sex)p(~year2)f(~year2 + season2 * sex)",29,17507.4147285887,67.7119899316749,0,674.72501
+"349","~season2 * sex","~year2 + sex","~year2 + season2 * sex","Phi(~season2 * sex)p(~year2 + sex)f(~year2 + season2 * sex)",30,17507.7430859729,68.0403473158658,0,673.01712
+"782","~year2 + season2 * sex","~1","~year2 * season2","Phi(~year2 + season2 * sex)p(~1)f(~year2 * season2)",36,17508.0940770626,68.3913384055704,0,661.12384
+"255","~season2 + sex","~year2 + sex","~year2 + season2 * sex","Phi(~season2 + sex)p(~year2 + sex)f(~year2 + season2 * sex)",29,17510.5977285887,70.8949899316758,0,677.90766
+"338","~season2 * sex","~time + sex","~year2 + season2 * sex","Phi(~season2 * sex)p(~time + sex)f(~year2 + season2 * sex)",41,17511.4553728814,71.7526342243691,0,654.24783
+"364","~season2 * sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",41,17511.4553728814,71.7526342243691,0,654.24781
+"551","~year2 + season2","~1","~year2 + season2","Phi(~year2 + season2)p(~1)f(~year2 + season2)",25,17511.8385662651,72.1358276080755,0,687.28224
+"357","~season2 * sex","~year2 * season2","~year2 + season2 * sex","Phi(~season2 * sex)p(~year2 * season2)f(~year2 + season2 * sex)",40,17512.2234357035,72.5206970464933,0,657.06602
+"676","~year2 + season2 + sex","~season2","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~season2)f(~year2 + season2 + sex)",28,17512.9435990353,73.2408603782897,0,682.28867
+"363","~season2 * sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",40,17514.7204357035,75.0176970464927,0,659.56316
+"233","~season2 + sex","~time","~year2 + season2 * sex","Phi(~season2 + sex)p(~time)f(~year2 + season2 * sex)",39,17514.768738657,75.0660000000025,0,661.65983
+"356","~season2 * sex","~year2 * season2","~year2 + season2 + sex","Phi(~season2 * sex)p(~year2 * season2)f(~year2 + season2 + sex)",39,17514.834738657,75.1320000000014,0,661.72563
+"698","~year2 + season2 + sex","~sex","~season2 * sex","Phi(~year2 + season2 + sex)p(~sex)f(~season2 * sex)",19,17515.080502706,75.3777640489643,0,702.68683
+"247","~season2 + sex","~year2","~year2 + season2 * sex","Phi(~season2 + sex)p(~year2)f(~year2 + season2 * sex)",28,17515.2075990353,75.5048603782889,0,684.55282
+"675","~year2 + season2 + sex","~season2","~year2 + season2","Phi(~year2 + season2 + sex)p(~season2)f(~year2 + season2)",27,17515.7346962025,76.0319575455433,0,687.11425
+"814","~year2 + season2 * sex","~sex","~season2 * sex","Phi(~year2 + season2 * sex)p(~sex)f(~season2 * sex)",20,17515.7926315789,76.089892921962,0,701.3752
+"685","~year2 + season2 + sex","~season2 + sex","~season2 * sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~season2 * sex)",20,17516.8856315789,77.1828929219628,0,702.46834
+"739","~year2 + season2 + sex","~year2 + sex","~season2 + sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~season2 + sex)",28,17517.0115990353,77.308860378289,0,686.35672
+"775","~year2 + season2 * sex","~1","~season2 * sex","Phi(~year2 + season2 * sex)p(~1)f(~season2 * sex)",19,17517.064502706,77.3617640489647,0,704.67087
+"801","~year2 + season2 * sex","~season2 + sex","~season2 * sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~season2 * sex)",21,17517.6709783393,77.9682396823628,0,701.22804
+"791","~year2 + season2 * sex","~season2","~year2 + season2","Phi(~year2 + season2 * sex)p(~season2)f(~year2 + season2)",28,17517.7695990353,78.0668603782869,0,687.11467
+"788","~year2 + season2 * sex","~season2","~season2 * sex","Phi(~year2 + season2 * sex)p(~season2)f(~season2 * sex)",20,17518.9206315789,79.2178929219626,0,704.5034
+"565","~year2 + season2","~season2","~year2 + season2 + sex","Phi(~year2 + season2)p(~season2)f(~year2 + season2 + sex)",27,17518.9676962025,79.2649575455434,0,690.34741
+"738","~year2 + season2 + sex","~year2 + sex","~season2","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~season2)",27,17519.8636962025,80.1609575455441,0,691.2433
+"659","~year2 + season2 + sex","~1","~season2 * sex","Phi(~year2 + season2 + sex)p(~1)f(~season2 * sex)",18,17521.4825906222,81.7798519651951,0,711.11219
+"633","~year2 + season2","~year2 * season2","~season2 + sex","Phi(~year2 + season2)p(~year2 * season2)f(~season2 + sex)",37,17521.4930604595,81.7903218025058,0,672.47778
+"348","~season2 * sex","~year2 + sex","~year2 + season2 + sex","Phi(~season2 * sex)p(~year2 + sex)f(~year2 + season2 + sex)",29,17522.8887285887,83.1859899316769,0,690.19886
+"140","~season2","~time + sex","~year2 + season2 * sex","Phi(~season2)p(~time + sex)f(~year2 + season2 * sex)",39,17523.263738657,83.5610000000015,0,670.15523
+"174","~season2","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~season2)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",39,17523.263738657,83.5610000000015,0,670.15523
+"672","~year2 + season2 + sex","~season2","~season2 * sex","Phi(~year2 + season2 + sex)p(~season2)f(~season2 * sex)",19,17523.486502706,83.783764048967,0,711.09278
+"606","~year2 + season2","~time + sex","~season2 * sex","Phi(~year2 + season2)p(~time + sex)f(~season2 * sex)",39,17524.964738657,85.2620000000024,0,671.85627
+"646","~year2 + season2","~year2 * season2 + sex","~season2 * sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~season2 * sex)",39,17524.964738657,85.2620000000024,0,671.85627
+"240","~season2 + sex","~time + sex","~year2 + season2 + sex","Phi(~season2 + sex)p(~time + sex)f(~year2 + season2 + sex)",39,17524.988738657,85.2860000000001,0,671.87953
+"235","~season2 + sex","~time","~year2 * season2 + sex","Phi(~season2 + sex)p(~time)f(~year2 * season2 + sex)",47,17525.3701018799,85.6673632229431,0,655.83724
+"268","~season2 + sex","~year2 * season2","~year2 * season2 + sex","Phi(~season2 + sex)p(~year2 * season2)f(~year2 * season2 + sex)",47,17525.3701018799,85.6673632229431,0,655.83712
+"564","~year2 + season2","~season2","~year2 + season2","Phi(~year2 + season2)p(~season2)f(~year2 + season2)",26,17526.0210189816,86.3182803246382,0,699.43282
+"273","~season2 + sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",39,17526.148738657,86.4460000000036,0,673.03953
+"177","~season2","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~season2)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",47,17526.5711018799,86.868363222944,0,657.03796
+"697","~year2 + season2 + sex","~sex","~season2 + sex","Phi(~year2 + season2 + sex)p(~sex)f(~season2 + sex)",18,17527.5005906222,87.7978519651952,0,717.12976
+"254","~season2 + sex","~year2 + sex","~year2 + season2 + sex","Phi(~season2 + sex)p(~year2 + sex)f(~year2 + season2 + sex)",28,17527.7995990353,88.0968603782894,0,697.14477
+"813","~year2 + season2 * sex","~sex","~season2 + sex","Phi(~year2 + season2 * sex)p(~sex)f(~season2 + sex)",19,17527.802502706,88.0997640489659,0,715.40856
+"265","~season2 + sex","~year2 * season2","~year2 + season2 + sex","Phi(~season2 + sex)p(~year2 * season2)f(~year2 + season2 + sex)",38,17528.2582806169,88.5555419598895,0,677.19725
+"597","~year2 + season2","~time","~season2 * sex","Phi(~year2 + season2)p(~time)f(~season2 * sex)",38,17528.4192806169,88.7165419598896,0,677.35757
+"634","~year2 + season2","~year2 * season2","~season2 * sex","Phi(~year2 + season2)p(~year2 * season2)f(~season2 * sex)",38,17528.4192806169,88.7165419598896,0,677.35757
+"153","~season2","~year2 + sex","~year2 + season2 * sex","Phi(~season2)p(~year2 + sex)f(~year2 + season2 * sex)",28,17528.8335990353,89.1308603782891,0,698.17941
+"243","~season2 + sex","~time + sex","~year2 * season2","Phi(~season2 + sex)p(~time + sex)f(~year2 * season2)",47,17528.9691018799,89.2663632229414,0,659.43586
+"276","~season2 + sex","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",48,17529.0727515924,89.3700129353711,0,657.48096
+"342","~season2 * sex","~year2","~year2 + season2 + sex","Phi(~season2 * sex)p(~year2)f(~year2 + season2 + sex)",28,17530.0925990353,90.3898603782873,0,699.43765
+"684","~year2 + season2 + sex","~season2 + sex","~season2 + sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~season2 + sex)",19,17531.6125027059,91.9097640489636,0,719.21913
+"587","~year2 + season2","~sex","~season2 * sex","Phi(~year2 + season2)p(~sex)f(~season2 * sex)",18,17531.9485906222,92.2458519651955,0,721.57778
+"812","~year2 + season2 * sex","~sex","~season2","Phi(~year2 + season2 * sex)p(~sex)f(~season2)",18,17532.6565906222,92.9538519651978,0,722.28577
+"173","~season2","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~season2)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",38,17533.2212806169,93.5185419598893,0,682.16015
+"272","~season2 + sex","~year2 * season2 + sex","~year2 + season2","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2)",38,17533.3862806169,93.6835419598901,0,682.3246
+"800","~year2 + season2 * sex","~season2 + sex","~season2 + sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~season2 + sex)",20,17533.6336315789,93.9308929219624,0,719.21619
+"574","~year2 + season2","~season2 + sex","~season2 * sex","Phi(~year2 + season2)p(~season2 + sex)f(~season2 * sex)",19,17533.732502706,94.0297640489662,0,721.33937
+"586","~year2 + season2","~sex","~season2 + sex","Phi(~year2 + season2)p(~sex)f(~season2 + sex)",17,17533.9938942308,94.2911555737846,0,725.64458
+"258","~season2 + sex","~year2 + sex","~year2 * season2 + sex","Phi(~season2 + sex)p(~year2 + sex)f(~year2 * season2 + sex)",37,17534.6620604595,94.9593218025075,0,685.64737
+"683","~year2 + season2 + sex","~season2 + sex","~season2","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~season2)",18,17535.6005906222,95.8978519651973,0,725.22981
+"351","~season2 * sex","~year2 + sex","~year2 * season2 + sex","Phi(~season2 * sex)p(~year2 + sex)f(~year2 * season2 + sex)",38,17535.6952806169,95.9925419598876,0,684.63417
+"163","~season2","~year2 * season2","~year2 + season2 * sex","Phi(~season2)p(~year2 * season2)f(~year2 + season2 * sex)",38,17535.9422806169,96.239541959887,0,684.88143
+"257","~season2 + sex","~year2 + sex","~year2 * season2","Phi(~season2 + sex)p(~year2 + sex)f(~year2 * season2)",36,17536.1120770626,96.4093384055705,0,689.14194
+"774","~year2 + season2 * sex","~1","~season2 + sex","Phi(~year2 + season2 * sex)p(~1)f(~season2 + sex)",18,17537.5105906222,97.8078519651972,0,727.14019
+"799","~year2 + season2 * sex","~season2 + sex","~season2","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~season2)",19,17537.622502706,97.9197640489656,0,725.22939
+"787","~year2 + season2 * sex","~season2","~season2 + sex","Phi(~year2 + season2 * sex)p(~season2)f(~season2 + sex)",19,17537.889502706,98.1867640489654,0,725.49613
+"573","~year2 + season2","~season2 + sex","~season2 + sex","Phi(~year2 + season2)p(~season2 + sex)f(~season2 + sex)",18,17539.1005906222,99.3978519651973,0,728.72984
+"165","~season2","~year2 * season2","~year2 * season2 + sex","Phi(~season2)p(~year2 * season2)f(~year2 * season2 + sex)",46,17539.4277002122,99.7249615551991,0,671.95192
+"156","~season2","~year2 + sex","~year2 * season2 + sex","Phi(~season2)p(~year2 + sex)f(~year2 * season2 + sex)",36,17539.4420770626,99.7393384055686,0,692.4724
+"264","~season2 + sex","~year2 * season2","~year2 + season2","Phi(~season2 + sex)p(~year2 * season2)f(~year2 + season2)",37,17541.7090604595,102.006321802506,0,692.69413
+"246","~season2 + sex","~year2","~year2 + season2 + sex","Phi(~season2 + sex)p(~year2)f(~year2 + season2 + sex)",27,17541.7516962025,102.048957545543,0,713.13061
+"155","~season2","~year2 + sex","~year2 * season2","Phi(~season2)p(~year2 + sex)f(~year2 * season2)",35,17543.1223293051,103.419590648151,0,698.19598
+"135","~season2","~time","~year2 * season2 + sex","Phi(~season2)p(~time)f(~year2 * season2 + sex)",46,17543.1247002122,103.421961555199,0,675.64899
+"176","~season2","~year2 * season2 + sex","~year2 * season2","Phi(~season2)p(~year2 * season2 + sex)f(~year2 * season2)",46,17543.4987002122,103.795961555199,0,676.02309
+"765","~year2 + season2 + sex","~year2 * season2 + sex","~year2 + season2","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 + season2)",48,17544.4617515924,104.75901293537,0,672.86994
+"146","~season2","~year2","~year2 + season2 * sex","Phi(~season2)p(~year2)f(~year2 + season2 * sex)",27,17544.8416962025,105.138957545543,0,716.22049
+"572","~year2 + season2","~season2 + sex","~season2","Phi(~year2 + season2)p(~season2 + sex)f(~season2)",17,17545.0058942308,105.303155573783,0,736.65691
+"658","~year2 + season2 + sex","~1","~season2 + sex","Phi(~year2 + season2 + sex)p(~1)f(~season2 + sex)",17,17545.6998942308,105.997155573783,0,737.35055
+"743","~year2 + season2 + sex","~year2 + sex","~year2 + season2 + sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 + season2 + sex)",38,17545.7522806169,106.049541959888,0,694.69059
+"773","~year2 + season2 * sex","~1","~season2","Phi(~year2 + season2 * sex)p(~1)f(~season2)",17,17546.4698942308,106.767155573783,0,738.12073
+"133","~season2","~time","~year2 + season2 * sex","Phi(~season2)p(~time)f(~year2 + season2 * sex)",38,17546.5802806169,106.87754195989,0,695.51899
+"162","~season2","~year2 * season2","~year2 + season2 + sex","Phi(~season2)p(~year2 * season2)f(~year2 + season2 + sex)",37,17546.6760604595,106.973321802507,0,697.66079
+"696","~year2 + season2 + sex","~sex","~season2","Phi(~year2 + season2 + sex)p(~sex)f(~season2)",17,17547.9648942308,108.262155573782,0,739.61566
+"548","~year2 + season2","~1","~season2 * sex","Phi(~year2 + season2)p(~1)f(~season2 * sex)",17,17549.1608942308,109.458155573782,0,740.81201
+"561","~year2 + season2","~season2","~season2 * sex","Phi(~year2 + season2)p(~season2)f(~season2 * sex)",18,17550.9835906222,111.280851965195,0,740.61296
+"727","~year2 + season2 + sex","~year2","~season2","Phi(~year2 + season2 + sex)p(~year2)f(~season2)",26,17551.0140189816,111.311280324637,0,724.42581
+"253","~season2 + sex","~year2 + sex","~year2 + season2","Phi(~season2 + sex)p(~year2 + sex)f(~year2 + season2)",27,17552.3336962025,112.630957545545,0,723.71315
+"657","~year2 + season2 + sex","~1","~season2","Phi(~year2 + season2 + sex)p(~1)f(~season2)",16,17553.8744124362,114.171673779179,0,747.54585
+"152","~season2","~year2 + sex","~year2 + season2 + sex","Phi(~season2)p(~year2 + sex)f(~year2 + season2 + sex)",27,17554.4856962025,114.782957545543,0,725.86481
+"750","~year2 + season2 + sex","~year2 * season2","~season2","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~season2)",37,17555.6190604595,115.916321802506,0,706.60427
+"585","~year2 + season2","~sex","~season2","Phi(~year2 + season2)p(~sex)f(~season2)",16,17557.2884124362,117.58567377918,0,750.95987
+"547","~year2 + season2","~1","~season2 + sex","Phi(~year2 + season2)p(~1)f(~season2 + sex)",16,17558.2124124362,118.509673779179,0,751.8836
+"671","~year2 + season2 + sex","~season2","~season2 + sex","Phi(~year2 + season2 + sex)p(~season2)f(~season2 + sex)",18,17560.4485906222,120.745851965195,0,750.0781
+"670","~year2 + season2 + sex","~season2","~season2","Phi(~year2 + season2 + sex)p(~season2)f(~season2)",17,17564.2168942308,124.514155573783,0,755.86824
+"546","~year2 + season2","~1","~season2","Phi(~year2 + season2)p(~1)f(~season2)",15,17564.5161441441,124.813405487159,0,760.20689
+"786","~year2 + season2 * sex","~season2","~season2","Phi(~year2 + season2 * sex)p(~season2)f(~season2)",18,17566.2385906222,126.535851965196,0,755.86796
+"250","~season2 + sex","~year2","~year2 * season2 + sex","Phi(~season2 + sex)p(~year2)f(~year2 * season2 + sex)",36,17566.4120770626,126.70933840557,0,719.44187
+"938","~year2 + sex","~time","~year2 + season2 * sex","Phi(~year2 + sex)p(~time)f(~year2 + season2 * sex)",48,17567.5077515924,127.805012935369,0,695.91625
+"560","~year2 + season2","~season2","~season2 + sex","Phi(~year2 + season2)p(~season2)f(~season2 + sex)",17,17567.7788942308,128.076155573784,0,759.42979
+"345","~season2 * sex","~year2","~year2 * season2 + sex","Phi(~season2 * sex)p(~year2)f(~year2 * season2 + sex)",37,17568.4520604595,128.749321802505,0,719.43684
+"289","~season2 * sex","~1","~year2 * season2 + sex","Phi(~season2 * sex)p(~1)f(~year2 * season2 + sex)",27,17568.5276962025,128.824957545545,0,739.90714
+"949","~year2 + sex","~time + sex","~year2 + season2 * sex","Phi(~year2 + sex)p(~time + sex)f(~year2 + season2 * sex)",49,17569.0376504854,129.33491182845,0,695.38617
+"984","~year2 + sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",49,17569.0376504854,129.33491182845,0,695.38601
+"249","~season2 + sex","~year2","~year2 * season2","Phi(~season2 + sex)p(~year2)f(~year2 * season2)",35,17570.2143293051,130.511590648151,0,725.28789
+"149","~season2","~year2","~year2 * season2 + sex","Phi(~season2)p(~year2)f(~year2 * season2 + sex)",35,17573.6733293051,133.97059064815,0,728.74695
+"559","~year2 + season2","~season2","~season2","Phi(~year2 + season2)p(~season2)f(~season2)",16,17574.2834124362,134.580673779179,0,767.95485
+"216","~season2 + sex","~season2 + sex","~year2 * season2 + sex","Phi(~season2 + sex)p(~season2 + sex)f(~year2 * season2 + sex)",28,17577.3925990353,137.689860378287,0,746.73746
+"315","~season2 * sex","~season2 + sex","~year2 * season2 + sex","Phi(~season2 * sex)p(~season2 + sex)f(~year2 * season2 + sex)",29,17579.4247285887,139.721989931677,0,746.73484
+"1090","~year2 * sex","~year2 * season2","~year2 * season2 + sex","Phi(~year2 * sex)p(~year2 * season2)f(~year2 * season2 + sex)",66,17579.5121637694,139.809425112453,0,670.64947
+"873","~year2 + season2 * sex","~year2 * season2 + sex","~year2 + season2","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 + season2)",49,17579.9816504854,140.278911828449,0,706.33026
+"148","~season2","~year2","~year2 * season2","Phi(~season2)p(~year2)f(~year2 * season2)",34,17580.2628160677,140.560077410668,0,737.37892
+"190","~season2 + sex","~1","~year2 * season2 + sex","Phi(~season2 + sex)p(~1)f(~year2 * season2 + sex)",26,17580.6140189816,140.911280324635,0,754.02561
+"215","~season2 + sex","~season2 + sex","~year2 * season2","Phi(~season2 + sex)p(~season2 + sex)f(~year2 * season2)",27,17581.3236962025,141.620957545543,0,752.70296
+"314","~season2 * sex","~season2 + sex","~year2 * season2","Phi(~season2 * sex)p(~season2 + sex)f(~year2 * season2)",28,17583.3575990353,143.654860378287,0,752.70322
+"856","~year2 + season2 * sex","~year2 + sex","~year2 * season2","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 * season2)",47,17584.0891018799,144.386363222944,0,714.55591
+"114","~season2","~season2 + sex","~year2 * season2 + sex","Phi(~season2)p(~season2 + sex)f(~year2 * season2 + sex)",27,17584.7856962025,145.082957545546,0,756.16498
+"983","~year2 + sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",48,17585.3907515924,145.68801293537,0,713.79918
+"514","~year2","~time + sex","~year2 + season2 * sex","Phi(~year2)p(~time + sex)f(~year2 + season2 * sex)",48,17588.0837515924,148.38101293537,0,716.49209
+"541","~year2","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",48,17588.0837515924,148.38101293537,0,716.49153
+"145","~season2","~year2","~year2 + season2 + sex","Phi(~season2)p(~year2)f(~year2 + season2 + sex)",26,17588.3250189816,148.622280324635,0,761.73734
+"229","~season2 + sex","~sex","~year2 * season2 + sex","Phi(~season2 + sex)p(~sex)f(~year2 * season2 + sex)",27,17588.5446962025,148.841957545545,0,759.92364
+"421","~sex","~time","~year2 + season2 * sex","Phi(~sex)p(~time)f(~year2 + season2 * sex)",38,17590.1912806169,150.488541959887,0,739.12979
+"430","~sex","~time + sex","~year2 + season2 * sex","Phi(~sex)p(~time + sex)f(~year2 + season2 * sex)",39,17590.234738657,150.532000000003,0,737.12571
+"228","~season2 + sex","~sex","~year2 * season2","Phi(~season2 + sex)p(~sex)f(~year2 * season2)",26,17590.3850189816,150.682280324636,0,763.79672
+"328","~season2 * sex","~sex","~year2 * season2 + sex","Phi(~season2 * sex)p(~sex)f(~year2 * season2 + sex)",28,17590.5625990353,150.859860378288,0,759.90783
+"113","~season2","~season2 + sex","~year2 * season2","Phi(~season2)p(~season2 + sex)f(~year2 * season2)",26,17591.4910189816,151.788280324636,0,764.90283
+"327","~season2 * sex","~sex","~year2 * season2","Phi(~season2 * sex)p(~sex)f(~year2 * season2)",27,17592.4206962025,152.717957545545,0,763.79995
+"127","~season2","~sex","~year2 * season2 + sex","Phi(~season2)p(~sex)f(~year2 * season2 + sex)",26,17593.2500189816,153.547280324638,0,766.66235
+"504","~year2","~time","~year2 + season2 * sex","Phi(~year2)p(~time)f(~year2 + season2 * sex)",47,17594.9411018799,155.238363222943,0,725.40803
+"442","~sex","~year2 * season2","~year2 * season2 + sex","Phi(~sex)p(~year2 * season2)f(~year2 * season2 + sex)",46,17596.8087002122,157.1059615552,0,729.33342
+"424","~sex","~time","~year2 * season2 + sex","Phi(~sex)p(~time)f(~year2 * season2 + sex)",46,17596.8297002122,157.126961555201,0,729.35357
+"936","~year2 + sex","~time","~year2 + season2","Phi(~year2 + sex)p(~time)f(~year2 + season2)",46,17598.2457002122,158.542961555202,0,730.7703
+"126","~season2","~sex","~year2 * season2","Phi(~season2)p(~sex)f(~year2 * season2)",25,17600.4255662651,160.722827608075,0,775.86943
+"503","~year2","~time","~year2 + season2 + sex","Phi(~year2)p(~time)f(~year2 + season2 + sex)",46,17603.5527002122,163.849961555199,0,736.07727
+"971","~year2 + sex","~year2 * season2","~year2 + season2 * sex","Phi(~year2 + sex)p(~year2 * season2)f(~year2 + season2 * sex)",48,17603.6557515924,163.95301293537,0,732.06402
+"654","~year2 + season2","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",57,17603.9679489051,164.265210248122,0,713.79216
+"933","~year2 + sex","~time","~season2 * sex","Phi(~year2 + sex)p(~time)f(~season2 * sex)",38,17606.6812806169,166.978541959888,0,755.61999
+"966","~year2 + sex","~year2 * season2","~season2 * sex","Phi(~year2 + sex)p(~year2 * season2)f(~season2 * sex)",38,17606.6812806169,166.978541959888,0,755.61997
+"203","~season2 + sex","~season2","~year2 * season2 + sex","Phi(~season2 + sex)p(~season2)f(~year2 * season2 + sex)",27,17607.6286962025,167.925957545543,0,779.00832
+"979","~year2 + sex","~year2 * season2 + sex","~season2 * sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~season2 * sex)",39,17608.255738657,168.553000000004,0,755.14721
+"945","~year2 + sex","~time + sex","~season2 * sex","Phi(~year2 + sex)p(~time + sex)f(~season2 * sex)",39,17608.346738657,168.644,0,755.2383
+"302","~season2 * sex","~season2","~year2 * season2 + sex","Phi(~season2 * sex)p(~season2)f(~year2 * season2 + sex)",28,17609.6665990353,169.963860378288,0,779.01154
+"432","~sex","~time + sex","~year2 * season2","Phi(~sex)p(~time + sex)f(~year2 * season2)",46,17610.1677002122,170.464961555201,0,742.6921
+"513","~year2","~time + sex","~year2 + season2","Phi(~year2)p(~time + sex)f(~year2 + season2)",46,17610.2997002122,170.596961555202,0,742.82398
+"900","~year2 + sex","~season2","~year2 + season2 * sex","Phi(~year2 + sex)p(~season2)f(~year2 + season2 * sex)",28,17610.3195990353,170.61686037829,0,779.66534
+"913","~year2 + sex","~season2 + sex","~year2 + season2 * sex","Phi(~year2 + sex)p(~season2 + sex)f(~year2 + season2 * sex)",29,17611.0227285887,171.319989931675,0,778.33329
+"423","~sex","~time","~year2 * season2","Phi(~sex)p(~time)f(~year2 * season2)",45,17611.1515454545,171.448806797562,0,745.7318
+"441","~sex","~year2 * season2","~year2 * season2","Phi(~sex)p(~year2 * season2)f(~year2 * season2)",45,17611.1565454545,171.453806797559,0,745.73661
+"202","~season2 + sex","~season2","~year2 * season2","Phi(~season2 + sex)p(~season2)f(~year2 * season2)",26,17611.5310189816,171.828280324637,0,784.94287
+"301","~season2 * sex","~season2","~year2 * season2","Phi(~season2 * sex)p(~season2)f(~year2 * season2)",27,17613.5636962025,173.860957545545,0,784.94301
+"68","~1","~time + sex","~year2 * season2 + sex","Phi(~1)p(~time + sex)f(~year2 * season2 + sex)",46,17614.7227002122,175.019961555201,0,747.24678
+"325","~season2 * sex","~sex","~year2 + season2 * sex","Phi(~season2 * sex)p(~sex)f(~year2 + season2 * sex)",20,17614.9466315789,175.243892921961,0,800.52928
+"226","~season2 + sex","~sex","~year2 + season2 * sex","Phi(~season2 + sex)p(~sex)f(~year2 + season2 * sex)",19,17614.948502706,175.245764048967,0,802.55517
+"101","~season2","~season2","~year2 * season2 + sex","Phi(~season2)p(~season2)f(~year2 * season2 + sex)",26,17614.9800189816,175.277280324637,0,788.39227
+"286","~season2 * sex","~1","~year2 + season2 * sex","Phi(~season2 * sex)p(~1)f(~year2 + season2 * sex)",19,17615.510502706,175.807764048965,0,803.11718
+"59","~1","~time","~year2 * season2 + sex","Phi(~1)p(~time)f(~year2 * season2 + sex)",45,17616.1215454545,176.418806797559,0,750.7015
+"73","~1","~year2 * season2","~year2 * season2 + sex","Phi(~1)p(~year2 * season2)f(~year2 * season2 + sex)",45,17616.5465454545,176.843806797562,0,751.12726
+"312","~season2 * sex","~season2 + sex","~year2 + season2 * sex","Phi(~season2 * sex)p(~season2 + sex)f(~year2 + season2 * sex)",21,17616.7639783393,177.061239682364,0,800.3205
+"299","~season2 * sex","~season2","~year2 + season2 * sex","Phi(~season2 * sex)p(~season2)f(~year2 + season2 * sex)",20,17617.1846315789,177.481892921962,0,802.76674
+"1044","~year2 * sex","~time","~season2 * sex","Phi(~year2 * sex)p(~time)f(~season2 * sex)",48,17617.9357515924,178.233012935369,0,746.34399
+"1013","~year2 * sex","~season2","~year2 * season2 + sex","Phi(~year2 * sex)p(~season2)f(~year2 * season2 + sex)",46,17618.6687002122,178.965961555201,0,751.19325
+"1026","~year2 * sex","~season2 + sex","~year2 * season2 + sex","Phi(~year2 * sex)p(~season2 + sex)f(~year2 * season2 + sex)",47,17619.8481018799,180.145363222942,0,750.31518
+"1055","~year2 * sex","~time + sex","~season2 * sex","Phi(~year2 * sex)p(~time + sex)f(~season2 * sex)",49,17620.0616504854,180.358911828451,0,746.40983
+"1095","~year2 * sex","~year2 * season2 + sex","~season2 * sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~season2 * sex)",49,17620.0616504854,180.358911828451,0,746.40982
+"916","~year2 + sex","~season2 + sex","~year2 * season2 + sex","Phi(~year2 + sex)p(~season2 + sex)f(~year2 * season2 + sex)",37,17620.1560604595,180.453321802506,0,771.14097
+"187","~season2 + sex","~1","~year2 + season2 * sex","Phi(~season2 + sex)p(~1)f(~year2 + season2 * sex)",18,17620.4135906222,180.710851965196,0,810.04322
+"937","~year2 + sex","~time","~year2 + season2 + sex","Phi(~year2 + sex)p(~time)f(~year2 + season2 + sex)",47,17620.6051018799,180.902363222944,0,751.07175
+"67","~1","~time + sex","~year2 * season2","Phi(~1)p(~time + sex)f(~year2 * season2)",45,17620.8635454545,181.160806797561,0,755.44357
+"100","~season2","~season2","~year2 * season2","Phi(~season2)p(~season2)f(~year2 * season2)",25,17621.6305662651,181.927827608077,0,797.07368
+"189","~season2 + sex","~1","~year2 * season2","Phi(~season2 + sex)p(~1)f(~year2 * season2)",25,17621.9555662651,182.252827608074,0,797.39883
+"948","~year2 + sex","~time + sex","~year2 + season2 + sex","Phi(~year2 + sex)p(~time + sex)f(~year2 + season2 + sex)",48,17622.5217515924,182.819012935372,0,750.92974
+"978","~year2 + sex","~year2 * season2 + sex","~season2 + sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~season2 + sex)",38,17623.6252806169,183.922541959888,0,772.56392
+"288","~season2 * sex","~1","~year2 * season2","Phi(~season2 * sex)p(~1)f(~year2 * season2)",26,17624.0030189816,184.300280324638,0,797.41532
+"973","~year2 + sex","~year2 * season2","~year2 * season2","Phi(~year2 + sex)p(~year2 * season2)f(~year2 * season2)",55,17624.2573404255,184.554601768545,0,738.22027
+"88","~season2","~1","~year2 * season2 + sex","Phi(~season2)p(~1)f(~year2 * season2 + sex)",25,17625.5885662651,185.885827608075,0,801.03236
+"213","~season2 + sex","~season2 + sex","~year2 + season2 * sex","Phi(~season2 + sex)p(~season2 + sex)f(~year2 + season2 * sex)",20,17625.7616315789,186.058892921959,0,811.344
+"642","~year2 + season2","~year2 * season2","~year2 * season2 + sex","Phi(~year2 + season2)p(~year2 * season2)f(~year2 * season2 + sex)",56,17627.5380155062,187.835276849248,0,739.43235
+"912","~year2 + sex","~season2 + sex","~year2 + season2 + sex","Phi(~year2 + sex)p(~season2 + sex)f(~year2 + season2 + sex)",28,17627.8155990353,188.112860378289,0,797.16111
+"124","~season2","~sex","~year2 + season2 * sex","Phi(~season2)p(~sex)f(~year2 + season2 * sex)",18,17629.5325906222,189.829851965198,0,819.1622
+"915","~year2 + sex","~season2 + sex","~year2 * season2","Phi(~year2 + sex)p(~season2 + sex)f(~year2 * season2)",36,17630.3020770626,190.599338405569,0,783.33229
+"482","~year2","~season2 + sex","~year2 + season2 * sex","Phi(~year2)p(~season2 + sex)f(~year2 + season2 * sex)",28,17630.6925990353,190.989860378289,0,800.03839
+"212","~season2 + sex","~season2 + sex","~year2 + season2 + sex","Phi(~season2 + sex)p(~season2 + sex)f(~year2 + season2 + sex)",19,17630.792502706,191.089764048964,0,818.39918
+"510","~year2","~time + sex","~season2 * sex","Phi(~year2)p(~time + sex)f(~season2 * sex)",38,17631.2222806169,191.519541959889,0,780.16081
+"537","~year2","~year2 * season2 + sex","~season2 * sex","Phi(~year2)p(~year2 * season2 + sex)f(~season2 * sex)",38,17631.2222806169,191.519541959889,0,780.16087
+"902","~year2 + sex","~season2","~year2 * season2","Phi(~year2 + sex)p(~season2)f(~year2 * season2)",35,17631.7733293051,192.070590648149,0,786.84655
+"87","~season2","~1","~year2 * season2","Phi(~season2)p(~1)f(~year2 * season2)",24,17632.1363369467,192.433598289717,0,809.60983
+"311","~season2 * sex","~season2 + sex","~year2 + season2 + sex","Phi(~season2 * sex)p(~season2 + sex)f(~year2 + season2 + sex)",20,17632.8166315789,193.11389292196,0,818.39912
+"1043","~year2 * sex","~time","~season2 + sex","Phi(~year2 * sex)p(~time)f(~season2 + sex)",47,17634.5461018799,194.843363222943,0,765.01245
+"1081","~year2 * sex","~year2 * season2","~season2 + sex","Phi(~year2 * sex)p(~year2 * season2)f(~season2 + sex)",47,17634.6131018799,194.910363222942,0,765.08005
+"211","~season2 + sex","~season2 + sex","~year2 + season2","Phi(~season2 + sex)p(~season2 + sex)f(~year2 + season2)",18,17634.6305906222,194.927851965196,0,824.2603
+"57","~1","~time","~year2 + season2","Phi(~1)p(~time)f(~year2 + season2)",35,17634.8663293051,195.16359064815,0,789.94043
+"500","~year2","~time","~season2 * sex","Phi(~year2)p(~time)f(~season2 * sex)",37,17635.3570604595,195.654321802507,0,786.34217
+"526","~year2","~year2 * season2","~season2 * sex","Phi(~year2)p(~year2 * season2)f(~season2 * sex)",37,17635.3570604595,195.654321802507,0,786.34219
+"1012","~year2 * sex","~season2","~year2 * season2","Phi(~year2 * sex)p(~season2)f(~year2 * season2)",45,17636.6145454545,196.911806797561,0,771.1947
+"310","~season2 * sex","~season2 + sex","~year2 + season2","Phi(~season2 * sex)p(~season2 + sex)f(~year2 + season2)",19,17636.653502706,196.950764048965,0,824.26037
+"469","~year2","~season2","~year2 + season2 * sex","Phi(~year2)p(~season2)f(~year2 + season2 * sex)",27,17636.6636962025,196.960957545543,0,808.04315
+"472","~year2","~season2","~year2 * season2 + sex","Phi(~year2)p(~season2)f(~year2 * season2 + sex)",35,17636.7603293051,197.05759064815,0,791.83389
+"1025","~year2 * sex","~season2 + sex","~year2 * season2","Phi(~year2 * sex)p(~season2 + sex)f(~year2 * season2)",46,17637.4987002122,197.795961555199,0,770.02256
+"110","~season2","~season2 + sex","~year2 + season2 + sex","Phi(~season2)p(~season2 + sex)f(~year2 + season2 + sex)",18,17638.0065906222,198.303851965196,0,827.63618
+"200","~season2 + sex","~season2","~year2 + season2 * sex","Phi(~season2 + sex)p(~season2)f(~year2 + season2 * sex)",19,17638.850502706,199.147764048965,0,826.4572
+"111","~season2","~season2 + sex","~year2 + season2 * sex","Phi(~season2)p(~season2 + sex)f(~year2 + season2 * sex)",19,17639.2735027059,199.570764048964,0,826.88023
+"944","~year2 + sex","~time + sex","~season2","Phi(~year2 + sex)p(~time + sex)f(~season2)",37,17640.3630604595,200.660321802505,0,791.34745
+"977","~year2 + sex","~year2 * season2 + sex","~season2","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~season2)",37,17640.6560604595,200.953321802506,0,791.64049
+"186","~season2 + sex","~1","~year2 + season2 + sex","Phi(~season2 + sex)p(~1)f(~year2 + season2 + sex)",17,17643.2078942308,203.505155573785,0,834.85875
+"471","~year2","~season2","~year2 * season2","Phi(~year2)p(~season2)f(~year2 * season2)",34,17643.4158160677,203.713077410666,0,800.53145
+"899","~year2 + sex","~season2","~year2 + season2 + sex","Phi(~year2 + sex)p(~season2)f(~year2 + season2 + sex)",27,17643.4806962025,203.777957545546,0,814.86019
+"525","~year2","~year2 * season2","~season2 + sex","Phi(~year2)p(~year2 * season2)f(~season2 + sex)",36,17644.5860770626,204.883338405569,0,797.61629
+"109","~season2","~season2 + sex","~year2 + season2","Phi(~season2)p(~season2 + sex)f(~year2 + season2)",17,17644.7028942308,205.000155573784,0,836.3539
+"1022","~year2 * sex","~season2 + sex","~year2 + season2 + sex","Phi(~year2 * sex)p(~season2 + sex)f(~year2 + season2 + sex)",38,17645.6432806169,205.940541959888,0,794.58244
+"536","~year2","~year2 * season2 + sex","~season2 + sex","Phi(~year2)p(~year2 * season2 + sex)f(~season2 + sex)",37,17646.0380604595,206.335321802504,0,797.02329
+"85","~season2","~1","~year2 + season2 * sex","Phi(~season2)p(~1)f(~year2 + season2 * sex)",17,17646.5798942308,206.877155573784,0,838.23056
+"225","~season2 + sex","~sex","~year2 + season2 + sex","Phi(~season2 + sex)p(~sex)f(~year2 + season2 + sex)",18,17646.7325906222,207.029851965195,0,836.3615
+"1060","~year2 * sex","~time + sex","~year2 + season2 * sex","Phi(~year2 * sex)p(~time + sex)f(~year2 + season2 * sex)",59,17647.0575952526,207.354856595601,0,752.73832
+"224","~season2 + sex","~sex","~year2 + season2","Phi(~season2 + sex)p(~sex)f(~year2 + season2)",17,17648.0248942308,208.322155573784,0,839.67601
+"324","~season2 * sex","~sex","~year2 + season2 + sex","Phi(~season2 * sex)p(~sex)f(~year2 + season2 + sex)",19,17648.7565027059,209.053764048964,0,836.36262
+"1048","~year2 * sex","~time","~year2 + season2 * sex","Phi(~year2 * sex)p(~time)f(~year2 + season2 * sex)",58,17649.1401417706,209.437403113625,0,756.89288
+"323","~season2 * sex","~sex","~year2 + season2","Phi(~season2 * sex)p(~sex)f(~year2 + season2)",18,17650.0465906222,210.343851965197,0,839.67555
+"524","~year2","~year2 * season2","~season2","Phi(~year2)p(~year2 * season2)f(~season2)",35,17650.5293293051,210.82659064815,0,805.60326
+"123","~season2","~sex","~year2 + season2 + sex","Phi(~season2)p(~sex)f(~year2 + season2 + sex)",17,17650.6588942308,210.956155573782,0,842.31007
+"535","~year2","~year2 * season2 + sex","~season2","Phi(~year2)p(~year2 * season2 + sex)f(~season2)",36,17652.0240770626,212.321338405571,0,805.0537
+"1009","~year2 * sex","~season2","~year2 + season2 + sex","Phi(~year2 * sex)p(~season2)f(~year2 + season2 + sex)",37,17652.7670604595,213.064321802507,0,803.75187
+"1082","~year2 * sex","~year2 * season2","~season2 * sex","Phi(~year2 * sex)p(~year2 * season2)f(~season2 * sex)",48,17653.1577515924,213.45501293537,0,781.56595
+"965","~year2 + sex","~year2 * season2","~season2 + sex","Phi(~year2 + sex)p(~year2 * season2)f(~season2 + sex)",37,17653.7620604595,214.059321802506,0,804.74659
+"911","~year2 + sex","~season2 + sex","~year2 + season2","Phi(~year2 + sex)p(~season2 + sex)f(~year2 + season2)",27,17655.0736962025,215.370957545543,0,826.4531
+"1054","~year2 * sex","~time + sex","~season2 + sex","Phi(~year2 * sex)p(~time + sex)f(~season2 + sex)",48,17655.2137515924,215.511012935371,0,783.62146
+"1094","~year2 * sex","~year2 * season2 + sex","~season2 + sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~season2 + sex)",48,17655.2137515924,215.511012935371,0,783.62228
+"84","~season2","~1","~year2 + season2 + sex","Phi(~season2)p(~1)f(~year2 + season2 + sex)",16,17655.9494124362,216.24667377918,0,849.62106
+"898","~year2 + sex","~season2","~year2 + season2","Phi(~year2 + sex)p(~season2)f(~year2 + season2)",26,17657.3390189816,217.636280324637,0,830.75052
+"122","~season2","~sex","~year2 + season2","Phi(~season2)p(~sex)f(~year2 + season2)",16,17657.9284124362,218.225673779179,0,851.5998
+"481","~year2","~season2 + sex","~year2 + season2 + sex","Phi(~year2)p(~season2 + sex)f(~year2 + season2 + sex)",27,17659.1876962025,219.484957545545,0,830.56681
+"98","~season2","~season2","~year2 + season2 * sex","Phi(~season2)p(~season2)f(~year2 + season2 * sex)",18,17660.6645906222,220.961851965196,0,850.29362
+"468","~year2","~season2","~year2 + season2 + sex","Phi(~year2)p(~season2)f(~year2 + season2 + sex)",26,17662.4320189816,222.729280324635,0,835.84356
+"83","~season2","~1","~year2 + season2","Phi(~season2)p(~1)f(~year2 + season2)",15,17662.4761441441,222.773405487158,0,858.16691
+"718","~year2 + season2 + sex","~time + sex","~season2 * sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~season2 * sex)",40,17662.5224357035,222.819697046492,0,807.36508
+"199","~season2 + sex","~season2","~year2 + season2 + sex","Phi(~season2 + sex)p(~season2)f(~year2 + season2 + sex)",18,17662.6285906222,222.925851965196,0,852.25773
+"298","~season2 * sex","~season2","~year2 + season2 + sex","Phi(~season2 * sex)p(~season2)f(~year2 + season2 + sex)",19,17664.651502706,224.948764048964,0,852.25748
+"198","~season2 + sex","~season2","~year2 + season2","Phi(~season2 + sex)p(~season2)f(~year2 + season2)",17,17666.0808942308,226.378155573784,0,857.73179
+"480","~year2","~season2 + sex","~year2 + season2","Phi(~year2)p(~season2 + sex)f(~year2 + season2)",26,17666.9890189816,227.286280324635,0,840.40103
+"932","~year2 + sex","~time","~season2","Phi(~year2 + sex)p(~time)f(~season2)",36,17667.5390770626,227.83633840557,0,820.56858
+"297","~season2 * sex","~season2","~year2 + season2","Phi(~season2 * sex)p(~season2)f(~year2 + season2)",18,17668.1025906222,228.399851965198,0,857.73197
+"467","~year2","~season2","~year2 + season2","Phi(~year2)p(~season2)f(~year2 + season2)",25,17669.0145662651,229.311827608075,0,844.45767
+"97","~season2","~season2","~year2 + season2 + sex","Phi(~season2)p(~season2)f(~year2 + season2 + sex)",17,17669.3628942308,229.660155573783,0,861.01433
+"1047","~year2 * sex","~time","~year2 + season2 + sex","Phi(~year2 * sex)p(~time)f(~year2 + season2 + sex)",57,17674.3059489051,234.603210248122,0,784.12958
+"390","~sex","~season2","~year2 * season2 + sex","Phi(~sex)p(~season2)f(~year2 * season2 + sex)",26,17674.5650189816,234.862280324636,0,847.97685
+"840","~year2 + season2 * sex","~year2","~season2 + sex","Phi(~year2 + season2 * sex)p(~year2)f(~season2 + sex)",28,17675.6445990353,235.941860378287,0,844.98978
+"403","~sex","~season2 + sex","~year2 * season2 + sex","Phi(~sex)p(~season2 + sex)f(~year2 * season2 + sex)",27,17675.9326962025,236.229957545544,0,847.31179
+"96","~season2","~season2","~year2 + season2","Phi(~season2)p(~season2)f(~year2 + season2)",16,17676.1134124362,236.410673779181,0,869.78483
+"285","~season2 * sex","~1","~year2 + season2 + sex","Phi(~season2 * sex)p(~1)f(~year2 + season2 + sex)",18,17678.9775906222,239.274851965198,0,868.60697
+"185","~season2 + sex","~1","~year2 + season2","Phi(~season2 + sex)p(~1)f(~year2 + season2)",16,17681.3794124362,241.67667377918,0,875.05115
+"961","~year2 + sex","~year2 + sex","~year2 + season2","Phi(~year2 + sex)p(~year2 + sex)f(~year2 + season2)",36,17681.5440770626,241.841338405571,0,834.57356
+"284","~season2 * sex","~1","~year2 + season2","Phi(~season2 * sex)p(~1)f(~year2 + season2)",17,17683.4008942308,243.698155573784,0,875.0523
+"987","~year2 + sex","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",57,17684.4669489051,244.764210248122,0,794.29051
+"761","~year2 + season2 + sex","~year2 * season2 + sex","~season2","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~season2)",38,17690.8712806169,251.168541959887,0,839.81029
+"389","~sex","~season2","~year2 * season2","Phi(~sex)p(~season2)f(~year2 * season2)",25,17691.3425662651,251.639827608076,0,866.7861
+"543","~year2","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",56,17691.9120155062,252.209276849248,0,803.80591
+"402","~sex","~season2 + sex","~year2 * season2","Phi(~sex)p(~season2 + sex)f(~year2 * season2)",26,17692.4800189816,252.777280324637,0,865.89228
+"941","~year2 + sex","~time","~year2 * season2 + sex","Phi(~year2 + sex)p(~time)f(~year2 * season2 + sex)",56,17693.0590155062,253.356276849245,0,804.95246
+"974","~year2 + sex","~year2 * season2","~year2 * season2 + sex","Phi(~year2 + sex)p(~year2 * season2)f(~year2 * season2 + sex)",56,17693.6070155062,253.904276849247,0,805.5008
+"1059","~year2 * sex","~time + sex","~year2 + season2 + sex","Phi(~year2 * sex)p(~time + sex)f(~year2 + season2 + sex)",58,17694.2941417706,254.591403113624,0,802.04708
+"25","~1","~season2","~year2 * season2 + sex","Phi(~1)p(~season2)f(~year2 * season2 + sex)",25,17696.7585662651,257.055827608074,0,872.20216
+"1102","~year2 * sex","~year2 * season2 + sex","~year2 * season2 + sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 * season2 + sex)",67,17697.2347437462,257.532005089201,0,786.2904
+"38","~1","~season2 + sex","~year2 * season2 + sex","Phi(~1)p(~season2 + sex)f(~year2 * season2 + sex)",26,17697.4470189816,257.744280324638,0,870.8586
+"517","~year2","~time + sex","~year2 * season2 + sex","Phi(~year2)p(~time + sex)f(~year2 * season2 + sex)",56,17697.8130155062,258.110276849246,0,809.70717
+"907","~year2 + sex","~season2 + sex","~season2 + sex","Phi(~year2 + sex)p(~season2 + sex)f(~season2 + sex)",18,17698.0775906222,258.374851965196,0,887.70656
+"940","~year2 + sex","~time","~year2 * season2","Phi(~year2 + sex)p(~time)f(~year2 * season2)",55,17699.9423404255,260.239601768546,0,813.90518
+"1089","~year2 * sex","~year2 * season2","~year2 * season2","Phi(~year2 * sex)p(~year2 * season2)f(~year2 * season2)",65,17700.0698536585,260.367115001551,0,793.28928
+"1098","~year2 * sex","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",58,17701.8611417706,262.158403113623,0,809.61424
+"516","~year2","~time + sex","~year2 * season2","Phi(~year2)p(~time + sex)f(~year2 * season2)",55,17702.3413404255,262.638601768547,0,816.30359
+"530","~year2","~year2 * season2","~year2 + season2 * sex","Phi(~year2)p(~year2 * season2)f(~year2 + season2 * sex)",47,17702.4921018799,262.789363222942,0,832.95883
+"952","~year2 + sex","~time + sex","~year2 * season2 + sex","Phi(~year2 + sex)p(~time + sex)f(~year2 * season2 + sex)",57,17702.9149489051,263.212210248123,0,812.7391
+"24","~1","~season2","~year2 * season2","Phi(~1)p(~season2)f(~year2 * season2)",24,17702.9483369467,263.245598289715,0,880.42152
+"532","~year2","~year2 * season2","~year2 * season2 + sex","Phi(~year2)p(~year2 * season2)f(~year2 * season2 + sex)",55,17703.7163404255,264.013601768547,0,817.67894
+"37","~1","~season2 + sex","~year2 * season2","Phi(~1)p(~season2 + sex)f(~year2 * season2)",25,17704.0835662651,264.380827608074,0,879.52703
+"1067","~year2 * sex","~year2","~year2 + season2","Phi(~year2 * sex)p(~year2)f(~year2 + season2)",45,17705.3765454545,265.67380679756,0,839.95664
+"926","~year2 + sex","~sex","~year2 + season2 * sex","Phi(~year2 + sex)p(~sex)f(~year2 + season2 * sex)",28,17708.4935990353,268.790860378289,0,877.83927
+"1086","~year2 * sex","~year2 * season2","~year2 + season2 + sex","Phi(~year2 * sex)p(~year2 * season2)f(~year2 + season2 + sex)",57,17709.3769489051,269.674210248126,0,819.20065
+"507","~year2","~time","~year2 * season2 + sex","Phi(~year2)p(~time)f(~year2 * season2 + sex)",55,17709.9033404255,270.200601768545,0,823.86617
+"970","~year2 + sex","~year2 * season2","~year2 + season2 + sex","Phi(~year2 + sex)p(~year2 * season2)f(~year2 + season2 + sex)",47,17712.0341018799,272.331363222944,0,842.50121
+"982","~year2 + sex","~year2 * season2 + sex","~year2 + season2","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 + season2)",47,17712.0901018799,272.387363222944,0,842.55645
+"1087","~year2 * sex","~year2 * season2","~year2 + season2 * sex","Phi(~year2 * sex)p(~year2 * season2)f(~year2 + season2 * sex)",58,17712.5851417706,272.882403113625,0,820.33795
+"908","~year2 + sex","~season2 + sex","~season2 * sex","Phi(~year2 + sex)p(~season2 + sex)f(~season2 * sex)",19,17714.9885027059,275.285764048964,0,902.59454
+"895","~year2 + sex","~season2","~season2 * sex","Phi(~year2 + sex)p(~season2)f(~season2 * sex)",18,17715.2315906222,275.528851965199,0,904.86086
+"540","~year2","~year2 * season2 + sex","~year2 + season2 + sex","Phi(~year2)p(~year2 * season2 + sex)f(~year2 + season2 + sex)",47,17715.3401018799,275.637363222944,0,845.80682
+"1099","~year2 * sex","~year2 * season2 + sex","~year2 + season2 * sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 + season2 * sex)",59,17717.0125952526,277.309856595602,0,822.69285
+"506","~year2","~time","~year2 * season2","Phi(~year2)p(~time)f(~year2 * season2)",54,17717.171922516,277.469183858964,0,833.20218
+"531","~year2","~year2 * season2","~year2 * season2","Phi(~year2)p(~year2 * season2)f(~year2 * season2)",54,17717.173922516,277.471183858965,0,833.20404
+"1050","~year2 * sex","~time","~year2 * season2","Phi(~year2 * sex)p(~time)f(~year2 * season2)",65,17719.3258536585,279.623115001548,0,812.54457
+"632","~year2 + season2","~year2 * season2","~season2","Phi(~year2 + season2)p(~year2 * season2)f(~season2)",36,17724.7660770626,285.063338405569,0,877.79589
+"529","~year2","~year2 * season2","~year2 + season2 + sex","Phi(~year2)p(~year2 * season2)f(~year2 + season2 + sex)",46,17725.6027002122,285.899961555202,0,858.12742
+"1005","~year2 * sex","~season2","~season2 * sex","Phi(~year2 * sex)p(~season2)f(~season2 * sex)",28,17726.6535990353,286.950860378289,0,895.99862
+"495","~year2","~sex","~year2 + season2 * sex","Phi(~year2)p(~sex)f(~year2 + season2 * sex)",27,17726.7916962025,287.088957545544,0,898.17136
+"1018","~year2 * sex","~season2 + sex","~season2 * sex","Phi(~year2 * sex)p(~season2 + sex)f(~season2 * sex)",29,17727.6017285887,287.898989931677,0,894.91171
+"894","~year2 + sex","~season2","~season2 + sex","Phi(~year2 + sex)p(~season2)f(~season2 + sex)",17,17731.1558942308,291.453155573785,0,922.807
+"831","~year2 + season2 * sex","~time","~year2 * sex","Phi(~year2 + season2 * sex)p(~time)f(~year2 * sex)",58,17731.9621417706,292.259403113625,0,839.71501
+"868","~year2 + season2 * sex","~year2 * season2","~year2 * sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 * sex)",58,17731.9621417706,292.259403113625,0,839.71503
+"837","~year2 + season2 * sex","~time + sex","~year2 + sex","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2 + sex)",49,17732.0816504854,292.378911828451,0,858.43012
+"876","~year2 + season2 * sex","~year2 * season2 + sex","~year2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 + sex)",49,17732.0816504854,292.378911828451,0,858.43013
+"387","~sex","~season2","~year2 + season2 * sex","Phi(~sex)p(~season2)f(~year2 + season2 * sex)",18,17732.3345906222,292.631851965198,0,921.96438
+"839","~year2 + season2 * sex","~time + sex","~year2 * sex","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2 * sex)",59,17733.1285952526,293.425856595601,0,838.80848
+"878","~year2 + season2 * sex","~year2 * season2 + sex","~year2 * sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2 * sex)",59,17733.1285952526,293.425856595601,0,838.80862
+"400","~sex","~season2 + sex","~year2 + season2 * sex","Phi(~sex)p(~season2 + sex)f(~year2 + season2 * sex)",19,17733.280502706,293.577764048965,0,920.88728
+"1085","~year2 * sex","~year2 * season2","~year2 + season2","Phi(~year2 * sex)p(~year2 * season2)f(~year2 + season2)",56,17733.3690155062,293.666276849246,0,845.26325
+"1004","~year2 * sex","~season2","~season2 + sex","Phi(~year2 * sex)p(~season2)f(~season2 + sex)",27,17733.7196962025,294.016957545544,0,905.09867
+"477","~year2","~season2 + sex","~season2 * sex","Phi(~year2)p(~season2 + sex)f(~season2 * sex)",18,17734.5885906222,294.885851965199,0,924.21806
+"829","~year2 + season2 * sex","~time","~year2 + sex","Phi(~year2 + season2 * sex)p(~time)f(~year2 + sex)",48,17735.4627515924,295.76001293537,0,863.87061
+"865","~year2 + season2 * sex","~year2 * season2","~year2 + sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2 + sex)",48,17735.4627515924,295.76001293537,0,863.87061
+"1017","~year2 * sex","~season2 + sex","~season2 + sex","Phi(~year2 * sex)p(~season2 + sex)f(~season2 + sex)",28,17735.6565990353,295.953860378289,0,905.00153
+"726","~year2 + season2 + sex","~time + sex","~year2 * sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 * sex)",58,17737.8471417706,298.144403113623,0,845.5998
+"724","~year2 + season2 + sex","~time + sex","~year2 + sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2 + sex)",48,17738.3267515924,298.624012935372,0,866.7352
+"768","~year2 + season2 + sex","~year2 * season2 + sex","~year2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 + sex)",48,17738.3267515924,298.624012935372,0,866.73524
+"714","~year2 + season2 + sex","~time","~year2 + sex","Phi(~year2 + season2 + sex)p(~time)f(~year2 + sex)",47,17738.3481018799,298.645363222942,0,868.81512
+"757","~year2 + season2 + sex","~year2 * season2","~year2 + sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 + sex)",47,17738.3911018799,298.688363222944,0,868.85795
+"986","~year2 + sex","~year2 * season2 + sex","~year2 * season2","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 * season2)",56,17739.0470155062,299.344276849246,0,850.94098
+"1093","~year2 * sex","~year2 * season2 + sex","~season2","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~season2)",47,17739.1531018799,299.450363222943,0,869.61962
+"834","~year2 + season2 * sex","~time + sex","~year2","Phi(~year2 + season2 * sex)p(~time + sex)f(~year2)",48,17742.4727515924,302.770012935369,0,870.88077
+"872","~year2 + season2 * sex","~year2 * season2 + sex","~year2","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~year2)",48,17742.4727515924,302.770012935369,0,870.88079
+"996","~year2 * sex","~1","~year2 + season2 + sex","Phi(~year2 * sex)p(~1)f(~year2 + season2 + sex)",36,17742.6130770626,302.910338405571,0,895.64254
+"1023","~year2 * sex","~season2 + sex","~year2 + season2 * sex","Phi(~year2 * sex)p(~season2 + sex)f(~year2 + season2 * sex)",39,17743.340738657,303.638000000003,0,890.23168
+"464","~year2","~season2","~season2 * sex","Phi(~year2)p(~season2)f(~season2 * sex)",17,17743.3528942308,303.650155573785,0,935.0037
+"906","~year2 + sex","~season2 + sex","~season2","Phi(~year2 + sex)p(~season2 + sex)f(~season2)",17,17745.4928942308,305.790155573784,0,937.14439
+"893","~year2 + sex","~season2","~season2","Phi(~year2 + sex)p(~season2)f(~season2)",16,17747.2614124362,307.558673779182,0,940.93342
+"1010","~year2 * sex","~season2","~year2 + season2 * sex","Phi(~year2 * sex)p(~season2)f(~year2 + season2 * sex)",38,17747.4822806169,307.779541959888,0,896.42082
+"386","~sex","~season2","~year2 + season2 + sex","Phi(~sex)p(~season2)f(~year2 + season2 + sex)",17,17748.6498942308,308.947155573784,0,940.30115
+"826","~year2 + season2 * sex","~time","~year2","Phi(~year2 + season2 * sex)p(~time)f(~year2)",47,17748.6691018799,308.966363222942,0,879.13549
+"861","~year2 + season2 * sex","~year2 * season2","~year2","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~year2)",47,17748.6691018799,308.966363222942,0,879.13549
+"1008","~year2 * sex","~season2","~year2 + season2","Phi(~year2 * sex)p(~season2)f(~year2 + season2)",36,17749.4320770626,309.72933840557,0,902.46228
+"476","~year2","~season2 + sex","~season2 + sex","Phi(~year2)p(~season2 + sex)f(~season2 + sex)",17,17750.0528942308,310.350155573782,0,941.70393
+"399","~sex","~season2 + sex","~year2 + season2 + sex","Phi(~sex)p(~season2 + sex)f(~year2 + season2 + sex)",18,17750.3045906222,310.601851965195,0,939.93389
+"720","~year2 + season2 + sex","~time + sex","~year2","Phi(~year2 + season2 + sex)p(~time + sex)f(~year2)",47,17751.9971018799,312.294363222944,0,882.46383
+"764","~year2 + season2 + sex","~year2 * season2 + sex","~year2","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2)",47,17751.9971018799,312.294363222944,0,882.46387
+"463","~year2","~season2","~season2 + sex","Phi(~year2)p(~season2)f(~season2 + sex)",16,17752.7914124362,313.088673779181,0,946.46268
+"35","~1","~season2 + sex","~year2 + season2 * sex","Phi(~1)p(~season2 + sex)f(~year2 + season2 * sex)",18,17753.4525906222,313.749851965196,0,943.08232
+"710","~year2 + season2 + sex","~time","~year2","Phi(~year2 + season2 + sex)p(~time)f(~year2)",46,17753.5637002122,313.860961555201,0,886.08772
+"753","~year2 + season2 + sex","~year2 * season2","~year2","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2)",46,17753.5637002122,313.860961555201,0,886.08771
+"1062","~year2 * sex","~time + sex","~year2 * season2","Phi(~year2 * sex)p(~time + sex)f(~year2 * season2)",66,17753.8441637694,314.141425112455,0,844.98244
+"612","~year2 + season2","~time + sex","~year2 + sex","Phi(~year2 + season2)p(~time + sex)f(~year2 + sex)",47,17756.8911018799,317.188363222944,0,887.35753
+"652","~year2 + season2","~year2 * season2 + sex","~year2 + sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 + sex)",47,17756.8911018799,317.188363222944,0,887.35781
+"475","~year2","~season2 + sex","~season2","Phi(~year2)p(~season2 + sex)f(~season2)",16,17756.9724124362,317.269673779181,0,950.64435
+"969","~year2 + sex","~year2 * season2","~year2 + season2","Phi(~year2 + sex)p(~year2 * season2)f(~year2 + season2)",46,17757.7437002122,318.040961555202,0,890.26817
+"462","~year2","~season2","~season2","Phi(~year2)p(~season2)f(~season2)",15,17758.8231441441,319.12040548716,0,954.51429
+"603","~year2 + season2","~time","~year2 + sex","Phi(~year2 + season2)p(~time)f(~year2 + sex)",46,17758.9797002122,319.276961555202,0,891.50345
+"640","~year2 + season2","~year2 * season2","~year2 + sex","Phi(~year2 + season2)p(~year2 * season2)f(~year2 + sex)",46,17758.9817002122,319.278961555199,0,891.50552
+"951","~year2 + sex","~time + sex","~year2 * season2","Phi(~year2 + sex)p(~time + sex)f(~year2 * season2)",56,17759.5880155062,319.885276849247,0,871.48181
+"22","~1","~season2","~year2 + season2 * sex","Phi(~1)p(~season2)f(~year2 + season2 * sex)",17,17759.8378942308,320.135155573782,0,951.4894
+"1068","~year2 * sex","~year2","~year2 + season2 + sex","Phi(~year2 * sex)p(~year2)f(~year2 + season2 + sex)",46,17759.9337002122,320.2309615552,0,892.45842
+"1016","~year2 * sex","~season2 + sex","~season2","Phi(~year2 * sex)p(~season2 + sex)f(~season2)",27,17762.2716962025,322.568957545544,0,933.65072
+"608","~year2 + season2","~time + sex","~year2","Phi(~year2 + season2)p(~time + sex)f(~year2)",46,17762.4367002122,322.733961555201,0,894.9607
+"648","~year2 + season2","~year2 * season2 + sex","~year2","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2)",46,17762.4367002122,322.733961555201,0,894.96078
+"1021","~year2 * sex","~season2 + sex","~year2 + season2","Phi(~year2 * sex)p(~season2 + sex)f(~year2 + season2)",37,17763.1180604595,323.415321802506,0,914.10259
+"1003","~year2 * sex","~season2","~season2","Phi(~year2 * sex)p(~season2)f(~season2)",26,17763.4820189816,323.779280324638,0,936.89366
+"1063","~year2 * sex","~time + sex","~year2 * season2 + sex","Phi(~year2 * sex)p(~time + sex)f(~year2 * season2 + sex)",67,17763.9177437462,324.215005089198,0,852.97336
+"385","~sex","~season2","~year2 + season2","Phi(~sex)p(~season2)f(~year2 + season2)",16,17764.9574124362,325.254673779182,0,958.62919
+"636","~year2 + season2","~year2 * season2","~year2","Phi(~year2 + season2)p(~year2 * season2)f(~year2)",45,17765.4305454545,325.72780679756,0,900.01124
+"599","~year2 + season2","~time","~year2","Phi(~year2 + season2)p(~time)f(~year2)",45,17765.4345454545,325.731806797561,0,900.01522
+"398","~sex","~season2 + sex","~year2 + season2","Phi(~sex)p(~season2 + sex)f(~year2 + season2)",17,17765.4618942308,325.759155573782,0,957.11267
+"1058","~year2 * sex","~time + sex","~year2 + season2","Phi(~year2 * sex)p(~time + sex)f(~year2 + season2)",57,17765.6099489051,325.907210248122,0,875.43373
+"605","~year2 + season2","~time","~year2 * sex","Phi(~year2 + season2)p(~time)f(~year2 * sex)",56,17766.3940155062,326.691276849248,0,878.28787
+"643","~year2 + season2","~year2 * season2","~year2 * sex","Phi(~year2 + season2)p(~year2 * season2)f(~year2 * sex)",56,17766.3940155062,326.691276849248,0,878.28787
+"615","~year2 + season2","~time + sex","~year2 * sex","Phi(~year2 + season2)p(~time + sex)f(~year2 * sex)",57,17767.0139489051,327.311210248125,0,876.83839
+"655","~year2 + season2","~year2 * season2 + sex","~year2 * sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~year2 * sex)",57,17767.0139489051,327.311210248125,0,876.83808
+"964","~year2 + sex","~year2 * season2","~season2","Phi(~year2 + sex)p(~year2 * season2)f(~season2)",36,17770.0370770626,330.33433840557,0,923.06689
+"34","~1","~season2 + sex","~year2 + season2 + sex","Phi(~1)p(~season2 + sex)f(~year2 + season2 + sex)",17,17770.1388942308,330.436155573785,0,961.78962
+"21","~1","~season2","~year2 + season2 + sex","Phi(~1)p(~season2)f(~year2 + season2 + sex)",16,17770.2724124362,330.56967377918,0,963.94366
+"1051","~year2 * sex","~time","~year2 * season2 + sex","Phi(~year2 * sex)p(~time)f(~year2 * season2 + sex)",66,17775.7241637694,336.021425112453,0,866.86223
+"20","~1","~season2","~year2 + season2","Phi(~1)p(~season2)f(~year2 + season2)",15,17776.5281441441,336.825405487158,0,972.21938
+"1042","~year2 * sex","~time","~season2","Phi(~year2 * sex)p(~time)f(~season2)",46,17776.5457002122,336.842961555201,0,909.07012
+"33","~1","~season2 + sex","~year2 + season2","Phi(~1)p(~season2 + sex)f(~year2 + season2)",16,17777.0034124362,337.30067377918,0,970.67474
+"1080","~year2 * sex","~year2 * season2","~season2","Phi(~year2 * sex)p(~year2 * season2)f(~season2)",46,17778.9257002122,339.222961555202,0,911.44975
+"416","~sex","~sex","~year2 * season2 + sex","Phi(~sex)p(~sex)f(~year2 * season2 + sex)",26,17788.9710189816,349.268280324635,0,962.38327
+"415","~sex","~sex","~year2 * season2","Phi(~sex)p(~sex)f(~year2 * season2)",25,17795.3925662651,355.689827608076,0,970.83598
+"377","~sex","~1","~year2 * season2 + sex","Phi(~sex)p(~1)f(~year2 * season2 + sex)",25,17796.3085662651,356.605827608077,0,971.75221
+"51","~1","~sex","~year2 * season2 + sex","Phi(~1)p(~sex)f(~year2 * season2 + sex)",25,17799.1765662651,359.473827608075,0,974.62042
+"50","~1","~sex","~year2 * season2","Phi(~1)p(~sex)f(~year2 * season2)",24,17806.3133369467,366.610598289717,0,983.78648
+"339","~season2 * sex","~time + sex","~year2 + sex","Phi(~season2 * sex)p(~time + sex)f(~year2 + sex)",39,17807.241738657,367.539000000001,0,954.13337
+"376","~sex","~1","~year2 * season2","Phi(~sex)p(~1)f(~year2 * season2)",24,17808.1193369467,368.416598289718,0,985.59273
+"358","~season2 * sex","~year2 * season2","~year2 * sex","Phi(~season2 * sex)p(~year2 * season2)f(~year2 * sex)",48,17809.1747515924,369.47201293537,0,937.58252
+"333","~season2 * sex","~time","~year2 + sex","Phi(~season2 * sex)p(~time)f(~year2 + sex)",38,17809.2352806169,369.532541959888,0,958.17358
+"1101","~year2 * sex","~year2 * season2 + sex","~year2 * season2","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 * season2)",66,17809.5481637694,369.845425112453,0,900.68621
+"365","~season2 * sex","~year2 * season2 + sex","~year2 * sex","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~year2 * sex)",49,17810.3416504854,370.63891182845,0,936.68958
+"12","~1","~1","~year2 * season2 + sex","Phi(~1)p(~1)f(~year2 * season2 + sex)",24,17812.9203369467,373.217598289717,0,990.39389
+"234","~season2 + sex","~time","~year2 + sex","Phi(~season2 + sex)p(~time)f(~year2 + sex)",37,17813.9020604595,374.199321802505,0,964.88652
+"267","~season2 + sex","~year2 * season2","~year2 + sex","Phi(~season2 + sex)p(~year2 * season2)f(~year2 + sex)",37,17813.9020604595,374.199321802505,0,964.88653
+"242","~season2 + sex","~time + sex","~year2 + sex","Phi(~season2 + sex)p(~time + sex)f(~year2 + sex)",38,17814.7202806169,375.017541959889,0,963.65902
+"275","~season2 + sex","~year2 * season2 + sex","~year2 + sex","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 + sex)",38,17814.7202806169,375.017541959889,0,963.65905
+"277","~season2 + sex","~year2 * season2 + sex","~year2 * sex","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2 * sex)",48,17815.2897515924,375.587012935372,0,943.69816
+"11","~1","~1","~year2 * season2","Phi(~1)p(~1)f(~year2 * season2)",23,17819.4793299217,379.776591264748,0,998.98243
+"269","~season2 + sex","~year2 * season2","~year2 * sex","Phi(~season2 + sex)p(~year2 * season2)f(~year2 * sex)",47,17819.5801018799,379.877363222942,0,950.0474
+"334","~season2 * sex","~time","~year2 * sex","Phi(~season2 * sex)p(~time)f(~year2 * sex)",48,17821.6067515924,381.904012935371,0,950.01518
+"362","~season2 * sex","~year2 * season2 + sex","~year2","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~year2)",38,17821.9022806169,382.19954195989,0,970.84048
+"340","~season2 * sex","~time + sex","~year2 * sex","Phi(~season2 * sex)p(~time + sex)f(~year2 * sex)",49,17823.0056504854,383.30291182845,0,949.35363
+"860","~year2 + season2 * sex","~year2 * season2","~sex","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~sex)",38,17824.5792806169,384.876541959889,0,973.51773
+"355","~season2 * sex","~year2 * season2","~year2","Phi(~season2 * sex)p(~year2 * season2)f(~year2)",37,17824.7300604595,385.027321802507,0,975.71454
+"871","~year2 + season2 * sex","~year2 * season2 + sex","~sex","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~sex)",39,17825.417738657,385.715,0,972.30869
+"825","~year2 + season2 * sex","~time","~sex","Phi(~year2 + season2 * sex)p(~time)f(~sex)",38,17826.1342806169,386.43154195989,0,975.07305
+"833","~year2 + season2 * sex","~time + sex","~sex","Phi(~year2 + season2 * sex)p(~time + sex)f(~sex)",39,17827.218738657,387.516000000003,0,974.10994
+"709","~year2 + season2 + sex","~time","~sex","Phi(~year2 + season2 + sex)p(~time)f(~sex)",37,17828.1970604595,388.494321802507,0,979.18171
+"752","~year2 + season2 + sex","~year2 * season2","~sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~sex)",37,17828.1970604595,388.494321802507,0,979.18171
+"975","~year2 + sex","~year2 * season2","~year2 * sex","Phi(~year2 + sex)p(~year2 * season2)f(~year2 * sex)",56,17829.6830155062,389.980276849245,0,941.57659
+"719","~year2 + season2 + sex","~time + sex","~sex","Phi(~year2 + season2 + sex)p(~time + sex)f(~sex)",38,17830.2282806169,390.525541959887,0,979.16734
+"763","~year2 + season2 + sex","~year2 * season2 + sex","~sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~sex)",38,17830.2282806169,390.525541959887,0,979.16734
+"942","~year2 + sex","~time","~year2 * sex","Phi(~year2 + sex)p(~time)f(~year2 * sex)",56,17830.2610155062,390.558276849246,0,942.15492
+"232","~season2 + sex","~time","~year2","Phi(~season2 + sex)p(~time)f(~year2)",36,17830.4660770626,390.76333840557,0,983.496
+"263","~season2 + sex","~year2 * season2","~year2","Phi(~season2 + sex)p(~year2 * season2)f(~year2)",36,17830.5660770626,390.863338405568,0,983.59619
+"239","~season2 + sex","~time + sex","~year2","Phi(~season2 + sex)p(~time + sex)f(~year2)",37,17830.7410604595,391.038321802505,0,981.72595
+"271","~season2 + sex","~year2 * season2 + sex","~year2","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~year2)",37,17830.7410604595,391.038321802505,0,981.72602
+"939","~year2 + sex","~time","~year2 + sex","Phi(~year2 + sex)p(~time)f(~year2 + sex)",46,17831.2027002122,391.499961555201,0,963.72722
+"950","~year2 + sex","~time + sex","~year2 + sex","Phi(~year2 + sex)p(~time + sex)f(~year2 + sex)",47,17831.3581018799,391.655363222944,0,961.82511
+"985","~year2 + sex","~year2 * season2 + sex","~year2 + sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 + sex)",47,17831.3581018799,391.655363222944,0,961.82512
+"988","~year2 + sex","~year2 * season2 + sex","~year2 * sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2 * sex)",57,17831.6209489051,391.918210248125,0,941.44514
+"972","~year2 + sex","~year2 * season2","~year2 + sex","Phi(~year2 + sex)p(~year2 * season2)f(~year2 + sex)",46,17831.6777002122,391.974961555199,0,964.20175
+"953","~year2 + sex","~time + sex","~year2 * sex","Phi(~year2 + sex)p(~time + sex)f(~year2 * sex)",57,17832.1339489051,392.431210248124,0,941.95767
+"374","~sex","~1","~year2 + season2 * sex","Phi(~sex)p(~1)f(~year2 + season2 * sex)",17,17834.2598942308,394.557155573784,0,1025.911
+"413","~sex","~sex","~year2 + season2 * sex","Phi(~sex)p(~sex)f(~year2 + season2 * sex)",18,17835.5245906222,395.821851965196,0,1025.1539
+"134","~season2","~time","~year2 + sex","Phi(~season2)p(~time)f(~year2 + sex)",36,17836.1840770626,396.481338405571,0,989.21416
+"164","~season2","~year2 * season2","~year2 + sex","Phi(~season2)p(~year2 * season2)f(~year2 + sex)",36,17836.1840770626,396.481338405571,0,989.21422
+"141","~season2","~time + sex","~year2 + sex","Phi(~season2)p(~time + sex)f(~year2 + sex)",37,17836.1940604595,396.491321802507,0,987.17915
+"175","~season2","~year2 * season2 + sex","~year2 + sex","Phi(~season2)p(~year2 * season2 + sex)f(~year2 + sex)",37,17836.1940604595,396.491321802507,0,987.17921
+"1052","~year2 * sex","~time","~year2 * sex","Phi(~year2 * sex)p(~time)f(~year2 * sex)",66,17836.2791637694,396.576425112453,0,927.41741
+"1091","~year2 * sex","~year2 * season2","~year2 * sex","Phi(~year2 * sex)p(~year2 * season2)f(~year2 * sex)",66,17836.2791637694,396.576425112453,0,927.41741
+"1064","~year2 * sex","~time + sex","~year2 * sex","Phi(~year2 * sex)p(~time + sex)f(~year2 * sex)",67,17838.3607437462,398.658005089197,0,927.41575
+"1103","~year2 * sex","~year2 * season2 + sex","~year2 * sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 * sex)",67,17838.3607437462,398.658005089197,0,927.41578
+"869","~year2 + season2 * sex","~year2 * season2 + sex","~1","Phi(~year2 + season2 * sex)p(~year2 * season2 + sex)f(~1)",38,17839.2182806169,399.515541959889,0,988.15727
+"1077","~year2 * sex","~year2 + sex","~year2 * season2 + sex","Phi(~year2 * sex)p(~year2 + sex)f(~year2 * season2 + sex)",56,17841.1540155062,401.451276849246,0,953.04757
+"1049","~year2 * sex","~time","~year2 + sex","Phi(~year2 * sex)p(~time)f(~year2 + sex)",56,17841.2970155062,401.594276849246,0,953.19094
+"1088","~year2 * sex","~year2 * season2","~year2 + sex","Phi(~year2 * sex)p(~year2 * season2)f(~year2 + sex)",56,17841.2970155062,401.594276849246,0,953.19113
+"832","~year2 + season2 * sex","~time + sex","~1","Phi(~year2 + season2 * sex)p(~time + sex)f(~1)",38,17841.4062806169,401.703541959887,0,990.34469
+"139","~season2","~time + sex","~year2","Phi(~season2)p(~time + sex)f(~year2)",36,17841.5580770626,401.85533840557,0,994.5884
+"172","~season2","~year2 * season2 + sex","~year2","Phi(~season2)p(~year2 * season2 + sex)f(~year2)",36,17841.5580770626,401.85533840557,0,994.58841
+"132","~season2","~time","~year2","Phi(~season2)p(~time)f(~year2)",35,17842.1363293051,402.43359064815,0,997.21037
+"161","~season2","~year2 * season2","~year2","Phi(~season2)p(~year2 * season2)f(~year2)",35,17842.1363293051,402.43359064815,0,997.21041
+"1061","~year2 * sex","~time + sex","~year2 + sex","Phi(~year2 * sex)p(~time + sex)f(~year2 + sex)",57,17842.6659489051,402.963210248123,0,952.48946
+"136","~season2","~time","~year2 * sex","Phi(~season2)p(~time)f(~year2 * sex)",46,17842.8717002122,403.168961555202,0,975.39575
+"166","~season2","~year2 * season2","~year2 * sex","Phi(~season2)p(~year2 * season2)f(~year2 * sex)",46,17842.8717002122,403.168961555202,0,975.39578
+"859","~year2 + season2 * sex","~year2 * season2","~1","Phi(~year2 + season2 * sex)p(~year2 * season2)f(~1)",37,17842.9830604595,403.280321802507,0,993.9679
+"142","~season2","~time + sex","~year2 * sex","Phi(~season2)p(~time + sex)f(~year2 * sex)",47,17843.8001018799,404.097363222943,0,974.26741
+"178","~season2","~year2 * season2 + sex","~year2 * sex","Phi(~season2)p(~year2 * season2 + sex)f(~year2 * sex)",47,17843.8011018799,404.098363222944,0,974.26746
+"947","~year2 + sex","~time + sex","~year2","Phi(~year2 + sex)p(~time + sex)f(~year2)",46,17844.5027002122,404.7999615552,0,977.02667
+"981","~year2 + sex","~year2 * season2 + sex","~year2","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~year2)",46,17844.5027002122,404.7999615552,0,977.02669
+"824","~year2 + season2 * sex","~time","~1","Phi(~year2 + season2 * sex)p(~time)f(~1)",37,17844.5730604595,404.870321802508,0,995.55788
+"935","~year2 + sex","~time","~year2","Phi(~year2 + sex)p(~time)f(~year2)",45,17844.7365454545,405.033806797561,0,979.31673
+"968","~year2 + sex","~year2 * season2","~year2","Phi(~year2 + sex)p(~year2 * season2)f(~year2)",45,17844.7365454545,405.033806797561,0,979.31675
+"412","~sex","~sex","~year2 + season2 + sex","Phi(~sex)p(~sex)f(~year2 + season2 + sex)",17,17846.0038942308,406.301155573783,0,1037.655
+"795","~year2 + season2 * sex","~season2","~year2 * season2","Phi(~year2 + season2 * sex)p(~season2)f(~year2 * season2)",37,17846.1980604595,406.495321802508,0,997.18262
+"794","~year2 + season2 * sex","~season2","~year2 + sex","Phi(~year2 + season2 * sex)p(~season2)f(~year2 + sex)",28,17847.1885990353,407.485860378289,0,1016.534
+"959","~year2 + sex","~year2","~year2 * season2 + sex","Phi(~year2 + sex)p(~year2)f(~year2 * season2 + sex)",45,17847.7055454545,408.002806797562,0,982.28602
+"708","~year2 + season2 + sex","~time","~1","Phi(~year2 + season2 + sex)p(~time)f(~1)",36,17848.7140770626,409.011338405569,0,1001.744
+"749","~year2 + season2 + sex","~year2 * season2","~1","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~1)",36,17848.7140770626,409.011338405569,0,1001.744
+"760","~year2 + season2 + sex","~year2 * season2 + sex","~1","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~1)",37,17848.9010604595,409.198321802505,0,999.88621
+"515","~year2","~time + sex","~year2 + sex","Phi(~year2)p(~time + sex)f(~year2 + sex)",46,17849.7567002122,410.053961555201,0,982.28069
+"542","~year2","~year2 * season2 + sex","~year2 + sex","Phi(~year2)p(~year2 * season2 + sex)f(~year2 + sex)",46,17849.7617002122,410.058961555202,0,982.28557
+"716","~year2 + season2 + sex","~time","~year2 * sex","Phi(~year2 + season2 + sex)p(~time)f(~year2 * sex)",57,17850.0519489051,410.349210248125,0,959.87639
+"759","~year2 + season2 + sex","~year2 * season2","~year2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2)f(~year2 * sex)",57,17850.0519489051,410.349210248125,0,959.87568
+"505","~year2","~time","~year2 + sex","Phi(~year2)p(~time)f(~year2 + sex)",45,17850.1815454545,410.478806797561,0,984.76193
+"717","~year2 + season2 + sex","~time + sex","~1","Phi(~year2 + season2 + sex)p(~time + sex)f(~1)",37,17850.2780604595,410.575321802506,0,1001.2631
+"411","~sex","~sex","~year2 + season2","Phi(~sex)p(~sex)f(~year2 + season2)",16,17851.4594124362,411.756673779179,0,1045.1307
+"771","~year2 + season2 + sex","~year2 * season2 + sex","~year2 * sex","Phi(~year2 + season2 + sex)p(~year2 * season2 + sex)f(~year2 * sex)",58,17851.6381417706,411.935403113624,0,959.39068
+"607","~year2 + season2","~time + sex","~sex","Phi(~year2 + season2)p(~time + sex)f(~sex)",37,17854.6910604595,414.988321802506,0,1005.6763
+"48","~1","~sex","~year2 + season2 * sex","Phi(~1)p(~sex)f(~year2 + season2 * sex)",17,17854.8078942308,415.105155573783,0,1046.4588
+"598","~year2 + season2","~time","~sex","Phi(~year2 + season2)p(~time)f(~sex)",36,17854.8920770626,415.189338405569,0,1007.9217
+"635","~year2 + season2","~year2 * season2","~sex","Phi(~year2 + season2)p(~year2 * season2)f(~sex)",36,17854.8940770626,415.19133840557,0,1007.9237
+"47","~1","~sex","~year2 + season2 + sex","Phi(~1)p(~sex)f(~year2 + season2 + sex)",16,17855.0114124362,415.308673779182,0,1048.6828
+"373","~sex","~1","~year2 + season2 + sex","Phi(~sex)p(~1)f(~year2 + season2 + sex)",16,17855.3304124362,415.627673779181,0,1049.002
+"512","~year2","~time + sex","~year2","Phi(~year2)p(~time + sex)f(~year2)",45,17855.5415454545,415.838806797561,0,990.12241
+"539","~year2","~year2 * season2 + sex","~year2","Phi(~year2)p(~year2 * season2 + sex)f(~year2)",45,17855.5415454545,415.838806797561,0,990.12241
+"502","~year2","~time","~year2","Phi(~year2)p(~time)f(~year2)",44,17856.5466364738,416.843897816812,0,993.18184
+"528","~year2","~year2 * season2","~year2","Phi(~year2)p(~year2 * season2)f(~year2)",44,17856.5466364738,416.843897816812,0,993.18186
+"508","~year2","~time","~year2 * sex","Phi(~year2)p(~time)f(~year2 * sex)",55,17857.2753404255,417.572601768545,0,971.23835
+"533","~year2","~year2 * season2","~year2 * sex","Phi(~year2)p(~year2 * season2)f(~year2 * sex)",55,17857.2753404255,417.572601768545,0,971.23838
+"647","~year2 + season2","~year2 * season2 + sex","~sex","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~sex)",37,17857.5360604595,417.833321802507,0,1008.5209
+"518","~year2","~time + sex","~year2 * sex","Phi(~year2)p(~time + sex)f(~year2 * sex)",56,17858.4540155062,418.751276849245,0,970.34745
+"544","~year2","~year2 * season2 + sex","~year2 * sex","Phi(~year2)p(~year2 * season2 + sex)f(~year2 * sex)",56,17858.4540155062,418.751276849245,0,970.34749
+"807","~year2 + season2 * sex","~season2 + sex","~year2 + sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 + sex)",29,17858.8507285887,419.147989931676,0,1026.1605
+"331","~season2 * sex","~time","~season2 * sex","Phi(~season2 * sex)p(~time)f(~season2 * sex)",30,17859.0210859729,419.318347315864,0,1024.295
+"354","~season2 * sex","~year2 * season2","~season2 * sex","Phi(~season2 * sex)p(~year2 * season2)f(~season2 * sex)",30,17859.0210859729,419.318347315864,0,1024.295
+"644","~year2 + season2","~year2 * season2 + sex","~1","Phi(~year2 + season2)p(~year2 * season2 + sex)f(~1)",36,17860.6280770626,420.92533840557,0,1013.6584
+"336","~season2 * sex","~time + sex","~season2 * sex","Phi(~season2 * sex)p(~time + sex)f(~season2 * sex)",31,17860.8946722993,421.191933642349,0,1024.1305
+"361","~season2 * sex","~year2 * season2 + sex","~season2 * sex","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~season2 * sex)",31,17860.8946722993,421.191933642349,0,1024.1305
+"1046","~year2 * sex","~time","~year2","Phi(~year2 * sex)p(~time)f(~year2)",55,17860.9153404255,421.212601768548,0,974.87803
+"1057","~year2 * sex","~time + sex","~year2","Phi(~year2 * sex)p(~time + sex)f(~year2)",56,17860.9270155062,421.224276849247,0,972.82117
+"678","~year2 + season2 + sex","~season2","~year2 + sex","Phi(~year2 + season2 + sex)p(~season2)f(~year2 + sex)",27,17861.0526962025,421.349957545546,0,1032.4315
+"797","~year2 + season2 * sex","~season2","~year2 * sex","Phi(~year2 + season2 * sex)p(~season2)f(~year2 * sex)",38,17861.1162806169,421.41354195989,0,1010.0548
+"9","~1","~1","~year2 + season2 * sex","Phi(~1)p(~1)f(~year2 + season2 * sex)",16,17861.8964124362,422.19367377918,0,1055.5678
+"691","~year2 + season2 + sex","~season2 + sex","~year2 + sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 + sex)",28,17861.9995990353,422.296860378287,0,1031.345
+"46","~1","~sex","~year2 + season2","Phi(~1)p(~sex)f(~year2 + season2)",15,17862.2791441441,422.576405487158,0,1057.9704
+"810","~year2 + season2 * sex","~season2 + sex","~year2 * sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2 * sex)",39,17862.439738657,422.737000000001,0,1009.3306
+"422","~sex","~time","~year2 + sex","Phi(~sex)p(~time)f(~year2 + sex)",36,17863.6400770626,423.937338405569,0,1016.67
+"431","~sex","~time + sex","~year2 + sex","Phi(~sex)p(~time + sex)f(~year2 + sex)",37,17864.6830604595,424.980321802504,0,1015.6681
+"425","~sex","~time","~year2 * sex","Phi(~sex)p(~time)f(~year2 * sex)",46,17864.6997002122,424.9969615552,0,997.22412
+"681","~year2 + season2 + sex","~season2","~year2 * sex","Phi(~year2 + season2 + sex)p(~season2)f(~year2 * sex)",37,17864.8320604595,425.129321802506,0,1015.8169
+"433","~sex","~time + sex","~year2 * sex","Phi(~sex)p(~time + sex)f(~year2 * sex)",47,17866.7141018799,427.011363222944,0,997.18049
+"447","~sex","~year2 * season2 + sex","~year2 * sex","Phi(~sex)p(~year2 * season2 + sex)f(~year2 * sex)",47,17866.7141018799,427.011363222944,0,997.18049
+"372","~sex","~1","~year2 + season2","Phi(~sex)p(~1)f(~year2 + season2)",15,17866.7181441441,427.01540548716,0,1062.4089
+"694","~year2 + season2 + sex","~season2 + sex","~year2 * sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2 * sex)",38,17866.8172806169,427.114541959887,0,1015.7561
+"803","~year2 + season2 * sex","~season2 + sex","~year2","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~year2)",28,17869.8845990353,430.181860378289,0,1039.2295
+"8","~1","~1","~year2 + season2 + sex","Phi(~1)p(~1)f(~year2 + season2 + sex)",15,17871.4151441441,431.71240548716,0,1067.1059
+"956","~year2 + sex","~year2","~year2 + season2","Phi(~year2 + sex)p(~year2)f(~year2 + season2)",35,17873.5373293051,433.834590648152,0,1028.6112
+"687","~year2 + season2 + sex","~season2 + sex","~year2","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~year2)",27,17874.1206962025,434.417957545546,0,1045.5
+"790","~year2 + season2 * sex","~season2","~year2","Phi(~year2 + season2 * sex)p(~season2)f(~year2)",27,17874.9536962025,435.250957545544,0,1046.3327
+"443","~sex","~year2 * season2","~year2 * sex","Phi(~sex)p(~year2 * season2)f(~year2 * sex)",46,17876.5837002122,436.880961555202,0,1009.108
+"674","~year2 + season2 + sex","~season2","~year2","Phi(~year2 + season2 + sex)p(~season2)f(~year2)",26,17877.4270189816,437.724280324637,0,1050.8391
+"7","~1","~1","~year2 + season2","Phi(~1)p(~1)f(~year2 + season2)",14,17878.0430882618,438.340349604798,0,1075.7518
+"580","~year2 + season2","~season2 + sex","~year2 + sex","Phi(~year2 + season2)p(~season2 + sex)f(~year2 + sex)",27,17878.7026962025,438.999957545544,0,1050.0819
+"420","~sex","~time","~year2","Phi(~sex)p(~time)f(~year2)",35,17879.0753293051,439.372590648149,0,1034.1487
+"429","~sex","~time + sex","~year2","Phi(~sex)p(~time + sex)f(~year2)",36,17879.9520770626,440.249338405571,0,1032.9817
+"567","~year2 + season2","~season2","~year2 + sex","Phi(~year2 + season2)p(~season2)f(~year2 + sex)",26,17882.7850189816,443.082280324637,0,1056.1972
+"58","~1","~time","~year2 + sex","Phi(~1)p(~time)f(~year2 + sex)",35,17884.7993293051,445.096590648151,0,1039.8731
+"66","~1","~time + sex","~year2 + sex","Phi(~1)p(~time + sex)f(~year2 + sex)",36,17885.5410770626,445.838338405571,0,1038.5712
+"576","~year2 + season2","~season2 + sex","~year2","Phi(~year2 + season2)p(~season2 + sex)f(~year2)",26,17886.0460189816,446.343280324636,0,1059.4575
+"583","~year2 + season2","~season2 + sex","~year2 * sex","Phi(~year2 + season2)p(~season2 + sex)f(~year2 * sex)",37,17888.5930604595,448.890321802504,0,1039.5778
+"563","~year2 + season2","~season2","~year2","Phi(~year2 + season2)p(~season2)f(~year2)",25,17889.1435662651,449.440827608076,0,1064.5866
+"131","~season2","~time","~season2 * sex","Phi(~season2)p(~time)f(~season2 * sex)",28,17889.7685990353,450.065860378287,0,1059.1137
+"56","~1","~time","~year2","Phi(~1)p(~time)f(~year2)",34,17890.7188160677,451.016077410666,0,1047.8348
+"72","~1","~year2 * season2","~year2","Phi(~1)p(~year2 * season2)f(~year2)",34,17890.7188160677,451.016077410666,0,1047.8348
+"1097","~year2 * sex","~year2 * season2 + sex","~year2","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2)",56,17891.0350155062,451.332276849247,0,1002.9286
+"65","~1","~time + sex","~year2","Phi(~1)p(~time + sex)f(~year2)",35,17891.0883293051,451.385590648151,0,1046.1617
+"76","~1","~year2 * season2 + sex","~year2","Phi(~1)p(~year2 * season2 + sex)f(~year2)",35,17891.0883293051,451.385590648151,0,1046.1617
+"570","~year2 + season2","~season2","~year2 * sex","Phi(~year2 + season2)p(~season2)f(~year2 * sex)",36,17891.4320770626,451.72933840557,0,1044.462
+"60","~1","~time","~year2 * sex","Phi(~1)p(~time)f(~year2 * sex)",45,17891.9705454545,452.267806797561,0,1026.5506
+"1084","~year2 * sex","~year2 * season2","~year2","Phi(~year2 * sex)p(~year2 * season2)f(~year2)",55,17892.7383404255,453.035601768548,0,1006.7009
+"69","~1","~time + sex","~year2 * sex","Phi(~1)p(~time + sex)f(~year2 * sex)",46,17893.1657002122,453.4629615552,0,1025.6898
+"261","~season2 + sex","~year2 * season2","~season2","Phi(~season2 + sex)p(~year2 * season2)f(~season2)",27,17893.4406962025,453.737957545545,0,1064.8196
+"456","~year2","~1","~year2 + season2 * sex","Phi(~year2)p(~1)f(~year2 + season2 * sex)",26,17896.8910189816,457.188280324637,0,1070.3025
+"169","~season2","~year2 * season2 + sex","~season2 + sex","Phi(~season2)p(~year2 * season2 + sex)f(~season2 + sex)",28,17897.6775990353,457.974860378286,0,1067.0233
+"934","~year2 + sex","~time","~sex","Phi(~year2 + sex)p(~time)f(~sex)",36,17900.5240770626,460.821338405571,0,1053.5543
+"967","~year2 + sex","~year2 * season2","~sex","Phi(~year2 + sex)p(~year2 * season2)f(~sex)",36,17900.5240770626,460.821338405571,0,1053.5543
+"360","~season2 * sex","~year2 * season2 + sex","~season2","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~season2)",29,17901.8217285887,462.118989931674,0,1069.1317
+"130","~season2","~time","~season2","Phi(~season2)p(~time)f(~season2)",26,17902.0410189816,462.338280324635,0,1075.4526
+"159","~season2","~year2 * season2","~season2","Phi(~season2)p(~year2 * season2)f(~season2)",26,17902.0410189816,462.338280324635,0,1075.4526
+"946","~year2 + sex","~time + sex","~sex","Phi(~year2 + sex)p(~time + sex)f(~sex)",37,17902.5250604595,462.822321802505,0,1053.5099
+"980","~year2 + sex","~year2 * season2 + sex","~sex","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~sex)",37,17902.5250604595,462.822321802505,0,1053.5099
+"160","~season2","~year2 * season2","~season2 * sex","Phi(~season2)p(~year2 * season2)f(~season2 * sex)",28,17904.0005990353,464.297860378287,0,1073.3463
+"170","~season2","~year2 * season2 + sex","~season2 * sex","Phi(~season2)p(~year2 * season2 + sex)f(~season2 * sex)",29,17904.9647285887,465.261989931674,0,1072.275
+"1096","~year2 * sex","~year2 * season2 + sex","~sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~sex)",47,17912.8961018799,473.193363222941,0,1043.3634
+"485","~year2","~season2 + sex","~year2 * season2 + sex","Phi(~year2)p(~season2 + sex)f(~year2 * season2 + sex)",36,17914.2000770626,474.49733840557,0,1067.2304
+"903","~year2 + sex","~season2","~year2 * season2 + sex","Phi(~year2 + sex)p(~season2)f(~year2 * season2 + sex)",36,17915.4990770626,475.796338405569,0,1068.5293
+"1100","~year2 * sex","~year2 * season2 + sex","~year2 + sex","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~year2 + sex)",57,17915.6479489051,475.945210248123,0,1025.4723
+"789","~year2 + season2 * sex","~season2","~sex","Phi(~year2 + season2 * sex)p(~season2)f(~sex)",18,17918.5575906222,478.854851965196,0,1108.187
+"802","~year2 + season2 * sex","~season2 + sex","~sex","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~sex)",19,17918.784502706,479.081764048966,0,1106.3906
+"1031","~year2 * sex","~sex","~season2 * sex","Phi(~year2 * sex)p(~sex)f(~season2 * sex)",28,17918.9205990353,479.217860378289,0,1088.2661
+"931","~year2 + sex","~time","~1","Phi(~year2 + sex)p(~time)f(~1)",35,17919.4563293051,479.75359064815,0,1074.5302
+"1076","~year2 * sex","~year2 + sex","~year2 * season2","Phi(~year2 * sex)p(~year2 + sex)f(~year2 * season2)",55,17919.5393404255,479.836601768548,0,1033.5024
+"943","~year2 + sex","~time + sex","~1","Phi(~year2 + sex)p(~time + sex)f(~1)",36,17920.7040770626,481.001338405571,0,1073.734
+"673","~year2 + season2 + sex","~season2","~sex","Phi(~year2 + season2 + sex)p(~season2)f(~sex)",17,17922.1098942308,482.407155573783,0,1113.7611
+"484","~year2","~season2 + sex","~year2 * season2","Phi(~year2)p(~season2 + sex)f(~year2 * season2)",35,17922.8413293051,483.138590648152,0,1077.9151
+"686","~year2 + season2 + sex","~season2 + sex","~sex","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~sex)",18,17923.2165906222,483.513851965195,0,1112.8455
+"501","~year2","~time","~sex","Phi(~year2)p(~time)f(~sex)",35,17925.6283293051,485.925590648148,0,1080.702
+"527","~year2","~year2 * season2","~sex","Phi(~year2)p(~year2 * season2)f(~sex)",35,17925.6283293051,485.925590648148,0,1080.702
+"992","~year2 * sex","~1","~season2 * sex","Phi(~year2 * sex)p(~1)f(~season2 * sex)",27,17926.0786962025,486.375957545544,0,1097.458
+"538","~year2","~year2 * season2 + sex","~sex","Phi(~year2)p(~year2 * season2 + sex)f(~sex)",36,17926.8060770626,487.10333840557,0,1079.8359
+"511","~year2","~time + sex","~sex","Phi(~year2)p(~time + sex)f(~sex)",36,17926.9200770626,487.217338405571,0,1079.9501
+"798","~year2 + season2 * sex","~season2 + sex","~1","Phi(~year2 + season2 * sex)p(~season2 + sex)f(~1)",18,17931.7685906222,492.065851965195,0,1121.3984
+"1079","~year2 * sex","~year2 * season2","~1","Phi(~year2 * sex)p(~year2 * season2)f(~1)",45,17934.1075454545,494.40480679756,0,1068.688
+"1053","~year2 * sex","~time + sex","~1","Phi(~year2 * sex)p(~time + sex)f(~1)",46,17935.7547002122,496.0519615552,0,1068.2794
+"682","~year2 + season2 + sex","~season2 + sex","~1","Phi(~year2 + season2 + sex)p(~season2 + sex)f(~1)",17,17936.9088942308,497.206155573782,0,1128.5595
+"901","~year2 + sex","~season2","~year2 + sex","Phi(~year2 + sex)p(~season2)f(~year2 + sex)",26,17937.1040189816,497.401280324637,0,1110.516
+"785","~year2 + season2 * sex","~season2","~1","Phi(~year2 + season2 * sex)p(~season2)f(~1)",17,17937.1518942308,497.449155573784,0,1128.8027
+"914","~year2 + sex","~season2 + sex","~year2 + sex","Phi(~year2 + sex)p(~season2 + sex)f(~year2 + sex)",27,17939.9506962025,500.247957545544,0,1111.3295
+"1045","~year2 * sex","~time","~sex","Phi(~year2 * sex)p(~time)f(~sex)",46,17940.1027002122,500.399961555202,0,1072.6266
+"1083","~year2 * sex","~year2 * season2","~sex","Phi(~year2 * sex)p(~year2 * season2)f(~sex)",46,17940.1027002122,500.399961555202,0,1072.6265
+"669","~year2 + season2 + sex","~season2","~1","Phi(~year2 + season2 + sex)p(~season2)f(~1)",16,17940.9914124362,501.288673779181,0,1134.6628
+"575","~year2 + season2","~season2 + sex","~sex","Phi(~year2 + season2)p(~season2 + sex)f(~sex)",17,17941.7028942308,502.000155573784,0,1133.3538
+"1056","~year2 * sex","~time + sex","~sex","Phi(~year2 * sex)p(~time + sex)f(~sex)",47,17941.8651018799,502.162363222942,0,1072.332
+"562","~year2 + season2","~season2","~sex","Phi(~year2 + season2)p(~season2)f(~sex)",16,17946.8274124362,507.124673779181,0,1140.4991
+"571","~year2 + season2","~season2 + sex","~1","Phi(~year2 + season2)p(~season2 + sex)f(~1)",16,17948.1464124362,508.44367377918,0,1141.818
+"976","~year2 + sex","~year2 * season2 + sex","~1","Phi(~year2 + sex)p(~year2 * season2 + sex)f(~1)",36,17949.2290770626,509.526338405569,0,1102.2585
+"925","~year2 + sex","~sex","~year2 + season2 + sex","Phi(~year2 + sex)p(~sex)f(~year2 + season2 + sex)",27,17951.3766962025,511.673957545543,0,1122.7556
+"924","~year2 + sex","~sex","~year2 + season2","Phi(~year2 + sex)p(~sex)f(~year2 + season2)",26,17951.7820189816,512.079280324637,0,1125.1944
+"558","~year2 + season2","~season2","~1","Phi(~year2 + season2)p(~season2)f(~1)",15,17952.4541441441,512.751405487161,0,1148.1454
+"494","~year2","~sex","~year2 + season2 + sex","Phi(~year2)p(~sex)f(~year2 + season2 + sex)",26,17954.4420189816,514.739280324637,0,1127.8538
+"887","~year2 + sex","~1","~year2 + season2 * sex","Phi(~year2 + sex)p(~1)f(~year2 + season2 * sex)",27,17956.2466962025,516.543957545546,0,1127.6257
+"1092","~year2 * sex","~year2 * season2 + sex","~1","Phi(~year2 * sex)p(~year2 * season2 + sex)f(~1)",46,17959.2327002122,519.529961555199,0,1091.7571
+"523","~year2","~year2 * season2","~1","Phi(~year2)p(~year2 * season2)f(~1)",34,17960.8808160677,521.178077410666,0,1117.9965
+"534","~year2","~year2 * season2 + sex","~1","Phi(~year2)p(~year2 * season2 + sex)f(~1)",35,17962.1323293051,522.429590648149,0,1117.2056
+"1041","~year2 * sex","~time","~1","Phi(~year2 * sex)p(~time)f(~1)",45,17963.1645454545,523.461806797561,0,1097.7447
+"300","~season2 * sex","~season2","~year2 + sex","Phi(~season2 * sex)p(~season2)f(~year2 + sex)",18,17963.3925906222,523.689851965199,0,1153.0217
+"313","~season2 * sex","~season2 + sex","~year2 + sex","Phi(~season2 * sex)p(~season2 + sex)f(~year2 + sex)",19,17963.692502706,523.989764048965,0,1151.2989
+"303","~season2 * sex","~season2","~year2 * sex","Phi(~season2 * sex)p(~season2)f(~year2 * sex)",28,17965.7275990353,526.024860378289,0,1135.073
+"479","~year2","~season2 + sex","~year2","Phi(~year2)p(~season2 + sex)f(~year2)",25,17966.1675662651,526.464827608077,0,1141.6108
+"466","~year2","~season2","~year2","Phi(~year2)p(~season2)f(~year2)",24,17966.1993369467,526.496598289716,0,1143.6733
+"214","~season2 + sex","~season2 + sex","~year2 + sex","Phi(~season2 + sex)p(~season2 + sex)f(~year2 + sex)",18,17966.9935906222,527.290851965197,0,1156.6231
+"316","~season2 * sex","~season2 + sex","~year2 * sex","Phi(~season2 * sex)p(~season2 + sex)f(~year2 * sex)",29,17967.2477285887,527.544989931677,0,1134.5584
+"201","~season2 + sex","~season2","~year2 + sex","Phi(~season2 + sex)p(~season2)f(~year2 + sex)",17,17967.6218942308,527.919155573782,0,1159.2726
+"204","~season2 + sex","~season2","~year2 * sex","Phi(~season2 + sex)p(~season2)f(~year2 * sex)",27,17968.1636962025,528.460957545543,0,1139.5433
+"1034","~year2 * sex","~sex","~year2 + season2","Phi(~year2 * sex)p(~sex)f(~year2 + season2)",36,17968.7200770626,529.017338405571,0,1121.7503
+"217","~season2 + sex","~season2 + sex","~year2 * sex","Phi(~season2 + sex)p(~season2 + sex)f(~year2 * sex)",28,17970.9525990353,531.249860378288,0,1140.298
+"890","~year2 + sex","~1","~year2 * season2 + sex","Phi(~year2 + sex)p(~1)f(~year2 * season2 + sex)",35,17973.0403293051,533.337590648149,0,1128.1135
+"886","~year2 + sex","~1","~year2 + season2 + sex","Phi(~year2 + sex)p(~1)f(~year2 + season2 + sex)",26,17974.2380189816,534.535280324635,0,1147.6501
+"427","~sex","~time + sex","~season2 + sex","Phi(~sex)p(~time + sex)f(~season2 + sex)",28,17976.0655990353,536.362860378289,0,1145.4109
+"439","~sex","~year2 * season2","~season2","Phi(~sex)p(~year2 * season2)f(~season2)",26,17976.2940189816,536.591280324636,0,1149.7055
+"904","~year2 + sex","~season2","~year2 * sex","Phi(~year2 + sex)p(~season2)f(~year2 * sex)",36,17976.8390770626,537.136338405569,0,1129.8689
+"309","~season2 * sex","~season2 + sex","~year2","Phi(~season2 * sex)p(~season2 + sex)f(~year2)",18,17977.9655906222,538.262851965195,0,1167.5947
+"885","~year2 + sex","~1","~year2 + season2","Phi(~year2 + sex)p(~1)f(~year2 + season2)",25,17978.4215662651,538.718827608074,0,1153.8648
+"917","~year2 + sex","~season2 + sex","~year2 * sex","Phi(~year2 + sex)p(~season2 + sex)f(~year2 * sex)",37,17978.8000604595,539.097321802506,0,1129.7849
+"509","~year2","~time + sex","~1","Phi(~year2)p(~time + sex)f(~1)",35,17981.6643293051,541.961590648149,0,1136.7376
+"296","~season2 * sex","~season2","~year2","Phi(~season2 * sex)p(~season2)f(~year2)",17,17981.6668942308,541.964155573784,0,1173.3178
+"418","~sex","~time","~season2","Phi(~sex)p(~time)f(~season2)",26,17982.1980189816,542.495280324638,0,1155.6104
+"455","~year2","~1","~year2 + season2 + sex","Phi(~year2)p(~1)f(~year2 + season2 + sex)",25,17982.3885662651,542.685827608075,0,1157.8317
+"1011","~year2 * sex","~season2","~year2 + sex","Phi(~year2 * sex)p(~season2)f(~year2 + sex)",36,17984.0310770626,544.328338405569,0,1137.0608
+"197","~season2 + sex","~season2","~year2","Phi(~season2 + sex)p(~season2)f(~year2)",16,17984.9844124362,545.28167377918,0,1178.656
+"71","~1","~year2 * season2","~season2","Phi(~1)p(~year2 * season2)f(~season2)",25,17985.0955662651,545.392827608077,0,1160.5388
+"210","~season2 + sex","~season2 + sex","~year2","Phi(~season2 + sex)p(~season2 + sex)f(~year2)",17,17985.1158942308,545.413155573784,0,1176.7671
+"1024","~year2 * sex","~season2 + sex","~year2 + sex","Phi(~year2 * sex)p(~season2 + sex)f(~year2 + sex)",37,17985.7470604595,546.044321802507,0,1136.7319
+"75","~1","~year2 * season2 + sex","~season2","Phi(~1)p(~year2 * season2 + sex)f(~season2)",26,17987.0970189816,547.394280324635,0,1160.5091
+"63","~1","~time + sex","~season2 + sex","Phi(~1)p(~time + sex)f(~season2 + sex)",27,17988.4466962025,548.743957545546,0,1159.8257
+"910","~year2 + sex","~season2 + sex","~year2","Phi(~year2 + sex)p(~season2 + sex)f(~year2)",26,17988.8120189816,549.109280324636,0,1162.2241
+"897","~year2 + sex","~season2","~year2","Phi(~year2 + sex)p(~season2)f(~year2)",25,17988.8835662651,549.180827608074,0,1164.3267
+"112","~season2","~season2 + sex","~year2 + sex","Phi(~season2)p(~season2 + sex)f(~year2 + sex)",17,17990.5898942308,550.887155573782,0,1182.2405
+"99","~season2","~season2","~year2 + sex","Phi(~season2)p(~season2)f(~year2 + sex)",16,17990.7534124362,551.05067377918,0,1184.4254
+"62","~1","~time + sex","~season2","Phi(~1)p(~time + sex)f(~season2)",26,17992.7810189816,553.078280324637,0,1166.1932
+"483","~year2","~season2 + sex","~year2 + sex","Phi(~year2)p(~season2 + sex)f(~year2 + sex)",26,17994.1840189816,554.481280324635,0,1167.596
+"470","~year2","~season2","~year2 + sex","Phi(~year2)p(~season2)f(~year2 + sex)",25,17994.3065662651,554.603827608076,0,1169.7497
+"426","~sex","~time + sex","~season2","Phi(~sex)p(~time + sex)f(~season2)",27,17997.0536962025,557.350957545546,0,1168.4334
+"445","~sex","~year2 * season2 + sex","~season2","Phi(~sex)p(~year2 * season2 + sex)f(~season2)",27,17997.2396962025,557.536957545544,0,1168.619
+"115","~season2","~season2 + sex","~year2 * sex","Phi(~season2)p(~season2 + sex)f(~year2 * sex)",27,17998.2966962025,558.593957545545,0,1169.6763
+"95","~season2","~season2","~year2","Phi(~season2)p(~season2)f(~year2)",15,17999.1381441441,559.435405487158,0,1194.8285
+"108","~season2","~season2 + sex","~year2","Phi(~season2)p(~season2 + sex)f(~year2)",16,17999.3124124362,559.609673779181,0,1192.9835
+"102","~season2","~season2","~year2 * sex","Phi(~season2)p(~season2)f(~year2 * sex)",26,17999.9330189816,560.230280324635,0,1173.3449
+"486","~year2","~season2 + sex","~year2 * sex","Phi(~year2)p(~season2 + sex)f(~year2 * sex)",36,18003.7540770626,564.05133840557,0,1156.7842
+"54","~1","~time","~season2","Phi(~1)p(~time)f(~season2)",25,18003.9255662651,564.222827608075,0,1179.3692
+"1007","~year2 * sex","~season2","~year2","Phi(~year2 * sex)p(~season2)f(~year2)",35,18004.4563293051,564.75359064815,0,1159.5301
+"473","~year2","~season2","~year2 * sex","Phi(~year2)p(~season2)f(~year2 * sex)",35,18006.6883293051,566.98559064815,0,1161.7623
+"1071","~year2 * sex","~year2","~year2 * season2 + sex","Phi(~year2 * sex)p(~year2)f(~year2 * season2 + sex)",55,18012.6413404255,572.938601768547,0,1126.6038
+"388","~sex","~season2","~year2 + sex","Phi(~sex)p(~season2)f(~year2 + sex)",16,18015.4404124362,575.737673779178,0,1209.1122
+"401","~sex","~season2 + sex","~year2 + sex","Phi(~sex)p(~season2 + sex)f(~year2 + sex)",17,18017.1528942308,577.450155573784,0,1208.8036
+"391","~sex","~season2","~year2 * sex","Phi(~sex)p(~season2)f(~year2 * sex)",26,18018.2830189816,578.580280324637,0,1191.6945
+"404","~sex","~season2 + sex","~year2 * sex","Phi(~sex)p(~season2 + sex)f(~year2 * sex)",27,18020.3106962025,580.607957545544,0,1191.69
+"929","~year2 + sex","~sex","~year2 * season2 + sex","Phi(~year2 + sex)p(~sex)f(~year2 * season2 + sex)",36,18027.2740770626,587.571338405571,0,1180.304
+"465","~year2","~season2","~sex","Phi(~year2)p(~season2)f(~sex)",15,18029.4241441441,589.721405487158,0,1225.1145
+"921","~year2 + sex","~sex","~season2 * sex","Phi(~year2 + sex)p(~sex)f(~season2 * sex)",18,18033.4685906222,593.765851965196,0,1223.0976
+"384","~sex","~season2","~year2","Phi(~sex)p(~season2)f(~year2)",15,18033.9361441441,594.233405487161,0,1229.6271
+"461","~year2","~season2","~1","Phi(~year2)p(~season2)f(~1)",14,18035.0570882618,595.354349604797,0,1232.7656
+"397","~sex","~season2 + sex","~year2","Phi(~sex)p(~season2 + sex)f(~year2)",16,18035.0594124362,595.356673779181,0,1228.7312
+"474","~year2","~season2 + sex","~1","Phi(~year2)p(~season2 + sex)f(~1)",15,18036.5121441441,596.809405487158,0,1232.2028
+"919","~year2 + sex","~sex","~season2","Phi(~year2 + sex)p(~sex)f(~season2)",16,18036.9684124362,597.26567377918,0,1230.64
+"262","~season2 + sex","~year2 * season2","~season2 + sex","Phi(~season2 + sex)p(~year2 * season2)f(~season2 + sex)",28,18037.0135990353,597.310860378289,0,1206.3591
+"23","~1","~season2","~year2 + sex","Phi(~1)p(~season2)f(~year2 + sex)",15,18039.7501441441,600.047405487159,0,1235.4408
+"489","~year2","~sex","~season2 + sex","Phi(~year2)p(~sex)f(~season2 + sex)",16,18039.7624124362,600.059673779178,0,1233.4342
+"882","~year2 + sex","~1","~season2 * sex","Phi(~year2 + sex)p(~1)f(~season2 * sex)",17,18040.3898942308,600.687155573782,0,1232.0407
+"36","~1","~season2 + sex","~year2 + sex","Phi(~1)p(~season2 + sex)f(~year2 + sex)",16,18040.8364124362,601.133673779179,0,1234.508
+"19","~1","~season2","~year2","Phi(~1)p(~season2)f(~year2)",14,18045.6570882618,605.954349604795,0,1243.3664
+"237","~season2 + sex","~time + sex","~season2","Phi(~season2 + sex)p(~time + sex)f(~season2)",28,18046.1515990353,606.448860378288,0,1215.4966
+"26","~1","~season2","~year2 * sex","Phi(~1)p(~season2)f(~year2 * sex)",25,18046.4695662651,606.766827608077,0,1221.9126
+"488","~year2","~sex","~season2","Phi(~year2)p(~sex)f(~season2)",15,18046.4741441441,606.771405487161,0,1242.1652
+"32","~1","~season2 + sex","~year2","Phi(~1)p(~season2 + sex)f(~year2)",15,18046.9711441441,607.268405487161,0,1242.6615
+"39","~1","~season2 + sex","~year2 * sex","Phi(~1)p(~season2 + sex)f(~year2 * sex)",26,18048.0320189816,608.329280324637,0,1221.4443
+"294","~season2 * sex","~season2","~season2 * sex","Phi(~season2 * sex)p(~season2)f(~season2 * sex)",10,18059.0779670165,619.375228359506,0,1264.847
+"881","~year2 + sex","~1","~season2 + sex","Phi(~year2 + sex)p(~1)f(~season2 + sex)",16,18059.9434124362,620.240673779179,0,1253.615
+"281","~season2 * sex","~1","~season2 * sex","Phi(~season2 * sex)p(~1)f(~season2 * sex)",9,18059.9949568345,620.292218177547,0,1267.7764
+"451","~year2","~1","~season2 * sex","Phi(~year2)p(~1)f(~season2 * sex)",16,18060.3994124362,620.696673779181,0,1254.0708
+"320","~season2 * sex","~sex","~season2 * sex","Phi(~season2 * sex)p(~sex)f(~season2 * sex)",10,18061.1659670165,621.463228359506,0,1266.9348
+"208","~season2 + sex","~season2 + sex","~season2 * sex","Phi(~season2 + sex)p(~season2 + sex)f(~season2 * sex)",10,18061.8739670165,622.171228359508,0,1267.6429
+"1002","~year2 * sex","~season2","~1","Phi(~year2 * sex)p(~season2)f(~1)",25,18062.3365662651,622.633827608075,0,1237.7802
+"221","~season2 + sex","~sex","~season2 * sex","Phi(~season2 + sex)p(~sex)f(~season2 * sex)",9,18062.4209568345,622.718218177546,0,1270.2024
+"195","~season2 + sex","~season2","~season2 * sex","Phi(~season2 + sex)p(~season2)f(~season2 * sex)",9,18062.8409568345,623.138218177548,0,1270.6221
+"1015","~year2 * sex","~season2 + sex","~1","Phi(~year2 * sex)p(~season2 + sex)f(~1)",26,18063.5000189816,623.797280324638,0,1236.9121
+"896","~year2 + sex","~season2","~sex","Phi(~year2 + sex)p(~season2)f(~sex)",16,18063.8984124362,624.195673779181,0,1257.5698
+"493","~year2","~sex","~year2 + season2","Phi(~year2)p(~sex)f(~year2 + season2)",25,18064.0825662651,624.379827608074,0,1239.5256
+"880","~year2 + sex","~1","~season2","Phi(~year2 + sex)p(~1)f(~season2)",15,18064.7851441441,625.082405487159,0,1260.4759
+"182","~season2 + sex","~1","~season2 * sex","Phi(~season2 + sex)p(~1)f(~season2 * sex)",8,18065.1571525322,625.454413875228,0,1274.9487
+"909","~year2 + sex","~season2 + sex","~sex","Phi(~year2 + sex)p(~season2 + sex)f(~sex)",17,18065.3208942308,625.618155573782,0,1256.9718
+"889","~year2 + sex","~1","~year2 * season2","Phi(~year2 + sex)p(~1)f(~year2 * season2)",34,18067.1688160677,627.466077410667,0,1224.2852
+"168","~season2","~year2 * season2 + sex","~season2","Phi(~season2)p(~year2 * season2 + sex)f(~season2)",27,18067.9366962025,628.233957545544,0,1239.3157
+"1014","~year2 * sex","~season2","~year2 * sex","Phi(~year2 * sex)p(~season2)f(~year2 * sex)",46,18070.1867002122,630.483961555201,0,1202.711
+"1027","~year2 * sex","~season2 + sex","~year2 * sex","Phi(~year2 * sex)p(~season2 + sex)f(~year2 * sex)",47,18070.9961018799,631.293363222943,0,1201.4632
+"319","~season2 * sex","~sex","~season2 + sex","Phi(~season2 * sex)p(~sex)f(~season2 + sex)",9,18075.3939568345,635.691218177548,0,1283.1748
+"280","~season2 * sex","~1","~season2 + sex","Phi(~season2 * sex)p(~1)f(~season2 + sex)",8,18077.4781525322,637.775413875228,0,1287.2702
+"220","~season2 + sex","~sex","~season2 + sex","Phi(~season2 + sex)p(~sex)f(~season2 + sex)",8,18077.5111525322,637.808413875227,0,1287.3032
+"119","~season2","~sex","~season2 * sex","Phi(~season2)p(~sex)f(~season2 * sex)",8,18081.7751525322,642.072413875227,0,1291.5671
+"106","~season2","~season2 + sex","~season2 * sex","Phi(~season2)p(~season2 + sex)f(~season2 * sex)",9,18082.2329568345,642.530218177548,0,1290.0137
+"892","~year2 + sex","~season2","~1","Phi(~year2 + sex)p(~season2)f(~1)",15,18082.2801441441,642.577405487158,0,1277.9711
+"905","~year2 + sex","~season2 + sex","~1","Phi(~year2 + sex)p(~season2 + sex)f(~1)",16,18082.5244124362,642.821673779181,0,1276.1959
+"307","~season2 * sex","~season2 + sex","~season2 * sex","Phi(~season2 * sex)p(~season2 + sex)f(~season2 * sex)",11,18083.5931841632,643.890445506182,0,1287.3494
+"118","~season2","~sex","~season2 + sex","Phi(~season2)p(~sex)f(~season2 + sex)",7,18084.7465530258,645.043814368779,0,1296.5481
+"293","~season2 * sex","~season2","~season2 + sex","Phi(~season2 * sex)p(~season2)f(~season2 + sex)",9,18085.3079568345,645.605218177549,0,1293.0892
+"306","~season2 * sex","~season2 + sex","~season2 + sex","Phi(~season2 * sex)p(~season2 + sex)f(~season2 + sex)",10,18085.4159670165,645.713228359506,0,1291.1853
+"105","~season2","~season2 + sex","~season2 + sex","Phi(~season2)p(~season2 + sex)f(~season2 + sex)",8,18086.7071525322,647.004413875227,0,1296.4987
+"478","~year2","~season2 + sex","~sex","Phi(~year2)p(~season2 + sex)f(~sex)",16,18088.4894124362,648.786673779181,0,1282.1607
+"117","~season2","~sex","~season2","Phi(~season2)p(~sex)f(~season2)",6,18089.4371572327,649.734418575717,0,1303.2472
+"181","~season2 + sex","~1","~season2 + sex","Phi(~season2 + sex)p(~1)f(~season2 + sex)",7,18090.2695530258,650.56681436878,0,1302.0706
+"207","~season2 + sex","~season2 + sex","~season2 + sex","Phi(~season2 + sex)p(~season2 + sex)f(~season2 + sex)",9,18091.2279568345,651.525218177547,0,1299.0092
+"279","~season2 * sex","~1","~season2","Phi(~season2 * sex)p(~1)f(~season2)",7,18092.6675530258,652.964814368777,0,1304.4694
+"1019","~year2 * sex","~season2 + sex","~sex","Phi(~year2 * sex)p(~season2 + sex)f(~sex)",27,18094.2506962025,654.547957545543,0,1265.6298
+"1006","~year2 * sex","~season2","~sex","Phi(~year2 * sex)p(~season2)f(~sex)",26,18094.6040189816,654.901280324637,0,1268.0163
+"80","~season2","~1","~season2 * sex","Phi(~season2)p(~1)f(~season2 * sex)",7,18095.1635530258,655.46081436878,0,1306.965
+"206","~season2 + sex","~season2 + sex","~season2","Phi(~season2 + sex)p(~season2 + sex)f(~season2)",8,18095.8781525322,656.175413875226,0,1305.67
+"1036","~year2 * sex","~sex","~year2 + season2 * sex","Phi(~year2 * sex)p(~sex)f(~year2 + season2 * sex)",38,18097.1692806169,657.46654195989,0,1246.1075
+"305","~season2 * sex","~season2 + sex","~season2","Phi(~season2 * sex)p(~season2 + sex)f(~season2)",9,18097.8889568345,658.186218177547,0,1305.6703
+"1035","~year2 * sex","~sex","~year2 + season2 + sex","Phi(~year2 * sex)p(~sex)f(~year2 + season2 + sex)",37,18097.9180604595,658.215321802505,0,1248.9026
+"997","~year2 * sex","~1","~year2 + season2 * sex","Phi(~year2 * sex)p(~1)f(~year2 + season2 * sex)",37,18098.4160604595,658.713321802505,0,1249.4009
+"1039","~year2 * sex","~sex","~year2 * season2 + sex","Phi(~year2 * sex)p(~sex)f(~year2 * season2 + sex)",46,18100.6627002122,660.9599615552,0,1233.1871
+"995","~year2 * sex","~1","~year2 + season2","Phi(~year2 * sex)p(~1)f(~year2 + season2)",35,18102.8843293051,663.18159064815,0,1257.9575
+"104","~season2","~season2 + sex","~season2","Phi(~season2)p(~season2 + sex)f(~season2)",7,18102.8945530258,663.19181436878,0,1314.6964
+"79","~season2","~1","~season2 + sex","Phi(~season2)p(~1)f(~season2 + sex)",6,18104.3601572327,664.657418575716,0,1318.1696
+"1070","~year2 * sex","~year2","~year2 * season2","Phi(~year2 * sex)p(~year2)f(~year2 * season2)",54,18105.018922516,665.316183858966,0,1221.0487
+"1000","~year2 * sex","~1","~year2 * season2 + sex","Phi(~year2 * sex)p(~1)f(~year2 * season2 + sex)",45,18105.0305454545,665.327806797563,0,1239.6109
+"1020","~year2 * sex","~season2 + sex","~year2","Phi(~year2 * sex)p(~season2 + sex)f(~year2)",36,18107.4760770626,667.773338405568,0,1260.5055
+"219","~season2 + sex","~sex","~season2","Phi(~season2 + sex)p(~sex)f(~season2)",7,18107.9495530258,668.24681436878,0,1319.7507
+"78","~season2","~1","~season2","Phi(~season2)p(~1)f(~season2)",5,18109.1119640719,669.409225414871,0,1324.9294
+"318","~season2 * sex","~sex","~season2","Phi(~season2 * sex)p(~sex)f(~season2)",8,18109.9531525322,670.250413875227,0,1319.7445
+"490","~year2","~sex","~season2 * sex","Phi(~year2)p(~sex)f(~season2 * sex)",17,18113.8538942308,674.151155573782,0,1305.505
+"93","~season2","~season2","~season2 * sex","Phi(~season2)p(~season2)f(~season2 * sex)",8,18117.1181525322,677.415413875227,0,1326.9104
+"194","~season2 + sex","~season2","~season2 + sex","Phi(~season2 + sex)p(~season2)f(~season2 + sex)",8,18118.5051525322,678.802413875226,0,1328.2968
+"193","~season2 + sex","~season2","~season2","Phi(~season2 + sex)p(~season2)f(~season2)",7,18123.3365530258,683.633814368779,0,1335.1376
+"292","~season2 * sex","~season2","~season2","Phi(~season2 * sex)p(~season2)f(~season2)",8,18125.3461525322,685.643413875227,0,1335.1383
+"92","~season2","~season2","~season2 + sex","Phi(~season2)p(~season2)f(~season2 + sex)",7,18126.0925530258,686.38981436878,0,1337.8938
+"928","~year2 + sex","~sex","~year2 * season2","Phi(~year2 + sex)p(~sex)f(~year2 * season2)",35,18130.8123293051,691.10959064815,0,1285.8858
+"91","~season2","~season2","~season2","Phi(~season2)p(~season2)f(~season2)",6,18131.0131572327,691.310418575718,0,1344.8224
+"180","~season2 + sex","~1","~season2","Phi(~season2 + sex)p(~1)f(~season2)",6,18136.3291572327,696.626418575717,0,1350.1393
+"382","~sex","~season2","~season2 * sex","Phi(~sex)p(~season2)f(~season2 * sex)",8,18165.3231525322,725.620413875225,0,1375.1148
+"395","~sex","~season2 + sex","~season2 * sex","Phi(~sex)p(~season2 + sex)f(~season2 * sex)",9,18166.7049568345,727.002218177549,0,1374.4855
+"497","~year2","~sex","~year2 * season2","Phi(~year2)p(~sex)f(~year2 * season2)",34,18176.9208160677,737.218077410667,0,1334.0367
+"337","~season2 * sex","~time + sex","~sex","Phi(~season2 * sex)p(~time + sex)f(~sex)",29,18178.6537285887,738.950989931676,0,1345.9642
+"381","~sex","~season2","~season2 + sex","Phi(~sex)p(~season2)f(~season2 + sex)",7,18182.2725530258,742.56981436878,0,1394.074
+"394","~sex","~season2 + sex","~season2 + sex","Phi(~sex)p(~season2 + sex)f(~season2 + sex)",8,18182.8471525322,743.144413875227,0,1392.6386
+"957","~year2 + sex","~year2","~year2 + season2 + sex","Phi(~year2 + sex)p(~year2)f(~year2 + season2 + sex)",36,18182.8630770626,743.160338405571,0,1335.8926
+"498","~year2","~sex","~year2 * season2 + sex","Phi(~year2)p(~sex)f(~year2 * season2 + sex)",35,18188.0483293051,748.34559064815,0,1343.1222
+"30","~1","~season2 + sex","~season2 * sex","Phi(~1)p(~season2 + sex)f(~season2 * sex)",8,18190.3001525322,750.597413875228,0,1400.0923
+"335","~season2 * sex","~time + sex","~1","Phi(~season2 * sex)p(~time + sex)f(~1)",28,18195.2035990353,755.500860378288,0,1364.5491
+"17","~1","~season2","~season2 * sex","Phi(~1)p(~season2)f(~season2 * sex)",7,18195.6435530258,755.94081436878,0,1407.4446
+"330","~season2 * sex","~time","~1","Phi(~season2 * sex)p(~time)f(~1)",27,18197.0176962025,757.314957545546,0,1368.3969
+"353","~season2 * sex","~year2 * season2","~1","Phi(~season2 * sex)p(~year2 * season2)f(~1)",27,18197.0176962025,757.314957545546,0,1368.3969
+"1030","~year2 * sex","~sex","~season2 + sex","Phi(~year2 * sex)p(~sex)f(~season2 + sex)",27,18198.6266962025,758.923957545543,0,1370.0061
+"231","~season2 + sex","~time","~1","Phi(~season2 + sex)p(~time)f(~1)",26,18200.6140189816,760.911280324635,0,1374.0264
+"260","~season2 + sex","~year2 * season2","~1","Phi(~season2 + sex)p(~year2 * season2)f(~1)",26,18200.6140189816,760.911280324635,0,1374.0264
+"380","~sex","~season2","~season2","Phi(~sex)p(~season2)f(~season2)",6,18200.9421572327,761.239418575718,0,1414.7518
+"236","~season2 + sex","~time + sex","~1","Phi(~season2 + sex)p(~time + sex)f(~1)",27,18201.3526962025,761.649957545545,0,1372.7324
+"393","~sex","~season2 + sex","~season2","Phi(~sex)p(~season2 + sex)f(~season2)",7,18202.4685530258,762.76581436878,0,1414.2696
+"359","~season2 * sex","~year2 * season2 + sex","~1","Phi(~season2 * sex)p(~year2 * season2 + sex)f(~1)",28,18204.0825990353,764.379860378289,0,1373.4283
+"1038","~year2 * sex","~sex","~year2 * season2","Phi(~year2 * sex)p(~sex)f(~year2 * season2)",45,18204.8735454545,765.17080679756,0,1339.4542
+"458","~year2","~1","~year2 * season2","Phi(~year2)p(~1)f(~year2 * season2)",33,18204.8745362319,765.171797574898,0,1364.032
+"16","~1","~season2","~season2 + sex","Phi(~1)p(~season2)f(~season2 + sex)",6,18205.2531572327,765.550418575716,0,1419.063
+"138","~season2","~time + sex","~sex","Phi(~season2)p(~time + sex)f(~sex)",27,18206.1936962025,766.490957545546,0,1377.5731
+"171","~season2","~year2 * season2 + sex","~sex","Phi(~season2)p(~year2 * season2 + sex)f(~sex)",27,18206.1936962025,766.490957545546,0,1377.5731
+"29","~1","~season2 + sex","~season2 + sex","Phi(~1)p(~season2 + sex)f(~season2 + sex)",7,18206.5065530258,766.803814368781,0,1418.308
+"129","~season2","~time","~1","Phi(~season2)p(~time)f(~1)",25,18209.5765662651,769.873827608077,0,1385.0198
+"158","~season2","~year2 * season2","~1","Phi(~season2)p(~year2 * season2)f(~1)",25,18209.5765662651,769.873827608077,0,1385.0198
+"15","~1","~season2","~season2","Phi(~1)p(~season2)f(~season2)",5,18209.7909640719,770.088225414871,0,1425.6082
+"28","~1","~season2 + sex","~season2","Phi(~1)p(~season2 + sex)f(~season2)",6,18211.2571572327,771.554418575717,0,1425.0665
+"137","~season2","~time + sex","~1","Phi(~season2)p(~time + sex)f(~1)",26,18211.5350189816,771.832280324637,0,1384.9471
+"167","~season2","~year2 * season2 + sex","~1","Phi(~season2)p(~year2 * season2 + sex)f(~1)",26,18211.5350189816,771.832280324637,0,1384.9471
+"270","~season2 + sex","~year2 * season2 + sex","~1","Phi(~season2 + sex)p(~year2 * season2 + sex)f(~1)",27,18227.8536962025,788.150957545546,0,1399.2325
+"459","~year2","~1","~year2 * season2 + sex","Phi(~year2)p(~1)f(~year2 * season2 + sex)",34,18228.0538160677,788.351077410665,0,1385.1701
+"419","~sex","~time","~sex","Phi(~sex)p(~time)f(~sex)",26,18229.4810189816,789.778280324637,0,1402.8925
+"440","~sex","~year2 * season2","~sex","Phi(~sex)p(~year2 * season2)f(~sex)",26,18231.2830189816,791.580280324637,0,1404.6948
+"428","~sex","~time + sex","~sex","Phi(~sex)p(~time + sex)f(~sex)",27,18231.5096962025,791.806957545545,0,1402.8887
+"446","~sex","~year2 * season2 + sex","~sex","Phi(~sex)p(~year2 * season2 + sex)f(~sex)",27,18233.2746962025,793.571957545544,0,1404.6536
+"55","~1","~time","~sex","Phi(~1)p(~time)f(~sex)",25,18254.6945662651,814.991827608075,0,1430.1375
+"70","~1","~year2 * season2","~1","Phi(~1)p(~year2 * season2)f(~1)",24,18258.9733369467,819.270598289717,0,1436.4474
+"53","~1","~time","~1","Phi(~1)p(~time)f(~1)",24,18261.7433369467,822.040598289717,0,1439.2174
+"64","~1","~time + sex","~sex","Phi(~1)p(~time + sex)f(~sex)",26,18261.9400189816,822.237280324636,0,1435.3517
+"74","~1","~year2 * season2 + sex","~1","Phi(~1)p(~year2 * season2 + sex)f(~1)",25,18263.7355662651,824.032827608076,0,1439.1785
+"444","~sex","~year2 * season2 + sex","~1","Phi(~sex)p(~year2 * season2 + sex)f(~1)",26,18266.4640189816,826.761280324637,0,1439.8762
+"369","~sex","~1","~season2 * sex","Phi(~sex)p(~1)f(~season2 * sex)",7,18276.6505530258,836.947814368777,0,1488.4517
+"408","~sex","~sex","~season2 * sex","Phi(~sex)p(~sex)f(~season2 * sex)",8,18278.5831525322,838.880413875228,0,1488.3752
+"920","~year2 + sex","~sex","~season2 + sex","Phi(~year2 + sex)p(~sex)f(~season2 + sex)",17,18283.4648942308,843.762155573782,0,1475.1159
+"999","~year2 * sex","~1","~year2 * season2","Phi(~year2 * sex)p(~1)f(~year2 * season2)",44,18284.6846364738,844.981897816811,0,1421.3204
+"1074","~year2 * sex","~year2 + sex","~year2 + season2","Phi(~year2 * sex)p(~year2 + sex)f(~year2 + season2)",46,18293.6457002122,853.9429615552,0,1426.1703
+"407","~sex","~sex","~season2 + sex","Phi(~sex)p(~sex)f(~season2 + sex)",7,18294.1995530258,854.49681436878,0,1506.0008
+"368","~sex","~1","~season2 + sex","Phi(~sex)p(~1)f(~season2 + sex)",6,18298.8561572327,859.153418575715,0,1512.6658
+"406","~sex","~sex","~season2","Phi(~sex)p(~sex)f(~season2)",6,18302.1541572327,862.451418575718,0,1515.9636
+"43","~1","~sex","~season2 * sex","Phi(~1)p(~sex)f(~season2 * sex)",7,18302.8165530258,863.113814368779,0,1514.6184
+"991","~year2 * sex","~1","~season2 + sex","Phi(~year2 * sex)p(~1)f(~season2 + sex)",26,18303.1290189816,863.426280324635,0,1476.5408
+"42","~1","~sex","~season2 + sex","Phi(~1)p(~sex)f(~season2 + sex)",6,18305.0611572327,865.358418575717,0,1518.8706
+"4","~1","~1","~season2 * sex","Phi(~1)p(~1)f(~season2 * sex)",6,18307.0601572327,867.357418575717,0,1520.8703
+"41","~1","~sex","~season2","Phi(~1)p(~sex)f(~season2)",5,18309.7639640719,870.061225414869,0,1525.5813
+"367","~sex","~1","~season2","Phi(~sex)p(~1)f(~season2)",5,18312.6779640719,872.97522541487,0,1528.495
+"1029","~year2 * sex","~sex","~season2","Phi(~year2 * sex)p(~sex)f(~season2)",26,18313.4620189816,873.759280324637,0,1486.8738
+"3","~1","~1","~season2 + sex","Phi(~1)p(~1)f(~season2 + sex)",5,18316.5319640719,876.829225414869,0,1532.3491
+"454","~year2","~1","~year2 + season2","Phi(~year2)p(~1)f(~year2 + season2)",24,18318.2163369467,878.513598289715,0,1495.6902
+"2","~1","~1","~season2","Phi(~1)p(~1)f(~season2)",4,18321.3209724633,881.618233806348,0,1539.1439
+"990","~year2 * sex","~1","~season2","Phi(~year2 * sex)p(~1)f(~season2)",25,18346.1395662651,906.436827608075,0,1521.5831
+"450","~year2","~1","~season2 + sex","Phi(~year2)p(~1)f(~season2 + sex)",15,18375.5911441441,935.88840548716,0,1571.2818
+"449","~year2","~1","~season2","Phi(~year2)p(~1)f(~season2)",14,18382.7140882618,943.011349604796,0,1580.4229
+"438","~sex","~year2 * season2","~1","Phi(~sex)p(~year2 * season2)f(~1)",25,18396.3605662651,956.657827608076,0,1571.804
+"745","~year2 + season2 + sex","~year2 + sex","~year2 + sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 + sex)",37,18405.1840604595,965.481321802505,0,1556.1687
+"855","~year2 + season2 * sex","~year2 + sex","~year2 + sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 + sex)",38,18407.2302806169,967.527541959887,0,1556.1692
+"308","~season2 * sex","~season2 + sex","~sex","Phi(~season2 * sex)p(~season2 + sex)f(~sex)",9,18410.1419568345,970.439218177547,0,1617.9231
+"196","~season2 + sex","~season2","~sex","Phi(~season2 + sex)p(~season2)f(~sex)",7,18411.3865530258,971.683814368778,0,1623.1877
+"741","~year2 + season2 + sex","~year2 + sex","~year2","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2)",36,18412.4150770626,972.71233840557,0,1565.4447
+"209","~season2 + sex","~season2 + sex","~sex","Phi(~season2 + sex)p(~season2 + sex)f(~sex)",8,18413.3541525322,973.651413875228,0,1623.146
+"852","~year2 + season2 * sex","~year2 + sex","~year2","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2)",37,18414.4600604595,974.757321802506,0,1565.4448
+"628","~year2 + season2","~year2 + sex","~year2 + sex","Phi(~year2 + season2)p(~year2 + sex)f(~year2 + sex)",36,18415.2690770626,975.56633840557,0,1568.2985
+"748","~year2 + season2 + sex","~year2 + sex","~year2 * sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~year2 * sex)",47,18416.5911018799,976.888363222944,0,1547.0577
+"624","~year2 + season2","~year2 + sex","~year2","Phi(~year2 + season2)p(~year2 + sex)f(~year2)",35,18418.4873293051,978.784590648149,0,1573.5612
+"733","~year2 + season2 + sex","~year2","~year2 + sex","Phi(~year2 + season2 + sex)p(~year2)f(~year2 + sex)",36,18422.2470770626,982.544338405569,0,1575.2774
+"846","~year2 + season2 * sex","~year2","~year2 + sex","Phi(~year2 + season2 * sex)p(~year2)f(~year2 + sex)",37,18424.2930604595,984.590321802505,0,1575.278
+"304","~season2 * sex","~season2 + sex","~1","Phi(~season2 * sex)p(~season2 + sex)f(~1)",8,18428.6311525322,988.928413875226,0,1638.4232
+"858","~year2 + season2 * sex","~year2 + sex","~year2 * sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~year2 * sex)",48,18429.4517515924,989.749012935372,0,1557.86
+"291","~season2 * sex","~season2","~1","Phi(~season2 * sex)p(~season2)f(~1)",7,18431.0915530258,991.38881436878,0,1642.8932
+"192","~season2 + sex","~season2","~1","Phi(~season2 + sex)p(~season2)f(~1)",6,18434.8901572327,995.187418575719,0,1648.7002
+"736","~year2 + season2 + sex","~year2","~year2 * sex","Phi(~year2 + season2 + sex)p(~year2)f(~year2 * sex)",46,18435.5397002122,995.8369615552,0,1568.0638
+"205","~season2 + sex","~season2 + sex","~1","Phi(~season2 + sex)p(~season2 + sex)f(~1)",7,18435.7495530258,996.046814368779,0,1647.551
+"729","~year2 + season2 + sex","~year2","~year2","Phi(~year2 + season2 + sex)p(~year2)f(~year2)",35,18436.6203293051,996.917590648151,0,1591.6939
+"848","~year2 + season2 * sex","~year2","~year2 * sex","Phi(~year2 + season2 * sex)p(~year2)f(~year2 * sex)",47,18437.5981018799,997.895363222942,0,1568.0648
+"631","~year2 + season2","~year2 + sex","~year2 * sex","Phi(~year2 + season2)p(~year2 + sex)f(~year2 * sex)",46,18438.8987002122,999.1959615552,0,1571.4231
+"94","~season2","~season2","~sex","Phi(~season2)p(~season2)f(~sex)",6,18439.6261572327,999.923418575716,0,1653.4356
+"107","~season2","~season2 + sex","~sex","Phi(~season2)p(~season2 + sex)f(~sex)",7,18440.2565530258,1000.55381436878,0,1652.058
+"621","~year2 + season2","~year2","~year2 + sex","Phi(~year2 + season2)p(~year2)f(~year2 + sex)",35,18441.3603293051,1001.65759064815,0,1596.4337
+"90","~season2","~season2","~1","Phi(~season2)p(~season2)f(~1)",5,18443.8889640719,1004.18622541487,0,1659.7062
+"103","~season2","~season2 + sex","~1","Phi(~season2)p(~season2 + sex)f(~1)",6,18444.7601572327,1005.05741857572,0,1658.5703
+"704","~year2 + season2 + sex","~sex","~year2 + sex","Phi(~year2 + season2 + sex)p(~sex)f(~year2 + sex)",27,18445.3306962025,1005.62795754554,0,1616.7103
+"820","~year2 + season2 * sex","~sex","~year2 + sex","Phi(~year2 + season2 * sex)p(~sex)f(~year2 + sex)",28,18447.3665990353,1007.66386037829,0,1616.7117
+"617","~year2 + season2","~year2","~year2","Phi(~year2 + season2)p(~year2)f(~year2)",34,18447.7148160677,1008.01207741067,0,1604.8314
+"700","~year2 + season2 + sex","~sex","~year2","Phi(~year2 + season2 + sex)p(~sex)f(~year2)",26,18453.3530189816,1013.65028032464,0,1626.7649
+"665","~year2 + season2 + sex","~1","~year2 + sex","Phi(~year2 + season2 + sex)p(~1)f(~year2 + sex)",26,18454.1540189816,1014.45128032464,0,1627.5658
+"707","~year2 + season2 + sex","~sex","~year2 * sex","Phi(~year2 + season2 + sex)p(~sex)f(~year2 * sex)",37,18454.4350604595,1014.7323218025,0,1605.4196
+"816","~year2 + season2 * sex","~sex","~year2","Phi(~year2 + season2 * sex)p(~sex)f(~year2)",27,18455.3856962025,1015.68295754554,0,1626.7649
+"781","~year2 + season2 * sex","~1","~year2 + sex","Phi(~year2 + season2 * sex)p(~1)f(~year2 + sex)",27,18456.1906962025,1016.48795754555,0,1627.5701
+"593","~year2 + season2","~sex","~year2 + sex","Phi(~year2 + season2)p(~sex)f(~year2 + sex)",26,18456.9380189816,1017.23528032464,0,1630.3502
+"383","~sex","~season2","~sex","Phi(~sex)p(~season2)f(~sex)",6,18460.1191572327,1020.41641857572,0,1673.9292
+"238","~season2 + sex","~time + sex","~sex","Phi(~season2 + sex)p(~time + sex)f(~sex)",28,18460.7005990353,1020.99786037829,0,1630.0464
+"668","~year2 + season2 + sex","~1","~year2 * sex","Phi(~year2 + season2 + sex)p(~1)f(~year2 * sex)",36,18461.1690770626,1021.46633840557,0,1614.1987
+"396","~sex","~season2 + sex","~sex","Phi(~sex)p(~season2 + sex)f(~sex)",7,18462.1265530258,1022.42381436878,0,1673.9277
+"622","~year2 + season2","~year2","~year2 * sex","Phi(~year2 + season2)p(~year2)f(~year2 * sex)",45,18464.5535454545,1024.85080679756,0,1599.1337
+"589","~year2 + season2","~sex","~year2","Phi(~year2 + season2)p(~sex)f(~year2)",25,18464.6085662651,1024.90582760808,0,1640.0517
+"295","~season2 * sex","~season2","~sex","Phi(~season2 * sex)p(~season2)f(~sex)",8,18464.8641525322,1025.16141387523,0,1674.6563
+"596","~year2 + season2","~sex","~year2 * sex","Phi(~year2 + season2)p(~sex)f(~year2 * sex)",36,18470.0170770626,1030.31433840557,0,1623.0473
+"661","~year2 + season2 + sex","~1","~year2","Phi(~year2 + season2 + sex)p(~1)f(~year2)",25,18471.0015662651,1031.29882760808,0,1646.4449
+"777","~year2 + season2 * sex","~1","~year2","Phi(~year2 + season2 * sex)p(~1)f(~year2)",26,18473.0330189816,1033.33028032464,0,1646.4448
+"61","~1","~time + sex","~1","Phi(~1)p(~time + sex)f(~1)",25,18473.7865662651,1034.08382760808,0,1649.2303
+"740","~year2 + season2 + sex","~year2 + sex","~sex","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~sex)",27,18473.8456962025,1034.14295754554,0,1645.2253
+"851","~year2 + season2 * sex","~year2 + sex","~sex","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~sex)",28,18475.8805990353,1036.17786037829,0,1645.2255
+"554","~year2 + season2","~1","~year2 + sex","Phi(~year2 + season2)p(~1)f(~year2 + sex)",25,18475.9075662651,1036.20482760807,0,1651.351
+"550","~year2 + season2","~1","~year2","Phi(~year2 + season2)p(~1)f(~year2)",24,18482.2953369467,1042.59259828972,0,1659.7689
+"379","~sex","~season2","~1","Phi(~sex)p(~season2)f(~1)",5,18482.4889640719,1042.78622541487,0,1698.3058
+"392","~sex","~season2 + sex","~1","Phi(~sex)p(~season2 + sex)f(~1)",6,18483.9761572327,1044.27341857572,0,1697.786
+"728","~year2 + season2 + sex","~year2","~sex","Phi(~year2 + season2 + sex)p(~year2)f(~sex)",26,18484.0920189816,1044.38928032464,0,1657.5037
+"737","~year2 + season2 + sex","~year2 + sex","~1","Phi(~year2 + season2 + sex)p(~year2 + sex)f(~1)",26,18484.3980189816,1044.69528032463,0,1657.8102
+"842","~year2 + season2 * sex","~year2","~sex","Phi(~year2 + season2 * sex)p(~year2)f(~sex)",27,18486.1246962025,1046.42195754555,0,1657.5037
+"18","~1","~season2","~sex","Phi(~1)p(~season2)f(~sex)",5,18487.2629640719,1047.56022541487,0,1703.0795
+"623","~year2 + season2","~year2 + sex","~sex","Phi(~year2 + season2)p(~year2 + sex)f(~sex)",26,18487.8720189816,1048.16928032464,0,1661.2838
+"557","~year2 + season2","~1","~year2 * sex","Phi(~year2 + season2)p(~1)f(~year2 * sex)",35,18487.9583293051,1048.25559064815,0,1643.0323
+"31","~1","~season2 + sex","~sex","Phi(~1)p(~season2 + sex)f(~sex)",6,18488.6911572327,1048.98841857572,0,1702.5009
+"14","~1","~season2","~1","Phi(~1)p(~season2)f(~1)",4,18491.5189724633,1051.81623380635,0,1709.3417
+"699","~year2 + season2 + sex","~sex","~sex","Phi(~year2 + season2 + sex)p(~sex)f(~sex)",17,18491.5208942308,1051.81815557378,0,1683.1724
+"27","~1","~season2 + sex","~1","Phi(~1)p(~season2 + sex)f(~1)",5,18493.0929640719,1053.39022541487,0,1708.9103
+"815","~year2 + season2 * sex","~sex","~sex","Phi(~year2 + season2 * sex)p(~sex)f(~sex)",18,18493.5435906222,1053.8408519652,0,1683.1724
+"660","~year2 + season2 + sex","~1","~sex","Phi(~year2 + season2 + sex)p(~1)f(~sex)",16,18500.0344124362,1060.33167377918,0,1693.7061
+"695","~year2 + season2 + sex","~sex","~1","Phi(~year2 + season2 + sex)p(~sex)f(~1)",16,18501.6064124362,1061.90367377918,0,1695.2778
+"776","~year2 + season2 * sex","~1","~sex","Phi(~year2 + season2 * sex)p(~1)f(~sex)",17,18502.0548942308,1062.35215557378,0,1693.7061
+"811","~year2 + season2 * sex","~sex","~1","Phi(~year2 + season2 * sex)p(~sex)f(~1)",17,18503.6268942308,1063.92415557378,0,1695.2778
+"823","~year2 + season2 * sex","~sex","~year2 * sex","Phi(~year2 + season2 * sex)p(~sex)f(~year2 * sex)",38,18504.1472806169,1064.44454195989,0,1653.0855
+"588","~year2 + season2","~sex","~sex","Phi(~year2 + season2)p(~sex)f(~sex)",16,18505.4624124362,1065.75967377918,0,1699.1337
+"784","~year2 + season2 * sex","~1","~year2 * sex","Phi(~year2 + season2 * sex)p(~1)f(~year2 * sex)",37,18505.4650604595,1065.76232180251,0,1656.45
+"256","~season2 + sex","~year2 + sex","~year2 + sex","Phi(~season2 + sex)p(~year2 + sex)f(~year2 + sex)",27,18508.3886962025,1068.68595754555,0,1679.7684
+"616","~year2 + season2","~year2","~sex","Phi(~year2 + season2)p(~year2)f(~sex)",25,18509.7385662651,1070.03582760808,0,1685.1816
+"350","~season2 * sex","~year2 + sex","~year2 + sex","Phi(~season2 * sex)p(~year2 + sex)f(~year2 + sex)",28,18510.4225990353,1070.71986037829,0,1679.7678
+"584","~year2 + season2","~sex","~1","Phi(~year2 + season2)p(~sex)f(~1)",15,18512.0991441441,1072.39640548716,0,1707.7897
+"252","~season2 + sex","~year2 + sex","~year2","Phi(~season2 + sex)p(~year2 + sex)f(~year2)",26,18518.0330189816,1078.33028032464,0,1691.4449
+"656","~year2 + season2 + sex","~1","~1","Phi(~year2 + season2 + sex)p(~1)f(~1)",15,18519.7341441441,1080.03140548716,0,1715.425
+"347","~season2 * sex","~year2 + sex","~year2","Phi(~season2 * sex)p(~year2 + sex)f(~year2)",27,18520.0656962025,1080.36295754555,0,1691.4449
+"259","~season2 + sex","~year2 + sex","~year2 * sex","Phi(~season2 + sex)p(~year2 + sex)f(~year2 * sex)",37,18520.1910604595,1080.48832180251,0,1671.176
+"154","~season2","~year2 + sex","~year2 + sex","Phi(~season2)p(~year2 + sex)f(~year2 + sex)",26,18521.4560189816,1081.75328032464,0,1694.8675
+"772","~year2 + season2 * sex","~1","~1","Phi(~year2 + season2 * sex)p(~1)f(~1)",16,18521.7534124362,1082.05067377918,0,1715.425
+"248","~season2 + sex","~year2","~year2 + sex","Phi(~season2 + sex)p(~year2)f(~year2 + sex)",26,18523.7550189816,1084.05228032463,0,1697.1672
+"151","~season2","~year2 + sex","~year2","Phi(~season2)p(~year2 + sex)f(~year2)",25,18524.7565662651,1085.05382760808,0,1700.2
+"549","~year2 + season2","~1","~sex","Phi(~year2 + season2)p(~1)f(~sex)",15,18525.0111441441,1085.30840548716,0,1720.7017
+"344","~season2 * sex","~year2","~year2 + sex","Phi(~season2 * sex)p(~year2)f(~year2 + sex)",27,18525.7876962025,1086.08495754554,0,1697.1668
+"545","~year2 + season2","~1","~1","Phi(~year2 + season2)p(~1)f(~1)",14,18530.7250882618,1091.02234960479,0,1728.4342
+"157","~season2","~year2 + sex","~year2 * sex","Phi(~season2)p(~year2 + sex)f(~year2 * sex)",36,18531.0380770626,1091.33533840557,0,1684.0677
+"346","~season2 * sex","~year2","~year2 * sex","Phi(~season2 * sex)p(~year2)f(~year2 * sex)",37,18532.4970604595,1092.79432180251,0,1683.4821
+"245","~season2 + sex","~year2","~year2","Phi(~season2 + sex)p(~year2)f(~year2)",25,18538.2355662651,1098.53282760808,0,1713.6789
+"341","~season2 * sex","~year2","~year2","Phi(~season2 * sex)p(~year2)f(~year2)",26,18540.2670189816,1100.56428032464,0,1713.6789
+"251","~season2 + sex","~year2","~year2 * sex","Phi(~season2 + sex)p(~year2)f(~year2 * sex)",36,18540.6340770626,1100.93133840557,0,1693.6638
+"147","~season2","~year2","~year2 + sex","Phi(~season2)p(~year2)f(~year2 + sex)",25,18543.1335662651,1103.43082760807,0,1718.5765
+"144","~season2","~year2","~year2","Phi(~season2)p(~year2)f(~year2)",24,18549.0043369467,1109.30159828972,0,1726.4778
+"150","~season2","~year2","~year2 * sex","Phi(~season2)p(~year2)f(~year2 * sex)",35,18555.0473293051,1115.34459064815,0,1710.1205
+"352","~season2 * sex","~year2 + sex","~year2 * sex","Phi(~season2 * sex)p(~year2 + sex)f(~year2 * sex)",38,18557.3662806169,1117.66354195989,0,1706.3046
+"227","~season2 + sex","~sex","~year2 + sex","Phi(~season2 + sex)p(~sex)f(~year2 + sex)",17,18667.7698942308,1228.06715557378,0,1859.4211
+"326","~season2 * sex","~sex","~year2 + sex","Phi(~season2 * sex)p(~sex)f(~year2 + sex)",18,18669.7925906222,1230.0898519652,0,1859.4216
+"188","~season2 + sex","~1","~year2 + sex","Phi(~season2 + sex)p(~1)f(~year2 + sex)",16,18676.7554124362,1237.05267377918,0,1870.4271
+"223","~season2 + sex","~sex","~year2","Phi(~season2 + sex)p(~sex)f(~year2)",16,18677.0944124362,1237.39167377918,0,1870.7664
+"287","~season2 * sex","~1","~year2 + sex","Phi(~season2 * sex)p(~1)f(~year2 + sex)",17,18678.7758942308,1239.07315557378,0,1870.4274
+"322","~season2 * sex","~sex","~year2","Phi(~season2 * sex)p(~sex)f(~year2)",17,18679.1158942308,1239.41315557378,0,1870.7665
+"125","~season2","~sex","~year2 + sex","Phi(~season2)p(~sex)f(~year2 + sex)",16,18680.7514124362,1241.04867377918,0,1874.4225
+"191","~season2 + sex","~1","~year2 * sex","Phi(~season2 + sex)p(~1)f(~year2 * sex)",26,18685.2490189816,1245.54628032464,0,1858.6607
+"121","~season2","~sex","~year2","Phi(~season2)p(~sex)f(~year2)",15,18687.9111441441,1248.20840548716,0,1883.6019
+"128","~season2","~sex","~year2 * sex","Phi(~season2)p(~sex)f(~year2 * sex)",26,18694.0370189816,1254.33428032464,0,1867.4493
+"184","~season2 + sex","~1","~year2","Phi(~season2 + sex)p(~1)f(~year2)",15,18696.0181441441,1256.31540548716,0,1891.709
+"849","~year2 + season2 * sex","~year2 + sex","~1","Phi(~year2 + season2 * sex)p(~year2 + sex)f(~1)",27,18696.5806962025,1256.87795754554,0,1867.9597
+"283","~season2 * sex","~1","~year2","Phi(~season2 * sex)p(~1)f(~year2)",16,18698.0374124362,1258.33467377918,0,1891.7092
+"230","~season2 + sex","~sex","~year2 * sex","Phi(~season2 + sex)p(~sex)f(~year2 * sex)",27,18699.0046962025,1259.30195754554,0,1870.3844
+"329","~season2 * sex","~sex","~year2 * sex","Phi(~season2 * sex)p(~sex)f(~year2 * sex)",28,18701.0525990353,1261.34986037829,0,1870.398
+"86","~season2","~1","~year2 + sex","Phi(~season2)p(~1)f(~year2 + sex)",15,18701.0651441441,1261.36240548716,0,1896.7562
+"82","~season2","~1","~year2","Phi(~season2)p(~1)f(~year2)",14,18707.0060882618,1267.3033496048,0,1904.7147
+"89","~season2","~1","~year2 * sex","Phi(~season2)p(~1)f(~year2 * sex)",25,18712.5155662651,1272.81282760808,0,1887.9585
+"290","~season2 * sex","~1","~year2 * sex","Phi(~season2 * sex)p(~1)f(~year2 * sex)",27,18718.8946962025,1279.19195754554,0,1890.274
+"222","~season2 + sex","~sex","~sex","Phi(~season2 + sex)p(~sex)f(~sex)",7,19017.2385530258,1577.53581436878,0,2229.0402
+"321","~season2 * sex","~sex","~sex","Phi(~season2 * sex)p(~sex)f(~sex)",8,19019.2481525322,1579.54541387523,0,2229.0401
+"183","~season2 + sex","~1","~sex","Phi(~season2 + sex)p(~1)f(~sex)",6,19024.5311572327,1584.82841857572,0,2238.3414
+"282","~season2 * sex","~1","~sex","Phi(~season2 * sex)p(~1)f(~sex)",7,19026.5405530258,1586.83781436878,0,2238.3415
+"218","~season2 + sex","~sex","~1","Phi(~season2 + sex)p(~sex)f(~1)",6,19028.2821572327,1588.57941857572,0,2242.0919
+"317","~season2 * sex","~sex","~1","Phi(~season2 * sex)p(~sex)f(~1)",7,19030.2905530258,1590.58781436878,0,2242.0922
+"120","~season2","~sex","~sex","Phi(~season2)p(~sex)f(~sex)",6,19031.3001572327,1591.59741857572,0,2245.1095
+"116","~season2","~sex","~1","Phi(~season2)p(~sex)f(~1)",5,19036.3749640719,1596.67222541487,0,2252.192
+"179","~season2 + sex","~1","~1","Phi(~season2 + sex)p(~1)f(~1)",5,19045.7949640719,1606.09222541487,0,2261.6122
+"278","~season2 * sex","~1","~1","Phi(~season2 * sex)p(~1)f(~1)",6,19047.8031572327,1608.10041857572,0,2261.6125
+"81","~season2","~1","~sex","Phi(~season2)p(~1)f(~sex)",5,19049.9779640719,1610.27522541487,0,2265.7951
+"77","~season2","~1","~1","Phi(~season2)p(~1)f(~1)",4,19054.3609724633,1614.65823380635,0,2272.1835
+"244","~season2 + sex","~year2","~1","Phi(~season2 + sex)p(~year2)f(~1)",15,19185.2081441441,1745.50540548716,0,2380.8992
+"143","~season2","~year2","~1","Phi(~season2)p(~year2)f(~1)",14,19188.4950882618,1748.7923496048,0,2386.2038
+"958","~year2 + sex","~year2","~year2 + sex","Phi(~year2 + sex)p(~year2)f(~year2 + sex)",35,19350.0423293051,1910.33959064815,0,2505.1154
+"963","~year2 + sex","~year2 + sex","~year2 * sex","Phi(~year2 + sex)p(~year2 + sex)f(~year2 * sex)",46,19359.8577002122,1920.1549615552,0,2492.3824
+"521","~year2","~year2 + sex","~year2","Phi(~year2)p(~year2 + sex)f(~year2)",34,19368.1168160677,1928.41407741067,0,2525.2328
+"436","~sex","~year2 + sex","~year2 + sex","Phi(~sex)p(~year2 + sex)f(~year2 + sex)",26,19374.4370189816,1934.73428032464,0,2547.8488
+"1078","~year2 * sex","~year2 + sex","~year2 * sex","Phi(~year2 * sex)p(~year2 + sex)f(~year2 * sex)",56,19377.6890155062,1937.98627684925,0,2489.5828
+"434","~sex","~year2","~year2 + sex","Phi(~sex)p(~year2)f(~year2 + sex)",25,19378.8005662651,1939.09782760808,0,2554.2439
+"519","~year2","~year2","~year2","Phi(~year2)p(~year2)f(~year2)",33,19379.5745362319,1939.8717975749,0,2538.7324
+"435","~sex","~year2","~year2 * sex","Phi(~sex)p(~year2)f(~year2 * sex)",35,19384.4493293051,1944.74659064815,0,2539.5227
+"437","~sex","~year2 + sex","~year2 * sex","Phi(~sex)p(~year2 + sex)f(~year2 * sex)",36,19385.3760770626,1945.67333840557,0,2538.406
+"522","~year2","~year2 + sex","~year2 * sex","Phi(~year2)p(~year2 + sex)f(~year2 * sex)",45,19407.9895454545,1968.28680679756,0,2542.5702
+"955","~year2 + sex","~year2","~year2","Phi(~year2 + sex)p(~year2)f(~year2)",34,19408.5468160677,1968.84407741067,0,2565.6626
+"962","~year2 + sex","~year2 + sex","~year2 + sex","Phi(~year2 + sex)p(~year2 + sex)f(~year2 + sex)",36,19477.6400770626,2037.93733840557,0,2630.6703
+"1075","~year2 * sex","~year2 + sex","~year2 + sex","Phi(~year2 * sex)p(~year2 + sex)f(~year2 + sex)",46,19493.5217002122,2053.8189615552,0,2626.0457
+"1069","~year2 * sex","~year2","~year2 + sex","Phi(~year2 * sex)p(~year2)f(~year2 + sex)",45,19494.4265454545,2054.72380679756,0,2629.0067
+"1066","~year2 * sex","~year2","~year2","Phi(~year2 * sex)p(~year2)f(~year2)",44,19514.9846364738,2075.28189781681,0,2651.6198
+"1072","~year2 * sex","~year2","~year2 * sex","Phi(~year2 * sex)p(~year2)f(~year2 * sex)",55,19517.3583404255,2077.65560176855,0,2631.3205
+"960","~year2 + sex","~year2 + sex","~sex","Phi(~year2 + sex)p(~year2 + sex)f(~sex)",26,19517.5950189816,2077.89228032464,0,2691.0067
+"954","~year2 + sex","~year2","~sex","Phi(~year2 + sex)p(~year2)f(~sex)",25,19517.8325662651,2078.12982760807,0,2693.2761
+"520","~year2","~year2 + sex","~1","Phi(~year2)p(~year2 + sex)f(~1)",24,19536.8973369467,2097.19459828972,0,2714.3713
+"1073","~year2 * sex","~year2 + sex","~sex","Phi(~year2 * sex)p(~year2 + sex)f(~sex)",36,19623.2900770626,2183.58733840557,0,2776.3202
+"1065","~year2 * sex","~year2","~sex","Phi(~year2 * sex)p(~year2)f(~sex)",35,19629.3173293051,2189.61459064815,0,2784.3914
+"927","~year2 + sex","~sex","~year2 + sex","Phi(~year2 + sex)p(~sex)f(~year2 + sex)",26,19668.8400189816,2229.13728032464,0,2842.2521
+"888","~year2 + sex","~1","~year2 + sex","Phi(~year2 + sex)p(~1)f(~year2 + sex)",25,19670.4595662651,2230.75682760807,0,2845.9027
+"923","~year2 + sex","~sex","~year2","Phi(~year2 + sex)p(~sex)f(~year2)",25,19674.2635662651,2234.56082760807,0,2849.7072
+"496","~year2","~sex","~year2 + sex","Phi(~year2)p(~sex)f(~year2 + sex)",25,19677.1705662651,2237.46782760807,0,2852.6142
+"891","~year2 + sex","~1","~year2 * sex","Phi(~year2 + sex)p(~1)f(~year2 * sex)",35,19679.9293293051,2240.22659064815,0,2835.0026
+"930","~year2 + sex","~sex","~year2 * sex","Phi(~year2 + sex)p(~sex)f(~year2 * sex)",36,19680.5020770626,2240.79933840557,0,2833.5324
+"998","~year2 * sex","~1","~year2 + sex","Phi(~year2 * sex)p(~1)f(~year2 + sex)",35,19682.6623293051,2242.95959064815,0,2837.7357
+"1037","~year2 * sex","~sex","~year2 + sex","Phi(~year2 * sex)p(~sex)f(~year2 + sex)",36,19683.0920770626,2243.38933840557,0,2836.1216
+"492","~year2","~sex","~year2","Phi(~year2)p(~sex)f(~year2)",24,19685.2633369467,2245.56059828971,0,2862.7374
+"884","~year2 + sex","~1","~year2","Phi(~year2 + sex)p(~1)f(~year2)",24,19688.5623369467,2248.85959828972,0,2866.0357
+"1001","~year2 * sex","~1","~year2 * sex","Phi(~year2 * sex)p(~1)f(~year2 * sex)",45,19689.8265454545,2250.12380679756,0,2824.4065
+"1040","~year2 * sex","~sex","~year2 * sex","Phi(~year2 * sex)p(~sex)f(~year2 * sex)",46,19691.3227002122,2251.6199615552,0,2823.8474
+"1033","~year2 * sex","~sex","~year2","Phi(~year2 * sex)p(~sex)f(~year2)",35,19692.3843293051,2252.68159064815,0,2847.4578
+"499","~year2","~sex","~year2 * sex","Phi(~year2)p(~sex)f(~year2 * sex)",35,19692.5903293051,2252.88759064815,0,2847.6638
+"457","~year2","~1","~year2 + sex","Phi(~year2)p(~1)f(~year2 + sex)",24,19693.9143369467,2254.21159828972,0,2871.388
+"453","~year2","~1","~year2","Phi(~year2)p(~1)f(~year2)",23,19700.1173299217,2260.41459126475,0,2879.62
+"994","~year2 * sex","~1","~year2","Phi(~year2 * sex)p(~1)f(~year2)",34,19706.0978160677,2266.39507741067,0,2863.2136
+"460","~year2","~1","~year2 * sex","Phi(~year2)p(~1)f(~year2 * sex)",34,19707.8858160677,2268.18307741067,0,2865.0023
+"922","~year2 + sex","~sex","~sex","Phi(~year2 + sex)p(~sex)f(~sex)",16,19712.1344124362,2272.43167377918,0,2905.8055
+"883","~year2 + sex","~1","~sex","Phi(~year2 + sex)p(~1)f(~sex)",15,19713.3691441441,2273.66640548716,0,2909.0598
+"918","~year2 + sex","~sex","~1","Phi(~year2 + sex)p(~sex)f(~1)",15,19718.3491441441,2278.64640548716,0,2914.0398
+"491","~year2","~sex","~sex","Phi(~year2)p(~sex)f(~sex)",15,19721.3001441441,2281.59740548716,0,2916.9905
+"487","~year2","~sex","~1","Phi(~year2)p(~sex)f(~1)",14,19728.4690882618,2288.7663496048,0,2926.1784
+"879","~year2 + sex","~1","~1","Phi(~year2 + sex)p(~1)f(~1)",14,19733.2270882618,2293.5243496048,0,2930.936
+"1028","~year2 * sex","~sex","~1","Phi(~year2 * sex)p(~sex)f(~1)",25,19736.1905662651,2296.48782760807,0,2911.634
+"452","~year2","~1","~sex","Phi(~year2)p(~1)f(~sex)",14,19738.8350882618,2299.1323496048,0,2936.5439
+"448","~year2","~1","~1","Phi(~year2)p(~1)f(~1)",13,19744.5512436975,2304.84850504049,0,2944.2768
+"989","~year2 * sex","~1","~1","Phi(~year2 * sex)p(~1)f(~1)",24,19750.4433369467,2310.74059828971,0,2927.9174
+"414","~sex","~sex","~year2 + sex","Phi(~sex)p(~sex)f(~year2 + sex)",16,19809.5524124362,2369.84967377918,0,3003.2242
+"1032","~year2 * sex","~sex","~sex","Phi(~year2 * sex)p(~sex)f(~sex)",26,19810.2720189816,2370.56928032463,0,2983.6835
+"375","~sex","~1","~year2 + sex","Phi(~sex)p(~1)f(~year2 + sex)",15,19811.0981441441,2371.39540548716,0,3006.7893
+"410","~sex","~sex","~year2","Phi(~sex)p(~sex)f(~year2)",15,19814.5511441441,2374.84840548716,0,3010.2415
+"49","~1","~sex","~year2 + sex","Phi(~1)p(~sex)f(~year2 + sex)",15,19817.1971441441,2377.49440548716,0,3012.8879
+"378","~sex","~1","~year2 * sex","Phi(~sex)p(~1)f(~year2 * sex)",25,19820.4035662651,2380.70082760807,0,2995.8474
+"417","~sex","~sex","~year2 * sex","Phi(~sex)p(~sex)f(~year2 * sex)",26,19821.2210189816,2381.51828032464,0,2994.6325
+"45","~1","~sex","~year2","Phi(~1)p(~sex)f(~year2)",14,19824.9120882618,2385.2093496048,0,3022.6211
+"993","~year2 * sex","~1","~sex","Phi(~year2 * sex)p(~1)f(~sex)",25,19828.6535662651,2388.95082760807,0,3004.0971
+"371","~sex","~1","~year2","Phi(~sex)p(~1)f(~year2)",14,19830.1830882618,2390.4803496048,0,3027.8917
+"52","~1","~sex","~year2 * sex","Phi(~1)p(~sex)f(~year2 * sex)",25,19831.8065662651,2392.10382760808,0,3007.2497
+"10","~1","~1","~year2 + sex","Phi(~1)p(~1)f(~year2 + sex)",14,19835.5200882618,2395.8173496048,0,3033.2287
+"6","~1","~1","~year2","Phi(~1)p(~1)f(~year2)",13,19841.4802436975,2401.77750504049,0,3041.2062
+"13","~1","~1","~year2 * sex","Phi(~1)p(~1)f(~year2 * sex)",24,19848.4913369467,2408.78859828972,0,3025.9653
+"370","~sex","~1","~sex","Phi(~sex)p(~1)f(~sex)",5,20092.7029640719,2653.00022541487,0,3308.52
+"409","~sex","~sex","~sex","Phi(~sex)p(~sex)f(~sex)",6,20093.4621572327,2653.75941857572,0,3307.2724
+"405","~sex","~sex","~1","Phi(~sex)p(~sex)f(~1)",5,20102.3199640719,2662.61722541487,0,3318.137
+"44","~1","~sex","~sex","Phi(~1)p(~sex)f(~sex)",5,20104.6749640719,2664.97222541487,0,3320.4921
+"40","~1","~sex","~1","Phi(~1)p(~sex)f(~1)",4,20110.0749724633,2670.37223380635,0,3327.8978
+"366","~sex","~1","~1","Phi(~sex)p(~1)f(~1)",4,20115.9259724633,2676.22323380635,0,3333.7494
+"5","~1","~1","~sex","Phi(~1)p(~1)f(~sex)",4,20120.4429724633,2680.74023380635,0,3338.2662
+"1","~1","~1","~1","Phi(~1)p(~1)f(~1)",3,20124.8791813285,2685.17644267156,0,3344.7065

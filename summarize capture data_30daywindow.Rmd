@@ -27,6 +27,35 @@ str(trapdata)
 
 
 ```
+# helper
+```{r}
+theme_degu <-
+  function() {
+    ggpubr::theme_pubr(base_size = 14, legend = "bottom") +
+      theme(#axis.text.x = element_text(angle = 35, vjust = 0.5),
+            legend.title = element_blank(),
+            axis.text = element_text(size = 11))
+  }
+```
+
+
+# check fall 2017
+
+```{r}
+check <- trapdata %>% 
+  filter(year==2017, season=="fall") %>% 
+  group_by(capture) %>% 
+    distinct(ear_tag_id) %>% 
+  tally()
+
+cap1.2017 <- trapdata %>% 
+  filter(year==2017, season=="fall", capture==1) %>% 
+    distinct(ear_tag_id) 
+cap2.2017 <- trapdata %>% 
+  filter(year==2017, season=="fall", capture==2) %>% 
+    distinct(ear_tag_id) 
+```
+
 
 # select first capture
 
@@ -71,6 +100,7 @@ dates <- read_csv("./data/dates.csv", col_types = cols(date = col_date(format = 
 
 
 
+
 # summarize capture dates
 
 
@@ -80,6 +110,26 @@ fieldseason <- trap %>%
   group_by(season, year) %>%
   summarize(start = min(date), end= max(date)) %>%
   mutate(status="trapping")  
+
+
+```
+## Distinct burrow systems
+
+```{r}
+
+nburrows <- trapsum %>% 
+  filter(year!="2020") %>% 
+  group_by(season, year) %>% 
+  summarize(nburrows=length(unique(burrow_location)))
+
+trapsum<- read.csv("data/trap_summary.csv")
+
+trapsumm <- trapsum %>% 
+  summarize(mean_ntraps= mean(traps),
+            sd_traps=sd(traps),
+            mean_burrows=mean(nburrows_traps_set),
+            sd_burrows=sd(nburrows_traps_set))
+
 
 
 ```
@@ -104,10 +154,14 @@ trapdist_fall <- trap %>%
              nrow = 12, ncol = 1,
              strip.position = "right") +
   scale_x_continuous(limits = c(124, 203), n.breaks = 8 ) +
-  geom_vline(xintercept = c(155, 174), color="orange")
+  geom_vline(xintercept = c(154, 184), color="orange") +
+  theme_classic()
 trapdist_fall 
 
 ndays_fallwindow<- 174-155
+ndays_fallwindow<- 184-154
+
+
 
 ```
 
@@ -136,10 +190,11 @@ trapdist_spring <- trap %>%
              nrow = 12, ncol = 1,
              strip.position = "right") +
   scale_x_continuous(limits = c(230, 320), n.breaks = 9 ) +      # fall trapping
-  geom_vline(xintercept = c(244, 300), color="lightgreen") 
+  geom_vline(xintercept = c(279, 309), color="lightgreen") 
 trapdist_spring
 
 ndays_springwindow<- 300-244
+ndays_springwindow<- 309-279
 
 ```
 
@@ -286,9 +341,9 @@ trap_effort_total <- trap %>%
   group_by(season, year) %>%
   summarize(total_days=length(unique(date)),
             total_ids=length(unique(ear_tag_id))) %>%
-  pivot_longer(cols = c("total_days", "total_ids"), names_to = "trap", values_to = "total" )
-trap_effort_total$trap[trap_effort_total$trap=="total_days"]<- "days"
-trap_effort_total$trap[trap_effort_total$trap=="total_ids"]<- "ids"
+  pivot_longer(cols = c("total_days", "total_ids"), names_to = "Trapped", values_to = "total" )
+trap_effort_total$Trapped[trap_effort_total$trap=="total_days"]<- "Days"
+trap_effort_total$Trapped[trap_effort_total$trap=="total_ids"]<- "Degus"
 # 2020, no degus captured
 trap_effort_total$total[48]<- 0 #[trap_effort_total$year==2020,trap_effort_total$total==ids]
 trap_effort_total$total[24]<- 0
@@ -434,14 +489,19 @@ Distribution of trapping (histogram of trapping days) years 2009-2020 of the 2 3
 
 ```{r plot}
 
+trapXday <- trap %>% 
+  group_by(year, julian_date) %>% 
+  tally()
+
 trapdist30d <- trap %>%
   #filter(!year %in% c(2009, 2010)) %>%
   ggplot( aes(julian_date)) +
   geom_histogram(stat = "count") +
-  labs(x="julian date") +
-  #theme_classic()+
+  labs(x="Julian date", y="Number of degus trapped") +
+  theme_bw()+
   facet_wrap(~year, #*season
-             nrow = 12, ncol = 1, strip.position = "right") +
+             nrow = 12, ncol = 1, strip.position = "right",
+             axes="margins") +
   scale_x_continuous(limits = c(130, 320), n.breaks = 20 ) +
   geom_vline(xintercept = c(154, 184), color="orange") +      # fall trapping / select fall
   #geom_text(x=157.5, y = 120, label="fall", color="orange", size=3) +
@@ -449,7 +509,7 @@ trapdist30d <- trap %>%
   
 trapdist30d
 
-ggsave( "./data/plot_trapping distribution 30-days.png")
+ggsave( "./data/plot_trapping distribution 30-days_v2.png")
 
 ```
 
@@ -494,6 +554,10 @@ plotXwindow <- ggplot(trapwindow, aes(x=window)) +
 plotXwindow 
 ```
 
+
+
+
+
 By the two selected windows
 
 ```{r}
@@ -502,29 +566,40 @@ trap_effortXselectwindow <- trapwindow %>%
   #filter(window %in% c("mating", "lactation", "pups")) %>%
   summarize(n_days=length(unique(date)),
             n_ids=length(unique(ear_tag_id))) %>%
-  pivot_longer(cols = c("n_days", "n_ids"), names_to = "trap", values_to = "count" ) 
+  pivot_longer(cols = c("n_days", "n_ids"), names_to = "Trapped", values_to = "count" ) 
 
-trap_effortXselectwindow$trap[trap_effortXselectwindow$trap=="n_days"]<- "days"
-trap_effortXselectwindow$trap[trap_effortXselectwindow$trap=="n_ids"]<- "ids"
+trap_effortXselectwindow$Trapped[trap_effortXselectwindow$Trapped=="n_days"]<- "Days"
+trap_effortXselectwindow$Trapped[trap_effortXselectwindow$Trapped=="n_ids"]<- "Degus"
 
-# 2020, no degus captured
-trap_effortXselectwindow$count[24]<- 0
-trap_effortXselectwindow$count[48]<- 0
-trap_effortXselectwindow$count[72]<- 0
+# update 2009 & 2020, no degus captured
+trap_effortXselectwindow$count[24]<- 82
+trap_effortXselectwindow$count[46]<- 0
+trap_effortXselectwindow$count[70]<- 0
+trap_effortXselectwindow$count[94]<- 0
+
+
+#Why do I get 0 ids in spring 2009?
+checkspring09 <- trapwindow %>% 
+  filter(year=="2009") %>%
+    group_by(season,  window, year) %>%
+    summarize(n_days=length(unique(date)),
+            n_ids=length(unique(ear_tag_id)),
+            degus=n_distinct(ear_tag_id))
 
 
 # combine total trap effort and by window
-trapeffort <- left_join(trap_effortXselectwindow, trap_effort_total, by=c("season", "year", "trap")) 
+trapeffort <- left_join(trap_effortXselectwindow, trap_effort_total, by=c("season", "year", "Trapped")) 
 
 # plots
 plotfall <- trapeffort %>%
   filter(window=="fall") %>% 
-  ggplot( aes(x=year, y=count, fill=trap)) +
+  ggplot( aes(x=year, y=count, fill=Trapped)) +
   geom_col(stat = "identity", position = "dodge") +
-  labs(y="count", title = "fall") +
+  labs(y="Number of days/degus trapped", x="Year", title = "Austral fall (June trapping window)") +
   theme_classic() +
-  #scale_y_continuous(limits = c(0, 130) ) +
-  scale_x_continuous(limits = c(2008, 2020), n.breaks =12 ) +
+  theme(legend.position="bottom") +
+  scale_y_continuous(limits = c(0, 150) ) +
+  scale_x_continuous(limits = c(2009, 2020), n.breaks =12 ) +
   scale_fill_manual(values = c("#004D40", "#ff6600ff")) +
   geom_text(aes(label = count), 
             position=position_dodge(width = 0.9),
@@ -538,12 +613,13 @@ ggsave("trappingeffort_fall.png")
 
 plotspring <- trapeffort %>%
   filter(window=="spring") %>% 
-  ggplot( aes(x=year, y=count, fill=trap)) +
+  ggplot( aes(x=year, y=count, fill=Trapped)) +
   geom_col(stat = "identity", position = "dodge") +
-  labs(y="count", title = "spring") +
+  labs(y="Number of days/degus trapped", x="Year", title = "Austral Spring (Oct trapping window)") +
   theme_classic() +
-  scale_x_continuous(limits = c(2008, 2020), n.breaks =12 ) +
-  # scale_y_continuous(limits = c(0, 130) ) +
+  theme(legend.position="bottom") +
+  scale_x_continuous(limits = c(2009, 2020), n.breaks =12 ) +
+  scale_y_continuous(limits = c(0, 510) ) +
   scale_fill_manual(values = c("#004D40", "lightblue")) +
   geom_text(aes(label = count), 
             position=position_dodge(width = 0.9),
@@ -559,10 +635,10 @@ ggsave("trappingeffort_spring.png")
 
 ```{r}
 ggpubr::ggarrange(plotfall,
-          plotspring, 
+                  plotspring, 
+                  ncol=1)
 
-          ncol=1)
-ggsave("trappingeffort_2x30daywindows.png")
+ggsave("./data/trappingeffort_2x30daywindows_v2.png")
 ```
 
 
@@ -1114,10 +1190,20 @@ trapkey <- seasons %>%
   group_by(seasonkey) %>%
   slice(1) %>%
   select(seasonkey, seasonid, season, window, year) %>% 
+  rename(trapsession=season) %>%
   ungroup()
 
 write.csv(trapkey, "./data/seasonkey.csv")
 ```
+## trap summary
+
+```{r}
+burrows <- markrecap_key %>%
+  group_by(seasonkey) %>%
+  summarize(burrows=n_distinct(burrow_location))
+write.csv(burrows, "results/unique burrows per trapping window.csv")
+```
+
 
 ## clean up
 select relevant columns and remove unnecessary columns
