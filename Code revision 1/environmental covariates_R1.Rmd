@@ -1,0 +1,2919 @@
+---
+title: "covariates"
+author: "Annemarie van der Marel"
+date: "2023-12-15"
+output: pdf_document
+---
+
+
+
+Environmental variables
+independent  and multiple estimates supports our hypothesis that drought affects vegetation production and hence food availability:
+
+The values of NDVI indicate presence of green vegetation /indicator of vegetation greenness while LAI quantifies the amount of leaf material in a canopy. So, LAI is a better indicator of food availability.
+
+The SMAP soil moisture is available only after 2015, but it clearly indicates the severe drought conditions in 2018. (perhaps as supplemental material)
+
+Evapotranspiration contains both evaporation and transpiration, so I don't think I can use it as a proxy of soil moisture alone, but as an indicator of the effect of soil moisture.
+
+The GPP values indicate  the total influx of carbon into an ecosystem through the photosynthetic fixation of CO2 and represents biomass production. So, indirectly support vegetation activity, partially contribute to E through transpiration.
+
+
+
+# load libraries
+```{r include=FALSE}
+library(tidyverse)
+library(paletteer)
+library(ggrepel)
+library(ggpubr)
+library(dplyr)
+library(gghighlight)
+library(lubridate)
+library(viridis)
+library(patchwork)
+```
+
+
+# import data
+```{r}
+
+capture_sum <- read.csv("results/capture_summary.csv") %>%
+  select(-X, -idsmissing_select, -idstrapped_select, -idsmissing_after) %>%
+  dplyr::rename(trapsession=season, 
+         window=month)
+
+# seasonkey <- read.csv("./data/seasonkey.csv") %>%
+#   select(-X) %>%
+#   add_row(seasonkey=0, seasonid="spring_oct_2008", season="breeding", window="oct", year=2008, .before = 1) %>%
+#   add_row(seasonkey=-1, seasonid="fall_jun_2008",season="nonbreeding", window="jun", year=2008, .before = 1)
+  
+
+seasonkey_month <- read.csv("./data/seasonkey_month_v2.csv") 
+
+# environmental data
+temp_raw <- read.csv("./data/monthly_data_Pudahuel.csv") 
+temp_raw$precipitation_mm[temp_raw$precipitation_mm==-999.0] <- NA
+
+
+enso_raw <- read.csv("./data/El Niño-Southern Oscillation.csv")
+
+# envirownmental data _ MODIS
+modis_day <- read.csv("results/MODIS_ET_GPP_LAI_dailyn_final.csv") %>% 
+  dplyr::select(-X) %>% 
+  dplyr::rename(year=Year,
+        month=Month) 
+ 
+modis_month <- read.csv("data/MODIS_monthly_data.csv") %>% # for monthly plots
+  #dplyr::select(-X) %>% 
+  dplyr::rename(year=Year,
+        month=Month) 
+
+```
+
+
+# helper functions
+```{r}
+years <- c(2009:2020)
+```
+
+
+```{r}
+
+library(colorblindr)
+library(paletteer)
+library(impressionist.colors)
+
+paletteer::palettes_d_names
+paletteer_d(`"Manu::Kea"`)
+  paletteer_d(`"colorBlindness::paletteMartin"`)
+paletteer_d(`"impressionist.colors::korenveld_onder_onweerslucht"`)
+paletteer_d(`"impressionist.colors::les_nympheas"`)
+paletteer_d(`"impressionist.colors::de_slaapkamer"`)
+
+
+impressionist.colors::palette.summary()
+
+
+colors<- paletteer_d(`"impressionist.colors::korenveld_onder_onweerslucht"`, 12)
+
+colors24<- paletteer_d(`"impressionist.colors::korenveld_onder_onweerslucht"`, 24)
+#colors <-  thematic::okabe_ito(12) "#E69F00" "#009E73" "#0072B2" "#CC79A7" "#999999" "#D55E00" "#F0E442" "#56B4E9"
+
+
+ paletteer::scale_colour_paletteer_d("rcartocolor::Safe")
+colorsXperiod <-paletteer::paletteer_d("rcartocolor::Safe")
+
+
+cividis_colors <- viridis_pal(option = "cividis")(5)
+print(cividis_colors)
+
+print(viridis_pal(option = "D")(5))
+
+ 
+```
+
+
+# Weather covariates
+## yearly temp and rainfall
+
+```{r}
+annual <- temp_raw %>%
+  group_by(year) %>%
+  dplyr::summarize(temp_avg=mean(avgT_C), 
+            temp_max=mean(maxT_C),
+            rain_mm=sum(precipitation_mm, na.rm = T),
+            temp_cv=sd(avgT_C, na.rm = T) / mean(avgT_C, na.rm = T), 
+            rain_cv=sd(precipitation_mm, na.rm = T)/mean(precipitation_mm, na.rm = T))
+head(annual)
+#annual$year <- as.integer(annual$year)
+```
+
+Percent Decline=( Original Value -New Value)/Original value *100
+
+ 
+```{r}
+# average rain_sum 1976-2008
+meanprior <- annual %>% 
+  filter(year<2009) %>% 
+  summarize(mean_rain=mean(rain_mm))
+  
+# average rainfall 2009-2019
+meanstudy<- annual %>% 
+  filter(between(year, 2009, 2019)) %>% 
+  summarize(mean_rain=mean(rain_mm))
+
+percdecline <- (meanprior$mean_rain-meanstudy$mean_rain)/meanprior$mean_rain *100
+```
+
+
+## monthly temperature and rainfall
+```{r}
+month_num <- c(1:12)
+month <- c("jan", "feb", "mar", "apr", "may", "jun", 
+           "jul", "aug", "sep", "oct", "nov", "dec")
+
+months <- data.frame(month, month_num)
+```
+
+## plots monthly average study period
+
+```{r temp+rain 2009-2020}
+
+range(temp_raw$avgT_C)
+
+plot_temp_month <-  temp_raw %>%
+  filter(year>2008) %>%
+  ggplot(aes(x=month, y=avgT_C, group=as.factor(year), colour=as.factor(year))) +   geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =25),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  #facet_wrap(~year) +
+  scale_y_continuous(limits=c(0, 25)) +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  geom_hline(yintercept = mean(temp_raw$avgT_C), linetype="dotted") + #mean(temp_raw$avgT_C)
+  #scale_color_continuous("PuBuGn") +
+  labs(x="Month",y="T-avg"~(degree*C), subtitle = expression('Air Temperature'), colour="year") +  
+  scale_color_manual(values = colorsXyear, name="Year") +
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray") +
+   geom_hline(yintercept = mean(annual$temp_avg), linetype="dotted")
+plot_temp_month   
+
+range(temp_raw$maxT_C)
+plot_tempmax_month <-  temp_raw %>%
+  filter(year>2008) %>%
+  ggplot(aes(x=month, y=maxT_C, group=as.factor(year), colour=as.factor(year))) +   geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =35),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  #facet_wrap(~year) +
+  #scale_y_continuous(limits=c(0, 25)) +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  geom_hline(yintercept = mean(temp_raw$maxT_C), linetype="dotted") + #mean(temp_raw$avgT_C)
+  #scale_color_continuous("PuBuGn") +
+  labs(x="Month", y="T max"~(degree*C), subtitle ="Max Temperature", colour="year") +  
+  scale_color_manual(values = colorsXyear, name="Year") 
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_tempmax_month 
+
+range(temp_raw$precipitation_mm, na.rm = T)
+
+plot_rain_month <-  temp_raw %>%
+  filter(year>2008) %>%
+  ggplot( aes(x=month, y=precipitation_mm, group=as.factor(year), colour=as.factor(year))) +
+    geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =100),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  #facet_wrap(~year) +
+  labs(x="Month", y="P (mm)", subtitle ="Precipitation", colour="year") +
+  geom_hline(yintercept = mean(temp_raw$precipitation_mm, na.rm = T), linetype="dotted") + # mean of the total amount of yearly rainfall from he study period
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  scale_y_continuous(limits=c(0, 100)) +
+  scale_color_manual(values = colorsXyear, name="Year") 
+  #facet_wrap(~year) +
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_rain_month
+
+
+```
+##compare long-term vs study period
+```{r}
+covars <- read.csv("./data/covariates_select_scaled_v5_exclude-temp-max.csv") %>% 
+  filter(year2!=2020)
+
+covars$season2 <- factor(covars$season2, levels = c("wet", "dry") )
+
+covarssum <- covars %>% 
+  dplyr::group_by(year2, season2) %>% 
+  summarize(min=min(rain_sum),
+            max=max(rain_sum))
+
+ggplot(covars, aes(x=year2, y=rain_sum)) +
+         geom_point() +
+         facet_grid(~season)
+
+obsmean_rain_sum <- mean(covars$rain_sum)
+obssd_rain_sum <- sd(covars$rain_sum)
+
+obsmean_rain_cv_lag <- mean(covars$rain_cv_lag)
+obssd_rain_cv_lag <- sd(covars$rain_cv_lag)
+
+# environemntal covars
+temp_raw <- read.csv("./data/monthly_data_Pudahuel.csv") %>% 
+  filter(year!="2020")
+temp_raw$precipitation_mm[temp_raw$precipitation_mm==-999.0] <- NA
+
+2019-1976
+
+
+
+annual <- temp_raw %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(temp_avg=mean(avgT_C), 
+            temp_mMax=mean(maxT_C),
+            rain_mm=sum(precipitation_mm, na.rm = T))
+
+rainavg43years <- mean(annual$rain_mm, na.rm = T)
+round(rainavg43years)
+
+study <- temp_raw %>%
+  filter(year>2008) %>% 
+  dplyr::group_by(year) %>%
+  dplyr::summarize(temp_avg=mean(avgT_C), 
+            temp_mMax=mean(maxT_C),
+            rain_mm=sum(precipitation_mm, na.rm = T))
+rainavg12years <- round(mean(study$rain_mm, na.rm=T))
+```
+The long-term yearly average of cumulative amount of rainfall between 1976 and 2019 was 247 mm. The rainfall that fell between 2009 and 2019 that correspond to our data set was 153 mm. 
+
+## select weather variables
+```{r}
+head(temp_raw)
+
+nonbreeding <- c(1, 2, 3,4, 5, 10, 11, 12) #oct-march
+breeding <- c(6:9) #april-sept
+
+seasonkey_month$year<- as.integer(seasonkey_month$year)
+
+
+temp <- seasonkey_month %>% 
+  filter(year!="2021") %>% 
+  left_join(temp_raw) %>%
+  dplyr::group_by(season, window, seasonkey, seasonid) %>%
+ # arrange( year, season) %>%
+  dplyr::summarise(temp_avg=mean(avgT_C, na.rm = T),
+            temp_cv=sd(avgT_C, na.rm = T) / mean(avgT_C, na.rm = T), 
+            temp_max=max(maxT_C, na.rm = T),
+            rain_sum=sum(precipitation_mm, na.rm = T), 
+            rain_cv=sd(precipitation_mm, na.rm = T)/mean(precipitation_mm, na.rm = T)) %>%
+  dplyr::arrange(seasonkey) %>% 
+  ungroup() 
+
+
+temp$rain_cv[is.na(temp$rain_cv)]<-0
+
+
+
+```
+
+## lagged weather
+
+Select appropriate weather variables for each season (lagged etc)
+
+
+1.	rainfall data from Jun-Sept year n to predict survival/recruitment in June-Sept year n+1
+2.	rainfall data from Oct-May year n to predict survival/recruitment June-Sept year n
+It depends on how much effect we think rainfall will have: does the rainfall from a year ago influ-ence current food availability or is it more of an immediate effect, where rainfall in April/May in-fluence food availability? And I'm not sure which one to choose. 
+This question arose because we changed the seasons for which we combined the environmental covariates from Apr-Sept to Jun-Sep, which meant there is a bit more rainfall during the Oct-May interval. In my email from last week, I attached an image of the sum of monthly rainfall across the 2009-2020 interval. 
+
+Answer from Praveena: The impact of rainfall on vegetation depends on the type of vegetation.  If it's herbaceous plants (important for Degus), the effect is immediate, but plants with larger roots or trees can have a noticeable lag effect , which I guess is not much important to Degus. I think we should give more preference to the immediate growing season than the previous years or next years. Severe drought can definitely affect plant  density, leaf area next year due to impact on its growth in the first year affecting seed pool or bud formation for the next year.
+
+Answer from Loren: The long-term effect may depend on how cumulative rainfall if the seed base depends on this. If it is impossible to include multiple periods, then I suggest going with the immediate effect. We might need a more in depth understanding of the long=term effects of rainfall on seed germina-tion, plant growth, etc.
+
+
+```{r}
+
+glimpse(temp)
+
+weatherlag <- temp %>% 
+  mutate( # focus on immediate effects
+          rain_sum_lag=if_else(season=="breeding", lag(rain_sum, 1), lag(rain_sum, 1)),
+          rain_cv_lag=if_else(season=="breeding", lag(rain_cv, 1), lag(rain_cv, 1)) ) # ,
+    
+    # for lag rain, breeding season is former wet season, dry season is former wet season
+          # rain_sum_lag2=if_else(season=="breeding", lag(rain_sum, 2), lag(rain_sum, 1)),
+          # rain_cv_lag2=if_else(season=="breeding", lag(rain_cv, 2), lag(rain_cv, 1))) 
+
+
+```
+
+
+
+# Environmental covariates
+
+##study period
+```{r}
+modis_study <- modis_month %>% 
+  filter(year %in% years)
+
+
+```
+
+
+## LAI: Leaf Area Index
+
+```{r}
+glimpse(modis_day)
+
+  # plots
+plot_lai_month <-  modis_study %>%
+  ggplot( aes(x=month, y=LAI_avg, group=as.factor(year), colour=as.factor(year))) +
+      geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =3),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point( )+
+  theme_classic() +
+  scale_color_manual(values = colorsXyear, name="Year") +
+  #facet_wrap(~year) +
+  labs(x="Month", y=expression(LAI-avg~(m^2)), subtitle ="Leaf Area Index", colour="year") +
+  geom_hline(yintercept = mean(modis_study$LAI_avg, na.rm=T), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  scale_y_continuous(limits=c(0, 3)) #max(modis_study$LAI_avg)
+ 
+  #geom_segment(x = 6, xend=9.9, y =6, yend=5.6, colour="lightgray", alpha=0.7)
+plot_lai_month
+
+
+```
+
+
+
+
+## ET: Evapotranspiration
+
+```{r}
+max(modis_study$ET_sum)
+
+plot_et_sum <-  modis_study %>%
+  ggplot( aes(x=month, y=ET_sum, group=as.factor(year), colour=as.factor(year))) +
+   geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =71),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+    geom_line() +   geom_point() +
+  scale_color_manual(values = colorsXyear, name="Year") +
+  theme_classic() +
+  #facet_wrap(~year) +
+  labs(x="Month", y="ET (mm)", subtitle ="Evapotranspiration", colour="year") +
+  geom_hline(yintercept = mean(modis_study$ET_sum), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) #+
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_et_sum
+
+max(modis_study$ET_avg)
+
+  plot_et_avg <-  modis_study %>%
+   ggplot( aes(x=month, y=ET_avg, group=as.factor(year), colour=as.factor(year))) +
+   geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =3),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  scale_color_manual(values = colorsXyear, name="Year") +
+  geom_line() +   geom_point() +
+  #scale_color_manual(values = colors) +
+  theme_classic() +
+  #facet_wrap(~year) +
+  labs(x="Month", y="ET-avg (mm)", subtitle ="Evapotranspiration", colour="year") +
+  geom_hline(yintercept = mean(modis_study$ET_avg), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  geom_vline(xintercept = 5.9, colour="lightgray") +
+  geom_vline(xintercept = 9.9, colour="lightgray")
+plot_et_avg
+
+ggarrange(plot_et_avg, plot_et_sum)
+```
+## GPP: Gross Primary Production
+
+```{r}
+max(modis_study$GPP_sum)
+
+plot_gpp_sum <-   ggplot( modis_study, 
+                          aes(x=month, y=GPP_sum, group=as.factor(year), colour=as.factor(year))) +
+    geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = 0, ymax =150),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  scale_color_manual(values = colorsXyear, name="Year") +
+  #facet_wrap(~year) +
+  labs(x="Month", y=expression(GPP~(gC/m^2)), subtitle ="Gross Primary Production", colour="year") +
+  geom_hline(yintercept = mean(modis_study$GPP_sum), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) 
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_gpp_sum
+
+plot_gpp_avg<-  ggplot( modis_study, 
+                          aes(x=month, y=GPP_avg, group=as.factor(year), colour=as.factor(year))) +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  scale_color_manual(values = colors) +
+  #facet_wrap(~year) +
+  labs(x="Month", y=expression("GPP avg"~(gC/m^2)), subtitle ="Gross Primary Production", colour="year") +
+  geom_hline(yintercept = mean(modis_study$GPP_avg), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) 
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_gpp_avg
+
+ggarrange(plot_gpp_sum, plot_gpp_avg)
+
+```
+
+
+
+## ONI
+El Niño-Southern Oscillation
+Regional temperature and precipitation oscillations caused by El Nino. “El Niño conditions occur when the average sea-surface temperature of three consecutive months is 0.5°C above average temperature and La Niña conditions occur when the average sea-surface temperature is 0.5°C below average temperature. We obtained the ONI value from the National Oceanographic and Atmospheric Agency Climate Prediction Center” https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php 
+
+```{r}
+
+# did it in excel instead, see
+oni<- seasonkey_month %>%
+  left_join(enso_raw, by=c("year", "month")) %>%
+  dplyr::filter(oni!="NA") %>% 
+  dplyr::group_by(season, window, seasonkey, seasonid) %>%
+  dplyr::summarize(oni_avg=mean(oni)) %>% 
+  dplyr::arrange(seasonkey) 
+
+range(enso_raw$oni)
+
+plot_oni_month <-  enso_raw %>%
+  filter(year%in%years) %>% 
+  group_by(year, month) %>%
+  #summarize(mean_oni=mean(oni)) %>% 
+  #filter(year>2016) %
+  ggplot( aes(x=month, y=oni, group=as.factor(year), colour=as.factor(year))) +
+    geom_rect( aes( xmin = 5.9,  xmax = 9.9,
+      ymin = -2, ymax =3),
+    fill = alpha("lightgrey", 0.2), color="lightgrey") +
+  geom_line() +   geom_point() +
+  theme_classic() +
+  scale_color_manual(values = colorsXyear, name="Year") +
+  #facet_wrap(~year) +
+  labs(x="Month", y="ONI", subtitle ="El Niño Index", colour="year") +
+  geom_hline(yintercept = mean(enso_raw$oni), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) 
+  #scale_y_continuous(limits=c(0, 0.05)) +
+  # geom_vline(xintercept = 5.9, colour="lightgray") +
+  # geom_vline(xintercept = 9.9, colour="lightgray")
+plot_oni_month
+
+```
+
+
+# Plots Study Period Monthly
+
+```{r}
+plot_month_all <- ggpubr::ggarrange(plot_temp_month + rremove("xlab"), 
+                                    plot_lai_month+ rremove("xlab"), 
+                                    plot_rain_month+ rremove("xlab"),  
+                                    plot_et_sum+ rremove("xlab"),
+                                    plot_tempmax_month+ rremove("xlab"), 
+                                    plot_gpp_sum, plot_oni_month,
+                         nrow=4, ncol=2, align = "v",
+                         common.legend = TRUE, legend = "bottom")
+plot_month_all
+
+ggsave( "results/environmental covars X month_allv4.pdf", width = 180, height = 200, units = "mm", dpi=300)
+```
+
+
+
+
+
+# Plots long-term covariates
+
+https://davidmathlogic.com/colorblind/#%23D81B60-%231E88E5-%23FFC107-%23004D40 
+```{r annual}
+head(temp_raw)
+temp_raw$precipitation_mm[temp_raw$precipitation_mm==-999.0] <- NA
+
+annual <- temp_raw %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(temp_avg=round(mean(avgT_C), 2), 
+            temp_max=round(max(maxT_C, na.rm = T), 2),
+            #temp_cv=formatC(sd(avgT_C, na.rm = T) / mean(avgT_C, na.rm = T),format = "f", flag="0"),
+            temp_cv=round(sd(avgT_C, na.rm = T) / mean(avgT_C, na.rm = T),3),
+            rain_mm=sum(precipitation_mm, na.rm = T),
+            rain_cv=round(sd(precipitation_mm, na.rm = T)/mean(precipitation_mm, na.rm = T), 3))
+
+plot_temp_year <- ggplot(annual, aes(x=year, y=temp_avg)) +
+  geom_line(colour="#fd8d3c") +  
+  geom_point(fill="#fd8d3c", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y=expression('T avg'~(degree*C)), subtitle ='Air Temperature')+
+  geom_hline(yintercept = mean(annual$temp_avg), linetype="dotted")
+plot_temp_year
+
+plot_temp_cv_year <- ggplot(annual, aes(x=year, y=temp_cv)) +
+  geom_line(colour="#fed976") +   
+  geom_point(fill="#fed976", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y="T CV", subtitle = "CV Temperature")+
+  geom_hline(yintercept = mean(annual$temp_cv), linetype="dotted")
+plot_temp_cv_year
+
+plot_temp_max_year <- ggplot(annual, aes(x=year, y=temp_max)) +
+  geom_line(colour="#f03b20") +   
+  geom_point(fill="#f03b20", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year",  y=expression('T max'~(degree*C)), subtitle ="Max Temperature")+
+  geom_hline(yintercept = mean(annual$temp_max), linetype="dotted")
+plot_temp_max_year
+
+plot_rain_year <- ggplot(annual, aes(x=year, y=rain_mm)) +
+  geom_line(color="#1E88E5") +  
+  geom_point(fill="#1E88E5", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y="P (mm)", subtitle =  "Precipitation") +
+  geom_hline(yintercept = mean(annual$rain_mm), linetype="dotted") +
+  scale_y_continuous(limits=c(0, 700))
+plot_rain_year
+
+range(annual$rain_cv)
+plot_raincv_year <- ggplot(annual, aes(x=year, y=rain_cv)) +
+  geom_line(color="#9ecae1") +  
+  geom_point(fill="#9ecae1", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y="P CV", subtitle =  "CV Precipitation") +
+  geom_hline(yintercept = mean(annual$rain_cv), linetype="dotted") +
+  scale_y_continuous(limits=c(0, 2.5))
+plot_raincv_year
+
+plot_lai_year <- modis_day %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(lai_avg=mean(LAI)) %>% 
+  ggplot( aes(x=year, y=lai_avg)) +
+  geom_line(color="#a1d99b") +  
+  geom_point(fill="#a1d99b", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y=expression("LAI"~(m^2)), subtitle =  "Leaf Area Index") +
+  geom_hline(yintercept = mean(modis_day$LAI), linetype="dotted") +
+  #scale_y_continuous(limits=c(0, 0.5)) +
+  scale_x_continuous(limits=c(2000, 2020))
+plot_lai_year 
+
+plot_gpp_year <- modis_day %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(gpp_avg=mean(GPP)) %>% 
+  ggplot( aes(x=year, y=gpp_avg)) +
+  geom_line(color="#006d2c") +  
+  geom_point(fill="#006d2c", shape = 21, color="black",  size=2 ) +
+  theme_classic() +
+  labs(x="Year", y=expression('GPP'~(gCm^2)), subtitle="Gross Primary Production") +
+  geom_hline(yintercept = mean(modis_day$GPP), linetype="dotted") +
+  #scale_y_continuous(limits=c(0, 0.5)) +
+  scale_x_continuous(limits=c(2000, 2020))
+plot_gpp_year 
+
+plot_et_year <- modis_day %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(et_avg=mean(ET)) %>% 
+  ggplot( aes(x=year, y=et_avg)) +
+  geom_line(color="#D81B60") +  
+  geom_point(shape = 21, color="black", fill="#D81B60", size=2) +
+  theme_classic() +
+  labs(x="Year", y="ET (mm)",subtitle ="Evapotranspiration") +
+  geom_hline(yintercept = mean(modis_day$ET), linetype="dotted") +
+  #scale_y_continuous(limits=c(0, 0.5)) +
+  scale_x_continuous(limits=c(2000, 2020))
+plot_et_year 
+
+
+plot_oni_year <- enso_raw %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(oni_avg=mean(oni)) %>% 
+  ggplot( aes(x=year, y=oni_avg)) +
+  geom_line(color="#bdbdbd") +  
+  geom_point( shape = 21, color="black", fill="#bdbdbd", size=2 ) +
+  theme_classic() +
+  labs(x="Year", y= "ONI", subtitle="El Niño index") +
+  geom_hline(yintercept = mean(enso_raw$oni, na.rm=T), linetype="dotted") +
+  #scale_y_continuous(limits=c(0, 0.5)) +
+  scale_x_continuous(limits=c(2000, 2020)) 
+  
+plot_oni_year
+
+```
+
+
+```{r}
+
+ggarrange(plot_temp_year, plot_lai_year, 
+          plot_temp_max_year, plot_gpp_year,
+          plot_temp_cv_year, plot_et_year,
+          plot_rain_year, plot_oni_year,
+          plot_raincv_year, 
+          nrow=5, ncol=2, 
+          align="hv", widths = c(1.5,1))
+
+ggsave("./results/longterm_envir-covars_v10.pdf", width = 180, height=240, units = "mm", dpi=300)
+
+```
+
+
+
+
+
+# Select Covariates
+
+
+## combine all covars
+```{r}
+# By day
+modis_day$year <- as.factor(modis_day$year)
+
+modis <- seasonkey_month %>%
+  left_join(modis_day) 
+
+## join to weather variables
+modisXseason <- modis %>%
+  dplyr::group_by(season, seasonkey, seasonid) %>%
+    dplyr::summarize(gpp_avg=mean(GPP, na.rm = T), 
+            gpp_sum = sum(GPP, na.rm = T),
+            et_avg=mean(ET, na.rm=T),
+            et_sum = sum(ET, na.rm = T),
+            lai_avg = mean(LAI, na.rm=T)) %>% 
+  dplyr::arrange(seasonkey)
+
+
+
+# by month
+modis_month$year<- as.factor(modis_month$year)
+modism <- seasonkey_month %>%
+  left_join(modis_month) 
+
+## join to weather variables
+modismXseason <- modism %>%
+  dplyr::group_by(season, seasonkey, seasonid) %>%
+    dplyr::summarize(gpp_avg=mean(GPP_avg, na.rm = T), 
+            gpp_sum = sum(GPP_sum, na.rm = T),
+            et_avg=mean(ET_avg, na.rm=T),
+            et_sum = sum(ET_sum, na.rm = T),
+            lai_avg = mean(LAI_avg, na.rm=T)) %>% 
+  arrange(seasonkey)
+
+
+
+
+# combine all weather variables
+weather_modis <- weatherlag %>% 
+  left_join(modisXseason, by = c( "seasonkey", "season", "seasonid")) %>% 
+  left_join(oni) %>% 
+  filter(seasonkey>0)
+glimpse(weather_modis)
+
+
+write.csv(weather_modis, "data/all environmental covariates_20250225.csv")
+
+```
+
+
+
+#Pairwise correlations
+http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software
+
+my general rule is to not use variables with r>=0.5.
+
+
+
+## select sum GPP and ET as we also have sum P
+
+```{r}
+covariates <- weather_modis %>% 
+  dplyr::select(-gpp_avg, -et_avg)
+
+# select variables to include in correlation matrix
+df <- covariates[, 5:15]
+
+#create matrix
+res <- round(cor(df),2)
+write.csv(res, "./results/covariate correlation_v10.csv")
+
+
+# visalise matrix
+pairs(df)
+psych::pairs.panels(df) # Generate scatterplots with Pearson correlations
+
+jpeg(file="./results/correlation matrix_v10.jpeg")
+corrplot::corrplot(round(cor(df),2), type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+dev.off()
+
+#PerformanceAnalytics::chart.Correlation(my_data, histogram=TRUE, pch=19)
+
+#library(Hmisc)
+#res2<-Hmisc::rcorr(as.matrix(covariates[,5:15]))
+
+#corrplot::corrplot(res2$r, type="upper", order="hclust", 
+#         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+
+
+```
+
+### R
+
+ We have to exclude max temperature as it still has r2>0.5 with rain_sumlag and rain_cv_lag.  
+
+```{r}
+
+# select variables to include in correlation matrix
+select_covariates<- covariates %>%
+  #dplyr::select(-temp_avg) # still ones with r > 0.5
+  #dplyr::select(-temp_avg,  -temp_max) # 
+  #dplyr::select(-temp_avg,  -rain_sum_lag, - temp_max) # Tmax r>0.5 with 3 other variables
+  dplyr::select(-temp_avg,  -rain_sum_lag, - temp_max, -et_sum) # Tmax r>0.5 with 3 other variables
+
+dfs <- select_covariates[,5:11]
+ress <- round(cor(dfs),2)
+psych::pairs.panels(df1) # Generate scatterplots with Pearson correlations
+
+
+
+```
+
+If we use sum, then remove Temp_avg, temp_max, rain_sum_lag, and et_sum
+
+
+###VIF
+Exclude variables with VIF values > 3 or >10? 
+
+
+
+```{r}
+# vif
+Z <- cbind( covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            covariates$et_sum, 
+            covariates$gpp_sum,
+            covariates$oni_avg)
+colnames(Z) <- c( "T", "Tcv","Tmax", "P","Plag", "Pcv","Pcvl", "lai",  "et","gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: T
+
+
+# Relationships between explanatory variables.
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            covariates$et_sum, 
+            covariates$gpp_sum,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "lai",  "et","gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: et
+
+
+# Relationships between explanatory variables.
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            #covariates$et_avg, 
+            covariates$gpp_sum,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "lai",  "gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: tmax
+
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            #covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            #covariates$et_avg, 
+            covariates$gpp_sum,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv", "rain","rainlag", "raincv","raincvl","lai", "gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: 
+
+
+# varaibales all with vif<3, exclude temp_avg, tempmax, et_sum,
+
+
+```
+
+## select avg GPP and ET so not to change to much 
+
+```{r}
+covariates <- weather_modis %>% 
+  dplyr::select(-gpp_sum, -et_sum)
+
+# select variables to include in correlation matrix
+df <- covariates[, 5:15]
+
+#create matrix
+res <- round(cor(df),2)
+write.csv(res, "./results/covariate correlation_v10.csv")
+
+
+# visalise matrix
+pairs(df)
+psych::pairs.panels(df) # Generate scatterplots with Pearson correlations
+
+jpeg(file="./results/correlation matrix_v10.jpeg")
+corrplot::corrplot(round(cor(df),2), type = "upper", order = "hclust", 
+         tl.col = "black", tl.srt = 45)
+dev.off()
+
+#PerformanceAnalytics::chart.Correlation(my_data, histogram=TRUE, pch=19)
+
+#library(Hmisc)
+#res2<-Hmisc::rcorr(as.matrix(covariates[,5:15]))
+
+#corrplot::corrplot(res2$r, type="upper", order="hclust", 
+#         p.mat = res2$P, sig.level = 0.01, insig = "blank")
+
+
+```
+### R
+
+ We have to exclude max temperature as it still has r2>0.5 with rain_sumlag and rain_cv_lag.  
+
+```{r}
+
+# select variables to include in correlation matrix
+select_covariates<- covariates %>%
+  #dplyr::select(-temp_avg) # still ones with r > 0.5
+  #dplyr::select(-temp_avg,  -et_avg) # 
+  #dplyr::select(-temp_avg,  -et_avg, - lai_avg) # Tmax r>0.5 with 3 other variables
+  dplyr::select(-temp_avg,-temp_max,  -et_avg, - lai_avg) # Tmax r>0.5 with 3 other variables
+
+df1 <- select_covariates[,5:11]
+res1 <- round(cor(df1),2)
+psych::pairs.panels(df1) # Generate scatterplots with Pearson correlations
+
+
+
+```
+
+
+### VIF
+```{r}
+# vif
+Z <- cbind( covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            covariates$et_avg, 
+            covariates$gpp_avg,
+            covariates$oni_avg)
+colnames(Z) <- c( "T", "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "lai",  "et","gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: T
+
+
+# Relationships between explanatory variables.
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            covariates$et_avg, 
+            covariates$gpp_avg,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "lai",  "et","gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: et
+
+
+# Relationships between explanatory variables.
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            covariates$lai_avg, 
+            #covariates$et_avg, 
+            covariates$gpp_avg,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "lai",  "gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: lai
+
+Z <- cbind( #covariates$temp_avg, 
+            covariates$temp_cv,
+            covariates$temp_max,
+            covariates$rain_sum,
+            covariates$rain_sum_lag, 
+            covariates$rain_cv,
+            covariates$rain_cv_lag, 
+            #covariates$lai_avg, 
+            #covariates$et_avg, 
+            covariates$gpp_avg,
+            covariates$oni_avg)
+colnames(Z) <- c(  "Tcv","Tmax", "rain","rainlag", "raincv","raincvl", "gpp", "oni")
+dfz = data.frame(Z) # Data Frame with predictor variables
+usdm::vif(dfz) # VIF > 10: 
+
+
+# varaibales all with vif<3, exclude temp_avg, et_avg, lai_avg
+
+```
+
+
+
+
+
+
+
+
+
+# standardize and save select covariates
+
+If we use sum, then remove Temp_avg, temp_max, rain_sum_lag, and et_sum
+
+```{r}
+#center on mean and scale on SD
+# scale_covariates_sum <- select_covariates %>% 
+#   mutate(temp_cv2=scale(temp_cv), 
+#          rain_sum2=scale(rain_sum),
+#          rain_cv2=scale(rain_cv),
+#          gpp_sum2=scale(gpp_sum),
+#          lai_avg2=scale(lai_avg),
+#          oni_avg2=scale(oni_avg),
+#          rain_cv_lag2=scale(rain_cv_lag), 
+#          season2=if_else(season=="breeding", "wet", "dry")
+#         ) %>% 
+#   separate(seasonid, into = c("season1", "window1", "year2"), remove = F) %>% 
+#   select(seasonkey, seasonid, season, season1, season2, window, year2, everything(), -window1)
+# 
+# 
+# write.csv(scale_covariates_sum, "./data/covariates_select_scaled_v10_sum.csv")
+
+```
+
+If we use avg then remove -temp_avg,-temp_max,  -et_avg, - lai_avg
+
+```{r}
+#center on mean and scale on SD
+scale_covariates_avg <- select_covariates %>% 
+  mutate(temp_cv2=scale(temp_cv), 
+         rain_sum2=scale(rain_sum),
+         rain_cv2=scale(rain_cv),
+         gpp_avg2=scale(gpp_avg),
+         oni_avg2=scale(oni_avg),
+         rain_sum_lag2=scale(rain_sum_lag), 
+         rain_cv_lag2=scale(rain_cv_lag), 
+         season2=if_else(season=="breeding", "wet", "dry")
+        ) %>% 
+  separate(seasonid, into = c("season1", "window1", "year2"), sep="_", remove = FALSE) %>% 
+  select(seasonkey, seasonid, season, season1, season2, window, year2, everything(), -window1)
+
+
+write.csv(scale_covariates_avg, "./data/covariates_select_scaled_v10_avg.csv")
+
+```
+
+
+
+# Plots study period
+##plots highlight 2019
+
+```{r}
+colorsXyear <- paletteer::scale_colour_paletteer_d("rcartocolor::Safe")
+colorsXyear <-paletteer::paletteer_d("rcartocolor::Safe")
+```
+
+
+```{r GPP}
+
+plot_gpp_hl<-  ggplot( modis_study, 
+                          aes(x=month, y=GPP_avg, group=as.factor(year), colour=as.factor(year))) +
+  #   geom_rect( aes( xmin = 5.9,  xmax = 9.9, 
+  #     ymin = 0, ymax = 5),
+  #   fill = "lightgrey", color="lightgrey", alpha=0.2) +
+  geom_line(size=1) +   geom_point(size=3) +
+  scale_color_manual(values = colorsXyear) +
+   gghighlight(year=="2019",
+              # preserve colour and modify alpha instead
+              unhighlighted_params = list(colour = NULL, alpha = 0.3, size=1))+
+  theme_degu() +
+  theme(legend.position="right") +
+  #facet_wrap(~year) +
+  labs(x="Month", y=expression("GPP avg"~(gCm^2)),  colour="year") + #subtitle ="Gross Primary Production",
+  geom_hline(yintercept = mean(modis_study$GPP_avg), linetype="dotted") +
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+   geom_vline(xintercept = 5.9,  linetype="dashed", colour="gray") + #colour="lightgray",
+  geom_vline(xintercept = 9.9, linetype="dashed", colour="gray")
+plot_gpp_hl
+
+
+```
+ 
+
+
+
+```{r rain sum}
+temp_study <- temp_raw %>% 
+ filter(year %in% years)
+temp_study$year <- as.factor(temp_study$year)
+
+
+plot_rain_hl <-  temp_study %>%
+  ggplot( aes(x=month, y=precipitation_mm, group=as.factor(year), colour=as.factor(year))) +
+  geom_line(size=1) +   geom_point(size=3) +
+  scale_color_manual(values=colorsXyear) +
+  gghighlight(year=="2019", #label_key = year,
+              # preserve colour and modify alpha instead
+              unhighlighted_params = list(colour = NULL, alpha = 0.3, size=1))+
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+    scale_y_continuous(limits=c(0, 100)) +
+  labs(x="Month", y="P (mm)", colour="year") +
+  geom_hline(yintercept = mean(annual$rain_mm, na.rm=T), linetype="dotted") + # mean of the total amount of yearly rainfall from 1976-2020
+  geom_hline(yintercept = mean(temp_study$precipitation_mm, na.rm=T), linetype="dotted") + # mean of the total amount of yearly rainfall from 1976-2020
+  geom_vline(xintercept = 5.9,  linetype="dashed", colour="gray") + #colour="lightgray",
+  geom_vline(xintercept = 9.9, linetype="dashed", colour="gray") + #colour="lightgray")
+   # geom_text_repel(data = labels_df, aes(x=month, y=precipitation_mm, label = year), 
+   #            nudge_x = 0.0, nudge_y = 0.001, size = 3, color = "black",
+   #             max.overlaps = getOption("ggrepel.max.overlaps", default = 15)) +
+   theme_degu() +
+   theme(legend.position = "none")
+plot_rain_hl
+```
+
+
+
+```{r oni}
+enso_study <- enso_raw %>% 
+   filter(year %in% years)
+
+enso_study$year <- as.factor(enso_study$year)
+
+
+plot_oni_hl <-  enso_study %>%
+  ggplot( aes(x=month, y=oni, group=as.factor(year), colour=as.factor(year))) +
+  geom_line(size=1) +   geom_point(size=3) +
+
+  scale_color_manual(values=colorsXyear) +
+  gghighlight(year=="2019", #label_key = year,
+              # preserve colour and modify alpha instead
+              unhighlighted_params = list(colour = NULL, alpha = 0.3, size=1))+
+  scale_x_continuous(limits=c(1,12), breaks = 1:12) +
+  
+  labs(x="Month",  y ="ONI", colour="year") +
+  
+  geom_hline(yintercept = mean(enso_raw$oni), linetype="dotted") +
+  geom_vline(xintercept = 5.9,  linetype="dashed", colour="gray") + #colour="lightgray",
+  geom_vline(xintercept = 9.9, linetype="dashed", colour="gray") + #colour="lightgray")
+   # geom_text_repel(data = labels_df, aes(x=month, y=oni, label = year), 
+   #            nudge_x = 0.0, nudge_y = 0.001, size = 3, color = "black",
+   #             max.overlaps = getOption("ggrepel.max.overlaps", default = 15)) +
+   theme_degu() +
+   theme(legend.position = "right")
+plot_oni_hl
+
+```
+
+For cv we don't have daily values just monthly, so we have to use it by year
+
+```{r temp_cv}
+
+annual_study <- annual %>% 
+  filter(year %in% 2009:2020)
+
+annual_study$year <- as.factor(annual_study$year)
+
+
+plot_tcv_hl <-  annual_study %>%
+  ggplot( aes(x=year, y=temp_cv, group=as.factor(year), colour=as.factor(year), 
+              fill=as.factor(year))) +
+  geom_point( shape = 21, color="black",  size=4) +
+
+    scale_fill_manual(values=colorsXyear) +
+
+  scale_color_manual(values=colorsXyear) +
+  gghighlight(year=="2019", #label_key = year,
+              # preserve colour and modify alpha instead
+              unhighlighted_params = list(colour = NULL,  size=2))+
+  scale_x_continuous(limits=c(2009,2020), breaks=c(2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020) ) +
+  
+  labs(x="Year",  y ="T CV", colour="year") +
+  
+  geom_hline(yintercept = mean(annual$temp_cv), linetype="dotted") +
+  geom_vline(xintercept = 5.9,  linetype="dashed", colour="gray") + #colour="lightgray",
+  geom_vline(xintercept = 9.9, linetype="dashed", colour="gray") + #colour="lightgray")
+
+   theme_degu() +
+   theme(legend.position = "right")
+
+plot_tcv_hl
+
+
+
+
+
+
+```
+
+```{r rain_cv}
+
+
+range(annual$rain_cv)
+plot_raincv_year <-   ggplot(annual_study, aes(x=year, y=rain_cv, group=year, 
+              colour=ifelse(year == '2019', '2019', 'Other') ,
+                fill=ifelse(year == '2019', '2019', 'Other'))) +
+  
+  geom_point( shape = 21, color="black",  size=2) +
+  scale_color_manual(values = c('2019' = "#4B692DFF", 'Other' = alpha("#E1E1D2FF", 1))) +
+  scale_fill_manual(values = c('2019' = "#4B692DFF", 'Other' = alpha("#E1E1D2FF", 1))) +
+  #scale_y_continuous(limits=c(0, 2)) +
+   geom_line( color="black") +  
+  labs(x="Year", y="CV Rainfall")+
+  theme_degu() +
+   theme(legend.position = "none") +
+  geom_hline(yintercept = mean(annual$rain_cv), linetype="dotted") 
+  
+plot_raincv_year
+
+plot_raincv_hl <-  annual_study %>%
+  ggplot( aes(x=year, y=rain_cv, group=as.factor(year), colour=as.factor(year), 
+              fill=as.factor(year))) +
+  geom_point( shape = 21, color="black",  size=4) +
+
+    scale_fill_manual(values=colorsXyear) +
+
+  scale_color_manual(values=colorsXyear) +
+  gghighlight(year=="2019", #label_key = year,
+              # preserve colour and modify alpha instead
+              unhighlighted_params = list(colour = NULL,  size=2))+
+  scale_x_continuous(limits=c(2009,2020), breaks=c(2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020) ) +
+  
+  labs(x="Year",  y ="P CV", colour="year") +
+  
+  geom_hline(yintercept = mean(annual$rain_cv), linetype="dotted") +
+  geom_vline(xintercept = 5.9,  linetype="dashed", colour="gray") + #colour="lightgray",
+  geom_vline(xintercept = 9.9, linetype="dashed", colour="gray") + #colour="lightgray")
+
+   theme_degu() +
+   theme(legend.position = "right")
+ plot_raincv_hl
+```
+
+
+### combine plots
+```{r}
+ggarrange(plot_gpp_hl, plot_tcv_hl,
+          plot_rain_hl,plot_raincv_hl,
+          
+          plot_oni_hl,
+          
+          nrow=3, ncol=2, align = "hv",
+          common.legend = TRUE, legend = "right")
+
+ggsave( "results/environmental covars monthXyear_v3.pdf",  width= 250, height=200, units="mm", dpi=300)
+
+```
+
+
+
+
+
+## plotsX season
+
+
+```{r}
+## temp cv 
+plot_temp_sXy <- ggplot(covars_real , aes(x = season, y =temp_cv, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  labs(x = "Season", y="CV temperature")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x = element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_temp_sXy
+
+plot_rainsum <- ggplot(covars_real , aes(x = season, y =rain_sum, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  #geom_ribbon(aes(ymin = lcl, ymax = ucl, color=season2, fill=season2),  alpha = 0.3)+
+  labs(x = "Season", y="Rainfall (mm)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x = element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(), 
+       strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_rainsum
+
+plot_rainlag <- ggplot(covars_real , aes(x = season, y =rain_sum_lag, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="Lag in rainfall (mm)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(axis.text.x = element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         #strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_rainlag
+
+plot_raincv <- ggplot(covars_real , aes(x = season, y =rain_cv, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="CV rainfall")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x =element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_raincv
+
+plot_raincvlag <- ggplot(covars_real , aes(x = season, y =rain_cv_lag, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="", subtitle="lag in CV rainfall")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x = element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_raincvlag
+
+plot_gpp<- ggplot(covars_real , aes(x = season, y =gpp_avg, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="GPP (Kg C/m^2/8day)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x =element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         #strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_gpp
+
+plot_oni<- ggplot(covars_real , aes(x = season, y =oni_avg, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="El Niño index")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(#axis.text.x = element_blank(),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_oni
+
+
+
+```
+
+```{r}
+ggarrange(plot_gpp+rremove("xlab"), 
+          #plot_raincvlag+rremove("xlab"), 
+           plot_rainsum+rremove("xlab"), 
+          plot_temp_sXy +rremove("xlab"), 
+         plot_oni +rremove("xlab"),
+          #plot_rainlag+rremove("xlab"),
+          plot_raincv, 
+          
+          nrow=5, ncol=1, align = "hv",
+          common.legend = TRUE, legend = "none")
+
+ggsave( "results/environmental covars seasonXyear_v1.pdf", width = 180, height = 200, units = "mm", dpi=300)
+
+```
+
+
+```{r}
+## factors excluded from models
+plot_temp<- ggplot(covars_real , aes(x = season2, y =temp_avg, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="", subtitle="Temperature (C)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(axis.text.x = element_blank,
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         #axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_temp
+
+plot_tempM<- ggplot(covars_real , aes(x = season2, y =temp_max, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="", subtitle="Max temperature (C)")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text.x.bottom = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_tempM
+
+plot_lai<- ggplot(covars_real , aes(x = season2, y =lai_avg, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="", subtitle="Leaf area index")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  #facet_grid(sex~season2)+
+  facet_grid(~year)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+         strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_lai
+
+plot_et<- ggplot(covars_real , aes(x = season2, y =et_avg, group = season))+
+  geom_col(aes(color=season, fill=season))+
+  labs(x = "Season", y="", subtitle="Evapotranspiration")+
+  scale_fill_manual(values=c("#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values=c("#40B0A6", "#E1BE6A")) +
+  facet_grid(~year)+
+  theme_degu() +
+  theme(axis.text.x = element_text(angle = 0, vjust = 0),
+         legend.position="bottom",        
+         legend.title = element_blank(),
+         axis.text = element_text(size = 12),
+         strip.background  = element_blank(),
+        strip.text  = element_blank(),
+         panel.grid.major = element_blank(),
+         panel.border = element_blank(),
+         #axis.ticks = element_blank(),
+         panel.grid.minor.x=element_blank(),
+         panel.grid.major.x=element_blank() )
+plot_et
+
+```
+
+
+
+
+
+# Climatic variation
+after discussion with Praveena
+
+https://explorador.cr2.cl/
+https://climatologia.meteochile.gob.cl/application/anual/temperaturaMaximaAnual/330021/2025
+
+
+plot 2000 to 2025 as we only have environmental data for this time period
+use 1970 - 1999 as normal for climatic data based on daily data
+use 2000 - 2008 as normal for ecosystem data
+
+
+
+
+```{r}
+breeding <- c(6, 7, 8, 9) # june - sep
+nonbreeding <- c(10, 11, 12, 1, 2, 3, 4,5) # oct - may
+
+period_clim <- c(1970:1999)
+period_before <- c(2000:2008)
+period_study <- c(2009:2020)
+period_after <- c(2021:2025)
+
+  c("1970-1999" = "#440154FF", 
+    "2000-2008" = "#3B528BFF", 
+    "2009-2020" = "#21908CFF", 
+    "2021-2025" = "#5DC863FF", 
+    "2019" = "#FDE725FF")
+
+clim_period_colors <-  c("1970-1999" = "#CC79A7", 
+    "2000-2008" = "#E69F00", 
+    "2009-2020" = "#56B4E9", 
+    "2021-2025" = "#009E73", 
+    "2019" = "#FDE725FF")
+
+period_colors <- c("#E69F00", "#56B4E9", "#009E73", "#FDE725FF", "#CC79A7")
+
+```
+
+## Temperature
+
+```{r}
+temp <- read.csv("Revision/330021_DiarioTsn_new.csv") %>% 
+  separate(DateObs, c("day", "month", "year"), sep = "/", remove = FALSE) %>% 
+  filter(year!="2026")
+
+range(temp$year)
+#temp$month<-str_pad(temp$month, width = 2, pad = "0")
+
+temp$day <- as.integer(temp$day)
+temp$month <- as.integer(temp$month)
+temp$year <- as.integer(temp$year)
+
+glimpse(temp)
+```
+
+
+### mean temperature
+
+
+
+```{r}
+
+t_monthly <- temp %>% 
+  group_by(year, month) %>% 
+  summarize(t=mean(ClimaticMean, na.rm = T))
+
+t_annual <- temp %>% 
+  group_by(year) %>% 
+  summarize(t=mean(ClimaticMean, na.rm = T))%>% 
+  mutate(season="annual")
+
+t_normal <- temp %>% 
+  filter(between(year, 1970, 1999)) %>% 
+  summarize(t_normal=mean(ClimaticMean, na.rm = T))
+
+tXseason <- temp %>% 
+  mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+  group_by(year, season) %>% 
+  summarize(t=mean(ClimaticMean, na.rm = T))
+
+```
+
+period means
+```{r}
+# by period
+t_period <- temp %>%  
+  mutate(period = case_when(
+      year %in% period_clim ~ "normal",
+      year %in% period_before ~ "before",
+      year %in% period_study  ~ "during",
+      year %in% period_after  ~ "after",
+      TRUE                   ~ NA_character_
+    )) %>% 
+  #filter(year>1974) %>% 
+  dplyr::group_by( period) %>%
+  dplyr::summarize(t_avg=mean(ClimaticMean, na.rm = TRUE),
+                   t_sd=sd(ClimaticMean, na.rm = TRUE),
+                   n_years = n(),
+                   t_se = t_sd / sqrt(n_years), .groups = "drop") %>% 
+  add_row(period = "2019", 
+          t_avg = 15.97068,
+          t_sd = NA_real_,    # or specific values
+          n_years = 1,
+          t_se = NA_real_) %>% 
+  filter(period!="NA")
+
+t_period$period<- factor(t_period$period, 
+                         levels=c("normal", "before", "during", "after", "2019"),
+                         labels=c("1970-1999", "2000-2008", "2009-2020", "2021-2025", "2019"))
+
+plot_t_period <- ggplot(t_period, aes(x = period, y = t_avg, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = t_avg - t_se, ymax = t_avg + t_se),
+                width = 0.2, linewidth = 0.8) +
+
+  #scale_fill_manual(values = c("before" = "#7D593D", "during" = "lightgrey", "after" = "#AF9153")) +
+  #scale_fill_viridis(discrete = TRUE, option = "cividis") +
+  scale_fill_manual(values = clim_period_colors) + 
+  #scale_fill_viridis(discrete = TRUE, option = "D", name = "Period")+
+
+  labs(x = "Period", y = " ", subtitle = "Period means ± SE" ) +#, y = "mean T"~(degree*C)       title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none",
+        #axis.text.x = element_text(angle = 45, vjust = 0.5),
+        #axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(2,2,2,2, "pt"))
+
+plot_t_period 
+```
+
+
+### max temperature
+
+```{r max}
+
+tmax_monthly <- temp %>% 
+  group_by(year, month) %>% 
+  summarize(tmax=max(MaxTemperature, na.rm = T))
+
+tmax_annual <- temp %>% 
+  group_by(year) %>% 
+  summarize(tmax=max(MaxTemperature, na.rm = T))%>% 
+  mutate(season="annual")
+
+tmax_normal <- temp %>% 
+  filter(between(year, 1970, 1999)) %>% 
+  summarize(tmax_normal=max(MaxTemperature, na.rm = T)) %>% 
+  pull(tmax_normal)
+
+tmaxXseason <- temp %>% 
+  mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+  group_by(year, season) %>% 
+  summarize(tmax=max(MaxTemperature, na.rm = T))
+
+
+maxtemps <- temp %>% 
+  filter(year>2008, 
+         MaxTemperature>37) 
+
+```
+
+```{r mean}
+
+# tmax_monthly <- temp %>% 
+#   group_by(year, month) %>% 
+#   summarize(tmax=mean(MaxTemperature, na.rm = T))
+# 
+# tmax_annual <- temp %>% 
+#   group_by(year) %>% 
+#   summarize(tmax=mean(MaxTemperature, na.rm = T))%>% 
+#   mutate(season="annual")
+# 
+# tmax_normal <- temp %>% 
+#   filter(between(year, 1970, 1999)) %>% 
+#   summarize(tmax_normal=mean(MaxTemperature, na.rm = T))
+# 
+# tmaxXseason <- temp %>% 
+#   mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+#   group_by(year, season) %>% 
+#   summarize(tmax=mean(MaxTemperature, na.rm = T))
+
+```
+
+
+period max
+```{r}
+# by period
+tmax_period <- temp %>% 
+   mutate(period = case_when(
+      year %in% period_clim ~ "normal",
+      year %in% period_before ~ "before",
+      year %in% period_study  ~ "during",
+      year %in% period_after  ~ "after",
+      TRUE                   ~ NA_character_
+    )) %>% 
+  #summarize(tmax = max(MaxTemperature, na.rm = T)) %>% 
+   dplyr::group_by( period) %>%
+  dplyr::summarize(tmax_avg=max(MaxTemperature, na.rm = T),
+                   tmax_sd=sd(tmax_avg, na.rm = TRUE),
+                   n_years = n(),
+                   tmax_se = tmax_sd / sqrt(n_years), .groups = "drop") %>% 
+  add_row(period = "2019", 
+          tmax_avg = 39.3,
+          tmax_sd = NA_real_,    # or specific values
+          n_years = 1,
+          tmax_se = NA_real_)
+
+tmax_period$period<- factor(tmax_period$period, 
+                         levels=c("normal", "before", "during", "after", "2019"),
+                         labels=c("1970-1999", "2000-2008", "2009-2020", "2021-2025", "2019"))
+
+plot_tmax_period <- ggplot(tmax_period, aes(x = period, y = tmax_avg, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = tmax_avg - tmax_se, ymax = tmax_avg + tmax_se),
+                width = 0.2, linewidth = 0.8) +
+
+  scale_fill_manual(values = clim_period_colors) +  
+  
+  labs(x = "Period", y = " " ) +#,  y = "max T"~(degree*C)      title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none",
+        #axis.text.x = element_text(angle = 45, vjust = 0.5),
+        #axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(2,2,2,2, "pt"))
+
+plot_tmax_period 
+```
+
+### annual
+
+```{r}
+
+range(t_annual$t)
+
+Tannual <- t_annual %>% 
+  left_join(tmax_annual) %>% 
+  filter(year>1999) %>% 
+  select(-season) %>% 
+  pivot_longer(cols = c(t, tmax), 
+               names_to = "type", 
+               values_to = "temp")
+
+head(Tannual)
+
+Tannual$type <- factor(Tannual$type, 
+                         levels=c("t", "tmax"),
+                         labels=c("mean T", "max T"))
+
+scale_factor <- with(Tannual, 
+                     max(temp[type == "mean T"], na.rm = TRUE) /
+                     max(temp[type == "max T"],  na.rm = TRUE))
+
+
+plotTyear_axes <- ggplot(Tannual, aes(x = year)) +
+  # mean T (primary axis)
+  geom_line(data = subset(Tannual, type == "mean T"),
+            aes(y = temp, color = "mean T")) +
+  geom_point(data = subset(Tannual, type == "mean T"),
+             aes(y = temp, color = "mean T")) +
+  # max T (secondary axis, scaled to primary)
+  geom_line(data = subset(Tannual, type == "max T"),
+            aes(y = temp * scale_factor, color = "max T")) +
+  geom_point(data = subset(Tannual, type == "max T"),
+             aes(y = temp * scale_factor, color = "max T")) +
+   # dashed normals
+  geom_hline(yintercept = t_normal$t,
+             linetype = "dashed", color = "#fd8d3c") +  # mean T normal (primary axis)
+
+  geom_hline(yintercept = tmax_normal * scale_factor,
+             linetype = "dashed", color = "#882255") +  # max T normal (secondary axis; scaled) 
+  # scale_y_continuous(
+  #   name = expression("Mean T ("*degree*C*")"),
+  #   limits = c(13.5, 16), 
+  #   sec.axis = sec_axis(
+  #     trans = ~ . / scale_factor,
+  #     #name  = expression("Max T ("*degree*C*")")
+  #   )
+    
+    scale_y_continuous(
+  name = expression("Mean T ("*degree*C*")"),
+  limits = c(13.5, 16),  # Keep primary as-is if it fits data; adjust if needed
+  expand = expansion(mult = c(0, 0)),  # Remove padding for tight fit
+  sec.axis = sec_axis(
+    trans = ~ . / scale_factor,
+    #name = expression("Max T ("*degree*C*")"),  # Uncomment/fix this
+    breaks = c(34,35, 36,37, 38,39, 40)  # Custom ticks at desired range
+  )
+) +
+coord_cartesian(ylim = c(13.5, 16)) + # Ensures view clips to these limits
+   
+  scale_color_manual(values = c("mean T" = "#fd8d3c", "max T" = "#882255")) +
+  theme_classic() +
+  labs(x = "Year", subtitle = "Annual temperatures" ) +
+  scale_x_continuous(breaks = seq(2000, 2025, 5),
+                     expand = expansion(add = c(0.5, 0.5))) +
+  geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+    theme( # Right y-axis line & ticks: match anomaly line color
+    axis.line.y.right = element_line(color = "#882255"),
+    axis.ticks.y.right = element_line(color = "#882255"),
+    # Right y-axis text: match line color
+    axis.text.y.right = element_text(color = "#882255"),
+    axis.title.y.right = element_text(color = "#882255"), 
+    legend.position = "none")
+plotTyear_axes
+
+ggsave("./Revision/Tannual.pdf", width=13.5, height=5, units = "cm", dpi=600)
+
+```
+
+
+```{r}
+plotT_legend <- ggplot(Tannual, aes(x = year, y = temp, group = type, color = type)) +
+  geom_line(linetype="solid") + 
+  geom_point() +
+  labs(x = "Year", 
+       y = expression("Annual temperature"~(degree*C)), 
+       subtitle = "Annual and seasonal variation") +
+  # Hlines WITH aes() for legend inclusion
+  geom_hline(aes(yintercept = tmax_normal$tmax, color = "Max T threshold", linetype = "Baseline mean"), 
+             linewidth = 0.8) +
+  geom_hline(aes(yintercept = t_normal$t, color = "Mean T threshold", linetype = "Baseline mean"), 
+             linewidth = 0.8) +
+ geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  # Combined scales
+  scale_color_manual(
+    values = c("mean T" = "#fd8d3c", "max T" = "#882255",           # Your 2 types
+               "Mean T threshold" = "#fd8d3c",  # Match line colors
+               "Max T threshold" = "#882255"),
+    name = NULL  # No legend title
+  ) +
+  scale_linetype_manual(values = c("solid" = "solid",
+    "Baseline mean" = "dashed"), name = NULL) +
+  scale_x_continuous(breaks = seq(2000, 2025, 5)) +
+  theme_classic() +
+  theme(legend.title = element_blank())
+
+plotT <- ggplot(Tannual, aes(x = year, y = temp, group = type, color = type)) +
+  geom_line(linetype="solid") + 
+  geom_point() +
+  labs(x = "Year", 
+       y = expression("Annual temperature"~(degree*C)), 
+       subtitle = "Annual and seasonal variation") +
+  # Hlines WITH aes() for legend inclusion
+  geom_hline(aes(yintercept = tmax_normal$tmax, color = "Max T threshold", linetype = "Baseline mean"), 
+             linewidth = 0.8) +
+  geom_hline(aes(yintercept = t_normal$t, color = "Mean T threshold", linetype = "Baseline mean"), 
+             linewidth = 0.8) +
+ geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  # Combined scales
+  scale_color_manual(
+    values = c("mean T" = "#fd8d3c", "max T" = "#882255",           # Your 2 types
+               "Mean T threshold" = "#fd8d3c",  # Match line colors
+               "Max T threshold" = "#882255"),
+    name = NULL  # No legend title
+  ) +
+  scale_linetype_manual(values = c("solid" = "solid",
+    "Baseline mean" = "dashed"), name = NULL) +
+  scale_x_continuous(breaks = seq(2000, 2025, 5)) +
+  theme_classic() +
+  theme(legend.title = element_blank(), 
+        legend.position = "none")
+
+```
+
+
+### seasonal
+
+```{r}
+Tseason <- tXseason %>% 
+  left_join(tmaxXseason) %>% 
+  filter(year>1999) %>% 
+   pivot_longer(cols = c(t, tmax), 
+               names_to = "type", 
+               values_to = "temp") %>% 
+  #unite(group, season, type, remove = FALSE) %>% 
+   mutate(
+    season_type = interaction(season, type),  # Full grouping factor
+    group = case_when(  # FIXED: Create unique labels directly
+      season == "breeding" & type == "t" ~ "Breeding mean",
+      season == "breeding" & type == "tmax" ~ "Breeding max", 
+      season == "nonbreeding" & type == "t" ~ "Nonbreed mean",
+      TRUE ~ "Nonbreed max"
+    )
+
+  ) %>%
+  arrange(year, season_type)
+
+head(Tseason)
+range(Tseason$temp[Tseason$type=="t"])
+range(Tseason$temp[Tseason$type=="tmax"])
+
+print(table(Tseason$group, useNA = "always"))  # Should show 4 levels with counts
+
+```
+
+```{r}
+# Scale factor: map max T range to mean T range
+scale_factor <- with(Tseason, 
+                     max(temp[group %in% c("Breeding mean", "Nonbreed mean")], na.rm = TRUE) /
+                     max(temp[group %in% c("Breeding max", "Nonbreed max")], na.rm = TRUE))
+
+
+```
+
+
+```{r}
+# Your desired right‑axis labels (max T)
+right_labels <- c(25, 30, 35, 40)
+# Corresponding left‑axis values (mean T)
+left_vals    <- 0.7333 * right_labels - 10.33  # approx: 8, 11.7, 15.3, 19
+
+# Left‑axis range (your data)
+mean_temp_range <- range(Tseason$temp[Tseason$type == "t"], na.rm = TRUE)
+# should be about c(7.85, 18.83)
+
+# For plotting, keep max lines scaled to place 25–40 on the right axis
+scaling_for_plot <- 0.7333  # or 11/15
+offset_for_plot  <- -10.33
+
+# desired mapping: left ≈ a*right + b
+a <- 11/15  # ≈0.733
+b <- 8 - a*25
+
+# corresponding inverse for sec_axis
+sec_trans <- function(x) (x - b)/a   #  → right = (left - b)/a
+
+
+# Max data must be plotted on the same scale as the left axis
+# so they appear at ≈8–19 °C (mean‑like scale) even though they come from max T
+Tseason_max_scaled <- Tseason %>%
+  filter(grepl("max", group)) %>%
+  mutate(y_plot = temp * a + b)   # project max T to desired left‑axis positions
+
+plotTseason_axes <- ggplot(Tseason, aes(x = year, group = season_type)) +
+  # Mean lines (primary axis, unchanged)
+  geom_line(data = filter(Tseason, grepl("mean", group)),
+            aes(y = temp, color = group)) + 
+  geom_point(data = filter(Tseason, grepl("mean", group)),
+             aes(y = temp, color = group, shape = season)) +
+  # Max lines: now mapped to 8–19 °C on left axis
+  geom_line(data = Tseason_max_scaled,
+            aes(y = y_plot, color = group)) + 
+  geom_point(data = Tseason_max_scaled,
+             aes(y = y_plot, color = group, shape = season)) +
+  labs(x = "Year", y = expression("Mean T"~(degree*C)), 
+       subtitle = "Seasonal temperatures") +
+  scale_color_manual(values = c("Breeding mean" = "#fd8d3c42", 
+                                "Breeding max"  = "#88225542",
+                                "Nonbreed mean" = "#fd8d3c", 
+                                "Nonbreed max"  = "#882255")) +
+  scale_shape_manual(values = c("breeding" = 19,      # ● circle
+                                "nonbreeding" = 15), # ■ square
+                     name = "Season") +
+  scale_y_continuous(
+    limits   = c(7, 20),   # just enough to cover 8–19
+    breaks   = pretty(c(7, 20), n = 6),
+    sec.axis = sec_axis(
+      ~ sec_trans(.),      # or ~ (. - b)/a
+      name   = expression("Max T"~(degree*C)),
+      breaks = right_labels
+    )
+  ) +
+  theme_classic() +
+  scale_x_continuous(breaks = seq(2000, 2025, 5),
+                     expand = expansion(add = c(0.5, 0.5))) +
+  geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), 
+             alpha = 0.5) + 
+  theme(
+    axis.line.y.right  = element_line(color = "#882255"),
+    axis.ticks.y.right  = element_line(color = "#882255"),
+    axis.text.y.right   = element_text(color = "#882255"),
+    axis.title.y.right  = element_text(color = "#882255"),
+    legend.position     = "bottom",
+    plot.margin         = margin(2, 2, 2, 2, "pt")
+  )
+
+
+plotTseason_axes 
+```
+
+
+
+```{r}
+plotTseason_legend <- ggplot(Tseason,  aes(x=year, y=temp,  color=group, group=season_type)) +
+  geom_line() + geom_point()+
+  labs(x = "Year", y="Seasonal T"~(degree*C), subtitle="")+
+  #scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values = c( "#fd8d3c42", "#88225542", "#fd8d3c", "#882255")) + #  "#EF674E" 
+  #scale_color_viridis_d(option = "plasma", n=4)+
+  theme_classic() +
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.1, 0.1))) +
+  #geom_hline(yintercept = tmax_normal$tmax, linetype="dashed", color="#882255") +
+  #geom_hline(yintercept = t_normal$t, linetype="dashed", color="#fd8d3c") +
+  geom_vline(xintercept = 2019, color = alpha("red", 0.5)) +
+  geom_vline(xintercept = c(2008.5, 2019.5), linetype = "dotted", color = alpha("black", 0.5)) +
+  theme(legend.title = element_blank(), 
+        legend.position = "right")
+
+
+plotTseason <- ggplot(Tseason,  aes(x=year, y=temp,  color=group, group=season_type)) +
+  geom_line() + geom_point()+
+  labs(x = "Year", y="Seasonal T"~(degree*C), subtitle="")+
+  #scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+  scale_color_manual(values = c( "#fd8d3c42", "#88225542", "#fd8d3c", "#882255")) + #  "#EF674E" 
+  #scale_color_viridis_d(option = "plasma", n=4)+
+  theme_classic() +
+  scale_x_continuous(breaks = seq(2000, 2025, 5)) +
+  #geom_hline(yintercept = tmax_normal$tmax, linetype="dashed", color="#882255") +
+  #geom_hline(yintercept = t_normal$t, linetype="dashed", color="#fd8d3c") +
+ geom_vline(xintercept = c(2008.5, 2019, 2019.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  theme(legend.title = element_blank(), 
+        legend.position = "none")
+plotTseason
+```
+
+
+
+
+## Precipitation sum
+
+add line for cumulative anomaly (mm) as secondary axis
+
+The cumulative value  as anomaly = annual value − baseline mean.
+
+```{r}
+# p_daily <- read.csv("Revision/psum_daily.csv") %>% 
+#   rename(year=agno, 
+#          month=mes,
+#          day=dia, 
+#          psum=valor)
+
+p_daily <- read.csv("Revision/330021_DiarioRR.csv") %>% 
+  separate(Fecha, c("day", "month", "year"), sep = "-", remove = FALSE) %>% 
+  rename(p=Total)
+
+p_daily$day <- as.integer(p_daily$day)
+p_daily$month <- as.integer(p_daily$month)
+p_daily$year <- as.integer(p_daily$year)
+glimpse(p_daily)
+
+p_monthly <- p_daily %>% 
+  group_by(year, month) %>% 
+  summarize(p=sum(p))
+
+p_annual <- p_daily %>% 
+  group_by(year) %>% 
+  summarize(p=sum(p)) %>% 
+  mutate(season="annual")
+
+p_normal <- p_annual %>% 
+  filter(between(year, 1970, 1999)) %>% 
+  summarize(pmean=mean(p, na.rm=T)) %>% 
+  pull(pmean)
+
+
+pXseason <- p_monthly %>% 
+  mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+  group_by(year, season) %>% 
+  summarize(p=sum(p))
+
+p_anom <- p_annual %>% 
+  filter(between(year, 2000, 2025)) %>% 
+  mutate(season="annual", 
+         pct_anomaly = 100 * (p - p_normal) / p_normal,
+         anomaly=p-p_normal,
+         cum_p_deficit = cumsum(anomaly)) #cumsum(pmax(0, -p_anom))
+
+# scale factor 
+#scale_factor <- max(pXseason$p, na.rm = TRUE) / max(p_anom$cum_p_deficit, na.rm = TRUE)
+#scale_factor <- range(pXseason$p, na.rm = TRUE)[2] / range(p_anom$cum_p_deficit, na.rm = TRUE)[2]
+# Then use in sec_axis(~ . / scale_factor, ...) or multiply anomaly y-values
+
+# Define exact ranges
+precip_max <- 500
+anomaly_range <- c(-2000, 500)
+
+# Scale factor maps anomaly range to precip range
+scale_factorp <- precip_max / diff(anomaly_range)
+offset <- 0 - anomaly_range[1] * scale_factorp  # Left 0 -> anomaly 0? No, independent
+
+range(p_anom$cum_p_deficit)
+
+p_anom %>% 
+  filter(year == 2019) %>%
+  mutate( statement = sprintf("precipitation was %.1f%% %s than the 1975-1999 mean",
+                             abs(pct_anomaly), ifelse(pct_anomaly < 0, "lower", "higher")))   
+p_anom %>% 
+  filter(between(year, 2009, 2020)) %>%
+  summarize(mean_anomaly = mean(pct_anomaly))   
+
+
+
+```
+```{r}
+
+
+
+plotp <- pXseason %>% 
+  bind_rows(p_annual) %>% 
+  filter(between(year,2000,2025)) %>% 
+  
+  ggplot( aes(x=year, y=p, fill = season)) +
+  geom_col(position = position_dodge2(width = 0.8, padding = 0.05)) + 
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.0, 0.0))) +
+  
+  # Cumulative line from DIFFERENT data frame
+  geom_line(data = p_anom, 
+            mapping = aes(x = year, 
+                          y = (cum_p_deficit- anomaly_range[1]) * scale_factorp), 
+            color = "#1E88E5",                    
+            linewidth = 1, 
+            inherit.aes = FALSE) +                 # Ignore main plot aes
+  
+  labs(x = "Year", y = "P (mm)", subtitle = "") +
+
+  geom_hline(yintercept = p_normal, 
+             linetype = "dashed", color="#5A5C8C") +
+  geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+
+  scale_y_continuous(
+    name = expression("P (mm)"),
+    limits = c(0, 500),                   # LEFT: Fixed 0-500
+    expand = c(0, 0),
+    sec.axis = sec_axis(transform = ~ (. / scale_factorp) + anomaly_range[1],  # Reverse to true anomaly
+                        #name = "Cumulative Anomaly (mm)",
+                        breaks = seq(-2000, 500, 500) )
+  ) +   
+  theme_classic() +
+  theme( # Right y-axis line & ticks: match anomaly line color
+    axis.line.y.right = element_line(color = "#1E88E5"),
+    axis.ticks.y.right = element_line(color = "#1E88E5"),
+    # Right y-axis text: match line color
+    axis.text.y.right = element_text(color = "#1E88E5"),
+    axis.title.y.right = element_text(color = "#1E88E5"), 
+    legend.position = "none",
+        plot.margin = margin(2,2,2,2, "pt")) 
+plotp
+
+
+
+
+```
+
+```{r}
+plotp_legend <- pXseason %>% 
+  bind_rows(p_annual) %>% 
+  filter(year > 1999) %>% 
+  ggplot(aes(x = year, y = p, group = season)) +
+  geom_col(aes(color = season, fill = season), position = position_dodge(width = 0.8)) +
+  # Cumulative line WITH aes() for legend
+  geom_line(data = p_anom, 
+            aes(x = year, 
+                y = (cum_p_deficit - anomaly_range[1]) * scale_factor, 
+                color = "Cumulative P anomaly",
+                linetype = "Cumulative anomaly"),  # Legend factors
+            linewidth = 1, 
+            inherit.aes = FALSE) +
+  labs(x = "Year", y = "P (mm)", subtitle = "") +
+  geom_hline(aes(yintercept = p_normal, color = "Normal P", linetype = "1970-1999 mean"),
+             linewidth = 0.8) +
+  geom_vline(xintercept = c(2008.5, 2019, 2019.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  
+  # Extended scales
+  scale_fill_manual(values = c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+  scale_color_manual(
+    values = c("#5A5C8C", "#40B0A6", "#E1BE6A",            # Your seasons
+               "Cumulative P anomaly" = "#1E88E5",           # Blue line
+               "Normal P" = "gray50"),                       # Hline color
+    name = NULL
+  ) +
+  scale_linetype_manual(
+    values = c("Cumulative anomaly" = "solid", "1970-1999 mean" = "dashed"),
+    name = NULL
+  ) +
+  scale_x_continuous(breaks = seq(2000, 2025, 5)) +
+  scale_y_continuous(
+    name = expression("P (mm)"),
+    limits = c(0, 500),
+    expand = c(0, 0),
+    sec.axis = sec_axis(~ (. / scale_factor) + anomaly_range[1],
+                        name = "Cumulative Anomaly (mm)",
+                        breaks = seq(-2000, 500, 500))
+  ) +   
+  theme_classic() +
+  theme(
+    axis.line.y.right = element_line(color = "#1E88E5"),
+    axis.ticks.y.right = element_line(color = "#1E88E5"),
+    axis.text.y.right = element_text(color = "#1E88E5"),
+    axis.title.y.right = element_text(color = "#1E88E5"), 
+    legend.position = "right",
+        plot.margin = margin(2,2,2,2, "pt")
+  )
+plotp_legend
+```
+```{r}
+plotp_simple <- pXseason %>% 
+  bind_rows(p_annual) %>% 
+  filter(year>1999) %>% 
+  
+  ggplot( aes(x=year, y=p, fill = season)) +
+  geom_col(position = position_dodge2(width = 0.8, padding = 0.05)) + 
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.1, 0.1))) +
+  
+  labs(x = "Year", y = "P (mm)", subtitle = "") +
+
+  geom_hline(yintercept = p_normal, 
+             linetype = "dashed", color="#5A5C8C") +
+  geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5) +
+  scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+
+  
+  theme_classic() +
+  theme(  
+    legend.position = "none",
+        plot.margin = margin(2,2,2,2, "pt")) 
+plotp_simple
+```
+
+
+period means
+```{r}
+# by period
+p_period <- p_annual%>%  
+  filter(between(year, 1970, 2025)) %>% 
+  mutate(period = case_when(
+      year %in% period_clim ~ "normal",
+      year %in% period_before ~ "before",
+      year %in% period_study  ~ "during",
+      year %in% period_after  ~ "after",
+      TRUE                   ~ NA_character_
+    )) %>% 
+  
+  dplyr::group_by( period) %>%
+  dplyr::summarize(p_sum=sum(p, na.rm = TRUE),
+                   pmean=mean(p, na.rm = TRUE),
+                   p_sd=sd(p, na.rm = TRUE),
+                   n_years = n(),
+                   p_se = p_sd / sqrt(n_years), .groups = "drop") %>% 
+  add_row(period = "2019", 
+          pmean = 47.2,
+          p_sd = NA_real_,  
+          n_years = 1,
+          p_se = NA_real_)
+
+p_period$period<- factor(p_period$period, 
+                         levels=c("normal", "before", "during", "after", "2019"),
+                         labels=c("1970-1999", "2000-2008", "2009-2020", "2021-2025", "2019"))
+
+
+plot_p_period <- ggplot(p_period, aes(x = period, y = pmean, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = pmean - p_se, ymax = pmean + p_se),
+                width = 0.2, linewidth = 0.8) +
+
+scale_fill_manual(values = clim_period_colors) + 
+  
+  labs(x = "Period", y="" ) +#,    , y = "P"    title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none", 
+        legend.direction = "vertical",
+        legend.title = element_blank(),  # No "Period" title
+        legend.text = element_text(size = 10),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 1),
+        plot.margin = margin(2,2,2,2, "pt"))
+
+
+plot_p_period 
+
+
+```
+
+```{r}
+plot_p_period_legend <- ggplot(p_period, aes(x = period, y = p_sum, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = p_sum - p_se, ymax = p_sum + p_se),
+                width = 0.2, linewidth = 0.8) +
+
+scale_fill_manual(values = clim_period_colors) + 
+  
+  labs(x = "Period", y="" ) +#,    , y = "P"    title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "bottom", 
+        legend.direction = "vertical",
+        legend.title = element_blank(),  # No "Period" title
+        legend.text = element_text(size = 10),
+        axis.title.x = element_blank())
+        #axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 1))
+```
+
+## ENSO
+```{r}
+
+oni <- read.csv("Revision/oni.csv") %>% 
+  separate(Date, c("year", "month", "day"), remove =FALSE) %>% 
+  unite("ym", year:month, remove = FALSE) %>% 
+  select(-day)
+
+colnames(oni)[5] <- "oni"
+
+oni$year<-as.integer(oni$year)
+oni$month<-as.integer(oni$month)
+
+oni <- oni %>% 
+  filter(between(year, 2000, 2025)) %>% 
+  mutate(date = ymd(ym, truncated = 2),
+         Date=as.Date(Date)) %>% 
+  ungroup() %>% 
+  arrange(date)  
+glimpse(oni)
+head(oni)
+range(oni$Date)
+
+plot_oni_year <- oni %>%
+  dplyr::group_by(year) %>%
+  dplyr::summarize(oni_avg=mean(oni)) %>% 
+  ggplot( aes(x=year, y=oni_avg)) +
+  geom_line(color="#bdbdbd") +  
+  geom_point( shape = 21, color="black", fill="#bdbdbd", size=2 ) +
+  theme_classic() +
+  labs(x="Year", y= "El Niño index") +
+  #geom_hline(yintercept = mean(oni$oni, na.rm=T), linetype="dashed") +
+  scale_x_continuous(limits=c(2000, 2025), 
+                     breaks = seq(2000, 2025, 5),
+                     expand = expansion(add = c(0.5, 0.5))) +
+  geom_vline(xintercept = 2019,  color=alpha("red", 0.5)) + #linetype = "dashed",
+  geom_vline(xintercept = 2008.5, linetype = "dotted", color=alpha("black", 0.5)) +
+  geom_vline(xintercept = 2020.5, linetype = "dotted", color=alpha("black", 0.5)) 
+  
+plot_oni_year
+
+
+
+plot_oni <- ggplot(oni, aes(x = date, y = oni)) +
+  geom_line() +
+  labs(x = "Year", y = "Monthly ONI") +
+  theme_classic() +
+  scale_x_date(
+    limits  = c(as.Date("2000-01-01"), as.Date("2025-12-01")),
+    breaks  = seq(as.Date("2000-06-15"), as.Date("2025-6-15"), by = "5 years"),
+    labels  = c("2000", "2005", "2010", "2015", "2020", "2025"),
+    expand  = c(0.01, 0.01)   # small padding, not the 0.5 stretch you had
+  ) +
+  # align vertical lines with the numeric‑year plots (2008.5, 2019, 2020.5)
+  geom_vline(xintercept = as.Date("2008-12-01"),   # close to 2008.5
+             linetype = "dotted",
+             color = alpha("black", 0.5)) +
+  geom_vline(xintercept = as.Date("2019-07-01"),   # 2019 mid‑year
+             color = alpha("red", 0.5)) +
+  geom_vline(xintercept = as.Date("2020-12-31"),   # close to 2020.5
+             linetype = "dotted",
+             color = alpha("black", 0.5)) +
+  theme(
+    plot.margin = margin(2, 2, 2, 2, "pt")
+  )
+plot_oni 
+
+ggarrange(plot_oni, plot_oni_year, ncol=1, align = "v")
+```
+
+
+```{r}
+df <- oni %>%
+  mutate(date = ymd(ym, truncated = 2)) %>%
+  arrange(date) %>%
+  mutate(
+    oni_3m = zoo::rollmean(oni, k = 3, fill = NA, align = "right")
+  ) %>%
+  mutate(enso_flag = case_when(oni_3m >= 0.5 ~ 1,
+                               oni_3m <= -0.5 ~ -1,
+                               TRUE ~ 0),
+    # Identify runs of 5+ consecutive qualifying periods
+    event_run = rle(enso_flag)$lengths,
+    event_id = cumsum(enso_flag != lag(enso_flag, default = 0)),
+    # Only keep events with 5+ consecutive qualifying 3-month periods
+    is_event = ave(event_run, event_id, FUN = function(x) x >= 5),
+    enso_event = case_when(
+      enso_flag == 1 & is_event ~ "El Niño",
+      enso_flag == -1 & is_event ~ "La Niña",
+      TRUE ~ NA_character_
+    )
+  )
+
+
+df_clean <- oni %>%
+  mutate(date = ymd(ym, truncated = 2)) %>%
+  arrange(date) %>%
+  filter(!is.na(oni), !is.na(date))  # Remove any NAs first
+
+# 3-month ONI (safe length)
+df_clean$oni_3m <- zoo::rollmean(df_clean$oni, k = 3, fill = NA, align = "right")
+
+# Safe flags (replace NA explicitly)
+df_clean$enso_flag <- ifelse(is.na(df_clean$oni_3m), 0,
+                           ifelse(df_clean$oni_3m >= 0.5, 1, 
+                                  ifelse(df_clean$oni_3m <= -0.5, -1, 0)))
+
+# Run length encoding SAFELY (no NAs)
+df_clean$run_id <- cumsum(c(TRUE, df_clean$enso_flag[-1] != df_clean$enso_flag[-length(df_clean$enso_flag)]))
+df_clean$event_periods <- ave(df_clean$enso_flag, df_clean$run_id, FUN = function(x) length(x[x != 0]))
+
+# FIXED subsetting (remove NAs first)
+valid_rows <- !is.na(df_clean$event_periods) & df_clean$enso_flag != 0 & df_clean$event_periods >= 5
+df_clean$enso_event <- NA_character_
+df_clean$enso_event[valid_rows] <- ifelse(df_clean$enso_flag[valid_rows] > 0, "El Niño", "La Niña")
+
+# Verify lengths match
+print(nrow(df_clean))
+print(length(df_clean$enso_event))
+
+ggplot(df_clean, aes(x = date, y = oni)) +
+  geom_line() +
+  #geom_point() +
+  
+  geom_point(aes(color = enso_event), size = 1) +
+  scale_color_manual(values = c("El Niño" = alpha("red", 0.5), "La Niña" = alpha("blue", 0.5), "Neutral" = "gray"))+
+  
+  # geom_rect(data = filter(df_clean, !is.na(enso_event)),
+  #           aes(xmin = date - days(30), xmax = date + days(30),
+  #               ymin = -Inf, ymax = Inf, fill = enso_event),
+  #           alpha = 0.3, inherit.aes = FALSE) +
+  # scale_fill_manual(values = c("El Niño" = alpha("red", 0.1), "La Niña" = alpha("blue", 0.1))) +
+  
+    geom_hline(yintercept = c(-0.5, 0, 0.5), linetype = "dashed", color = "gray50") +
+  scale_x_date(breaks = seq(as.Date("2000-01-01"), as.Date("2025-01-01"), by = "5 years"),
+               labels = c("2000", "2005", "2010", "2015", "2020", "2025")) +
+  labs(x = "Year", y = "Monthly ONI") +
+  theme_classic() +
+  geom_vline(xintercept = as.Date("2019-01-01"),  color=alpha("red", 0.5)) + #linetype = "dashed",
+  geom_vline(xintercept = as.Date("2009-01-01"), linetype = "dotted", color=alpha("black", 0.5)) +
+  geom_vline(xintercept = as.Date("2021-01-01"), linetype = "dotted", color=alpha("black", 0.5)) 
+
+
+
+```
+
+
+## get plots aligned
+
+
+
+```{r}
+ggarrange(plotTyear_axes,
+          plotTseason_axes,
+          plotp, 
+          plot_oni,
+          ncol=1, align = "hv")
+
+ggarrange(plotTyear_axes,
+          plotTseason_axes,
+          plotp, 
+          plot_oni_year,
+          ncol=1, align = "hv")
+```
+
+## combine plots
+Ecology: maximum allowable size (18 cm wide by 22 cm tall) 
+
+```{r}
+climate <- ggarrange(plotTyear_axes + rremove("xlab"),    plot_t_period + rremove("xlab"),
+                     plotTseason_axes  + rremove("xlab"), plot_tmax_period + rremove("xlab"),
+                     plotp + rremove("xlab"), plot_p_period ,
+                     plot_oni,
+                     nrow=4, ncol=2, align = "hv", 
+                     widths = c(5,1), #  widths = c(3,1) period widths = c(2.5,1)
+                     legend = "none")
+climate
+ggsave("./Revision/climate_variation_v2.pdf", width=18, height=20, units = "cm", dpi=300)
+
+ggexport(climate, filename = "./Revision/climate_variation.pdf", 
+         width = 18, height = 20, units = "cm", dpi = 300)
+
+climate_legends <- ggarrange(plotT + rremove("xlab"),    plot_t_period + rremove("xlab"),
+          plotTseason  + rremove("xlab"), plot_tmax_period + rremove("xlab"),
+          plotp_simple + rremove("xlab"), plot_p_period ,
+          plot_oni,
+          nrow=4, ncol=2, align = "hv", widths = c(2,1), #  widths = c(3,0.5) period widths = c(2,1) 
+            legend = "right")
+climate_legends
+ggsave("./Revision/climate_variation_legends.pdf", width=18, height=20, units = "cm", dpi=600)
+
+
+```
+
+
+
+# Ecosystem variation
+
+```{r}
+# Colorblind-safe divergent palette for 5 time periods
+period_colors <- c("#E69F00", "#56B4E9", "#009E73", "#FDE725FF", "#CC79A7")
+```
+
+
+MODIS
+use 2000 - 2008 as normal for ecosystem data
+
+```{r}
+
+modis <- read.csv("Revision/Modis_monthly_data.csv") %>% 
+   dplyr::rename(year=Year,
+        month=Month) 
+range(modis$year)
+
+
+modis_day <- read.csv("Revision/modis_daily_ET_GPP_LAI.csv")  %>% 
+  dplyr::rename(year=Year,
+        month=Month) 
+
+modis_annual <- modis_day %>% 
+  group_by(year) %>% 
+  summarize(gpp=mean(GPP, na.rm=T),
+            et=mean(ET, na.rm=T),
+            lai=mean(LAI, na.rm=T))%>% 
+  mutate(season="annual") %>% 
+  filter(year!="")
+
+modisXseason <- modis %>% 
+  mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+  group_by(year, season) %>% 
+  summarize(gpp=mean(GPP_avg, na.rm=T),
+            et=mean(ET_avg, na.rm=T),
+            lai=mean(LAI_avg, na.rm=T))
+
+# by period
+modis_period <- modis_annual %>%  
+  mutate(period = case_when(
+      #year %in% period_clim ~ "longterm",
+      year %in% period_before ~ "before",
+      year %in% period_study  ~ "during",
+      year %in% period_after  ~ "after",
+      TRUE                   ~ NA_character_
+    )) %>% 
+  #filter(year>1974) %>% 
+  dplyr::group_by( period) %>%
+  dplyr::summarize(n_years = n(),
+                   gpp_avg=mean(gpp, na.rm = TRUE),
+                   gpp_sd=sd(gpp, na.rm = TRUE),
+                   gpp_se = gpp_sd / sqrt(n_years),
+                   
+                   et_avg=mean(et, na.rm = TRUE),
+                   et_sd=sd(et, na.rm = TRUE),
+                   et_se = et_sd / sqrt(n_years),
+                   
+                   lai_avg=mean(lai, na.rm = TRUE),
+                   lai_sd=sd(lai, na.rm = TRUE),
+                   lai_se = lai_sd / sqrt(n_years),
+                   
+                   .groups = "drop") %>% 
+  add_row(period = "2019", 
+          gpp_avg = 0.9032609,
+          et_avg = 0.2717391, 
+          lai_avg = 0.2663043,
+          n_years = 1)
+
+modis_period$period<- factor(modis_period$period, 
+                         levels=c( "before", "during", "after", "2019"),
+                         labels=c("2000-2008", "2009-2020", "2021-2025", "2019"))
+```
+
+
+### gpp
+
+```{r}
+gpp_normal <- modis_day %>% 
+  filter(between(year, 2000, 2008)) %>% 
+  summarize(gppmean=mean(GPP, na.rm=T)) %>% 
+  pull(gppmean)
+
+gpp_anom <- modis_day %>% 
+  filter(year>1999) %>% 
+  mutate(season="annual", 
+         pct_anomaly = 100 * (GPP - gpp_normal) / gpp_normal,
+         anomaly=GPP-gpp_normal,
+         cum_p_deficit = cumsum(anomaly)) #cumsum(pmax(0, -p_anom))
+
+gpp_anom %>% 
+  filter(year == 2019) %>%
+  select(pct_anomaly, anomaly) %>% 
+  mutate( statement = sprintf("GPP was %.1f%% %s than the 2000-2008 mean",
+                             abs(pct_anomaly), ifelse(pct_anomaly < 0, "lower", "higher")))   
+gpp_anom %>% 
+  filter(between(year, 2009, 2020)) %>%
+  summarize(mean_pct_anomaly = mean(pct_anomaly),
+            mean_anomaly = mean(anomaly))   
+```
+
+
+```{r}
+plot_gpp <-modisXseason %>% 
+  bind_rows(modis_annual) %>% 
+  filter(year>1999) %>% 
+  ggplot( aes(x=year, y=gpp, fill=season)) +
+  geom_col(position = position_dodge2(width = 0.8, padding = 0.05)) + 
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.1, 0.1))) +
+  labs(x = "Year", y=expression(GPP~(gC/m^2)), subtitle="Annual and seasonal variation")+
+  scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.margin = margin(2,2,2,2, "pt")) +
+
+  geom_hline(yintercept = gpp_normal, linetype="dashed", color = "#5A5C8C") +
+   geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5)
+plot_gpp
+```
+
+```{r}
+
+
+plot_gpp_period <- ggplot(modis_period, aes(x = period, y = gpp_avg, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = gpp_avg - gpp_se, ymax = gpp_avg + gpp_se),
+                width = 0.2, linewidth = 0.8) +
+
+ 
+  scale_fill_manual(values = period_colors) + 
+
+  
+  labs(x = "Period", y = "", subtitle = "Period means ± SE" ) +#,        title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none",
+        #axis.text.x = element_text(angle = 45, vjust = 0.5),
+        #axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(2,2,2,2, "pt"))
+
+plot_gpp_period 
+```
+### et
+
+```{r}
+et_normal <- modis_day %>% 
+  filter(between(year, 2000, 2008)) %>% 
+  summarize(etmean=mean(ET, na.rm=T)) %>% 
+  pull(etmean)
+
+et_anom <- modis_day %>% 
+  filter(year>1999) %>% 
+  mutate(season="annual", 
+         pct_anomaly = 100 * (ET - et_normal) / et_normal,
+         anomaly=ET-et_normal,
+         cum_p_deficit = cumsum(anomaly)) #cumsum(pmax(0, -p_anom))
+
+et_anom %>% 
+  filter(year == 2019) %>%
+  mutate( statement = sprintf("ET was %.1f%% %s than the 2000-2008 mean",
+                             abs(pct_anomaly), ifelse(pct_anomaly < 0, "lower", "higher")))   
+et_anom %>% 
+  filter(between(year, 2009, 2020)) %>%
+  summarize(mean_pct_anomaly = mean(pct_anomaly),
+            mean_anomaly = mean(anomaly))  
+```
+
+```{r}
+
+
+
+plot_et <-modisXseason %>% 
+  bind_rows(modis_annual) %>% 
+  filter(year>1999) %>% 
+  ggplot( aes(x=year, y=et, fill=season)) +
+  geom_col(position = position_dodge2(width = 0.8, padding = 0.05)) + 
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.1, 0.1))) +
+  labs(x = "Year", y="ET (mm)", subtitle="")+
+  scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.margin = margin(2,2,2,2, "pt")) +
+
+  geom_hline(yintercept = modis_normal$et_normal,
+             linetype="dashed", color = "#5A5C8C") +
+  geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5)
+plot_et
+
+
+```
+```{r}
+
+
+plot_et_period <- ggplot(modis_period, aes(x = period, y = et_avg, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = et_avg - et_se, ymax = et_avg + et_se),
+                width = 0.2, linewidth = 0.8) +
+
+  #scale_fill_manual(values = c("before" = "#7D593D", "during" = "lightgrey", "after" = "#AF9153")) +
+  #scale_fill_viridis(discrete = TRUE, option = "cividis") +
+  #paletteer::scale_fill_paletteer_d("rcartocolor::Safe") +
+  scale_fill_manual(values = period_colors) + 
+  
+  labs(x = "Period", y = "") +#,       , subtitle = "Period means ± SE"  title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none",
+        #axis.text.x = element_text(angle = 45, vjust = 0.5),
+        #axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        plot.margin = margin(2,2,2,2, "pt"))
+
+plot_et_period 
+```
+
+### lai
+
+have to take out ourliers
+```{r}
+range(modis_day$LAI, na.rm = T)
+
+
+lai_annual <- modis_day %>% 
+  filter(year!="",
+         between(LAI, 0.01, 3.5)) %>% 
+  group_by(year) %>% 
+  summarize(
+            lai=mean(LAI, na.rm=T))%>% 
+  mutate(season="annual") 
+range(lai_annual$lai, na.rm = T)
+
+lai_normal <- lai_annual %>% 
+  filter(between(year, 2002, 2008)) %>% 
+  summarize(laimean=mean(lai, na.rm=T)) %>% 
+  pull(laimean)
+
+
+lai_anom <- lai_annual %>% 
+  #filter(year>2001) %>% 
+  mutate(season="annual", 
+         pct_anomaly = 100 * (lai - lai_normal) / lai_normal,
+         anomaly=lai-lai_normal,
+         cum_p_deficit = cumsum(anomaly)) #cumsum(pmax(0, -p_anom))
+
+lai_anom %>% 
+  filter(year == 2019) %>%
+  mutate( statement = sprintf("LAI was %.1f%% %s than the 2002-2008 mean",
+                             abs(pct_anomaly), ifelse(pct_anomaly < 0, "lower", "higher")))   
+lai_anom %>% 
+  filter(between(year, 2009, 2020)) %>%
+  summarize(mean_pct_anomaly = mean(pct_anomaly),
+            mean_anomaly = mean(anomaly) ) 
+```
+
+```{r}
+laiXseason <- modis_day %>% 
+  filter(year!="",
+         between(LAI, 0.01, 3.5)) %>% 
+  mutate(season = if_else(month %in% breeding, "breeding", "nonbreeding")) %>% 
+  group_by(year, season) %>% 
+  summarize(lai=mean(LAI, na.rm=T)) %>% 
+  ungroup() 
+
+plot_lai <-laiXseason %>% 
+  bind_rows(lai_annual) %>% 
+  filter(year>1999) %>% 
+  add_row(year = c(2000, 2000,2000, 2001, 2001, 2001), 
+          season= c("annual", "breeding", "nonbreeding","annual", "breeding", "nonbreeding")) %>% 
+  ggplot( aes(x=year, y=lai, fill=season)) +
+  geom_col(position = position_dodge2(width = 0.8, padding = 0.05)) + 
+  scale_y_continuous(limits = c(0, 2)) +
+  scale_x_continuous(breaks = seq(2000, 2025, 5), 
+                     expand = expansion(add = c(0.1, 0.1))) +
+  labs(x = "Year", y=expression("LAI"~(m^2/m^2)), subtitle="")+
+  scale_fill_manual(values=c("#5A5C8C", "#40B0A6", "#E1BE6A")) +
+  theme_classic() +
+  theme(legend.position = "none",plot.margin = margin(2,2,2,2, "pt")) +
+
+  geom_hline(yintercept = lai_normal,
+             linetype="dashed", color = "#5A5C8C") +
+   geom_vline(xintercept = c(2008.5, 2019, 2020.5), 
+             linetype = c("dotted", "solid", "dotted"), 
+             color = c("black", "red", "black"), alpha = 0.5)
+plot_lai
+
+
+```
+
+
+```{r}
+lai_period <- lai_annual %>%  
+  mutate(period = case_when(
+      #year %in% period_clim ~ "longterm",
+      year %in% period_before ~ "before",
+      year %in% period_study  ~ "during",
+      year %in% period_after  ~ "after",
+      TRUE                   ~ NA_character_
+    )) %>% 
+  filter(year>2002) %>% 
+  dplyr::group_by( period) %>%
+  dplyr::summarize(n_years = n(),
+                   lai_avg=mean(lai, na.rm = TRUE),
+                   lai_sd=sd(lai, na.rm = TRUE),
+                   lai_se = lai_sd / sqrt(n_years),
+                   
+                   .groups = "drop") %>% 
+  add_row(period = "2019", 
+
+          lai_avg = 0.2663043,
+          n_years = 1)
+
+lai_period$period<- factor(lai_period$period, 
+                         levels=c( "before", "during", "after", "2019"),
+                         labels=c("2000-2008", "2009-2020", "2021-2025", "2019"))
+
+plot_lai_period <- ggplot(lai_period, aes(x = period, y = lai_avg, fill = period)) + #
+  geom_col(alpha = 0.8, color = "black", linewidth = 0.5) +
+  geom_errorbar(aes(ymin = lai_avg - lai_se, ymax = lai_avg + lai_se),
+                width = 0.2, linewidth = 0.8) +
+
+  #scale_fill_manual(values = c("before" = "#7D593D", "during" = "lightgrey", "after" = "#AF9153")) +
+  #scale_fill_viridis(discrete = TRUE, option = "cividis") +
+  #paletteer::scale_fill_paletteer_d("rcartocolor::Safe") +
+  scale_fill_manual(values = period_colors) + 
+  
+  labs(x = "Period", y = "" ) +#,        title = "Precipitation by Period") +
+  theme_classic() +
+  theme(legend.position = "none", 
+        legend.direction = "vertical",
+        legend.title = element_blank(),  # No "Period" title
+        legend.text = element_text(size = 10),
+        #axis.title.x = element_blank()
+        axis.text.x = element_text(
+               angle = 45,      # rotate 45 degrees
+               hjust = 1,       # right-justify so labels line up with ticks
+               vjust = 1        # adjust vertical position if needed
+    ),
+    plot.margin = margin(2,2,2,2, "pt"))
+
+plot_lai_period 
+```
+
+
+
+
+## combine plots
+
+Ecology: maximum allowable size (18 cm wide by 22 cm tall) 
+
+
+```{r}
+plots_modis <- ggarrange(plot_gpp + rremove("xlab"), 
+                               plot_gpp_period + rremove("xlab"),
+                               plot_et + rremove("xlab"),
+                               plot_et_period + rremove("xlab"),
+                               plot_lai, plot_lai_period,
+                               nrow=3, ncol=2, align = "hv", widths = c(4,1),
+                               common.legend = T, legend = "bottom") #
+plots_modis
+ggsave("./Revision/ecosystem_variation_v2.pdf", width=18, height=18, units = "cm", dpi=600)
+
+plots_modis_legend <- ggarrange(plot_gpp + rremove("xlab"), 
+                               plot_gpp_period + rremove("xlab"),
+                               plot_et + rremove("xlab"),
+                               plot_et_period + rremove("xlab"),
+                               plot_lai, plot_lai_period,
+                               nrow=3, ncol=2, align = "hv", widths = c(3,1),
+                               legend = "bottom") #common.legend = T, 
+ggsave("./Revision/ecosystem_variation_legend.pdf", width=18, height=15, units = "cm", dpi=600)
+```
+
+
+```{r plots modis}
+
+plots_trend_modis <- ggarrange(plot_gpp + rremove("xlab"), 
+           plot_et + rremove("xlab"), 
+           plot_lai, 
+           nrow=3, ncol=1, align = "hv", 
+           common.legend = T, legend = "bottom")
+plots_trend_modis
+
+plots_period_modis <- ggarrange(plot_gpp_period + rremove("xlab"),
+                          plot_et_period + rremove("xlab"),
+                          plot_lai_period,
+                          nrow=3, ncol=1, align = "hv", 
+                          common.legend = T, legend = "bottom")
+plots_period_modis      
+
+
+ggarrange(plots_trend_modis, plots_period_modis, 
+          ncol = 2, align = "h", 
+          widths = c(2.5,1))
+
+
+ggsave("./Revision/ecosystem_variation.pdf", width=18, height=15, units = "cm", dpi=600)
+
+
+```
+
+
+
+
+
