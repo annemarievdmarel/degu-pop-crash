@@ -2,8 +2,8 @@
 Code and data for a population demographics paper on a degu population from Central Chile. 
 We aimed to investigate 1) the demography and population dynamics of a degu population using a dataset from 2009 to 2020, 2) what environmental factors affected population parameters and 3) the factors that potentially caused or contributed to the local extinction of this population in 2020. Although the IUCN red list status classifies degus as  ‘Least Concern’ (Roach 2016), it remains unclear why some populations can survive through adverse events while others experience local extinction. Examining what environmental factors affected the population dynamics of this population helps to identify which populations are most vulnerable to forecasted climate change and aids in developing strategies to mitigate future local extinctions from happening.
  
-###Title: Extreme drought impacts drove local extinction in a social rodent###
-####Authors: 
+##Title: Extreme drought impacts drove local extinction in a social rodent
+##Authors: 
 1,2 Annemarie van der Marel, 3 Madan K Oli, 4 Azad Hossain, 5 Praveena Krishnan, 5,6 Tim Wilson, 7Loreto A. Correa, 1Luis A Ebensperger, 4Loren D Hayes
 ####Affiliations:
 1Departamento de Ecología, Facultad de Ciencias Biológicas, Pontificia Universidad Católica de Chile, Santiago, Chile
