@@ -2,19 +2,22 @@
 Code and data for a population demographics paper on a degu population from Central Chile. 
 We aimed to investigate 1) the demography and population dynamics of a degu population using a dataset from 2009 to 2020, 2) what environmental factors affected population parameters and 3) the factors that potentially caused or contributed to the local extinction of this population in 2020. Although the IUCN red list status classifies degus as  ‘Least Concern’ (Roach 2016), it remains unclear why some populations can survive through adverse events while others experience local extinction. Examining what environmental factors affected the population dynamics of this population helps to identify which populations are most vulnerable to forecasted climate change and aids in developing strategies to mitigate future local extinctions from happening.
  
-Title: Extremely low primary production after a decade-long drought contributed to the local extinction of a group-living rodent
-Authors: 
-1Annemarie van der Marel, 2Madan K Oli, 3Azad Hossain, 4Praveena Krishnan, 4,5Tim Wilson, 6Loreto A. Correa, 1Luis A Ebensperger, 3Loren D Hayes
-Affiliations:
+###Title: Extreme drought impacts drove local extinction in a social rodent
+####Authors: 
+1,2 Annemarie van der Marel, 3 Madan K Oli, 4 Azad Hossain, 5 Praveena Krishnan, 5,6 Tim Wilson, 7Loreto A. Correa, 1Luis A Ebensperger, 4Loren D Hayes
+####Affiliations:
 1Departamento de Ecología, Facultad de Ciencias Biológicas, Pontificia Universidad Católica de Chile, Santiago, Chile
-2Department of Wildlife Ecology and Conservation, University of Florida, Gainesville, FL 32611, USA
-3Department of Biology, Geology, and Environmental Sciences, University of Tennessee at Chattanooga, Chattanooga, TN 37403, USA	
-4NOAA Air Resources Laboratory, Atmospheric Turbulence and Diffusion Division, Oak Ridge, TN 37830, USA
-5Oak Ridge Associated Universities, Oak Ridge, TN 37830, USA 
-6Escuela de Medicina Veterinaria, Facultad de Medicina y Ciencias de la Salud, Universidad Mayor, Camino La Pirámide 5750, Huechuraba, Santiago, Chile
+2Institute for Ecology & Biodiversity, Concepcion, Chile
+3Department of Wildlife Ecology and Conservation, University of Florida, Gainesville, FL 32611, USA
+4Department of Biology, Geology, and Environmental Sciences, University of Tennessee at Chattanooga, Chattanooga, TN 37403, USA	
+5NOAA Air Resources Laboratory, Atmospheric Turbulence and Diffusion Division, Oak Ridge, TN 37830, USA
+6Oak Ridge Associated Universities, Oak Ridge, TN 37830, USA 
+7Escuela de Medicina Veterinaria, Facultad de Medicina y Ciencias de la Salud, Universidad Mayor, Camino La Pirámide 5750, Huechuraba, Santiago, Chile
+
+#### Preprint: EcoEvoRxiv 2026 https://doi.org/10.32942/X2B649 
 
 ## Code
-The code used is available in the main branch. First, we used the 'summarize_capture_data30daywindow.Rdata' to select the trapping windows to include in our mark-recapture modeling framework. Then, we used the 'environmental covariates_v11.Rdata' to select the environmental covariates, check for multicollinearity, and create figures. We then used the 'covariates model selection.R' script to write down all the potential models for model selection that was then run in Rmark. Finally, we used the 'results and plots degu pop dynamics_11032025.Rdata' to look at the model results and visualize the results for the models without environmental covariates, models with environmental covariates and year, and models with environmental covariates excluding year. 
+The code used is available in the main branch. First, we used the 'summarize_capture_data30daywindow_R1.Rdata' to select the trapping windows to include in our mark-recapture modeling framework. Then, we used the 'environmental covariates_R1.Rdata' to select the environmental covariates, check for multicollinearity, and create figures. We then used the 'covariates model selection.R' script to write down all the potential models for model selection that was then run in Rmark. Finally, we used the 'results and plots degu pop dynamics_25032026_R1.Rdata' to look at the model results and visualize the results for the models without environmental covariates, models with environmental covariates and year, and models with environmental covariates excluding year. 
 
 ## Data
 Data folder contains the raw data.
