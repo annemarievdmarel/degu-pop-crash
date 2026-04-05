@@ -1,0 +1,988 @@
+"","Phi","p","f","model","npar","AICc","DeltaAICc","weight","Deviance"
+"146","~gpp_avg2 * season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",31,17529.0916722993,0,0.832613388666055,692.32817
+"98","~gpp_avg2 * season2","~time + sex","~gpp_avg2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~gpp_avg2 + season2 + sex)",31,17532.3486722993,3.25700000000143,0.163378470650649,695.58453
+"158","~gpp_avg2 * season2 + sex","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",32,17539.912488681,10.8208163816198,0.00372162806480167,701.10955
+"129","~gpp_avg2 * season2 + sex","~time","~gpp_avg2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~gpp_avg2 + season2)",30,17545.3470859729,16.2554136735162,0.000245824497716019,710.62075
+"141","~gpp_avg2 * season2 + sex","~time","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum_lag2 * season2 + sex)",32,17548.944488681,19.852816381619,4.06873202993968e-05,710.14146
+"92","~gpp_avg2 * season2","~time","~rain_sum2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_sum2 + season2 + sex)",30,17570.9250859729,41.8334136735175,6.86172061898046e-10,736.19901
+"162","~gpp_avg2 * season2 + sex","~year2","~gpp_avg2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 + season2)",19,17575.693502706,46.6018304066165,6.32389272360072e-11,763.29961
+"163","~gpp_avg2 * season2 + sex","~year2","~gpp_avg2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2)",20,17576.3846315789,47.2929592796136,4.47618230616884e-11,761.9673
+"114","~gpp_avg2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17580.4116315789,51.3199592796118,5.97662251942424e-12,765.99372
+"420","~rain_cv_lag2 * season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",21,17586.4349783393,57.343306040013,2.94105195482335e-13,769.99195
+"419","~rain_cv_lag2 * season2 + sex","~year2","~rain_cv_lag2 + season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~year2)f(~rain_cv_lag2 + season2 + sex)",20,17590.8346315789,61.7429592796107,3.2593435116689e-14,776.41665
+"421","~rain_cv_lag2 * season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",20,17596.3146315789,67.2229592796139,2.10456941192122e-15,781.89698
+"338","~rain_cv_lag2 + season2","~time + sex","~rain_sum2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_sum2 * season2 + sex)",31,17598.6346722993,69.5430000000015,0,761.87088
+"397","~rain_cv_lag2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17599.551502706,70.4598304066167,0,787.15805
+"370","~rain_cv_lag2 + season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",20,17599.9606315789,70.8689592796109,0,785.54289
+"418","~rain_cv_lag2 * season2 + sex","~year2","~oni_avg2 + season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~year2)f(~oni_avg2 + season2 + sex)",20,17600.7496315789,71.6579592796115,0,786.33155
+"398","~rain_cv_lag2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_cv_lag2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17601.0186315789,71.9269592796118,0,786.60054
+"155","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv2 + season2)",31,17604.4016722993,75.3100000000013,0,767.63755
+"399","~rain_cv_lag2 * season2","~year2","~oni_avg2 * season2 + sex","Phi(~rain_cv_lag2 * season2)p(~year2)f(~oni_avg2 * season2 + sex)",20,17604.8796315789,75.7879592796126,0,790.46173
+"351","~rain_cv_lag2 + season2 + sex","~time","~gpp_avg2 + season2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~gpp_avg2 + season2)",29,17606.7267285887,77.6350562893276,0,774.03709
+"401","~rain_cv_lag2 * season2","~year2","~rain_cv_lag2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~year2)f(~rain_cv_lag2 + season2 + sex)",19,17608.022502706,78.930830406618,0,795.62877
+"393","~rain_cv_lag2 * season2","~time + sex","~rain_sum2 * season2 + sex","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum2 * season2 + sex)",32,17612.064488681,82.972816381618,0,773.26232
+"402","~rain_cv_lag2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17612.222502706,83.1308304066151,0,799.82873
+"159","~gpp_avg2 * season2 + sex","~time + sex","~rain_sum_lag2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2)",32,17612.820488681,83.7288163816193,0,774.01758
+"422","~rain_cv_lag2 * season2 + sex","~year2","~temp_cv2 + season2","Phi(~rain_cv_lag2 * season2 + sex)p(~year2)f(~temp_cv2 + season2)",19,17612.925502706,83.8338304066165,0,800.53221
+"148","~gpp_avg2 * season2 + sex","~time + sex","~oni_avg2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~oni_avg2 + season2)",31,17612.9636722993,83.872000000003,0,776.19996
+"126","~gpp_avg2 * season2","~year2","~rain_sum2 * season2","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum2 * season2)",19,17613.142502706,84.050830406617,0,800.74852
+"383","~rain_cv_lag2 * season2","~time + sex","~gpp_avg2 * season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~gpp_avg2 * season2)",31,17614.7726722993,85.6810000000005,0,778.00884
+"893","~temp_cv2 + season2","~time + sex","~gpp_avg2 * season2 + sex","Phi(~temp_cv2 + season2)p(~time + sex)f(~gpp_avg2 * season2 + sex)",31,17614.9886722993,85.8970000000008,0,778.22526
+"348","~rain_cv_lag2 + season2","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~rain_cv_lag2 * season2 + sex)",19,17615.716502706,86.6248304066175,0,803.3231
+"121","~gpp_avg2 * season2","~year2","~rain_cv2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_cv2 + season2 + sex)",19,17616.889502706,87.7978304066164,0,804.49641
+"347","~rain_cv_lag2 + season2","~year2","~rain_cv_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~rain_cv_lag2 + season2 + sex)",18,17617.3995906222,88.3079183228474,0,807.02857
+"343","~rain_cv_lag2 + season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~gpp_avg2 * season2 + sex)",19,17617.464502706,88.3728304066171,0,805.07055
+"130","~gpp_avg2 * season2 + sex","~time","~gpp_avg2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~gpp_avg2 * season2)",31,17617.4826722993,88.3909999999996,0,780.71882
+"416","~rain_cv_lag2 * season2 + sex","~time + sex","~rain_sum2 + season2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~rain_sum2 + season2)",31,17617.8086722993,88.7170000000006,0,781.04521
+"342","~rain_cv_lag2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17618.2205906222,89.1289183228473,0,807.85019
+"357","~rain_cv_lag2 + season2 + sex","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_sum_lag2 * season2 + sex)",31,17618.2276722993,89.1360000000022,0,781.46423
+"392","~rain_cv_lag2 * season2","~time + sex","~rain_sum2 * season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum2 * season2)",31,17618.3326722993,89.2410000000018,0,781.56891
+"986","~temp_cv2 * season2 + sex","~year2","~rain_sum_lag2 * season2 + sex","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~rain_sum_lag2 * season2 + sex)",21,17618.8239783393,89.7323060400122,0,802.38051
+"367","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",32,17619.901488681,90.8098163816176,0,781.09916
+"315","~rain_cv_lag2 + season2","~time","~gpp_avg2 + season2","Phi(~rain_cv_lag2 + season2)p(~time)f(~gpp_avg2 + season2)",28,17621.7405990353,92.6489267359393,0,791.08604
+"356","~rain_cv_lag2 + season2 + sex","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_sum_lag2 + season2 + sex)",30,17625.7720859729,96.6804136735154,0,791.04546
+"985","~temp_cv2 * season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",21,17626.6349783393,97.5433060400137,0,810.19188
+"366","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17627.7946722993,98.7030000000013,0,791.03124
+"326","~rain_cv_lag2 + season2","~time","~rain_sum2 + season2","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum2 + season2)",28,17629.3215990353,100.229926735938,0,798.66676
+"380","~rain_cv_lag2 * season2","~time","~rain_sum2 + season2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_sum2 + season2)",29,17629.6897285887,100.598056289327,0,796.99973
+"337","~rain_cv_lag2 + season2","~time + sex","~rain_sum2 + season2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_sum2 + season2)",29,17630.9857285887,101.894056289326,0,798.29546
+"142","~gpp_avg2 * season2 + sex","~time","~rain_sum2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum2 + season2)",30,17631.6760859729,102.584413673518,0,796.94969
+"961","~temp_cv2 * season2","~year2","~rain_sum2 * season2 + sex","Phi(~temp_cv2 * season2)p(~year2)f(~rain_sum2 * season2 + sex)",20,17632.1376315789,103.045959279611,0,817.72033
+"391","~rain_cv_lag2 * season2","~time + sex","~rain_sum2 + season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum2 + season2)",30,17632.3150859729,103.223413673517,0,797.58901
+"345","~rain_cv_lag2 + season2","~year2","~oni_avg2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~oni_avg2 + season2 + sex)",18,17633.6265906222,104.534918322846,0,823.25642
+"983","~temp_cv2 * season2 + sex","~year2","~gpp_avg2 + season2","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~gpp_avg2 + season2)",19,17633.889502706,104.797830406616,0,821.49577
+"350","~rain_cv_lag2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17635.2375906222,106.145918322847,0,824.86657
+"324","~rain_cv_lag2 + season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",30,17636.0890859728,106.997413673515,0,801.36279
+"336","~rain_cv_lag2 + season2","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",31,17636.1376722993,107.046000000002,0,799.37356
+"103","~gpp_avg2 * season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17636.338488681,107.246816381619,0,797.53583
+"882","~temp_cv2 + season2","~time","~gpp_avg2 * season2 + sex","Phi(~temp_cv2 + season2)p(~time)f(~gpp_avg2 * season2 + sex)",30,17637.8300859729,108.738413673516,0,803.10391
+"955","~temp_cv2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~temp_cv2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17638.235502706,109.143830406618,0,825.84153
+"956","~temp_cv2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~temp_cv2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17639.7116315789,110.619959279611,0,825.2936
+"353","~rain_cv_lag2 + season2 + sex","~time","~rain_cv2 * season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_cv2 * season2 + sex)",31,17642.8666722993,113.775000000001,0,806.10301
+"50","~gpp_avg2 + season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",31,17643.0146722993,113.923000000003,0,806.25059
+"87","~gpp_avg2 * season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17646.3036722993,117.212000000003,0,809.54
+"140","~gpp_avg2 * season2 + sex","~time","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum_lag2 + season2 + sex)",31,17646.9696722993,117.878000000001,0,810.20551
+"152","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",32,17647.177488681,118.085816381619,0,808.37447
+"957","~temp_cv2 * season2","~year2","~oni_avg2 + season2 + sex","Phi(~temp_cv2 * season2)p(~year2)f(~oni_avg2 + season2 + sex)",19,17647.817502706,118.725830406616,0,835.42389
+"960","~temp_cv2 * season2","~year2","~rain_cv2 * season2 + sex","Phi(~temp_cv2 * season2)p(~year2)f(~rain_cv2 * season2 + sex)",20,17648.0696315789,118.977959279611,0,833.65178
+"137","~gpp_avg2 * season2 + sex","~time","~rain_cv2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_cv2 * season2)",31,17651.2076722993,122.116000000002,0,814.4443
+"759","~rain_sum2 + season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",20,17651.5066315789,122.414959279613,0,837.0889
+"38","~gpp_avg2 + season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~gpp_avg2 + season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",30,17651.5710859728,122.479413673515,0,816.84489
+"378","~rain_cv_lag2 * season2","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_sum_lag2 + season2 + sex)",30,17652.5880859728,123.496413673514,0,817.86148
+"153","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",33,17653.8745362319,124.782863932549,0,813.03213
+"56","~gpp_avg2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~gpp_avg2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17654.1205906222,125.028918322849,0,843.74946
+"389","~rain_cv_lag2 * season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17654.4616722993,125.370000000003,0,817.69763
+"79","~gpp_avg2 + season2 + sex","~year2","~gpp_avg2 + season2","Phi(~gpp_avg2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2)",18,17654.5765906222,125.484918322847,0,844.20573
+"143","~gpp_avg2 * season2 + sex","~time","~rain_sum2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum2 * season2)",31,17655.4346722993,126.343000000001,0,818.67103
+"197","~oni_avg2 + season2","~time + sex","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~gpp_avg2 + season2 + sex)",30,17655.6920859729,126.600413673517,0,820.96601
+"286","~oni_avg2 * season2 + sex","~year2","~rain_sum2 * season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~rain_sum2 * season2 + sex)",21,17656.0229783393,126.931306040013,0,839.57958
+"355","~rain_cv_lag2 + season2 + sex","~time","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_sum_lag2 + season2)",29,17657.1857285887,128.094056289327,0,824.49552
+"127","~gpp_avg2 * season2","~year2","~rain_sum2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum2 * season2 + sex)",20,17657.7216315789,128.629959279613,0,843.30348
+"113","~gpp_avg2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17657.844502706,128.752830406618,0,845.45062
+"377","~rain_cv_lag2 * season2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_sum_lag2 + season2)",29,17658.1887285887,129.097056289327,0,825.49915
+"165","~gpp_avg2 * season2 + sex","~year2","~oni_avg2 + season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~oni_avg2 + season2 + sex)",20,17658.6816315789,129.589959279612,0,844.26417
+"134","~gpp_avg2 * season2 + sex","~time","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2 + sex)",31,17659.0886722993,129.997000000003,0,822.32524
+"365","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17659.1820859729,130.090413673515,0,824.45638
+"57","~gpp_avg2 + season2","~year2","~oni_avg2 * season2 + sex","Phi(~gpp_avg2 + season2)p(~year2)f(~oni_avg2 * season2 + sex)",19,17659.312502706,130.220830406615,0,846.919
+"93","~gpp_avg2 * season2","~time","~rain_sum2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_sum2 * season2 + sex)",31,17659.8196722993,130.728000000003,0,823.05591
+"168","~gpp_avg2 * season2 + sex","~year2","~rain_sum_lag2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~rain_sum_lag2 + season2)",19,17659.945502706,130.853830406617,0,847.55149
+"59","~gpp_avg2 + season2","~year2","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 + season2)p(~year2)f(~rain_cv_lag2 + season2 + sex)",18,17660.7165906222,131.624918322846,0,850.346
+"524","~rain_cv2 * season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",21,17661.2569783393,132.165306040013,0,844.81429
+"908","~temp_cv2 + season2","~year2","~rain_sum_lag2 * season2 + sex","Phi(~temp_cv2 + season2)p(~year2)f(~rain_sum_lag2 * season2 + sex)",19,17661.694502706,132.602830406617,0,849.30082
+"61","~gpp_avg2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~gpp_avg2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17661.8395906222,132.747918322846,0,851.46932
+"926","~temp_cv2 + season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~temp_cv2 + season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",19,17661.921502706,132.829830406616,0,849.52747
+"73","~gpp_avg2 + season2 + sex","~time + sex","~oni_avg2 + season2 + sex","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~oni_avg2 + season2 + sex)",31,17662.0686722993,132.977000000003,0,825.30454
+"323","~rain_cv_lag2 + season2","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum_lag2 + season2 + sex)",29,17662.3327285887,133.241056289327,0,829.64273
+"228","~oni_avg2 + season2 + sex","~year2","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17662.746502706,133.654830406616,0,850.35303
+"281","~oni_avg2 * season2 + sex","~year2","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 + season2 + sex)",20,17663.4896315789,134.397959279613,0,849.07225
+"123","~gpp_avg2 * season2","~year2","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum_lag2 + season2 + sex)",19,17663.497502706,134.405830406617,0,851.10418
+"511","~rain_cv2 * season2","~year2","~rain_sum2 * season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~rain_sum2 * season2 + sex)",20,17663.4976315789,134.405959279611,0,849.08027
+"132","~gpp_avg2 * season2 + sex","~time","~oni_avg2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~oni_avg2 + season2)",30,17663.8840859729,134.792413673516,0,829.15844
+"74","~gpp_avg2 + season2 + sex","~time + sex","~oni_avg2 * season2 + sex","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~oni_avg2 * season2 + sex)",32,17663.943488681,134.851816381619,0,825.14141
+"230","~oni_avg2 + season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 + season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17664.6606315789,135.568959279612,0,850.24307
+"149","~gpp_avg2 * season2 + sex","~time + sex","~oni_avg2 * season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~oni_avg2 * season2)",32,17664.936488681,135.844816381617,0,826.13349
+"526","~rain_cv2 * season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",21,17664.9599783393,135.868306040014,0,848.51701
+"906","~temp_cv2 + season2","~year2","~oni_avg2 * season2","Phi(~temp_cv2 + season2)p(~year2)f(~oni_avg2 * season2)",18,17665.0515906222,135.959918322849,0,854.68048
+"90","~gpp_avg2 * season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",31,17665.2026722993,136.111000000001,0,828.43904
+"151","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",31,17665.2506722993,136.159,0,828.48671
+"923","~temp_cv2 + season2 + sex","~year2","~gpp_avg2 + season2","Phi(~temp_cv2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2)",18,17665.3895906222,136.297918322849,0,855.01867
+"124","~gpp_avg2 * season2","~year2","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum_lag2 * season2 + sex)",20,17665.5136315789,136.421959279611,0,851.09606
+"62","~gpp_avg2 + season2","~year2","~rain_sum2 * season2","Phi(~gpp_avg2 + season2)p(~year2)f(~rain_sum2 * season2)",18,17665.7595906222,136.667918322848,0,855.38931
+"107","~gpp_avg2 * season2","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",32,17666.141488681,137.049816381619,0,827.33939
+"757","~rain_sum2 + season2 + sex","~year2","~oni_avg2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~oni_avg2 * season2 + sex)",20,17666.3446315789,137.252959279613,0,851.92743
+"119","~gpp_avg2 * season2","~year2","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_cv_lag2 + season2 + sex)",19,17666.370502706,137.278830406616,0,853.97701
+"76","~gpp_avg2 + season2 + sex","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",32,17666.647488681,137.555816381617,0,827.845
+"109","~gpp_avg2 * season2","~time + sex","~rain_sum2 * season2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_sum2 * season2)",31,17667.0126722993,137.921000000002,0,830.24878
+"116","~gpp_avg2 * season2","~year2","~oni_avg2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~oni_avg2 + season2 + sex)",19,17667.490502706,138.398830406615,0,855.09682
+"763","~rain_sum2 + season2 + sex","~year2","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_sum_lag2 * season2 + sex)",20,17667.6536315789,138.561959279614,0,853.23638
+"971","~temp_cv2 * season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",31,17667.9326722993,138.841,0,831.16896
+"322","~rain_cv_lag2 + season2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum_lag2 + season2)",28,17667.9655990353,138.873926735938,0,837.31079
+"905","~temp_cv2 + season2","~year2","~oni_avg2 + season2 + sex","Phi(~temp_cv2 + season2)p(~year2)f(~oni_avg2 + season2 + sex)",18,17667.9755906222,138.883918322848,0,857.6051
+"258","~oni_avg2 * season2","~year2","~rain_cv2 * season2","Phi(~oni_avg2 * season2)p(~year2)f(~rain_cv2 * season2)",19,17668.141502706,139.049830406617,0,855.74761
+"117","~gpp_avg2 * season2","~year2","~oni_avg2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~oni_avg2 * season2 + sex)",20,17668.6836315789,139.591959279613,0,854.26632
+"212","~oni_avg2 + season2","~year2","~rain_cv2 * season2","Phi(~oni_avg2 + season2)p(~year2)f(~rain_cv2 * season2)",18,17668.8895906222,139.797918322849,0,858.51877
+"904","~temp_cv2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~temp_cv2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17669.0065906222,139.914918322847,0,858.63589
+"125","~gpp_avg2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17669.389502706,140.297830406616,0,856.99569
+"523","~rain_cv2 * season2 + sex","~year2","~gpp_avg2 + season2","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~gpp_avg2 + season2)",19,17669.692502706,140.600830406616,0,857.29854
+"136","~gpp_avg2 * season2 + sex","~time","~rain_cv2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_cv2 + season2)",30,17669.7090859729,140.617413673517,0,834.98307
+"832","~rain_sum2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",32,17670.041488681,140.949816381617,0,831.23887
+"216","~oni_avg2 + season2","~year2","~rain_sum2 * season2 + sex","Phi(~oni_avg2 + season2)p(~year2)f(~rain_sum2 * season2 + sex)",19,17671.254502706,142.162830406618,0,858.86072
+"262","~oni_avg2 * season2","~year2","~rain_sum2 * season2 + sex","Phi(~oni_avg2 * season2)p(~year2)f(~rain_sum2 * season2 + sex)",20,17671.3696315789,142.277959279611,0,856.95176
+"647","~rain_sum_lag2 * season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",21,17671.5809783393,142.489306040014,0,855.13797
+"106","~gpp_avg2 * season2","~time + sex","~rain_sum_lag2 * season2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_sum_lag2 * season2)",31,17672.5146722993,143.423000000003,0,835.75134
+"115","~gpp_avg2 * season2","~year2","~oni_avg2 + season2","Phi(~gpp_avg2 * season2)p(~year2)f(~oni_avg2 + season2)",18,17673.5265906222,144.434918322848,0,863.156
+"139","~gpp_avg2 * season2 + sex","~time","~rain_sum_lag2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum_lag2 + season2)",30,17673.7290859729,144.637413673518,0,839.00326
+"649","~rain_sum_lag2 * season2 + sex","~year2","~oni_avg2 * season2","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~oni_avg2 * season2)",20,17673.7486315789,144.656959279611,0,859.33122
+"227","~oni_avg2 + season2 + sex","~year2","~gpp_avg2 + season2","Phi(~oni_avg2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2)",18,17673.9505906222,144.858918322847,0,863.58041
+"651","~rain_sum_lag2 * season2 + sex","~year2","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~rain_sum_lag2 * season2 + sex)",21,17674.0659783393,144.974306040014,0,857.6234
+"761","~rain_sum2 + season2 + sex","~year2","~rain_cv2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_cv2 * season2 + sex)",20,17674.4916315789,145.399959279614,0,860.07379
+"909","~temp_cv2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~temp_cv2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17675.2205906222,146.128918322847,0,864.85031
+"157","~gpp_avg2 * season2 + sex","~time + sex","~rain_sum_lag2 + season2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2)",31,17675.3576722993,146.266,0,838.59361
+"506","~rain_cv2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17675.4076315789,146.315959279611,0,860.99016
+"83","~gpp_avg2 * season2","~time","~oni_avg2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~oni_avg2 * season2 + sex)",31,17675.6106722993,146.519,0,838.84698
+"488","~rain_cv2 + season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",19,17675.695502706,146.603830406617,0,863.30221
+"597","~rain_sum_lag2 + season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum_lag2 + season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",19,17676.105502706,147.013830406617,0,863.71221
+"100","~gpp_avg2 * season2","~time + sex","~oni_avg2 * season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~oni_avg2 * season2 + sex)",32,17676.283488681,147.191816381619,0,837.48138
+"405","~rain_cv_lag2 * season2 + sex","~time","~oni_avg2 + season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~oni_avg2 + season2 + sex)",31,17676.7986722993,147.707000000002,0,840.0346
+"727","~rain_sum2 + season2","~year2","~rain_sum2 * season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~rain_sum2 * season2 + sex)",19,17677.0055027059,147.913830406615,0,864.61154
+"756","~rain_sum2 + season2 + sex","~year2","~oni_avg2 + season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~oni_avg2 + season2 + sex)",19,17677.364502706,148.272830406615,0,864.97092
+"259","~oni_avg2 * season2","~year2","~rain_sum_lag2 + season2 + sex","Phi(~oni_avg2 * season2)p(~year2)f(~rain_sum_lag2 + season2 + sex)",19,17677.6305027059,148.538830406615,0,865.23685
+"208","~oni_avg2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17678.1445906222,149.052918322846,0,867.77384
+"89","~gpp_avg2 * season2","~time","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_sum_lag2 + season2 + sex)",30,17678.1750859729,149.083413673517,0,843.44869
+"86","~gpp_avg2 * season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",30,17678.3320859729,149.240413673517,0,843.60633
+"361","~rain_cv_lag2 + season2 + sex","~time + sex","~oni_avg2 + season2 + sex","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~oni_avg2 + season2 + sex)",31,17679.0376722993,149.946,0,842.27415
+"254","~oni_avg2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17679.253502706,150.161830406618,0,866.85986
+"412","~rain_cv_lag2 * season2 + sex","~time + sex","~oni_avg2 * season2 + sex","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~oni_avg2 * season2 + sex)",33,17679.7585362319,150.666863932547,0,838.91619
+"105","~gpp_avg2 * season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17679.9686722993,150.877,0,843.20464
+"623","~rain_sum_lag2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_sum_lag2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17680.027502706,150.935830406615,0,867.63364
+"102","~gpp_avg2 * season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",31,17680.2426722993,151.151000000002,0,843.47863
+"47","~gpp_avg2 + season2","~time + sex","~oni_avg2 + season2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~oni_avg2 + season2)",29,17680.3047285887,151.213056289325,0,847.61496
+"486","~rain_cv2 + season2 + sex","~year2","~rain_cv2 + season2 + sex","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~rain_cv2 + season2 + sex)",19,17680.977502706,151.885830406616,0,868.58383
+"256","~oni_avg2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17681.2276315789,152.135959279611,0,866.80991
+"214","~oni_avg2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~oni_avg2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17681.8115906222,152.719918322848,0,871.44065
+"625","~rain_sum_lag2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum_lag2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17681.8376315789,152.745959279611,0,867.4201
+"387","~rain_cv_lag2 * season2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_cv2 + season2 + sex)",31,17682.2856722993,153.194000000003,0,845.52189
+"261","~oni_avg2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~oni_avg2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17682.8625027059,153.770830406615,0,870.4692
+"467","~rain_cv2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_cv2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17683.0915906222,153.999918322846,0,872.7214
+"85","~gpp_avg2 * season2","~time","~rain_cv_lag2 + season2","Phi(~gpp_avg2 * season2)p(~time)f(~rain_cv_lag2 + season2)",29,17683.7837285887,154.692056289325,0,851.09408
+"41","~gpp_avg2 + season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~gpp_avg2 + season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",30,17683.9420859729,154.850413673517,0,849.21547
+"627","~rain_sum_lag2 * season2","~year2","~oni_avg2 * season2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~oni_avg2 * season2)",19,17683.947502706,154.855830406617,0,871.55366
+"111","~gpp_avg2 * season2","~time + sex","~temp_cv2 + season2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~temp_cv2 + season2)",30,17684.0110859729,154.919413673517,0,849.28469
+"468","~rain_cv2 + season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_cv2 + season2)p(~year2)f(~gpp_avg2 * season2 + sex)",19,17684.028502706,154.936830406616,0,871.63526
+"808","~rain_sum2 * season2","~year2","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum_lag2 * season2 + sex)",20,17685.2656315789,156.173959279611,0,870.84775
+"209","~oni_avg2 + season2","~year2","~gpp_avg2 * season2","Phi(~oni_avg2 + season2)p(~year2)f(~gpp_avg2 * season2)",18,17685.8045906222,156.712918322846,0,875.43359
+"569","~rain_sum_lag2 + season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_sum_lag2 + season2)p(~year2)f(~gpp_avg2 + season2 + sex)",18,17686.1335906222,157.041918322848,0,875.76268
+"724","~rain_sum2 + season2","~year2","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~rain_sum_lag2 + season2 + sex)",18,17686.1475906222,157.055918322847,0,875.77731
+"509","~rain_cv2 * season2","~year2","~rain_cv2 * season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~rain_cv2 * season2 + sex)",20,17686.2636315789,157.171959279611,0,871.84578
+"255","~oni_avg2 * season2","~year2","~gpp_avg2 * season2","Phi(~oni_avg2 * season2)p(~year2)f(~gpp_avg2 * season2)",19,17686.971502706,157.879830406615,0,874.57802
+"754","~rain_sum2 + season2 + sex","~year2","~gpp_avg2 * season2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~gpp_avg2 * season2)",19,17687.158502706,158.066830406617,0,874.76532
+"510","~rain_cv2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17687.301502706,158.209830406617,0,874.90797
+"570","~rain_sum_lag2 + season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum_lag2 + season2)p(~year2)f(~gpp_avg2 * season2 + sex)",19,17687.728502706,158.636830406616,0,875.33508
+"624","~rain_sum_lag2 * season2","~year2","~gpp_avg2 * season2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~gpp_avg2 * season2)",19,17687.822502706,158.730830406617,0,875.4291
+"652","~rain_sum_lag2 * season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",20,17687.8536315789,158.761959279611,0,873.4361
+"806","~rain_sum2 * season2","~year2","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum_lag2 + season2 + sex)",19,17687.939502706,158.847830406616,0,875.54634
+"633","~rain_sum_lag2 * season2","~year2","~rain_sum2 * season2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_sum2 * season2)",19,17688.277502706,159.185830406615,0,875.88418
+"575","~rain_sum_lag2 + season2","~year2","~rain_sum_lag2 * season2","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_sum_lag2 * season2)",18,17689.3215906222,160.22991832285,0,878.95076
+"722","~rain_sum2 + season2","~year2","~rain_cv2 * season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~rain_cv2 * season2 + sex)",19,17689.322502706,160.230830406617,0,876.92934
+"508","~rain_cv2 * season2","~year2","~rain_cv2 + season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~rain_cv2 + season2 + sex)",19,17689.811502706,160.719830406615,0,877.41755
+"838","~rain_sum2 * season2 + sex","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",33,17690.1035362319,161.011863932548,0,849.26124
+"631","~rain_sum_lag2 * season2","~year2","~rain_sum_lag2 * season2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_sum_lag2 * season2)",19,17690.194502706,161.102830406617,0,877.80141
+"574","~rain_sum_lag2 + season2","~year2","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_sum_lag2 + season2)",17,17690.3558942308,161.264221931433,0,882.00741
+"472","~rain_cv2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17690.7615906222,161.669918322848,0,880.39056
+"807","~rain_sum2 * season2","~year2","~rain_sum_lag2 * season2","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum_lag2 * season2)",19,17690.980502706,161.888830406617,0,878.58728
+"714","~rain_sum2 + season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~gpp_avg2 * season2 + sex)",19,17691.419502706,162.327830406615,0,879.02637
+"577","~rain_sum_lag2 + season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_sum2 + season2 + sex)",18,17691.6185906222,162.526918322848,0,881.24769
+"717","~rain_sum2 + season2","~year2","~oni_avg2 + season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~oni_avg2 + season2 + sex)",18,17692.8965906222,163.804918322847,0,882.52637
+"95","~gpp_avg2 * season2","~time","~temp_cv2 + season2","Phi(~gpp_avg2 * season2)p(~time)f(~temp_cv2 + season2)",29,17693.0937285887,164.002056289326,0,860.40436
+"317","~rain_cv_lag2 + season2","~time","~oni_avg2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~oni_avg2 * season2 + sex)",30,17693.7070859729,164.615413673517,0,858.9806
+"721","~rain_sum2 + season2","~year2","~rain_cv2 + season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~rain_cv2 + season2 + sex)",18,17693.7595906222,164.667918322848,0,883.3886
+"96","~gpp_avg2 * season2","~time","~temp_cv2 * season2","Phi(~gpp_avg2 * season2)p(~time)f(~temp_cv2 * season2)",30,17694.4230859729,165.331413673517,0,859.6966
+"330","~rain_cv_lag2 + season2","~time + sex","~oni_avg2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~oni_avg2 * season2 + sex)",31,17694.5816722993,165.490000000002,0,857.81783
+"843","~rain_sum2 * season2 + sex","~year2","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_cv_lag2 * season2 + sex)",21,17695.2639783393,166.172306040015,0,878.82136
+"470","~rain_cv2 + season2","~year2","~rain_cv2 + season2 + sex","Phi(~rain_cv2 + season2)p(~year2)f(~rain_cv2 + season2 + sex)",18,17696.2045906222,167.112918322848,0,885.83351
+"316","~rain_cv_lag2 + season2","~time","~oni_avg2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~oni_avg2 + season2 + sex)",29,17697.0037285887,167.912056289326,0,864.31417
+"295","~rain_cv_lag2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2)p(~time)f(~rain_sum_lag2 + season2)",27,17697.5636962025,168.472023903196,0,868.94289
+"632","~rain_sum_lag2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17697.607502706,168.515830406617,0,885.21419
+"716","~rain_sum2 + season2","~year2","~oni_avg2 + season2","Phi(~rain_sum2 + season2)p(~year2)f(~oni_avg2 + season2)",17,17698.6988942308,169.607221931434,0,890.34983
+"283","~oni_avg2 * season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",21,17698.7169783393,169.625306040012,0,882.27435
+"297","~rain_cv_lag2","~time","~rain_sum_lag2 * season2","Phi(~rain_cv_lag2)p(~time)f(~rain_sum_lag2 * season2)",28,17698.8155990353,169.72392673594,0,868.16139
+"308","~rain_cv_lag2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_sum_lag2 + season2)",28,17698.8865990353,169.79492673594,0,868.23159
+"454","~rain_cv2 + season2","~time","~rain_sum2 * season2","Phi(~rain_cv2 + season2)p(~time)f(~rain_sum2 * season2)",29,17699.2137285887,170.122056289325,0,866.52351
+"309","~rain_cv_lag2","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_sum_lag2 * season2)",29,17699.9277285887,170.836056289325,0,867.23792
+"576","~rain_sum_lag2 + season2","~year2","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_sum_lag2 * season2 + sex)",19,17700.568502706,171.476830406617,0,888.17447
+"407","~rain_cv_lag2 * season2 + sex","~time","~rain_cv_lag2 + season2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2)",30,17701.7400859729,172.648413673516,0,867.01434
+"818","~rain_sum2 * season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",32,17702.985488681,173.89381638162,0,864.18285
+"280","~oni_avg2 * season2 + sex","~year2","~gpp_avg2 + season2","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 + season2)",19,17703.653502706,174.561830406616,0,891.25974
+"833","~rain_sum2 * season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",33,17704.8895362319,175.797863932548,0,864.04659
+"810","~rain_sum2 * season2","~year2","~rain_sum2 * season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum2 * season2 + sex)",20,17705.0436315789,175.951959279613,0,890.6263
+"386","~rain_cv_lag2 * season2","~time + sex","~rain_cv_lag2 * season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_cv_lag2 * season2)",31,17705.0846722993,175.993000000002,0,868.32069
+"229","~oni_avg2 + season2 + sex","~year2","~gpp_avg2 * season2","Phi(~oni_avg2 + season2 + sex)p(~year2)f(~gpp_avg2 * season2)",19,17706.475502706,177.383830406616,0,894.08225
+"968","~temp_cv2 * season2 + sex","~time","~rain_sum_lag2 * season2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~rain_sum_lag2 * season2)",31,17707.5696722993,178.478000000003,0,870.80557
+"215","~oni_avg2 + season2","~year2","~rain_sum2 * season2","Phi(~oni_avg2 + season2)p(~year2)f(~rain_sum2 * season2)",18,17708.0625906222,178.970918322848,0,897.69146
+"282","~oni_avg2 * season2 + sex","~year2","~gpp_avg2 * season2","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2)",20,17708.5006315789,179.408959279612,0,894.08339
+"332","~rain_cv_lag2 + season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",31,17708.9206722993,179.829000000002,0,872.15669
+"977","~temp_cv2 * season2 + sex","~time + sex","~rain_sum_lag2 * season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2)",32,17709.324488681,180.23281638162,0,870.5222
+"320","~rain_cv_lag2 + season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",30,17709.6710859729,180.579413673517,0,874.94522
+"210","~oni_avg2 + season2","~year2","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 + season2)p(~year2)f(~gpp_avg2 * season2 + sex)",19,17709.995502706,180.903830406616,0,897.6018
+"363","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17710.1160859729,181.024413673516,0,875.39033
+"514","~rain_cv2 * season2 + sex","~time","~gpp_avg2 * season2","Phi(~rain_cv2 * season2 + sex)p(~time)f(~gpp_avg2 * season2)",31,17711.0976722993,182.006000000001,0,874.33368
+"294","~rain_cv_lag2","~time","~rain_cv2 * season2 + sex","Phi(~rain_cv_lag2)p(~time)f(~rain_cv2 * season2 + sex)",29,17711.2347285887,182.143056289326,0,878.54484
+"519","~rain_cv2 * season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~rain_cv2 * season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",31,17711.3066722993,182.215,0,874.54288
+"513","~rain_cv2 * season2 + sex","~time","~gpp_avg2 + season2","Phi(~rain_cv2 * season2 + sex)p(~time)f(~gpp_avg2 + season2)",30,17712.0340859729,182.942413673518,0,877.30776
+"731","~rain_sum2 + season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17712.1326722993,183.041000000001,0,875.3692
+"292","~rain_cv_lag2","~time","~rain_cv2 + season2 + sex","Phi(~rain_cv_lag2)p(~time)f(~rain_cv2 + season2 + sex)",28,17713.0605990353,183.968926735939,0,882.4058
+"847","~rain_sum2 * season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",20,17713.1796315789,184.087959279612,0,898.76244
+"307","~rain_cv_lag2","~time + sex","~rain_cv2 * season2 + sex","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_cv2 * season2 + sex)",30,17713.2340859729,184.142413673515,0,878.50806
+"474","~rain_cv2 + season2 + sex","~time","~gpp_avg2 * season2","Phi(~rain_cv2 + season2 + sex)p(~time)f(~gpp_avg2 * season2)",30,17713.4190859729,184.327413673516,0,878.69289
+"375","~rain_cv_lag2 * season2","~time","~rain_cv_lag2 + season2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_cv_lag2 + season2)",29,17713.4517285887,184.360056289326,0,880.76236
+"741","~rain_sum2 + season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17713.519488681,184.42781638162,0,874.71713
+"395","~rain_cv_lag2 * season2","~time + sex","~temp_cv2 * season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~temp_cv2 * season2)",31,17713.6246722993,184.533000000003,0,876.861
+"479","~rain_cv2 + season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~rain_cv2 + season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",30,17714.0580859729,184.966413673515,0,879.3317
+"319","~rain_cv_lag2 + season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",29,17714.1327285887,185.041056289327,0,881.44264
+"385","~rain_cv_lag2 * season2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17714.1660859729,185.074413673516,0,879.44031
+"305","~rain_cv_lag2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_cv2 + season2 + sex)",29,17714.2717285887,185.180056289326,0,881.58161
+"726","~rain_sum2 + season2","~year2","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2)p(~year2)f(~rain_sum_lag2 * season2 + sex)",19,17715.782502706,186.690830406616,0,903.38938
+"341","~rain_cv_lag2 + season2","~time + sex","~temp_cv2 * season2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~temp_cv2 * season2)",30,17716.0220859729,186.930413673515,0,881.29605
+"800","~rain_sum2 * season2","~year2","~oni_avg2 * season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~oni_avg2 * season2 + sex)",20,17717.1176315789,188.025959279614,0,902.70035
+"755","~rain_sum2 + season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17717.4516315789,188.359959279613,0,903.03366
+"291","~rain_cv_lag2","~time","~rain_cv2 + season2","Phi(~rain_cv_lag2)p(~time)f(~rain_cv2 + season2)",27,17718.5546962025,189.463023903194,0,889.93414
+"484","~rain_cv2 + season2 + sex","~year2","~gpp_avg2 + season2","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2)",18,17718.7485906222,189.656918322849,0,908.37822
+"37","~gpp_avg2 + season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2 + season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",29,17719.0697285887,189.978056289325,0,886.37983
+"931","~temp_cv2 * season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 * season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17719.1986722993,190.107,0,882.4345
+"944","~temp_cv2 * season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17719.735488681,190.64381638162,0,880.93333
+"799","~rain_sum2 * season2","~year2","~oni_avg2 * season2","Phi(~rain_sum2 * season2)p(~year2)f(~oni_avg2 * season2)",19,17719.776502706,190.684830406615,0,907.38313
+"304","~rain_cv_lag2","~time + sex","~rain_cv2 + season2","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_cv2 + season2)",28,17720.4815990353,191.389926735937,0,889.82676
+"718","~rain_sum2 + season2","~year2","~oni_avg2 * season2","Phi(~rain_sum2 + season2)p(~year2)f(~oni_avg2 * season2)",18,17720.9525906222,191.860918322847,0,910.58169
+"725","~rain_sum2 + season2","~year2","~rain_sum_lag2 * season2","Phi(~rain_sum2 + season2)p(~year2)f(~rain_sum_lag2 * season2)",18,17721.6095906222,192.517918322847,0,911.23915
+"952","~temp_cv2 * season2","~time + sex","~rain_sum2 * season2 + sex","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum2 * season2 + sex)",32,17721.990488681,192.898816381618,0,883.18818
+"770","~rain_sum2 * season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17722.0026722993,192.911,0,885.23861
+"973","~temp_cv2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",31,17722.2616722993,193.170000000002,0,885.49828
+"967","~temp_cv2 * season2 + sex","~time","~rain_sum_lag2 + season2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~rain_sum_lag2 + season2)",30,17722.6690859729,193.577413673516,0,887.94287
+"919","~temp_cv2 + season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17722.800488681,193.708816381619,0,883.99822
+"505","~rain_cv2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_cv2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17723.1845027059,194.092830406615,0,910.79102
+"528","~rain_cv2 * season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",20,17724.3876315789,195.295959279611,0,909.96951
+"976","~temp_cv2 * season2 + sex","~time + sex","~rain_sum_lag2 + season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2)",31,17724.5596722993,195.468000000001,0,887.7963
+"36","~gpp_avg2 + season2","~time","~rain_cv_lag2 + season2","Phi(~gpp_avg2 + season2)p(~time)f(~rain_cv_lag2 + season2)",28,17724.5895990353,195.497926735938,0,893.9348
+"293","~rain_cv_lag2","~time","~rain_cv2 * season2","Phi(~rain_cv_lag2)p(~time)f(~rain_cv2 * season2)",28,17724.8035990353,195.711926735938,0,894.1487
+"809","~rain_sum2 * season2","~year2","~rain_sum2 + season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum2 + season2 + sex)",19,17725.0055027059,195.913830406615,0,912.61187
+"930","~temp_cv2 * season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2 * season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",30,17725.2600859729,196.168413673517,0,890.53418
+"803","~rain_sum2 * season2","~year2","~rain_cv2 + season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~rain_cv2 + season2 + sex)",19,17726.158502706,197.066830406617,0,913.76517
+"49","~gpp_avg2 + season2","~time + sex","~rain_cv_lag2 + season2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2)",29,17726.4807285887,197.389056289325,0,893.79068
+"943","~temp_cv2 * season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",31,17726.9936722993,197.902000000002,0,890.22976
+"935","~temp_cv2 * season2","~time","~rain_sum_lag2 + season2 + sex","Phi(~temp_cv2 * season2)p(~time)f(~rain_sum_lag2 + season2 + sex)",30,17727.1210859729,198.029413673517,0,892.39536
+"794","~rain_sum2 * season2","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17727.411502706,198.319830406617,0,915.01809
+"795","~rain_sum2 * season2","~year2","~gpp_avg2 * season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~gpp_avg2 * season2 + sex)",20,17728.6836315789,199.591959279613,0,914.26545
+"949","~temp_cv2 * season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17729.1116722993,200.02,0,892.34808
+"527","~rain_cv2 * season2 + sex","~year2","~rain_cv2 + season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~rain_cv2 + season2 + sex)",20,17729.3166315789,200.224959279611,0,914.89855
+"929","~temp_cv2 * season2","~time","~rain_cv_lag2 + season2","Phi(~temp_cv2 * season2)p(~time)f(~rain_cv_lag2 + season2)",29,17730.8217285887,201.730056289325,0,898.13211
+"798","~rain_sum2 * season2","~year2","~oni_avg2 + season2 + sex","Phi(~rain_sum2 * season2)p(~year2)f(~oni_avg2 + season2 + sex)",19,17731.191502706,202.099830406616,0,918.79819
+"817","~rain_sum2 * season2 + sex","~time","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2 + sex)",31,17731.5586722993,202.467000000001,0,894.79478
+"691","~rain_sum2 + season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 + season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",30,17731.8370859729,202.745413673518,0,897.11056
+"934","~temp_cv2 * season2","~time","~rain_sum_lag2 + season2","Phi(~temp_cv2 * season2)p(~time)f(~rain_sum_lag2 + season2)",29,17732.0217285887,202.930056289326,0,899.3319
+"219","~oni_avg2 + season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 + season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17732.9456722993,203.854000000003,0,896.18194
+"948","~temp_cv2 * season2","~time + sex","~rain_sum_lag2 + season2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17733.2840859729,204.192413673518,0,898.558
+"701","~rain_sum2 + season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",31,17733.6646722993,204.573,0,896.90116
+"471","~rain_cv2 + season2","~year2","~rain_cv2 * season2 + sex","Phi(~rain_cv2 + season2)p(~year2)f(~rain_cv2 * season2 + sex)",19,17733.878502706,204.786830406618,0,921.48498
+"224","~oni_avg2 + season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17733.912488681,204.82081638162,0,895.10976
+"64","~gpp_avg2 + season2 + sex","~time","~gpp_avg2 + season2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~gpp_avg2 + season2)",29,17734.1567285887,205.065056289328,0,901.46677
+"898","~temp_cv2 + season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",31,17734.7306722993,205.639000000003,0,897.96658
+"290","~rain_cv_lag2","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv_lag2)p(~time)f(~rain_cv_lag2 * season2 + sex)",29,17734.7717285887,205.680056289326,0,902.08238
+"942","~temp_cv2 * season2","~time + sex","~rain_cv_lag2 + season2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17734.9590859729,205.867413673517,0,900.23318
+"70","~gpp_avg2 + season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",30,17735.0850859729,205.993413673517,0,900.35887
+"71","~gpp_avg2 + season2 + sex","~time + sex","~gpp_avg2 * season2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~gpp_avg2 * season2)",31,17736.7926722993,207.701000000001,0,900.02885
+"797","~rain_sum2 * season2","~year2","~oni_avg2 + season2","Phi(~rain_sum2 * season2)p(~year2)f(~oni_avg2 + season2)",18,17737.1195906222,208.027918322849,0,926.74874
+"287","~rain_cv_lag2","~time","~oni_avg2 + season2","Phi(~rain_cv_lag2)p(~time)f(~oni_avg2 + season2)",27,17737.4636962025,208.372023903197,0,908.8434
+"288","~rain_cv_lag2","~time","~oni_avg2 * season2","Phi(~rain_cv_lag2)p(~time)f(~oni_avg2 * season2)",28,17737.6135990353,208.521926735939,0,906.95869
+"301","~rain_cv_lag2","~time + sex","~oni_avg2 + season2","Phi(~rain_cv_lag2)p(~time + sex)f(~oni_avg2 + season2)",28,17739.3635990353,210.271926735939,0,908.70934
+"302","~rain_cv_lag2","~time + sex","~oni_avg2 * season2","Phi(~rain_cv_lag2)p(~time + sex)f(~oni_avg2 * season2)",29,17739.3707285887,210.279056289328,0,906.68072
+"276","~oni_avg2 * season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",33,17742.3025362319,213.210863932549,0,901.45988
+"299","~rain_cv_lag2","~time","~temp_cv2 + season2","Phi(~rain_cv_lag2)p(~time)f(~temp_cv2 + season2)",27,17742.6036962025,213.512023903197,0,913.98266
+"831","~rain_sum2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",31,17744.2996722993,215.208000000002,0,907.53622
+"816","~rain_sum2 * season2 + sex","~time","~rain_cv_lag2 + season2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2)",30,17744.5540859728,215.462413673515,0,909.82764
+"300","~rain_cv_lag2","~time","~temp_cv2 * season2","Phi(~rain_cv_lag2)p(~time)f(~temp_cv2 * season2)",28,17744.5935990353,215.501926735938,0,913.93897
+"885","~temp_cv2 + season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2 + season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",29,17744.5997285887,215.508056289327,0,911.91003
+"311","~rain_cv_lag2","~time + sex","~temp_cv2 + season2","Phi(~rain_cv_lag2)p(~time + sex)f(~temp_cv2 + season2)",28,17744.6165990353,215.52492673594,0,913.96201
+"936","~temp_cv2 * season2","~time","~rain_sum2 + season2","Phi(~temp_cv2 * season2)p(~time)f(~rain_sum2 + season2)",29,17745.4207285887,216.329056289327,0,912.73136
+"980","~temp_cv2 * season2 + sex","~time + sex","~temp_cv2 + season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~temp_cv2 + season2)",31,17745.8576722993,216.766,0,909.09378
+"897","~temp_cv2 + season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",30,17745.9670859729,216.875413673515,0,911.24142
+"312","~rain_cv_lag2","~time + sex","~temp_cv2 * season2","Phi(~rain_cv_lag2)p(~time + sex)f(~temp_cv2 * season2)",29,17746.6137285887,217.522056289326,0,913.92401
+"637","~rain_sum_lag2 * season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",32,17746.755488681,217.663816381617,0,907.95343
+"643","~rain_sum_lag2 * season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",33,17746.7815362319,217.689863932548,0,905.93931
+"45","~gpp_avg2 + season2","~time + sex","~gpp_avg2 * season2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~gpp_avg2 * season2)",30,17746.9560859729,217.864413673517,0,912.23034
+"951","~temp_cv2 * season2","~time + sex","~rain_sum2 + season2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum2 + season2)",30,17747.4170859729,218.325413673516,0,912.69059
+"981","~temp_cv2 * season2 + sex","~time + sex","~temp_cv2 * season2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~temp_cv2 * season2)",32,17747.801488681,218.709816381619,0,908.99873
+"482","~rain_cv2 + season2 + sex","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_cv2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2)",31,17748.1486722993,219.057000000001,0,911.3846
+"782","~rain_sum2 * season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",31,17748.7646722993,219.673000000003,0,912.00125
+"589","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17748.955488681,219.863816381618,0,910.15267
+"917","~temp_cv2 + season2 + sex","~time + sex","~gpp_avg2 * season2","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~gpp_avg2 * season2)",31,17749.1116722993,220.02,0,912.34752
+"581","~rain_sum_lag2 + season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17749.2546722993,220.163,0,912.49098
+"195","~oni_avg2 + season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",30,17749.6110859729,220.519413673515,0,914.88495
+"912","~temp_cv2 + season2 + sex","~time","~gpp_avg2 * season2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~gpp_avg2 * season2)",30,17749.7740859729,220.682413673516,0,915.04761
+"884","~temp_cv2 + season2","~time","~rain_cv_lag2 + season2","Phi(~temp_cv2 + season2)p(~time)f(~rain_cv_lag2 + season2)",28,17749.7805990353,220.68892673594,0,919.12619
+"203","~oni_avg2 + season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",31,17750.4726722993,221.381000000001,0,913.70904
+"249","~oni_avg2 * season2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17751.190488681,222.098816381618,0,912.38779
+"881","~temp_cv2 + season2","~time","~gpp_avg2 + season2 + sex","Phi(~temp_cv2 + season2)p(~time)f(~gpp_avg2 + season2 + sex)",29,17751.7447285887,222.653056289328,0,919.05466
+"896","~temp_cv2 + season2","~time + sex","~rain_cv_lag2 + season2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2)",29,17752.2587285887,223.167056289327,0,919.56873
+"500","~rain_cv2 * season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17753.5436722993,224.452000000001,0,916.78006
+"768","~rain_sum2 * season2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv_lag2 + season2)",29,17754.4767285887,225.385056289328,0,921.78707
+"206","~oni_avg2 + season2","~time + sex","~rain_sum2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_sum2 * season2 + sex)",31,17755.4066722993,226.315000000002,0,918.64262
+"278","~oni_avg2 * season2 + sex","~time + sex","~rain_sum2 * season2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~rain_sum2 * season2)",32,17755.415488681,226.323816381617,0,916.61326
+"769","~rain_sum2 * season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",30,17755.7920859729,226.700413673516,0,921.06598
+"781","~rain_sum2 * season2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17756.2380859729,227.146413673516,0,921.51155
+"740","~rain_sum2 + season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17756.2840859729,227.192413673518,0,921.55825
+"463","~rain_cv2 + season2","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_sum_lag2 * season2)",30,17757.1690859729,228.077413673516,0,922.44245
+"491","~rain_cv2 * season2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv2 * season2)p(~time)f(~rain_sum_lag2 + season2)",29,17757.8277285887,228.736056289326,0,925.13842
+"451","~rain_cv2 + season2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv2 + season2)p(~time)f(~rain_sum_lag2 + season2)",28,17758.3545990353,229.262926735941,0,927.6999
+"938","~temp_cv2 * season2","~time","~temp_cv2 * season2","Phi(~temp_cv2 * season2)p(~time)f(~temp_cv2 * season2)",30,17759.6770859729,230.585413673518,0,924.95091
+"516","~rain_cv2 * season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",32,17760.034488681,230.942816381619,0,921.23181
+"593","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_sum2 * season2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_sum2 * season2)",31,17760.4536722993,231.362000000001,0,923.68958
+"33","~gpp_avg2 + season2","~time","~gpp_avg2 * season2","Phi(~gpp_avg2 + season2)p(~time)f(~gpp_avg2 * season2)",29,17760.7137285887,231.622056289325,0,928.02396
+"902","~temp_cv2 + season2","~time + sex","~rain_sum2 * season2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_sum2 * season2)",30,17760.8620859729,231.770413673516,0,926.136
+"690","~rain_sum2 + season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",29,17761.1227285887,232.031056289328,0,928.43324
+"268","~oni_avg2 * season2 + sex","~time","~rain_cv_lag2 + season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2 + sex)",31,17761.6506722993,232.559000000001,0,924.88723
+"476","~rain_cv2 + season2 + sex","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv2 + season2 + sex)p(~time)f(~rain_cv_lag2 * season2 + sex)",31,17761.9596722993,232.868000000002,0,925.19587
+"520","~rain_cv2 * season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",33,17761.9785362319,232.886863932548,0,921.13588
+"8","~gpp_avg2","~time","~rain_cv_lag2 * season2","Phi(~gpp_avg2)p(~time)f(~rain_cv_lag2 * season2)",28,17762.3305990353,233.238926735939,0,931.67561
+"700","~rain_sum2 + season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",30,17762.8390859728,233.747413673515,0,928.11329
+"689","~rain_sum2 + season2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum2 + season2)p(~time)f(~rain_cv_lag2 + season2)",28,17765.1145990353,236.022926735939,0,934.45968
+"657","~rain_sum2","~time","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_cv_lag2 * season2 + sex)",29,17765.7567285887,236.665056289326,0,933.0674
+"699","~rain_sum2 + season2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2)",29,17767.1277285887,238.036056289326,0,934.43775
+"521","~rain_cv2 * season2 + sex","~time + sex","~rain_cv2 * season2","Phi(~rain_cv2 * season2 + sex)p(~time + sex)f(~rain_cv2 * season2)",32,17767.464488681,238.372816381619,0,928.66213
+"675","~rain_sum2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",30,17767.6100859729,238.518413673515,0,932.8839
+"21","~gpp_avg2","~time + sex","~rain_cv_lag2 * season2","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv_lag2 * season2)",29,17767.8267285887,238.735056289326,0,935.13717
+"53","~gpp_avg2 + season2","~time + sex","~rain_sum_lag2 + season2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_sum_lag2 + season2)",29,17767.8297285887,238.738056289327,0,935.14012
+"785","~rain_sum2 * season2","~time + sex","~rain_cv2 * season2 + sex","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv2 * season2 + sex)",32,17770.338488681,241.246816381619,0,931.53641
+"736","~rain_sum2 + season2 + sex","~time","~temp_cv2 * season2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~temp_cv2 * season2)",30,17770.7040859729,241.612413673516,0,935.97813
+"824","~rain_sum2 * season2 + sex","~time","~temp_cv2 * season2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~temp_cv2 * season2)",31,17771.0696722993,241.978000000003,0,934.30628
+"656","~rain_sum2","~time","~rain_cv_lag2 * season2","Phi(~rain_sum2)p(~time)f(~rain_cv_lag2 * season2)",28,17771.4045990353,242.31292673594,0,940.74986
+"517","~rain_cv2 * season2 + sex","~time","~temp_cv2 * season2","Phi(~rain_cv2 * season2 + sex)p(~time)f(~temp_cv2 * season2)",31,17771.4826722993,242.391,0,934.71908
+"751","~rain_sum2 + season2 + sex","~time + sex","~temp_cv2 * season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~temp_cv2 * season2)",31,17771.4886722993,242.397000000001,0,934.72502
+"24","~gpp_avg2","~time + sex","~rain_cv2 * season2 + sex","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv2 * season2 + sex)",30,17771.6330859729,242.541413673516,0,936.90652
+"674","~rain_sum2","~time + sex","~rain_cv_lag2 * season2","Phi(~rain_sum2)p(~time + sex)f(~rain_cv_lag2 * season2)",29,17773.3837285887,244.292056289327,0,940.69413
+"6","~gpp_avg2","~time","~rain_cv_lag2 + season2","Phi(~gpp_avg2)p(~time)f(~rain_cv_lag2 + season2)",27,17773.4796962025,244.388023903197,0,944.85907
+"20","~gpp_avg2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",29,17774.1827285887,245.091056289326,0,941.49261
+"480","~rain_cv2 + season2 + sex","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_cv2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",32,17774.196488681,245.104816381619,0,935.39369
+"10","~gpp_avg2","~time","~rain_cv2 + season2 + sex","Phi(~gpp_avg2)p(~time)f(~rain_cv2 + season2 + sex)",28,17774.9265990353,245.834926735941,0,944.27189
+"23","~gpp_avg2","~time + sex","~rain_cv2 * season2","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv2 * season2)",29,17775.2587285887,246.167056289327,0,942.56863
+"19","~gpp_avg2","~time + sex","~rain_cv_lag2 + season2","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv_lag2 + season2)",28,17775.4435990353,246.351926735941,0,944.78861
+"814","~rain_sum2 * season2 + sex","~time","~oni_avg2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time)f(~oni_avg2 * season2 + sex)",32,17775.711488681,246.619816381619,0,936.90939
+"22","~gpp_avg2","~time + sex","~rain_cv2 + season2 + sex","Phi(~gpp_avg2)p(~time + sex)f(~rain_cv2 + season2 + sex)",29,17776.9507285887,247.859056289326,0,944.26064
+"461","~rain_cv2 + season2","~time + sex","~rain_cv2 * season2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_cv2 * season2)",30,17776.9550859729,247.863413673516,0,942.22857
+"11","~gpp_avg2","~time","~rain_cv2 * season2","Phi(~gpp_avg2)p(~time)f(~rain_cv2 * season2)",28,17777.0795990353,247.987926735939,0,946.42467
+"252","~oni_avg2 * season2","~time + sex","~rain_sum2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_sum2 + season2 + sex)",31,17778.8076722993,249.716,0,942.0437
+"205","~oni_avg2 + season2","~time + sex","~rain_sum2 + season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_sum2 + season2 + sex)",30,17779.5120859729,250.420413673517,0,944.78594
+"766","~rain_sum2 * season2","~time","~oni_avg2 * season2 + sex","Phi(~rain_sum2 * season2)p(~time)f(~oni_avg2 * season2 + sex)",31,17779.5946722993,250.503000000001,0,942.83096
+"704","~rain_sum2 + season2","~time + sex","~rain_cv2 * season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv2 * season2 + sex)",31,17779.6106722993,250.519,0,942.84737
+"7","~gpp_avg2","~time","~rain_cv_lag2 + season2 + sex","Phi(~gpp_avg2)p(~time)f(~rain_cv_lag2 + season2 + sex)",28,17779.6405990353,250.548926735941,0,948.98636
+"697","~rain_sum2 + season2","~time","~temp_cv2 * season2","Phi(~rain_sum2 + season2)p(~time)f(~temp_cv2 * season2)",29,17780.1737285887,251.082056289328,0,947.4841
+"202","~oni_avg2 + season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",30,17780.3720859729,251.280413673518,0,945.64633
+"238","~oni_avg2 * season2","~time","~rain_cv_lag2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time)f(~rain_cv_lag2 + season2 + sex)",30,17780.3970859729,251.305413673515,0,945.67066
+"494","~rain_cv2 * season2","~time","~temp_cv2 * season2","Phi(~rain_cv2 * season2)p(~time)f(~temp_cv2 * season2)",30,17781.2460859729,252.154413673517,0,946.51984
+"515","~rain_cv2 * season2 + sex","~time","~rain_cv_lag2 + season2","Phi(~rain_cv2 * season2 + sex)p(~time)f(~rain_cv_lag2 + season2)",30,17781.7090859729,252.617413673517,0,946.98317
+"248","~oni_avg2 * season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",31,17782.1566722993,253.065000000002,0,945.39334
+"946","~temp_cv2 * season2","~time + sex","~rain_cv2 + season2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv2 + season2)",30,17782.8450859729,253.753413673516,0,948.11876
+"503","~rain_cv2 * season2","~time + sex","~temp_cv2 * season2","Phi(~rain_cv2 * season2)p(~time + sex)f(~temp_cv2 * season2)",31,17783.1926722993,254.101000000002,0,946.42911
+"194","~oni_avg2 + season2","~time","~rain_cv_lag2 + season2","Phi(~oni_avg2 + season2)p(~time)f(~rain_cv_lag2 + season2)",28,17784.0075990353,254.915926735939,0,953.35313
+"642","~rain_sum_lag2 * season2 + sex","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2 + season2)",31,17784.6916722993,255.600000000002,0,947.92815
+"240","~oni_avg2 * season2","~time","~rain_sum2 + season2","Phi(~oni_avg2 * season2)p(~time)f(~rain_sum2 + season2)",29,17784.8657285887,255.774056289327,0,952.17604
+"40","~gpp_avg2 + season2","~time","~rain_sum_lag2 + season2","Phi(~gpp_avg2 + season2)p(~time)f(~rain_sum_lag2 + season2)",28,17785.5215990353,256.429926735938,0,954.86728
+"201","~oni_avg2 + season2","~time + sex","~rain_cv_lag2 + season2","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2)",29,17785.7397285887,256.648056289327,0,953.04977
+"458","~rain_cv2 + season2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",30,17786.8550859729,257.763413673518,0,952.12863
+"566","~rain_sum_lag2 + season2","~time + sex","~rain_sum2 + season2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~rain_sum2 + season2)",29,17787.0407285887,257.949056289326,0,954.35137
+"921","~temp_cv2 + season2 + sex","~time + sex","~rain_sum_lag2 + season2","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17787.2440859729,258.152413673517,0,952.51838
+"611","~rain_sum_lag2 * season2","~time + sex","~gpp_avg2 + season2 + sex","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~gpp_avg2 + season2 + sex)",31,17788.9546722993,259.863000000001,0,952.1913
+"737","~rain_sum2 + season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",30,17789.7550859729,260.663413673516,0,955.02869
+"619","~rain_sum_lag2 * season2","~time + sex","~rain_sum2 + season2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_sum2 + season2)",30,17790.1180859729,261.026413673517,0,955.39156
+"196","~oni_avg2 + season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",30,17791.4710859729,262.379413673516,0,956.74524
+"822","~rain_sum2 * season2 + sex","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_sum_lag2 * season2 + sex)",32,17792.533488681,263.441816381619,0,953.73141
+"601","~rain_sum_lag2 * season2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_cv_lag2 + season2)",29,17792.8717285887,263.780056289328,0,960.1815
+"655","~rain_sum2","~time","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_cv_lag2 + season2 + sex)",28,17793.2205990353,264.128926735939,0,962.56638
+"169","~gpp_avg2 * season2 + sex","~year2","~rain_sum2 * season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~rain_sum2 * season2 + sex)",21,17793.4409783393,264.349306040014,0,976.99787
+"614","~rain_sum_lag2 * season2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_cv_lag2 + season2)",30,17794.4850859729,265.393413673515,0,959.7588
+"499","~rain_cv2 * season2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_cv2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17794.5400859729,265.448413673515,0,959.81387
+"335","~rain_cv_lag2 + season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",30,17794.8420859729,265.750413673515,0,960.11562
+"673","~rain_sum2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",29,17794.9527285887,265.861056289326,0,962.2633
+"891","~temp_cv2 + season2","~time","~temp_cv2 * season2","Phi(~temp_cv2 + season2)p(~time)f(~temp_cv2 * season2)",29,17795.1147285887,266.023056289327,0,962.4249
+"493","~rain_cv2 * season2","~time","~temp_cv2 + season2","Phi(~rain_cv2 * season2)p(~time)f(~temp_cv2 + season2)",29,17796.0897285887,266.998056289325,0,963.40012
+"579","~rain_sum_lag2 + season2 + sex","~time","~gpp_avg2 + season2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~gpp_avg2 + season2)",29,17798.5607285887,269.469056289327,0,965.87101
+"654","~rain_sum2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum2)p(~time)f(~rain_cv_lag2 + season2)",27,17798.7296962025,269.638023903197,0,970.10921
+"562","~rain_sum_lag2 + season2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~rain_cv_lag2 + season2)",29,17799.0177285887,269.926056289325,0,966.32755
+"306","~rain_cv_lag2","~time + sex","~rain_cv2 * season2","Phi(~rain_cv_lag2)p(~time + sex)f(~rain_cv2 * season2)",29,17799.0997285887,270.008056289327,0,966.40946
+"15","~gpp_avg2","~time","~temp_cv2 * season2","Phi(~gpp_avg2)p(~time)f(~temp_cv2 * season2)",28,17799.5545990353,270.462926735938,0,968.89993
+"272","~oni_avg2 * season2 + sex","~time + sex","~gpp_avg2 * season2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~gpp_avg2 * season2)",32,17800.712488681,271.620816381619,0,961.91012
+"265","~oni_avg2 * season2 + sex","~time","~gpp_avg2 * season2","Phi(~oni_avg2 * season2 + sex)p(~time)f(~gpp_avg2 * season2)",31,17800.7596722993,271.668000000001,0,963.9961
+"672","~rain_sum2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum2)p(~time + sex)f(~rain_cv_lag2 + season2)",28,17800.7625990353,271.67092673594,0,970.1075
+"835","~rain_sum2 * season2 + sex","~time + sex","~rain_cv2 + season2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv2 + season2)",31,17800.9556722993,271.864000000001,0,964.19226
+"31","~gpp_avg2","~time + sex","~temp_cv2 * season2","Phi(~gpp_avg2)p(~time + sex)f(~temp_cv2 * season2)",29,17801.2787285887,272.187056289327,0,968.58873
+"271","~oni_avg2 * season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",31,17801.4226722993,272.331000000002,0,964.65942
+"450","~rain_cv2 + season2","~time","~rain_cv2 + season2","Phi(~rain_cv2 + season2)p(~time)f(~rain_cv2 + season2)",28,17802.5925990353,273.500926735938,0,971.93764
+"191","~oni_avg2 + season2","~time","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time)f(~gpp_avg2 * season2 + sex)",30,17803.1840859729,274.092413673516,0,968.45783
+"198","~oni_avg2 + season2","~time + sex","~gpp_avg2 * season2 + sex","Phi(~oni_avg2 + season2)p(~time + sex)f(~gpp_avg2 * season2 + sex)",31,17803.2696722993,274.178,0,966.50618
+"190","~oni_avg2 + season2","~time","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 + season2)p(~time)f(~gpp_avg2 + season2 + sex)",29,17804.0127285887,274.921056289328,0,971.32247
+"784","~rain_sum2 * season2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv2 + season2 + sex)",31,17804.4016722993,275.310000000001,0,967.63832
+"460","~rain_cv2 + season2","~time + sex","~rain_cv2 + season2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_cv2 + season2)",29,17804.5957285887,275.504056289326,0,971.90556
+"820","~rain_sum2 * season2 + sex","~time","~rain_sum_lag2 + season2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_sum_lag2 + season2)",30,17805.1880859729,276.096413673517,0,970.46239
+"466","~rain_cv2 + season2","~time + sex","~temp_cv2 + season2","Phi(~rain_cv2 + season2)p(~time + sex)f(~temp_cv2 + season2)",29,17805.6047285887,276.513056289328,0,972.91537
+"233","~oni_avg2 * season2","~time","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time)f(~gpp_avg2 + season2 + sex)",30,17805.6420859728,276.550413673514,0,970.91556
+"244","~oni_avg2 * season2","~time + sex","~gpp_avg2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time + sex)f(~gpp_avg2 + season2 + sex)",31,17805.7156722993,276.624,0,968.95201
+"888","~temp_cv2 + season2","~time","~rain_sum_lag2 + season2","Phi(~temp_cv2 + season2)p(~time)f(~rain_sum_lag2 + season2)",28,17807.3365990353,278.244926735941,0,976.68162
+"837","~rain_sum2 * season2 + sex","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2)",32,17808.623488681,279.531816381619,0,969.82121
+"787","~rain_sum2 * season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17808.7746722993,279.683000000001,0,972.01138
+"734","~rain_sum2 + season2 + sex","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time)f(~rain_sum_lag2 * season2 + sex)",31,17808.9896722993,279.898000000001,0,972.22614
+"789","~rain_sum2 * season2","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",32,17809.549488681,280.457816381619,0,970.74735
+"829","~rain_sum2 * season2 + sex","~time + sex","~oni_avg2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~oni_avg2 * season2 + sex)",33,17809.7225362319,280.630863932547,0,968.88013
+"666","~rain_sum2","~time","~rain_sum2 + season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_sum2 + season2 + sex)",28,17809.7325990353,280.640926735938,0,979.07811
+"340","~rain_cv_lag2 + season2","~time + sex","~temp_cv2 + season2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~temp_cv2 + season2)",29,17809.9087285887,280.817056289325,0,977.2187
+"164","~gpp_avg2 * season2 + sex","~year2","~gpp_avg2 * season2 + sex","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~gpp_avg2 * season2 + sex)",21,17810.4959783393,281.404306040014,0,994.05279
+"776","~rain_sum2 * season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 * season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",31,17810.8136722993,281.722000000002,0,974.04962
+"747","~rain_sum2 + season2 + sex","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",32,17810.937488681,281.845816381618,0,972.13496
+"586","~rain_sum_lag2 + season2 + sex","~time + sex","~gpp_avg2 + season2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~gpp_avg2 + season2)",30,17811.0720859728,281.980413673515,0,976.34591
+"772","~rain_sum2 * season2","~time","~rain_cv2 + season2","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv2 + season2)",29,17812.2187285887,283.127056289326,0,979.52906
+"792","~rain_sum2 * season2","~time + sex","~temp_cv2 * season2","Phi(~rain_sum2 * season2)p(~time + sex)f(~temp_cv2 * season2)",31,17812.5226722993,283.431,0,975.75892
+"30","~gpp_avg2","~time + sex","~temp_cv2 + season2","Phi(~gpp_avg2)p(~time + sex)f(~temp_cv2 + season2)",28,17812.6315990353,283.539926735939,0,981.97674
+"502","~rain_cv2 * season2","~time + sex","~temp_cv2 + season2","Phi(~rain_cv2 * season2)p(~time + sex)f(~temp_cv2 + season2)",30,17813.7760859729,284.684413673516,0,979.05024
+"774","~rain_sum2 * season2","~time","~rain_sum_lag2 + season2","Phi(~rain_sum2 * season2)p(~time)f(~rain_sum_lag2 + season2)",29,17813.9357285887,284.844056289327,0,981.24576
+"665","~rain_sum2","~time","~rain_sum2 + season2","Phi(~rain_sum2)p(~time)f(~rain_sum2 + season2)",27,17814.6036962025,285.512023903197,0,985.98338
+"745","~rain_sum2 + season2 + sex","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",31,17815.7226722993,286.631000000001,0,978.95882
+"415","~rain_cv_lag2 * season2 + sex","~time + sex","~rain_sum2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,17816.3940859729,287.302413673515,0,981.66789
+"788","~rain_sum2 * season2","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_sum_lag2 * season2)",31,17817.1406722993,288.049000000003,0,980.37682
+"303","~rain_cv_lag2","~time + sex","~oni_avg2 * season2 + sex","Phi(~rain_cv_lag2)p(~time + sex)f(~oni_avg2 * season2 + sex)",30,17817.7610859729,288.669413673517,0,983.03538
+"678","~rain_sum2","~time + sex","~rain_cv2 * season2 + sex","Phi(~rain_sum2)p(~time + sex)f(~rain_cv2 * season2 + sex)",30,17818.0970859729,289.005413673516,0,983.37142
+"743","~rain_sum2 + season2 + sex","~time + sex","~rain_cv2 + season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_cv2 + season2)",30,17820.4300859729,291.338413673515,0,985.70408
+"2","~gpp_avg2","~time","~gpp_avg2 * season2","Phi(~gpp_avg2)p(~time)f(~gpp_avg2 * season2)",28,17821.2685990353,292.176926735938,0,990.61375
+"827","~rain_sum2 * season2 + sex","~time + sex","~oni_avg2 + season2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~oni_avg2 + season2)",31,17821.5396722993,292.448,0,984.77557
+"813","~rain_sum2 * season2 + sex","~time","~oni_avg2 * season2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~oni_avg2 * season2)",31,17821.6546722993,292.563000000002,0,984.89133
+"693","~rain_sum2 + season2","~time","~rain_cv2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time)f(~rain_cv2 + season2 + sex)",29,17822.0987285887,293.007056289327,0,989.40887
+"703","~rain_sum2 + season2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv2 + season2 + sex)",30,17822.4380859729,293.346413673517,0,987.712
+"18","~gpp_avg2","~time + sex","~oni_avg2 + season2","Phi(~gpp_avg2)p(~time + sex)f(~oni_avg2 + season2)",28,17822.5145990353,293.422926735941,0,991.86013
+"854","~temp_cv2","~time","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2)p(~time)f(~rain_cv_lag2 + season2 + sex)",28,17823.6195990353,294.52792673594,0,992.96508
+"733","~rain_sum2 + season2 + sex","~time","~rain_sum_lag2 * season2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~rain_sum_lag2 * season2)",30,17823.7700859729,294.678413673515,0,989.04408
+"13","~gpp_avg2","~time","~rain_sum2 + season2","Phi(~gpp_avg2)p(~time)f(~rain_sum2 + season2)",27,17824.9506962025,295.859023903195,0,996.33031
+"870","~temp_cv2","~time + sex","~rain_cv_lag2 + season2 + sex","Phi(~temp_cv2)p(~time + sex)f(~rain_cv_lag2 + season2 + sex)",29,17825.2057285887,296.114056289327,0,992.5162
+"409","~rain_cv_lag2 * season2 + sex","~time","~rain_sum2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~rain_sum2)",29,17826.6937285887,297.602056289328,0,994.0044
+"26","~gpp_avg2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~gpp_avg2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",29,17827.2687285887,298.177056289325,0,994.57944
+"12","~gpp_avg2","~time","~rain_sum_lag2 * season2","Phi(~gpp_avg2)p(~time)f(~rain_sum_lag2 * season2)",28,17827.5285990353,298.43692673594,0,996.87382
+"695","~rain_sum2 + season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",30,17827.7820859729,298.690413673517,0,993.05564
+"739","~rain_sum2 + season2 + sex","~time + sex","~oni_avg2 + season2 + sex","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~oni_avg2 + season2 + sex)",31,17827.7846722993,298.693000000003,0,991.02089
+"707","~rain_sum2 + season2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",30,17828.3140859729,299.222413673517,0,993.58799
+"853","~temp_cv2","~time","~rain_cv_lag2 + season2","Phi(~temp_cv2)p(~time)f(~rain_cv_lag2 + season2)",27,17828.8166962025,299.725023903196,0,1000.196
+"709","~rain_sum2 + season2","~time + sex","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum_lag2 * season2 + sex)",31,17828.9576722993,299.866000000002,0,992.19352
+"549","~rain_sum_lag2 + season2","~time","~gpp_avg2 + season2","Phi(~rain_sum_lag2 + season2)p(~time)f(~gpp_avg2 + season2)",28,17829.1375990353,300.04592673594,0,998.48307
+"358","~rain_cv_lag2 + season2 + sex","~time","~rain_sum2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_sum2)",28,17829.7065990353,300.61492673594,0,999.05189
+"453","~rain_cv2 + season2","~time","~rain_sum2 + season2","Phi(~rain_cv2 + season2)p(~time)f(~rain_sum2 + season2)",28,17831.2445990353,302.15292673594,0,1000.5895
+"694","~rain_sum2 + season2","~time","~rain_sum_lag2 * season2","Phi(~rain_sum2 + season2)p(~time)f(~rain_sum_lag2 * season2)",29,17832.4307285887,303.339056289326,0,999.74116
+"778","~rain_sum2 * season2","~time","~temp_cv2 + season2","Phi(~rain_sum2 * season2)p(~time)f(~temp_cv2 + season2)",29,17833.8247285887,304.733056289326,0,1001.1345
+"706","~rain_sum2 + season2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum_lag2 + season2)",29,17834.0557285887,304.964056289326,0,1001.3655
+"583","~rain_sum_lag2 + season2 + sex","~time","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~rain_sum_lag2 + season2)",29,17834.3307285887,305.239056289327,0,1001.6411
+"708","~rain_sum2 + season2","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum_lag2 * season2)",30,17834.4390859729,305.347413673517,0,999.71278
+"791","~rain_sum2 * season2","~time + sex","~temp_cv2 + season2","Phi(~rain_sum2 * season2)p(~time + sex)f(~temp_cv2 + season2)",30,17834.4410859729,305.349413673517,0,999.71512
+"592","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17835.7400859729,306.648413673516,0,1001.0142
+"557","~rain_sum_lag2 + season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",30,17837.4200859729,308.328413673516,0,1002.6941
+"604","~rain_sum_lag2 * season2","~time","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_sum_lag2 + season2)",29,17837.4697285887,308.378056289326,0,1004.7795
+"25","~gpp_avg2","~time + sex","~rain_sum_lag2 + season2","Phi(~gpp_avg2)p(~time + sex)f(~rain_sum_lag2 + season2)",28,17837.6575990353,308.565926735941,0,1007.0028
+"858","~temp_cv2","~time","~rain_cv2 * season2","Phi(~temp_cv2)p(~time)f(~rain_cv2 * season2)",28,17837.6685990353,308.576926735939,0,1007.0135
+"379","~rain_cv_lag2 * season2","~time","~rain_sum2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_sum2)",28,17837.8235990353,308.731926735938,0,1007.1686
+"552","~rain_sum_lag2 + season2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_cv_lag2 + season2)",28,17838.3075990353,309.215926735938,0,1007.6528
+"775","~rain_sum2 * season2","~time","~rain_sum_lag2 * season2","Phi(~rain_sum2 * season2)p(~time)f(~rain_sum_lag2 * season2)",30,17839.6560859729,310.564413673517,0,1004.93
+"390","~rain_cv_lag2 * season2","~time + sex","~rain_sum2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum2)",29,17839.6897285887,310.598056289327,0,1007.0001
+"750","~rain_sum2 + season2 + sex","~time + sex","~temp_cv2 + season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~temp_cv2 + season2)",30,17840.2850859728,311.193413673514,0,1005.5592
+"609","~rain_sum_lag2 * season2","~time","~temp_cv2 * season2","Phi(~rain_sum_lag2 * season2)p(~time)f(~temp_cv2 * season2)",30,17840.7500859728,311.658413673515,0,1006.0241
+"325","~rain_cv_lag2 + season2","~time","~rain_sum2","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum2)",27,17840.7626962025,311.671023903196,0,1012.142
+"403","~rain_cv_lag2 * season2","~year2","~rain_sum2 * season2","Phi(~rain_cv_lag2 * season2)p(~year2)f(~rain_sum2 * season2)",19,17840.953502706,311.861830406615,0,1028.5597
+"821","~rain_sum2 * season2 + sex","~time","~rain_sum_lag2 * season2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_sum_lag2 * season2)",31,17842.7936722993,313.702000000001,0,1006.0295
+"688","~rain_sum2 + season2","~time","~oni_avg2 + season2 + sex","Phi(~rain_sum2 + season2)p(~time)f(~oni_avg2 + season2 + sex)",29,17844.0757285887,314.984056289326,0,1011.3859
+"746","~rain_sum2 + season2 + sex","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2 * season2)",31,17845.2906722993,316.199000000001,0,1008.5274
+"81","~gpp_avg2 + season2 + sex","~year2","~rain_sum2 + season2 + sex","Phi(~gpp_avg2 + season2 + sex)p(~year2)f(~rain_sum2 + season2 + sex)",19,17845.810502706,316.718830406615,0,1033.4169
+"786","~rain_sum2 * season2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17846.6140859729,317.522413673516,0,1011.8876
+"622","~rain_sum_lag2 * season2","~time + sex","~temp_cv2 * season2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~temp_cv2 * season2)",31,17847.4266722993,318.335000000003,0,1010.663
+"432","~rain_cv2","~time","~rain_sum2 + season2","Phi(~rain_cv2)p(~time)f(~rain_sum2 + season2)",27,17847.5896962025,318.498023903194,0,1018.969
+"681","~rain_sum2","~time + sex","~rain_sum2 + season2","Phi(~rain_sum2)p(~time + sex)f(~rain_sum2 + season2)",28,17848.7495990353,319.657926735938,0,1018.0954
+"555","~rain_sum_lag2 + season2","~time","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_sum_lag2 + season2)",28,17850.4025990353,321.31092673594,0,1019.748
+"660","~rain_sum2","~time","~rain_cv2 + season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_cv2 + season2 + sex)",28,17850.5505990353,321.458926735941,0,1019.8964
+"712","~rain_sum2 + season2","~time + sex","~temp_cv2 + season2","Phi(~rain_sum2 + season2)p(~time + sex)f(~temp_cv2 + season2)",29,17851.0607285887,321.969056289327,0,1018.371
+"677","~rain_sum2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_sum2)p(~time + sex)f(~rain_cv2 + season2 + sex)",29,17851.8387285887,322.747056289325,0,1019.149
+"605","~rain_sum_lag2 * season2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_sum_lag2 * season2 + sex)",31,17852.3746722993,323.283000000003,0,1015.6112
+"404","~rain_cv_lag2 * season2 + sex","~time","~gpp_avg2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~gpp_avg2)",29,17854.0507285887,324.959056289328,0,1021.3608
+"274","~oni_avg2 * season2 + sex","~time + sex","~oni_avg2 * season2 + sex","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~oni_avg2 * season2 + sex)",33,17855.8385362319,326.746863932549,0,1014.9957
+"676","~rain_sum2","~time + sex","~rain_cv2 + season2","Phi(~rain_sum2)p(~time + sex)f(~rain_cv2 + season2)",28,17857.3815990353,328.289926735939,0,1026.7272
+"653","~rain_sum2","~time","~gpp_avg2 + season2","Phi(~rain_sum2)p(~time)f(~gpp_avg2 + season2)",27,17857.5326962025,328.441023903197,0,1028.9123
+"874","~temp_cv2","~time + sex","~rain_cv2 * season2","Phi(~temp_cv2)p(~time + sex)f(~rain_cv2 * season2)",29,17858.2467285887,329.155056289328,0,1025.5565
+"411","~rain_cv_lag2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,17858.6020859729,329.510413673517,0,1023.8762
+"670","~rain_sum2","~time + sex","~gpp_avg2 + season2","Phi(~rain_sum2)p(~time + sex)f(~gpp_avg2 + season2)",28,17858.7155990353,329.623926735938,0,1028.0605
+"828","~rain_sum2 * season2 + sex","~time + sex","~oni_avg2 * season2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~oni_avg2 * season2)",32,17860.242488681,331.150816381618,0,1021.4396
+"659","~rain_sum2","~time","~rain_cv2 + season2","Phi(~rain_sum2)p(~time)f(~rain_cv2 + season2)",27,17860.6106962025,331.519023903194,0,1031.9896
+"565","~rain_sum_lag2 + season2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~rain_sum_lag2 + season2)",29,17862.4147285887,333.323056289326,0,1029.7252
+"540","~rain_sum_lag2","~time + sex","~rain_cv_lag2 * season2 + sex","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv_lag2 * season2 + sex)",30,17863.9150859729,334.823413673515,0,1029.1886
+"360","~rain_cv_lag2 + season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~gpp_avg2)",29,17865.5677285887,336.476056289328,0,1032.8783
+"372","~rain_cv_lag2 * season2","~time","~gpp_avg2","Phi(~rain_cv_lag2 * season2)p(~time)f(~gpp_avg2)",28,17868.0285990353,338.93692673594,0,1037.3735
+"424","~rain_cv2","~time","~gpp_avg2 * season2","Phi(~rain_cv2)p(~time)f(~gpp_avg2 * season2)",28,17869.3615990353,340.269926735938,0,1038.7071
+"382","~rain_cv_lag2 * season2","~time + sex","~gpp_avg2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~gpp_avg2)",29,17869.9967285887,340.905056289328,0,1037.3072
+"617","~rain_sum_lag2 * season2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_sum_lag2 + season2)",30,17870.2510859728,341.159413673515,0,1035.5248
+"160","~gpp_avg2 * season2 + sex","~time + sex","~rain_sum2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,17871.3810859729,342.289413673516,0,1036.6551
+"236","~oni_avg2 * season2","~time","~oni_avg2 * season2 + sex","Phi(~oni_avg2 * season2)p(~time)f(~oni_avg2 * season2 + sex)",31,17872.9116722993,343.82,0,1036.1484
+"436","~rain_cv2","~time + sex","~gpp_avg2 * season2","Phi(~rain_cv2)p(~time + sex)f(~gpp_avg2 * season2)",29,17873.6427285887,344.551056289325,0,1040.9533
+"314","~rain_cv_lag2 + season2","~time","~gpp_avg2","Phi(~rain_cv_lag2 + season2)p(~time)f(~gpp_avg2)",27,17875.2406962025,346.149023903195,0,1046.6202
+"333","~rain_cv_lag2 + season2","~time + sex","~rain_cv2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_cv2)",28,17875.6035990353,346.511926735941,0,1044.9489
+"529","~rain_sum_lag2","~time","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2)p(~time)f(~rain_cv_lag2 + season2)",27,17876.3906962025,347.299023903197,0,1047.7701
+"850","~temp_cv2","~time","~gpp_avg2 * season2","Phi(~temp_cv2)p(~time)f(~gpp_avg2 * season2)",28,17877.1045990353,348.012926735941,0,1046.4502
+"426","~rain_cv2","~time","~rain_cv_lag2 + season2","Phi(~rain_cv2)p(~time)f(~rain_cv_lag2 + season2)",27,17878.2306962025,349.139023903197,0,1049.6102
+"663","~rain_sum2","~time","~rain_sum_lag2 * season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_sum_lag2 * season2 + sex)",29,17878.4707285887,349.379056289326,0,1045.7806
+"867","~temp_cv2","~time + sex","~gpp_avg2 * season2","Phi(~temp_cv2)p(~time + sex)f(~gpp_avg2 * season2)",29,17879.1387285887,350.047056289328,0,1046.4492
+"328","~rain_cv_lag2 + season2","~time + sex","~gpp_avg2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~gpp_avg2)",28,17880.2065990353,351.11492673594,0,1049.5519
+"492","~rain_cv2 * season2","~time","~rain_sum2","Phi(~rain_cv2 * season2)p(~time)f(~rain_sum2)",28,17880.8625990353,351.770926735939,0,1050.2077
+"91","~gpp_avg2 * season2","~time","~rain_sum2","Phi(~gpp_avg2 * season2)p(~time)f(~rain_sum2)",28,17881.4055990353,352.31392673594,0,1050.7509
+"662","~rain_sum2","~time","~rain_sum_lag2 * season2","Phi(~rain_sum2)p(~time)f(~rain_sum_lag2 * season2)",28,17883.1145990353,354.022926735939,0,1052.4603
+"235","~oni_avg2 * season2","~time","~oni_avg2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time)f(~oni_avg2 + season2 + sex)",30,17884.1330859729,355.041413673516,0,1049.4065
+"430","~rain_cv2","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv2)p(~time)f(~rain_sum_lag2 + season2 + sex)",28,17884.5115990353,355.41992673594,0,1053.8565
+"679","~rain_sum2","~time + sex","~rain_sum_lag2 * season2","Phi(~rain_sum2)p(~time + sex)f(~rain_sum_lag2 * season2)",29,17885.1267285887,356.035056289325,0,1052.4366
+"177","~oni_avg2","~time","~rain_sum2 + season2","Phi(~oni_avg2)p(~time)f(~rain_sum2 + season2)",27,17885.1506962025,356.059023903195,0,1056.5296
+"246","~oni_avg2 * season2","~time + sex","~oni_avg2 + season2 + sex","Phi(~oni_avg2 * season2)p(~time + sex)f(~oni_avg2 + season2 + sex)",31,17885.1936722993,356.102000000003,0,1048.4298
+"428","~rain_cv2","~time","~rain_cv2 * season2","Phi(~rain_cv2)p(~time)f(~rain_cv2 * season2)",28,17885.5835990353,356.49192673594,0,1054.929
+"445","~rain_cv2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",29,17886.5427285887,357.451056289327,0,1053.853
+"671","~rain_sum2","~time + sex","~oni_avg2 * season2 + sex","Phi(~rain_sum2)p(~time + sex)f(~oni_avg2 * season2 + sex)",30,17886.6120859729,357.520413673516,0,1051.8856
+"532","~rain_sum_lag2","~time","~rain_cv2 * season2","Phi(~rain_sum_lag2)p(~time)f(~rain_cv2 * season2)",28,17886.7015990353,357.609926735939,0,1056.0469
+"621","~rain_sum_lag2 * season2","~time + sex","~temp_cv2 + season2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~temp_cv2 + season2)",30,17887.2510859728,358.159413673515,0,1052.5249
+"861","~temp_cv2","~time","~rain_sum_lag2 + season2 + sex","Phi(~temp_cv2)p(~time)f(~rain_sum_lag2 + season2 + sex)",28,17890.3635990353,361.271926735939,0,1059.7094
+"668","~rain_sum2","~time","~temp_cv2 + season2","Phi(~rain_sum2)p(~time)f(~temp_cv2 + season2)",27,17890.6656962025,361.574023903195,0,1062.0447
+"444","~rain_cv2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_cv2)p(~time + sex)f(~rain_sum_lag2 + season2)",28,17890.9875990353,361.895926735939,0,1060.3325
+"187","~oni_avg2","~time + sex","~rain_sum2 + season2","Phi(~oni_avg2)p(~time + sex)f(~rain_sum2 + season2)",28,17891.3415990353,362.249926735938,0,1060.6866
+"683","~rain_sum2","~time + sex","~temp_cv2 + season2","Phi(~rain_sum2)p(~time + sex)f(~temp_cv2 + season2)",28,17892.3815990353,363.289926735939,0,1061.7265
+"879","~temp_cv2","~time + sex","~temp_cv2 + season2","Phi(~temp_cv2)p(~time + sex)f(~temp_cv2 + season2)",28,17895.0625990353,365.970926735939,0,1064.4079
+"860","~temp_cv2","~time","~rain_sum_lag2 + season2","Phi(~temp_cv2)p(~time)f(~rain_sum_lag2 + season2)",27,17895.0746962025,365.983023903194,0,1066.4538
+"452","~rain_cv2 + season2","~time","~rain_sum2","Phi(~rain_cv2 + season2)p(~time)f(~rain_sum2)",27,17896.3136962025,367.222023903196,0,1067.6931
+"876","~temp_cv2","~time + sex","~rain_sum_lag2 + season2","Phi(~temp_cv2)p(~time + sex)f(~rain_sum_lag2 + season2)",28,17896.3185990353,367.226926735941,0,1065.664
+"862","~temp_cv2","~time","~rain_sum_lag2 * season2","Phi(~temp_cv2)p(~time)f(~rain_sum_lag2 * season2)",28,17896.3465990353,367.254926735939,0,1065.6918
+"464","~rain_cv2 + season2","~time + sex","~rain_sum2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_sum2)",28,17897.7805990353,368.68892673594,0,1067.1256
+"568","~rain_sum_lag2 + season2","~time + sex","~temp_cv2 + season2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~temp_cv2 + season2)",29,17898.0487285887,368.957056289328,0,1065.3585
+"877","~temp_cv2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~temp_cv2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",29,17899.6217285887,370.530056289328,0,1066.9324
+"439","~rain_cv2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_cv2)p(~time + sex)f(~rain_cv_lag2 + season2)",28,17902.5705990353,373.478926735937,0,1071.9164
+"429","~rain_cv2","~time","~rain_sum_lag2 + season2","Phi(~rain_cv2)p(~time)f(~rain_sum_lag2 + season2)",27,17905.1636962025,376.072023903194,0,1076.5434
+"539","~rain_sum_lag2","~time + sex","~rain_cv_lag2 + season2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv_lag2 + season2)",28,17907.0495990353,377.95792673594,0,1076.3948
+"536","~rain_sum_lag2","~time","~rain_sum2 + season2","Phi(~rain_sum_lag2)p(~time)f(~rain_sum2 + season2)",27,17907.8496962025,378.758023903196,0,1079.2285
+"108","~gpp_avg2 * season2","~time + sex","~rain_sum2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_sum2)",29,17911.5437285887,382.452056289327,0,1078.8535
+"128","~gpp_avg2 * season2 + sex","~time","~gpp_avg2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~gpp_avg2)",29,17913.1877285887,384.096056289327,0,1080.4978
+"145","~gpp_avg2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,17913.4570859729,384.365413673517,0,1078.7305
+"156","~gpp_avg2 * season2 + sex","~time + sex","~rain_sum_lag2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2)",30,17913.5150859729,384.423413673518,0,1078.7889
+"545","~rain_sum_lag2","~time + sex","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_sum_lag2 + season2)",28,17917.4755990353,388.38392673594,0,1086.8211
+"978","~temp_cv2 * season2 + sex","~time + sex","~rain_sum2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,17921.9250859729,392.833413673517,0,1087.1985
+"150","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv_lag2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2)",30,17922.4670859729,393.375413673515,0,1087.7406
+"4","~gpp_avg2","~time","~oni_avg2 + season2","Phi(~gpp_avg2)p(~time)f(~oni_avg2 + season2)",27,17923.0336962025,393.942023903197,0,1094.4131
+"176","~oni_avg2","~time","~rain_sum_lag2 + season2","Phi(~oni_avg2)p(~time)f(~rain_sum_lag2 + season2)",27,17924.6316962025,395.540023903195,0,1096.011
+"97","~gpp_avg2 * season2","~time + sex","~gpp_avg2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~gpp_avg2)",29,17925.0167285887,395.925056289325,0,1092.3274
+"546","~rain_sum_lag2","~time + sex","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_sum_lag2 + season2 + sex)",29,17925.2797285887,396.188056289328,0,1092.5895
+"434","~rain_cv2","~time","~temp_cv2 * season2","Phi(~rain_cv2)p(~time)f(~temp_cv2 * season2)",28,17925.3125990353,396.220926735939,0,1094.6578
+"447","~rain_cv2","~time + sex","~temp_cv2 * season2","Phi(~rain_cv2)p(~time + sex)f(~temp_cv2 * season2)",29,17927.2617285887,398.170056289327,0,1094.5718
+"66","~gpp_avg2 + season2 + sex","~time","~rain_cv_lag2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~rain_cv_lag2)",28,17929.0705990353,399.978926735937,0,1098.4164
+"534","~rain_sum_lag2","~time","~rain_sum_lag2 + season2","Phi(~rain_sum_lag2)p(~time)f(~rain_sum_lag2 + season2)",27,17930.1226962025,401.031023903197,0,1101.5021
+"133","~gpp_avg2 * season2 + sex","~time","~rain_cv_lag2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,17931.3877285887,402.296056289328,0,1098.6977
+"84","~gpp_avg2 * season2","~time","~rain_cv_lag2","Phi(~gpp_avg2 * season2)p(~time)f(~rain_cv_lag2)",28,17932.4815990353,403.389926735937,0,1101.8268
+"950","~temp_cv2 * season2","~time + sex","~rain_sum2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum2)",29,17933.2877285887,404.196056289325,0,1100.5977
+"296","~rain_cv_lag2","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_cv_lag2)p(~time)f(~rain_sum_lag2 + season2 + sex)",28,17933.4385990353,404.34692673594,0,1102.784
+"101","~gpp_avg2 * season2","~time + sex","~rain_cv_lag2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,17934.1887285887,405.097056289327,0,1101.4992
+"857","~temp_cv2","~time","~rain_cv2 + season2 + sex","Phi(~temp_cv2)p(~time)f(~rain_cv2 + season2 + sex)",28,17936.0815990353,406.98992673594,0,1105.4266
+"277","~oni_avg2 * season2 + sex","~time + sex","~rain_sum2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,17936.9510859729,407.859413673516,0,1102.2247
+"185","~oni_avg2","~time + sex","~rain_cv2 * season2","Phi(~oni_avg2)p(~time + sex)f(~rain_cv2 * season2)",29,17937.5577285887,408.466056289326,0,1104.8675
+"269","~oni_avg2 * season2 + sex","~time","~rain_sum2","Phi(~oni_avg2 * season2 + sex)p(~time)f(~rain_sum2)",29,17937.7697285887,408.678056289325,0,1105.0799
+"873","~temp_cv2","~time + sex","~rain_cv2 + season2 + sex","Phi(~temp_cv2)p(~time + sex)f(~rain_cv2 + season2 + sex)",29,17937.9937285887,408.902056289327,0,1105.3041
+"35","~gpp_avg2 + season2","~time","~rain_cv_lag2","Phi(~gpp_avg2 + season2)p(~time)f(~rain_cv_lag2)",27,17940.5626962025,411.471023903196,0,1111.9418
+"865","~temp_cv2","~time","~temp_cv2 + season2","Phi(~temp_cv2)p(~time)f(~temp_cv2 + season2)",27,17941.1426962025,412.051023903197,0,1112.5221
+"856","~temp_cv2","~time","~rain_cv2 + season2","Phi(~temp_cv2)p(~time)f(~rain_cv2 + season2)",27,17941.9036962025,412.812023903196,0,1113.2832
+"872","~temp_cv2","~time + sex","~rain_cv2 + season2","Phi(~temp_cv2)p(~time + sex)f(~rain_cv2 + season2)",28,17943.8495990353,414.75792673594,0,1113.1953
+"204","~oni_avg2 + season2","~time + sex","~rain_sum2","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_sum2)",28,17945.9405990353,416.84892673594,0,1115.2858
+"239","~oni_avg2 * season2","~time","~rain_sum2","Phi(~oni_avg2 * season2)p(~time)f(~rain_sum2)",28,17947.4675990353,418.375926735938,0,1116.8127
+"251","~oni_avg2 * season2","~time + sex","~rain_sum2","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_sum2)",29,17947.8407285887,418.749056289325,0,1115.1508
+"27","~gpp_avg2","~time + sex","~rain_sum_lag2 * season2","Phi(~gpp_avg2)p(~time + sex)f(~rain_sum_lag2 * season2)",29,17951.3717285887,422.280056289328,0,1118.6823
+"427","~rain_cv2","~time","~rain_cv2 + season2 + sex","Phi(~rain_cv2)p(~time)f(~rain_cv2 + season2 + sex)",28,17954.2945990353,425.202926735939,0,1123.6399
+"442","~rain_cv2","~time + sex","~rain_cv2 * season2","Phi(~rain_cv2)p(~time + sex)f(~rain_cv2 * season2)",29,17955.2487285887,426.157056289325,0,1122.5592
+"963","~temp_cv2 * season2 + sex","~time","~gpp_avg2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~gpp_avg2)",29,17955.3127285887,426.221056289327,0,1122.6226
+"441","~rain_cv2","~time + sex","~rain_cv2 + season2 + sex","Phi(~rain_cv2)p(~time + sex)f(~rain_cv2 + season2 + sex)",29,17956.1407285887,427.049056289328,0,1123.4508
+"970","~temp_cv2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,17956.5090859729,427.417413673516,0,1121.783
+"184","~oni_avg2","~time + sex","~rain_cv2 + season2","Phi(~oni_avg2)p(~time + sex)f(~rain_cv2 + season2)",28,17957.4015990353,428.309926735939,0,1126.7465
+"543","~rain_sum_lag2","~time + sex","~rain_cv2 * season2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv2 * season2)",29,17957.6167285887,428.525056289327,0,1124.9272
+"584","~rain_sum_lag2 + season2 + sex","~time","~rain_sum2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~rain_sum2)",28,17957.9295990353,428.837926735938,0,1127.2752
+"815","~rain_sum2 * season2 + sex","~time","~rain_cv_lag2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,17958.1337285887,429.042056289327,0,1125.4439
+"77","~gpp_avg2 + season2 + sex","~time + sex","~rain_sum2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~rain_sum2)",29,17958.4847285887,429.393056289326,0,1125.7951
+"433","~rain_cv2","~time","~temp_cv2 + season2","Phi(~rain_cv2)p(~time)f(~temp_cv2 + season2)",27,17959.0846962025,429.993023903196,0,1130.464
+"916","~temp_cv2 + season2 + sex","~time","~rain_sum2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~rain_sum2)",28,17959.3505990353,430.25892673594,0,1128.6961
+"830","~rain_sum2 * season2 + sex","~time + sex","~rain_cv_lag2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2)",30,17959.3660859729,430.274413673516,0,1124.6403
+"446","~rain_cv2","~time + sex","~temp_cv2 + season2","Phi(~rain_cv2)p(~time + sex)f(~temp_cv2 + season2)",28,17961.0825990353,431.99092673594,0,1130.4276
+"839","~rain_sum2 * season2 + sex","~time + sex","~rain_sum2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,17961.5170859728,432.425413673514,0,1126.7911
+"68","~gpp_avg2 + season2 + sex","~time","~rain_sum2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~rain_sum2)",28,17961.5785990353,432.486926735939,0,1130.9235
+"823","~rain_sum2 * season2 + sex","~time","~rain_sum2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_sum2)",29,17962.1457285887,433.054056289326,0,1129.4563
+"173","~oni_avg2","~time","~rain_cv2 + season2","Phi(~oni_avg2)p(~time)f(~rain_cv2 + season2)",27,17962.2516962025,433.160023903194,0,1133.6308
+"748","~rain_sum2 + season2 + sex","~time + sex","~rain_sum2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_sum2)",29,17962.5807285887,433.489056289327,0,1129.8911
+"735","~rain_sum2 + season2 + sex","~time","~rain_sum2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~rain_sum2)",28,17962.8515990353,433.75992673594,0,1132.1968
+"618","~rain_sum_lag2 * season2","~time + sex","~rain_sum2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_sum2)",29,17966.1827285887,437.091056289326,0,1133.4929
+"48","~gpp_avg2 + season2","~time + sex","~rain_cv_lag2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_cv_lag2)",28,17966.4495990353,437.357926735938,0,1135.7952
+"939","~temp_cv2 * season2","~time + sex","~gpp_avg2","Phi(~temp_cv2 * season2)p(~time + sex)f(~gpp_avg2)",29,17967.0857285887,437.994056289328,0,1134.3955
+"558","~rain_sum_lag2 + season2","~time","~rain_sum2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_sum2)",27,17967.3606962025,438.269023903194,0,1138.74
+"889","~temp_cv2 + season2","~time","~rain_sum2","Phi(~temp_cv2 + season2)p(~time)f(~rain_sum2)",27,17968.7666962025,439.675023903197,0,1140.1459
+"767","~rain_sum2 * season2","~time","~rain_cv_lag2","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv_lag2)",28,17969.3305990353,440.238926735939,0,1138.6756
+"131","~gpp_avg2 * season2 + sex","~time","~oni_avg2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~oni_avg2)",29,17969.5317285887,440.440056289328,0,1136.8424
+"54","~gpp_avg2 + season2","~time + sex","~rain_sum2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_sum2)",28,17970.0055990353,440.913926735939,0,1139.3508
+"42","~gpp_avg2 + season2","~time","~rain_sum2","Phi(~gpp_avg2 + season2)p(~time)f(~rain_sum2)",27,17970.1076962025,441.016023903194,0,1141.4874
+"531","~rain_sum_lag2","~time","~rain_cv2 + season2","Phi(~rain_sum_lag2)p(~time)f(~rain_cv2 + season2)",27,17970.4256962025,441.334023903197,0,1141.805
+"901","~temp_cv2 + season2","~time + sex","~rain_sum2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_sum2)",28,17970.5925990353,441.500926735938,0,1139.9375
+"147","~gpp_avg2 * season2 + sex","~time + sex","~oni_avg2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~oni_avg2)",30,17970.6030859729,441.511413673517,0,1135.877
+"780","~rain_sum2 * season2","~time + sex","~rain_cv_lag2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,17971.0977285887,442.006056289327,0,1138.4079
+"845","~rain_sum2 * season2 + sex","~year2","~rain_cv2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_cv2 * season2 + sex)",21,17971.4429783393,442.351306040015,0,1155.0001
+"542","~rain_sum_lag2","~time + sex","~rain_cv2 + season2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv2 + season2)",28,17972.2415990353,443.14992673594,0,1141.5874
+"595","~rain_sum_lag2 + season2 + sex","~year2","~gpp_avg2 + season2 + sex","Phi(~rain_sum_lag2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2 + sex)",19,17972.415502706,443.323830406618,0,1160.0222
+"790","~rain_sum2 * season2","~time + sex","~rain_sum2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_sum2)",29,17973.1947285887,444.103056289325,0,1140.5051
+"475","~rain_cv2 + season2 + sex","~time","~rain_cv_lag2 + season2","Phi(~rain_cv2 + season2 + sex)p(~time)f(~rain_cv_lag2 + season2)",29,17973.5807285887,444.489056289327,0,1140.891
+"964","~temp_cv2 * season2 + sex","~time","~rain_cv_lag2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,17973.7467285887,444.655056289328,0,1141.057
+"710","~rain_sum2 + season2","~time + sex","~rain_sum2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum2)",28,17973.9945990353,444.90292673594,0,1143.3404
+"972","~temp_cv2 * season2 + sex","~time + sex","~rain_cv_lag2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2)",30,17975.4160859729,446.324413673516,0,1140.6903
+"753","~rain_sum2 + season2 + sex","~year2","~gpp_avg2 + season2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~gpp_avg2 + season2)",18,17976.4165906222,447.324918322847,0,1166.0457
+"512","~rain_cv2 * season2 + sex","~time","~gpp_avg2","Phi(~rain_cv2 * season2 + sex)p(~time)f(~gpp_avg2)",29,17976.8497285887,447.758056289327,0,1144.1601
+"473","~rain_cv2 + season2 + sex","~time","~gpp_avg2","Phi(~rain_cv2 + season2 + sex)p(~time)f(~gpp_avg2)",28,17978.9755990353,449.88392673594,0,1148.321
+"478","~rain_cv2 + season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_cv2 + season2 + sex)p(~time + sex)f(~gpp_avg2)",29,17979.7307285887,450.639056289325,0,1147.0405
+"440","~rain_cv2","~time + sex","~rain_cv2 + season2","Phi(~rain_cv2)p(~time + sex)f(~rain_cv2 + season2)",28,17979.7815990353,450.68992673594,0,1149.1269
+"914","~temp_cv2 + season2 + sex","~time","~rain_cv_lag2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~rain_cv_lag2)",28,17980.1365990353,451.04492673594,0,1149.4815
+"82","~gpp_avg2 * season2","~time","~oni_avg2","Phi(~gpp_avg2 * season2)p(~time)f(~oni_avg2)",28,17980.2415990353,451.14992673594,0,1149.5866
+"918","~temp_cv2 + season2 + sex","~time + sex","~rain_cv_lag2","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2)",29,17981.7947285887,452.703056289327,0,1149.1048
+"99","~gpp_avg2 * season2","~time + sex","~oni_avg2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~oni_avg2)",29,17981.8777285887,452.786056289326,0,1149.1884
+"606","~rain_sum_lag2 * season2","~time","~rain_sum2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_sum2)",28,17982.4515990353,453.359926735939,0,1151.7966
+"556","~rain_sum_lag2 + season2","~time","~rain_sum_lag2 + season2 + sex","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_sum_lag2 + season2 + sex)",29,17983.1217285887,454.030056289328,0,1150.4323
+"431","~rain_cv2","~time","~rain_sum2","Phi(~rain_cv2)p(~time)f(~rain_sum2)",26,17984.9400189816,455.848346682287,0,1158.3517
+"928","~temp_cv2 * season2","~time","~rain_cv_lag2","Phi(~temp_cv2 * season2)p(~time)f(~rain_cv_lag2)",28,17984.9745990353,455.88292673594,0,1154.3194
+"804","~rain_sum2 * season2","~year2","~rain_cv2 * season2","Phi(~rain_sum2 * season2)p(~year2)f(~rain_cv2 * season2)",19,17986.341502706,457.249830406618,0,1173.948
+"661","~rain_sum2","~time","~rain_cv2 * season2 + sex","Phi(~rain_sum2)p(~time)f(~rain_cv2 * season2 + sex)",29,17986.5577285887,457.466056289326,0,1153.8684
+"489","~rain_cv2 * season2","~time","~gpp_avg2","Phi(~rain_cv2 * season2)p(~time)f(~gpp_avg2)",28,17986.8945990353,457.802926735938,0,1156.2395
+"941","~temp_cv2 * season2","~time + sex","~rain_cv_lag2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,17986.9497285887,457.858056289326,0,1154.2596
+"144","~gpp_avg2 * season2 + sex","~time","~temp_cv2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~temp_cv2)",29,17988.1197285887,459.028056289328,0,1155.4297
+"495","~rain_cv2 * season2","~time + sex","~gpp_avg2","Phi(~rain_cv2 * season2)p(~time + sex)f(~gpp_avg2)",29,17988.4017285887,459.310056289327,0,1155.7121
+"161","~gpp_avg2 * season2 + sex","~time + sex","~temp_cv2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~temp_cv2)",30,17988.8030859728,459.711413673514,0,1154.0773
+"267","~oni_avg2 * season2 + sex","~time","~rain_cv_lag2","Phi(~oni_avg2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,17990.4977285887,461.406056289328,0,1157.8075
+"518","~rain_cv2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_cv2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,17990.9460859728,461.854413673515,0,1156.2196
+"154","~gpp_avg2 * season2 + sex","~time + sex","~rain_cv2","Phi(~gpp_avg2 * season2 + sex)p(~time + sex)f(~rain_cv2)",30,17991.2630859729,462.171413673517,0,1156.5373
+"883","~temp_cv2 + season2","~time","~rain_cv_lag2","Phi(~temp_cv2 + season2)p(~time)f(~rain_cv_lag2)",27,17991.2676962025,462.176023903197,0,1162.6469
+"408","~rain_cv_lag2 * season2 + sex","~time","~rain_sum_lag2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~rain_sum_lag2)",29,17991.4067285887,462.315056289328,0,1158.7172
+"275","~oni_avg2 * season2 + sex","~time + sex","~rain_cv_lag2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2)",30,17992.7990859729,463.707413673517,0,1158.0727
+"895","~temp_cv2 + season2","~time + sex","~rain_cv_lag2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_cv_lag2)",28,17993.2335990353,464.141926735938,0,1162.5785
+"138","~gpp_avg2 * season2 + sex","~time","~rain_sum_lag2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_sum_lag2)",29,17993.9007285887,464.809056289327,0,1161.2106
+"69","~gpp_avg2 + season2 + sex","~time + sex","~gpp_avg2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~gpp_avg2)",29,17994.5177285887,465.426056289325,0,1161.8279
+"63","~gpp_avg2 + season2 + sex","~time","~gpp_avg2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~gpp_avg2)",28,17996.5435990353,467.451926735939,0,1165.8893
+"5","~gpp_avg2","~time","~rain_cv_lag2","Phi(~gpp_avg2)p(~time)f(~rain_cv_lag2)",26,17996.6280189816,467.536346682289,0,1170.0404
+"414","~rain_cv_lag2 * season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2)",30,17997.6520859729,468.560413673516,0,1162.9259
+"354","~rain_cv_lag2 + season2 + sex","~time","~rain_sum_lag2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_sum_lag2)",28,17999.0135990353,469.92192673594,0,1168.359
+"94","~gpp_avg2 * season2","~time","~temp_cv2","Phi(~gpp_avg2 * season2)p(~time)f(~temp_cv2)",28,17999.2895990353,470.197926735938,0,1168.6349
+"193","~oni_avg2 + season2","~time","~rain_cv_lag2","Phi(~oni_avg2 + season2)p(~time)f(~rain_cv_lag2)",27,17999.5116962025,470.420023903196,0,1170.891
+"364","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2)",29,18000.7557285887,471.664056289326,0,1168.0662
+"135","~gpp_avg2 * season2 + sex","~time","~rain_cv2","Phi(~gpp_avg2 * season2 + sex)p(~time)f(~rain_cv2)",29,18000.9647285887,471.873056289325,0,1168.2746
+"110","~gpp_avg2 * season2","~time + sex","~temp_cv2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~temp_cv2)",29,18001.0987285887,472.007056289327,0,1168.4086
+"88","~gpp_avg2 * season2","~time","~rain_cv2","Phi(~gpp_avg2 * season2)p(~time)f(~rain_cv2)",28,18001.1205990353,472.02892673594,0,1170.466
+"237","~oni_avg2 * season2","~time","~rain_cv_lag2","Phi(~oni_avg2 * season2)p(~time)f(~rain_cv_lag2)",28,18001.5345990353,472.442926735937,0,1170.8798
+"200","~oni_avg2 + season2","~time + sex","~rain_cv_lag2","Phi(~oni_avg2 + season2)p(~time + sex)f(~rain_cv_lag2)",28,18001.5455990353,472.45392673594,0,1170.891
+"376","~rain_cv_lag2 * season2","~time","~rain_sum_lag2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_sum_lag2)",28,18002.5195990353,473.427926735938,0,1171.8646
+"104","~gpp_avg2 * season2","~time + sex","~rain_cv2","Phi(~gpp_avg2 * season2)p(~time + sex)f(~rain_cv2)",29,18003.1417285887,474.050056289325,0,1170.4524
+"247","~oni_avg2 * season2","~time + sex","~rain_cv_lag2","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,18004.0287285887,474.937056289327,0,1171.339
+"388","~rain_cv_lag2 * season2","~time + sex","~rain_sum_lag2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_sum_lag2)",29,18004.5447285887,475.453056289327,0,1171.855
+"455","~rain_cv2 + season2","~time + sex","~gpp_avg2","Phi(~rain_cv2 + season2)p(~time + sex)f(~gpp_avg2)",28,18004.8975990353,475.805926735939,0,1174.2433
+"646","~rain_sum_lag2 * season2 + sex","~time + sex","~rain_sum2","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~rain_sum2)",30,18004.9670859729,475.875413673515,0,1170.2413
+"410","~rain_cv_lag2 * season2 + sex","~time","~temp_cv2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~temp_cv2)",29,18006.3097285887,477.218056289326,0,1173.6199
+"359","~rain_cv_lag2 + season2 + sex","~time","~temp_cv2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~temp_cv2)",28,18007.0145990353,477.922926735941,0,1176.36
+"636","~rain_sum_lag2 * season2 + sex","~time","~rain_cv_lag2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,18007.6957285887,478.604056289325,0,1175.0062
+"417","~rain_cv_lag2 * season2 + sex","~time + sex","~temp_cv2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~temp_cv2)",30,18007.7090859729,478.617413673517,0,1172.9831
+"368","~rain_cv_lag2 + season2 + sex","~time + sex","~temp_cv2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18008.2057285887,479.114056289327,0,1175.516
+"406","~rain_cv_lag2 * season2 + sex","~time","~rain_cv_lag2","Phi(~rain_cv_lag2 * season2 + sex)p(~time)f(~rain_cv_lag2)",29,18009.5137285887,480.422056289328,0,1176.8239
+"321","~rain_cv_lag2 + season2","~time","~rain_sum_lag2","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_sum_lag2)",27,18010.1586962025,481.067023903197,0,1181.538
+"9","~gpp_avg2","~time","~rain_cv2 + season2","Phi(~gpp_avg2)p(~time)f(~rain_cv2 + season2)",27,18010.1686962025,481.077023903195,0,1181.5476
+"413","~rain_cv_lag2 * season2 + sex","~time + sex","~rain_cv_lag2","Phi(~rain_cv_lag2 * season2 + sex)p(~time + sex)f(~rain_cv_lag2)",30,18010.4400859729,481.348413673517,0,1175.7136
+"588","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_cv_lag2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2)",29,18011.4337285887,482.342056289326,0,1178.7444
+"334","~rain_cv_lag2 + season2","~time + sex","~rain_sum_lag2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18012.1865990353,483.094926735939,0,1181.532
+"352","~rain_cv_lag2 + season2 + sex","~time","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2 + sex)p(~time)f(~rain_cv_lag2)",28,18013.0945990353,484.002926735939,0,1182.4399
+"362","~rain_cv_lag2 + season2 + sex","~time + sex","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2 + sex)p(~time + sex)f(~rain_cv_lag2)",29,18014.0697285887,484.978056289325,0,1181.3796
+"381","~rain_cv_lag2 * season2","~time","~temp_cv2","Phi(~rain_cv_lag2 * season2)p(~time)f(~temp_cv2)",28,18017.3395990353,488.247926735938,0,1186.6852
+"72","~gpp_avg2 + season2 + sex","~time + sex","~oni_avg2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~oni_avg2)",29,18017.5527285887,488.461056289325,0,1184.8626
+"329","~rain_cv_lag2 + season2","~time + sex","~oni_avg2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~oni_avg2)",28,18017.7275990353,488.63592673594,0,1187.0725
+"65","~gpp_avg2 + season2 + sex","~time","~oni_avg2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~oni_avg2)",28,18018.0575990353,488.965926735938,0,1187.4025
+"600","~rain_sum_lag2 * season2","~time","~rain_cv_lag2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_cv_lag2)",28,18018.8225990353,489.730926735938,0,1188.1683
+"327","~rain_cv_lag2 + season2","~time","~temp_cv2","Phi(~rain_cv_lag2 + season2)p(~time)f(~temp_cv2)",27,18018.8636962025,489.772023903195,0,1190.2431
+"394","~rain_cv_lag2 * season2","~time + sex","~temp_cv2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~temp_cv2)",29,18019.1097285887,490.018056289326,0,1186.4198
+"339","~rain_cv_lag2 + season2","~time + sex","~temp_cv2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~temp_cv2)",28,18019.7215990353,490.629926735939,0,1189.0673
+"374","~rain_cv_lag2 * season2","~time","~rain_cv_lag2","Phi(~rain_cv_lag2 * season2)p(~time)f(~rain_cv_lag2)",28,18020.7615990353,491.66992673594,0,1190.1071
+"613","~rain_sum_lag2 * season2","~time + sex","~rain_cv_lag2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,18020.8487285887,491.757056289327,0,1188.1591
+"551","~rain_sum_lag2 + season2","~time","~rain_cv_lag2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_cv_lag2)",27,18020.9056962025,491.814023903196,0,1192.2853
+"78","~gpp_avg2 + season2 + sex","~time + sex","~temp_cv2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18021.7147285887,492.623056289325,0,1189.0249
+"664","~rain_sum2","~time","~rain_sum2","Phi(~rain_sum2)p(~time)f(~rain_sum2)",26,18021.7650189816,492.673346682288,0,1195.1767
+"384","~rain_cv_lag2 * season2","~time + sex","~rain_cv_lag2","Phi(~rain_cv_lag2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,18022.4197285887,493.328056289327,0,1189.7302
+"680","~rain_sum2","~time + sex","~rain_sum2","Phi(~rain_sum2)p(~time + sex)f(~rain_sum2)",27,18023.3066962025,494.215023903194,0,1194.6861
+"318","~rain_cv_lag2 + season2","~time","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2)p(~time)f(~rain_cv_lag2)",27,18024.4066962025,495.315023903197,0,1195.786
+"331","~rain_cv_lag2 + season2","~time + sex","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2)p(~time + sex)f(~rain_cv_lag2)",28,18026.1565990353,497.06492673594,0,1195.5015
+"846","~rain_sum2 * season2 + sex","~year2","~rain_sum_lag2 + season2","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_sum_lag2 + season2)",19,18027.053502706,497.961830406617,0,1214.6597
+"298","~rain_cv_lag2","~time","~temp_cv2","Phi(~rain_cv_lag2)p(~time)f(~temp_cv2)",26,18030.2490189816,501.157346682288,0,1203.6608
+"310","~rain_cv_lag2","~time + sex","~temp_cv2","Phi(~rain_cv_lag2)p(~time + sex)f(~temp_cv2)",27,18032.0706962025,502.979023903197,0,1203.4501
+"28","~gpp_avg2","~time + sex","~rain_sum2","Phi(~gpp_avg2)p(~time + sex)f(~rain_sum2)",27,18032.1816962025,503.090023903194,0,1203.5608
+"481","~rain_cv2 + season2 + sex","~time + sex","~rain_cv2","Phi(~rain_cv2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18032.9117285887,503.820056289325,0,1200.2215
+"477","~rain_cv2 + season2 + sex","~time","~rain_cv2","Phi(~rain_cv2 + season2 + sex)p(~time)f(~rain_cv2)",28,18033.4615990353,504.369926735941,0,1202.807
+"43","~gpp_avg2 + season2","~time","~temp_cv2","Phi(~gpp_avg2 + season2)p(~time)f(~temp_cv2)",27,18033.6066962025,504.515023903197,0,1204.9861
+"844","~rain_sum2 * season2 + sex","~year2","~rain_cv2 * season2","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_cv2 * season2)",20,18035.5876315789,506.495959279611,0,1221.1702
+"51","~gpp_avg2 + season2","~time + sex","~rain_cv2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_cv2)",28,18038.8645990353,509.772926735939,0,1208.2098
+"449","~rain_cv2 + season2","~time","~rain_cv_lag2","Phi(~rain_cv2 + season2)p(~time)f(~rain_cv_lag2)",27,18040.5546962025,511.463023903194,0,1211.9341
+"852","~temp_cv2","~time","~rain_cv_lag2","Phi(~temp_cv2)p(~time)f(~rain_cv_lag2)",26,18040.7920189816,511.700346682286,0,1214.2035
+"32","~gpp_avg2 + season2","~time","~gpp_avg2","Phi(~gpp_avg2 + season2)p(~time)f(~gpp_avg2)",27,18041.1676962025,512.076023903195,0,1212.5468
+"457","~rain_cv2 + season2","~time + sex","~rain_cv_lag2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_cv_lag2)",28,18042.4555990353,513.363926735939,0,1211.8014
+"911","~temp_cv2 + season2 + sex","~time","~gpp_avg2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~gpp_avg2)",28,18042.6165990353,513.52492673594,0,1211.9615
+"869","~temp_cv2","~time + sex","~rain_cv_lag2","Phi(~temp_cv2)p(~time + sex)f(~rain_cv_lag2)",27,18042.7676962025,513.676023903197,0,1214.1466
+"44","~gpp_avg2 + season2","~time + sex","~gpp_avg2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~gpp_avg2)",28,18042.8585990353,513.766926735938,0,1212.2039
+"289","~rain_cv_lag2","~time","~rain_cv_lag2","Phi(~rain_cv_lag2)p(~time)f(~rain_cv_lag2)",26,18043.1280189816,514.036346682289,0,1216.5396
+"459","~rain_cv2 + season2","~time + sex","~rain_cv2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_cv2)",28,18044.5395990353,515.447926735938,0,1213.8847
+"497","~rain_cv2 * season2","~time + sex","~rain_cv_lag2","Phi(~rain_cv2 * season2)p(~time + sex)f(~rain_cv_lag2)",29,18045.1197285887,516.028056289328,0,1212.4296
+"180","~oni_avg2","~time","~temp_cv2 * season2","Phi(~oni_avg2)p(~time)f(~temp_cv2 * season2)",28,18047.3995990353,518.307926735939,0,1216.7448
+"886","~temp_cv2 + season2","~time","~rain_cv_lag2 * season2 + sex","Phi(~temp_cv2 + season2)p(~time)f(~rain_cv_lag2 * season2 + sex)",30,18048.5040859729,519.412413673515,0,1213.7779
+"171","~oni_avg2","~time","~rain_cv_lag2","Phi(~oni_avg2)p(~time)f(~rain_cv_lag2)",26,18049.8230189816,520.731346682289,0,1223.2351
+"880","~temp_cv2 + season2","~time","~gpp_avg2","Phi(~temp_cv2 + season2)p(~time)f(~gpp_avg2)",27,18051.7846962025,522.693023903197,0,1223.1639
+"183","~oni_avg2","~time + sex","~rain_cv_lag2","Phi(~oni_avg2)p(~time + sex)f(~rain_cv_lag2)",27,18051.8546962025,522.763023903197,0,1223.2343
+"825","~rain_sum2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,18051.9410859729,522.849413673517,0,1217.2153
+"969","~temp_cv2 * season2 + sex","~time","~temp_cv2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~temp_cv2)",29,18052.3257285887,523.234056289326,0,1219.6363
+"979","~temp_cv2 * season2 + sex","~time + sex","~temp_cv2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~temp_cv2)",30,18053.2780859729,524.186413673517,0,1218.5517
+"892","~temp_cv2 + season2","~time + sex","~gpp_avg2","Phi(~temp_cv2 + season2)p(~time + sex)f(~gpp_avg2)",28,18053.7905990353,524.698926735939,0,1223.136
+"438","~rain_cv2","~time + sex","~rain_cv_lag2","Phi(~rain_cv2)p(~time + sex)f(~rain_cv_lag2)",27,18059.0716962025,529.980023903197,0,1230.451
+"634","~rain_sum_lag2 * season2 + sex","~time","~gpp_avg2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~gpp_avg2)",29,18059.8497285887,530.758056289327,0,1227.16
+"641","~rain_sum_lag2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,18060.3390859728,531.247413673515,0,1225.6129
+"547","~rain_sum_lag2","~time + sex","~rain_sum2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_sum2)",27,18060.4706962025,531.379023903195,0,1231.8504
+"765","~rain_sum2 * season2","~time","~gpp_avg2","Phi(~rain_sum2 * season2)p(~time)f(~gpp_avg2)",28,18061.6955990353,532.603926735937,0,1231.0414
+"52","~gpp_avg2 + season2","~time + sex","~rain_sum_lag2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18061.9405990353,532.84892673594,0,1231.2864
+"937","~temp_cv2 * season2","~time","~temp_cv2","Phi(~temp_cv2 * season2)p(~time)f(~temp_cv2)",28,18062.5785990353,533.486926735939,0,1231.9237
+"729","~rain_sum2 + season2 + sex","~time","~gpp_avg2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~gpp_avg2)",28,18064.3375990353,535.245926735941,0,1233.683
+"953","~temp_cv2 * season2","~time + sex","~temp_cv2","Phi(~temp_cv2 * season2)p(~time + sex)f(~temp_cv2)",29,18064.5167285887,535.425056289325,0,1231.8268
+"75","~gpp_avg2 + season2 + sex","~time + sex","~rain_cv2","Phi(~gpp_avg2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18065.7507285887,536.659056289325,0,1233.0605
+"608","~rain_sum_lag2 * season2","~time","~temp_cv2 + season2","Phi(~rain_sum_lag2 * season2)p(~time)f(~temp_cv2 + season2)",29,18065.9987285887,536.907056289325,0,1233.3093
+"598","~rain_sum_lag2 * season2","~time","~gpp_avg2","Phi(~rain_sum_lag2 * season2)p(~time)f(~gpp_avg2)",28,18068.9665990353,539.874926735938,0,1238.3117
+"578","~rain_sum_lag2 + season2 + sex","~time","~gpp_avg2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~gpp_avg2)",28,18069.6255990353,540.533926735938,0,1238.9713
+"610","~rain_sum_lag2 * season2","~time + sex","~gpp_avg2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~gpp_avg2)",29,18070.9167285887,541.825056289326,0,1238.2273
+"67","~gpp_avg2 + season2 + sex","~time","~rain_cv2","Phi(~gpp_avg2 + season2 + sex)p(~time)f(~rain_cv2)",28,18071.1275990353,542.035926735938,0,1240.4727
+"34","~gpp_avg2 + season2","~time","~oni_avg2","Phi(~gpp_avg2 + season2)p(~time)f(~oni_avg2)",27,18071.5676962025,542.476023903197,0,1242.9465
+"217","~oni_avg2 + season2 + sex","~time","~gpp_avg2","Phi(~oni_avg2 + season2 + sex)p(~time)f(~gpp_avg2)",28,18071.7995990353,542.70792673594,0,1241.1453
+"222","~oni_avg2 + season2 + sex","~time + sex","~gpp_avg2","Phi(~oni_avg2 + season2 + sex)p(~time + sex)f(~gpp_avg2)",29,18072.3157285887,543.224056289328,0,1239.6264
+"46","~gpp_avg2 + season2","~time + sex","~oni_avg2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~oni_avg2)",28,18072.7675990353,543.675926735938,0,1242.113
+"264","~oni_avg2 * season2 + sex","~time","~gpp_avg2","Phi(~oni_avg2 * season2 + sex)p(~time)f(~gpp_avg2)",29,18072.9957285887,543.904056289328,0,1240.3063
+"927","~temp_cv2 * season2","~time","~oni_avg2","Phi(~temp_cv2 * season2)p(~time)f(~oni_avg2)",28,18073.2935990353,544.201926735939,0,1242.6391
+"270","~oni_avg2 * season2 + sex","~time + sex","~gpp_avg2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~gpp_avg2)",30,18073.5820859729,544.490413673517,0,1238.8559
+"39","~gpp_avg2 + season2","~time","~rain_cv2","Phi(~gpp_avg2 + season2)p(~time)f(~rain_cv2)",27,18074.4046962025,545.313023903196,0,1245.7844
+"940","~temp_cv2 * season2","~time + sex","~oni_avg2","Phi(~temp_cv2 * season2)p(~time + sex)f(~oni_avg2)",29,18074.5187285887,545.427056289325,0,1241.8292
+"684","~rain_sum2","~time + sex","~temp_cv2 * season2","Phi(~rain_sum2)p(~time + sex)f(~temp_cv2 * season2)",29,18074.8637285887,545.772056289326,0,1242.1736
+"966","~temp_cv2 * season2 + sex","~time","~rain_sum_lag2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~rain_sum_lag2)",29,18075.8997285887,546.808056289326,0,1243.2095
+"465","~rain_cv2 + season2","~time + sex","~temp_cv2","Phi(~rain_cv2 + season2)p(~time + sex)f(~temp_cv2)",28,18076.5065990353,547.414926735939,0,1245.8516
+"975","~temp_cv2 * season2 + sex","~time + sex","~rain_sum_lag2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2)",30,18076.8880859729,547.796413673517,0,1242.1622
+"965","~temp_cv2 * season2 + sex","~time","~rain_cv2","Phi(~temp_cv2 * season2 + sex)p(~time)f(~rain_cv2)",29,18077.3137285887,548.222056289327,0,1244.6236
+"974","~temp_cv2 * season2 + sex","~time + sex","~rain_cv2","Phi(~temp_cv2 * season2 + sex)p(~time + sex)f(~rain_cv2)",30,18078.3870859729,549.295413673517,0,1243.6607
+"548","~rain_sum_lag2 + season2","~time","~gpp_avg2","Phi(~rain_sum_lag2 + season2)p(~time)f(~gpp_avg2)",27,18078.7396962025,549.648023903195,0,1250.1185
+"490","~rain_cv2 * season2","~time","~rain_cv2","Phi(~rain_cv2 * season2)p(~time)f(~rain_cv2)",28,18079.0205990353,549.928926735938,0,1248.3663
+"560","~rain_sum_lag2 + season2","~time + sex","~gpp_avg2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~gpp_avg2)",28,18080.6495990353,551.557926735939,0,1249.9954
+"189","~oni_avg2 + season2","~time","~gpp_avg2","Phi(~oni_avg2 + season2)p(~time)f(~gpp_avg2)",27,18080.9086962025,551.817023903197,0,1252.2877
+"538","~rain_sum_lag2","~time + sex","~rain_cv_lag2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv_lag2)",27,18081.2596962025,552.168023903196,0,1252.6393
+"232","~oni_avg2 * season2","~time","~gpp_avg2","Phi(~oni_avg2 * season2)p(~time)f(~gpp_avg2)",28,18082.1075990353,553.015926735938,0,1251.4528
+"55","~gpp_avg2 + season2","~time + sex","~temp_cv2","Phi(~gpp_avg2 + season2)p(~time + sex)f(~temp_cv2)",28,18083.6775990353,554.585926735937,0,1253.0234
+"501","~rain_cv2 * season2","~time + sex","~temp_cv2","Phi(~rain_cv2 * season2)p(~time + sex)f(~temp_cv2)",29,18083.6837285887,554.592056289326,0,1250.9936
+"243","~oni_avg2 * season2","~time + sex","~gpp_avg2","Phi(~oni_avg2 * season2)p(~time + sex)f(~gpp_avg2)",29,18083.9777285887,554.886056289328,0,1251.2875
+"749","~rain_sum2 + season2 + sex","~time + sex","~temp_cv2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18085.0747285887,555.983056289326,0,1252.3846
+"933","~temp_cv2 * season2","~time","~rain_sum_lag2","Phi(~temp_cv2 * season2)p(~time)f(~rain_sum_lag2)",28,18085.4785990353,556.386926735941,0,1254.8238
+"945","~temp_cv2 * season2","~time + sex","~rain_cv2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_cv2)",29,18085.6567285887,556.565056289328,0,1252.9673
+"932","~temp_cv2 * season2","~time","~rain_cv2","Phi(~temp_cv2 * season2)p(~time)f(~rain_cv2)",28,18087.2345990353,558.142926735938,0,1256.5797
+"947","~temp_cv2 * season2","~time + sex","~rain_sum_lag2","Phi(~temp_cv2 * season2)p(~time + sex)f(~rain_sum_lag2)",29,18087.5017285887,558.410056289325,0,1254.8117
+"1","~gpp_avg2","~time","~gpp_avg2","Phi(~gpp_avg2)p(~time)f(~gpp_avg2)",26,18093.2820189816,564.190346682288,0,1266.6936
+"462","~rain_cv2 + season2","~time + sex","~rain_sum_lag2","Phi(~rain_cv2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18093.7635990353,564.67192673594,0,1263.1092
+"696","~rain_sum2 + season2","~time","~temp_cv2","Phi(~rain_sum2 + season2)p(~time)f(~temp_cv2)",27,18093.8036962025,564.712023903197,0,1265.1832
+"241","~oni_avg2 * season2","~time","~rain_sum2 * season2 + sex","Phi(~oni_avg2 * season2)p(~time)f(~rain_sum2 * season2 + sex)",31,18094.2266722993,565.135000000002,0,1257.4629
+"16","~gpp_avg2","~time + sex","~gpp_avg2","Phi(~gpp_avg2)p(~time + sex)f(~gpp_avg2)",27,18094.8526962025,565.761023903196,0,1266.2319
+"777","~rain_sum2 * season2","~time","~temp_cv2","Phi(~rain_sum2 * season2)p(~time)f(~temp_cv2)",28,18095.2005990353,566.108926735938,0,1264.546
+"498","~rain_cv2 * season2","~time + sex","~rain_sum_lag2","Phi(~rain_cv2 * season2)p(~time + sex)f(~rain_sum_lag2)",29,18095.5587285887,566.467056289326,0,1262.8686
+"711","~rain_sum2 + season2","~time + sex","~temp_cv2","Phi(~rain_sum2 + season2)p(~time + sex)f(~temp_cv2)",28,18095.8225990353,566.730926735938,0,1265.1677
+"423","~rain_cv2","~time","~gpp_avg2","Phi(~rain_cv2)p(~time)f(~gpp_avg2)",26,18096.4420189816,567.350346682288,0,1269.854
+"435","~rain_cv2","~time + sex","~gpp_avg2","Phi(~rain_cv2)p(~time + sex)f(~gpp_avg2)",27,18096.6916962025,567.600023903196,0,1268.0713
+"448","~rain_cv2 + season2","~time","~oni_avg2","Phi(~rain_cv2 + season2)p(~time)f(~oni_avg2)",27,18098.5666962025,569.475023903196,0,1269.946
+"456","~rain_cv2 + season2","~time + sex","~oni_avg2","Phi(~rain_cv2 + season2)p(~time + sex)f(~oni_avg2)",28,18100.5265990353,571.434926735939,0,1269.8715
+"841","~rain_sum2 * season2 + sex","~year2","~oni_avg2 * season2 + sex","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~oni_avg2 * season2 + sex)",21,18103.5359783394,574.444306040015,0,1287.0925
+"496","~rain_cv2 * season2","~time + sex","~oni_avg2","Phi(~rain_cv2 * season2)p(~time + sex)f(~oni_avg2)",29,18104.0937285887,575.002056289326,0,1271.4042
+"179","~oni_avg2","~time","~temp_cv2 + season2","Phi(~oni_avg2)p(~time)f(~temp_cv2 + season2)",27,18109.0686962025,579.977023903197,0,1280.4477
+"669","~rain_sum2","~time + sex","~gpp_avg2","Phi(~rain_sum2)p(~time + sex)f(~gpp_avg2)",27,18110.5256962025,581.434023903195,0,1281.9047
+"3","~gpp_avg2","~time","~oni_avg2","Phi(~gpp_avg2)p(~time)f(~oni_avg2)",26,18113.0380189816,583.946346682289,0,1286.4501
+"17","~gpp_avg2","~time + sex","~oni_avg2","Phi(~gpp_avg2)p(~time + sex)f(~oni_avg2)",27,18113.9166962025,584.825023903195,0,1285.2962
+"819","~rain_sum2 * season2 + sex","~time","~rain_cv2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~rain_cv2)",29,18116.6967285887,587.605056289325,0,1284.0066
+"667","~rain_sum2","~time","~temp_cv2","Phi(~rain_sum2)p(~time)f(~temp_cv2)",26,18117.7690189816,588.677346682289,0,1291.1805
+"14","~gpp_avg2","~time","~temp_cv2","Phi(~gpp_avg2)p(~time)f(~temp_cv2)",26,18118.6100189816,589.518346682289,0,1292.0224
+"682","~rain_sum2","~time + sex","~temp_cv2","Phi(~rain_sum2)p(~time + sex)f(~temp_cv2)",27,18119.7536962025,590.662023903194,0,1291.1325
+"834","~rain_sum2 * season2 + sex","~time + sex","~rain_cv2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_cv2)",30,18120.7990859729,591.707413673517,0,1286.0732
+"629","~rain_sum_lag2 * season2","~year2","~rain_cv_lag2 + season2 + sex","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_cv_lag2 + season2 + sex)",19,18122.580502706,593.488830406615,0,1310.1866
+"29","~gpp_avg2","~time + sex","~temp_cv2","Phi(~gpp_avg2)p(~time + sex)f(~temp_cv2)",27,18122.8456962025,593.754023903195,0,1294.2245
+"771","~rain_sum2 * season2","~time","~rain_cv2","Phi(~rain_sum2 * season2)p(~time)f(~rain_cv2)",28,18126.3115990353,597.219926735939,0,1295.6568
+"783","~rain_sum2 * season2","~time + sex","~rain_cv2","Phi(~rain_sum2 * season2)p(~time + sex)f(~rain_cv2)",29,18127.5307285887,598.439056289328,0,1294.8412
+"836","~rain_sum2 * season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2)",30,18129.2800859729,600.188413673517,0,1294.5542
+"849","~temp_cv2","~time","~gpp_avg2","Phi(~temp_cv2)p(~time)f(~gpp_avg2)",26,18129.6280189816,600.536346682289,0,1303.0402
+"826","~rain_sum2 * season2 + sex","~time + sex","~oni_avg2","Phi(~rain_sum2 * season2 + sex)p(~time + sex)f(~oni_avg2)",30,18129.8520859729,600.760413673517,0,1295.1255
+"732","~rain_sum2 + season2 + sex","~time","~rain_cv2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~rain_cv2)",28,18129.8865990353,600.79492673594,0,1299.2323
+"812","~rain_sum2 * season2 + sex","~time","~oni_avg2","Phi(~rain_sum2 * season2 + sex)p(~time)f(~oni_avg2)",29,18130.7627285887,601.671056289328,0,1298.0725
+"742","~rain_sum2 + season2 + sex","~time + sex","~rain_cv2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18130.9187285887,601.827056289327,0,1298.229
+"866","~temp_cv2","~time + sex","~gpp_avg2","Phi(~temp_cv2)p(~time + sex)f(~gpp_avg2)",27,18131.6116962025,602.520023903195,0,1302.9909
+"915","~temp_cv2 + season2 + sex","~time","~rain_cv2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~rain_cv2)",28,18138.6345990353,609.54292673594,0,1307.9803
+"773","~rain_sum2 * season2","~time","~rain_sum_lag2","Phi(~rain_sum2 * season2)p(~time)f(~rain_sum_lag2)",28,18138.7635990353,609.67192673594,0,1308.1092
+"920","~temp_cv2 + season2 + sex","~time + sex","~rain_cv2","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18139.3567285887,610.265056289325,0,1306.6669
+"692","~rain_sum2 + season2","~time","~rain_cv2","Phi(~rain_sum2 + season2)p(~time)f(~rain_cv2)",27,18139.4466962025,610.355023903197,0,1310.8263
+"779","~rain_sum2 * season2","~time + sex","~oni_avg2","Phi(~rain_sum2 * season2)p(~time + sex)f(~oni_avg2)",29,18140.8747285887,611.783056289325,0,1308.1854
+"702","~rain_sum2 + season2","~time + sex","~rain_cv2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_cv2)",28,18141.3295990353,612.237926735939,0,1310.6751
+"630","~rain_sum_lag2 * season2","~year2","~rain_cv2 + season2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_cv2 + season2)",18,18142.5075906222,613.415918322848,0,1332.137
+"744","~rain_sum2 + season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2)",29,18144.1867285887,615.095056289327,0,1311.4972
+"730","~rain_sum2 + season2 + sex","~time","~oni_avg2","Phi(~rain_sum2 + season2 + sex)p(~time)f(~oni_avg2)",28,18144.2915990353,615.199926735939,0,1313.6371
+"738","~rain_sum2 + season2 + sex","~time + sex","~oni_avg2","Phi(~rain_sum2 + season2 + sex)p(~time + sex)f(~oni_avg2)",29,18144.8197285887,615.728056289325,0,1312.1298
+"658","~rain_sum2","~time","~rain_cv2","Phi(~rain_sum2)p(~time)f(~rain_cv2)",26,18148.6740189816,619.582346682288,0,1322.0858
+"585","~rain_sum_lag2 + season2 + sex","~time","~temp_cv2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~temp_cv2)",28,18148.8245990353,619.732926735938,0,1318.1702
+"640","~rain_sum_lag2 * season2 + sex","~time","~temp_cv2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~temp_cv2)",29,18148.9737285887,619.882056289327,0,1316.2843
+"594","~rain_sum_lag2 + season2 + sex","~time + sex","~temp_cv2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18149.9337285887,620.842056289326,0,1317.2441
+"899","~temp_cv2 + season2","~time + sex","~rain_cv2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_cv2)",28,18150.2695990353,621.177926735938,0,1319.6149
+"181","~oni_avg2","~time + sex","~gpp_avg2","Phi(~oni_avg2)p(~time + sex)f(~gpp_avg2)",27,18151.0276962025,621.936023903196,0,1322.4071
+"922","~temp_cv2 + season2 + sex","~time + sex","~temp_cv2","Phi(~temp_cv2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18152.0377285887,622.946056289325,0,1319.3476
+"687","~rain_sum2 + season2","~time","~oni_avg2","Phi(~rain_sum2 + season2)p(~time)f(~oni_avg2)",27,18153.1746962025,624.083023903197,0,1324.5535
+"559","~rain_sum_lag2 + season2","~time","~temp_cv2","Phi(~rain_sum_lag2 + season2)p(~time)f(~temp_cv2)",27,18158.0676962025,628.976023903197,0,1329.4474
+"607","~rain_sum_lag2 * season2","~time","~temp_cv2","Phi(~rain_sum_lag2 * season2)p(~time)f(~temp_cv2)",28,18158.1905990353,629.09892673594,0,1327.536
+"567","~rain_sum_lag2 + season2","~time + sex","~temp_cv2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~temp_cv2)",28,18160.0135990353,630.92192673594,0,1329.3586
+"620","~rain_sum_lag2 * season2","~time + sex","~temp_cv2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~temp_cv2)",29,18160.1607285887,631.069056289325,0,1327.4709
+"220","~oni_avg2 + season2 + sex","~time","~rain_cv2","Phi(~oni_avg2 + season2 + sex)p(~time)f(~rain_cv2)",28,18160.7145990353,631.622926735938,0,1330.0604
+"887","~temp_cv2 + season2","~time","~rain_sum_lag2","Phi(~temp_cv2 + season2)p(~time)f(~rain_sum_lag2)",27,18161.8866962025,632.795023903196,0,1333.2663
+"890","~temp_cv2 + season2","~time","~temp_cv2","Phi(~temp_cv2 + season2)p(~time)f(~temp_cv2)",27,18162.0686962025,632.977023903197,0,1333.4478
+"913","~temp_cv2 + season2 + sex","~time","~oni_avg2","Phi(~temp_cv2 + season2 + sex)p(~time)f(~oni_avg2)",28,18162.1625990353,633.070926735938,0,1331.5077
+"225","~oni_avg2 + season2 + sex","~time + sex","~rain_cv2","Phi(~oni_avg2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18162.1697285887,633.078056289327,0,1329.4802
+"900","~temp_cv2 + season2","~time + sex","~rain_sum_lag2","Phi(~temp_cv2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18163.9085990353,634.816926735941,0,1333.254
+"638","~rain_sum_lag2 * season2 + sex","~time","~rain_cv2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~rain_cv2)",29,18166.0777285887,636.986056289326,0,1333.3882
+"279","~oni_avg2 * season2 + sex","~time + sex","~temp_cv2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~temp_cv2)",30,18167.2270859729,638.135413673517,0,1332.5014
+"582","~rain_sum_lag2 + season2 + sex","~time","~rain_cv2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~rain_cv2)",28,18170.3645990353,641.272926735939,0,1339.7098
+"590","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_cv2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_cv2)",29,18171.9687285887,642.877056289326,0,1339.2787
+"903","~temp_cv2 + season2","~time + sex","~temp_cv2","Phi(~temp_cv2 + season2)p(~time + sex)f(~temp_cv2)",28,18172.4475990353,643.355926735938,0,1341.793
+"894","~temp_cv2 + season2","~time + sex","~oni_avg2","Phi(~temp_cv2 + season2)p(~time + sex)f(~oni_avg2)",28,18172.7635990353,643.67192673594,0,1342.1086
+"221","~oni_avg2 + season2 + sex","~time","~temp_cv2","Phi(~oni_avg2 + season2 + sex)p(~time)f(~temp_cv2)",28,18173.1385990353,644.04692673594,0,1342.4842
+"226","~oni_avg2 + season2 + sex","~time + sex","~temp_cv2","Phi(~oni_avg2 + season2 + sex)p(~time + sex)f(~temp_cv2)",29,18173.5697285887,644.478056289325,0,1340.88
+"639","~rain_sum_lag2 * season2 + sex","~time","~rain_sum_lag2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~rain_sum_lag2)",29,18174.7217285887,645.630056289327,0,1342.0318
+"602","~rain_sum_lag2 * season2","~time","~rain_cv2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_cv2)",28,18175.7085990353,646.61692673594,0,1345.0536
+"645","~rain_sum_lag2 * season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~rain_sum_lag2)",30,18175.9040859729,646.812413673517,0,1341.1778
+"648","~rain_sum_lag2 * season2 + sex","~year2","~oni_avg2 + season2","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~oni_avg2 + season2)",19,18176.4705027059,647.378830406615,0,1364.0774
+"253","~oni_avg2 * season2","~time + sex","~temp_cv2","Phi(~oni_avg2 * season2)p(~time + sex)f(~temp_cv2)",29,18177.4187285887,648.327056289327,0,1344.729
+"242","~oni_avg2 * season2","~time","~temp_cv2","Phi(~oni_avg2 * season2)p(~time)f(~temp_cv2)",28,18177.6685990353,648.576926735939,0,1347.0139
+"615","~rain_sum_lag2 * season2","~time + sex","~rain_cv2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_cv2)",29,18177.7427285887,648.651056289327,0,1345.0529
+"553","~rain_sum_lag2 + season2","~time","~rain_cv2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_cv2)",27,18179.9936962025,650.902023903196,0,1351.3729
+"635","~rain_sum_lag2 * season2 + sex","~time","~oni_avg2","Phi(~rain_sum_lag2 * season2 + sex)p(~time)f(~oni_avg2)",29,18181.1927285887,652.101056289328,0,1348.5027
+"174","~oni_avg2","~time","~rain_cv2 * season2","Phi(~oni_avg2)p(~time)f(~rain_cv2 * season2)",28,18181.3115990353,652.219926735939,0,1350.6574
+"563","~rain_sum_lag2 + season2","~time + sex","~rain_cv2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~rain_cv2)",28,18182.0275990353,652.93592673594,0,1351.3728
+"207","~oni_avg2 + season2","~time + sex","~temp_cv2","Phi(~oni_avg2 + season2)p(~time + sex)f(~temp_cv2)",28,18184.2925990353,655.200926735939,0,1353.6383
+"554","~rain_sum_lag2 + season2","~time","~rain_sum_lag2","Phi(~rain_sum_lag2 + season2)p(~time)f(~rain_sum_lag2)",27,18184.4326962025,655.341023903195,0,1355.8124
+"580","~rain_sum_lag2 + season2 + sex","~time","~oni_avg2","Phi(~rain_sum_lag2 + season2 + sex)p(~time)f(~oni_avg2)",28,18185.1325990353,656.040926735939,0,1354.4781
+"616","~rain_sum_lag2 * season2","~time + sex","~rain_sum_lag2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~rain_sum_lag2)",29,18185.6957285887,656.604056289325,0,1353.0064
+"587","~rain_sum_lag2 + season2 + sex","~time + sex","~oni_avg2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~oni_avg2)",29,18186.2837285887,657.192056289325,0,1353.5941
+"564","~rain_sum_lag2 + season2","~time + sex","~rain_sum_lag2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18186.4615990353,657.369926735941,0,1355.8074
+"266","~oni_avg2 * season2 + sex","~time","~oni_avg2","Phi(~oni_avg2 * season2 + sex)p(~time)f(~oni_avg2)",29,18188.0727285887,658.981056289325,0,1355.3828
+"250","~oni_avg2 * season2","~time + sex","~rain_sum_lag2","Phi(~oni_avg2 * season2)p(~time + sex)f(~rain_sum_lag2)",29,18188.4587285887,659.367056289328,0,1355.769
+"218","~oni_avg2 + season2 + sex","~time","~oni_avg2","Phi(~oni_avg2 + season2 + sex)p(~time)f(~oni_avg2)",28,18189.6535990353,660.56192673594,0,1358.9992
+"599","~rain_sum_lag2 * season2","~time","~oni_avg2","Phi(~rain_sum_lag2 * season2)p(~time)f(~oni_avg2)",28,18190.1365990353,661.04492673594,0,1359.4823
+"223","~oni_avg2 + season2 + sex","~time + sex","~oni_avg2","Phi(~oni_avg2 + season2 + sex)p(~time + sex)f(~oni_avg2)",29,18190.3617285887,661.270056289326,0,1357.6717
+"443","~rain_cv2","~time + sex","~rain_sum_lag2","Phi(~rain_cv2)p(~time + sex)f(~rain_sum_lag2)",27,18191.0236962025,661.932023903195,0,1362.4028
+"612","~rain_sum_lag2 * season2","~time + sex","~oni_avg2","Phi(~rain_sum_lag2 * season2)p(~time + sex)f(~oni_avg2)",29,18192.1717285887,663.080056289327,0,1359.4822
+"550","~rain_sum_lag2 + season2","~time","~oni_avg2","Phi(~rain_sum_lag2 + season2)p(~time)f(~oni_avg2)",27,18194.0316962025,664.940023903197,0,1365.4113
+"561","~rain_sum_lag2 + season2","~time + sex","~oni_avg2","Phi(~rain_sum_lag2 + season2)p(~time + sex)f(~oni_avg2)",28,18196.0645990353,666.97292673594,0,1365.4095
+"192","~oni_avg2 + season2","~time","~oni_avg2","Phi(~oni_avg2 + season2)p(~time)f(~oni_avg2)",27,18198.5236962025,669.432023903195,0,1369.9031
+"273","~oni_avg2 * season2 + sex","~time + sex","~oni_avg2","Phi(~oni_avg2 * season2 + sex)p(~time + sex)f(~oni_avg2)",30,18198.5590859729,669.467413673516,0,1363.8328
+"245","~oni_avg2 * season2","~time + sex","~oni_avg2","Phi(~oni_avg2 * season2)p(~time + sex)f(~oni_avg2)",29,18199.0087285887,669.917056289327,0,1366.3188
+"644","~rain_sum_lag2 * season2 + sex","~time + sex","~rain_cv2","Phi(~rain_sum_lag2 * season2 + sex)p(~time + sex)f(~rain_cv2)",30,18200.2620859729,671.170413673517,0,1365.5362
+"199","~oni_avg2 + season2","~time + sex","~oni_avg2","Phi(~oni_avg2 + season2)p(~time + sex)f(~oni_avg2)",28,18200.5495990353,671.45792673594,0,1369.8949
+"234","~oni_avg2 * season2","~time","~oni_avg2","Phi(~oni_avg2 * season2)p(~time)f(~oni_avg2)",28,18205.7665990353,676.674926735937,0,1375.1118
+"855","~temp_cv2","~time","~rain_cv2","Phi(~temp_cv2)p(~time)f(~rain_cv2)",26,18206.5800189816,677.488346682287,0,1379.9923
+"871","~temp_cv2","~time + sex","~rain_cv2","Phi(~temp_cv2)p(~time + sex)f(~rain_cv2)",27,18208.2596962025,679.168023903196,0,1379.639
+"686","~rain_sum2","~year2","~rain_sum_lag2 * season2","Phi(~rain_sum2)p(~year2)f(~rain_sum_lag2 * season2)",17,18211.9458942308,682.854221931433,0,1403.597
+"425","~rain_cv2","~time","~oni_avg2","Phi(~rain_cv2)p(~time)f(~oni_avg2)",26,18216.4500189816,687.358346682286,0,1389.8622
+"172","~oni_avg2","~time","~rain_cv2","Phi(~oni_avg2)p(~time)f(~rain_cv2)",26,18218.3630189816,689.271346682286,0,1391.7749
+"437","~rain_cv2","~time + sex","~oni_avg2","Phi(~rain_cv2)p(~time + sex)f(~oni_avg2)",27,18218.4666962025,689.375023903194,0,1389.8459
+"859","~temp_cv2","~time","~rain_sum_lag2","Phi(~temp_cv2)p(~time)f(~rain_sum_lag2)",26,18223.6050189816,694.513346682288,0,1397.0172
+"603","~rain_sum_lag2 * season2","~time","~rain_sum_lag2","Phi(~rain_sum_lag2 * season2)p(~time)f(~rain_sum_lag2)",28,18224.2055990353,695.113926735939,0,1393.5505
+"537","~rain_sum_lag2","~time","~temp_cv2","Phi(~rain_sum_lag2)p(~time)f(~temp_cv2)",26,18225.8400189816,696.748346682289,0,1399.2518
+"864","~temp_cv2","~time","~temp_cv2","Phi(~temp_cv2)p(~time)f(~temp_cv2)",26,18227.5510189816,698.459346682288,0,1400.9632
+"530","~rain_sum_lag2","~time","~rain_cv2","Phi(~rain_sum_lag2)p(~time)f(~rain_cv2)",26,18233.1930189816,704.101346682288,0,1406.6047
+"541","~rain_sum_lag2","~time + sex","~rain_cv2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_cv2)",27,18235.2116962025,706.120023903197,0,1406.5913
+"186","~oni_avg2","~time + sex","~rain_sum_lag2","Phi(~oni_avg2)p(~time + sex)f(~rain_sum_lag2)",27,18236.4186962025,707.327023903195,0,1407.7981
+"875","~temp_cv2","~time + sex","~rain_sum_lag2","Phi(~temp_cv2)p(~time + sex)f(~rain_sum_lag2)",27,18237.9346962025,708.843023903195,0,1409.3136
+"533","~rain_sum_lag2","~time","~rain_sum_lag2","Phi(~rain_sum_lag2)p(~time)f(~rain_sum_lag2)",26,18238.2550189816,709.163346682286,0,1411.6668
+"544","~rain_sum_lag2","~time + sex","~rain_sum_lag2","Phi(~rain_sum_lag2)p(~time + sex)f(~rain_sum_lag2)",27,18240.2866962025,711.195023903194,0,1411.6663
+"373","~rain_cv_lag2 * season2","~time","~oni_avg2","Phi(~rain_cv_lag2 * season2)p(~time)f(~oni_avg2)",28,18243.1675990353,714.075926735939,0,1412.5128
+"851","~temp_cv2","~time","~oni_avg2","Phi(~temp_cv2)p(~time)f(~oni_avg2)",26,18247.0590189816,717.967346682286,0,1420.4712
+"178","~oni_avg2","~time","~temp_cv2","Phi(~oni_avg2)p(~time)f(~temp_cv2)",26,18247.8890189816,718.797346682288,0,1421.3009
+"188","~oni_avg2","~time + sex","~temp_cv2","Phi(~oni_avg2)p(~time + sex)f(~temp_cv2)",27,18249.8076962025,720.716023903195,0,1421.1867
+"868","~temp_cv2","~time + sex","~oni_avg2","Phi(~temp_cv2)p(~time + sex)f(~oni_avg2)",27,18250.7626962025,721.671023903196,0,1422.1424
+"175","~oni_avg2","~time","~rain_sum_lag2","Phi(~oni_avg2)p(~time)f(~rain_sum_lag2)",26,18257.5840189816,728.492346682287,0,1430.9958
+"182","~oni_avg2","~time + sex","~oni_avg2","Phi(~oni_avg2)p(~time + sex)f(~oni_avg2)",27,18273.2766962025,744.185023903196,0,1444.6562
+"863","~temp_cv2","~time","~rain_sum2","Phi(~temp_cv2)p(~time)f(~rain_sum2)",26,18284.6950189816,755.603346682288,0,1458.1067
+"878","~temp_cv2","~time + sex","~rain_sum2 + season2","Phi(~temp_cv2)p(~time + sex)f(~rain_sum2 + season2)",28,18302.0995990353,773.00792673594,0,1471.4448
+"170","~oni_avg2","~time","~oni_avg2","Phi(~oni_avg2)p(~time)f(~oni_avg2)",26,18356.3820189816,827.290346682286,0,1529.7937
+"535","~rain_sum_lag2","~time","~rain_sum2","Phi(~rain_sum_lag2)p(~time)f(~rain_sum2)",26,18378.5050189816,849.413346682286,0,1551.9166
+"705","~rain_sum2 + season2","~time + sex","~rain_sum_lag2","Phi(~rain_sum2 + season2)p(~time + sex)f(~rain_sum_lag2)",28,18381.4165990353,852.324926735939,0,1550.7616
+"698","~rain_sum2 + season2","~time + sex","~oni_avg2","Phi(~rain_sum2 + season2)p(~time + sex)f(~oni_avg2)",28,18388.8825990353,859.790926735939,0,1558.2284
+"507","~rain_cv2 * season2","~year2","~rain_cv2","Phi(~rain_cv2 * season2)p(~year2)f(~rain_cv2)",17,18411.2488942308,882.157221931433,0,1602.9
+"166","~gpp_avg2 * season2 + sex","~year2","~rain_cv2","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~rain_cv2)",18,18434.7065906222,905.614918322848,0,1624.3361
+"925","~temp_cv2 + season2 + sex","~year2","~rain_sum2","Phi(~temp_cv2 + season2 + sex)p(~year2)f(~rain_sum2)",17,18436.0788942308,906.987221931435,0,1627.7303
+"120","~gpp_avg2 * season2","~year2","~rain_cv2","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_cv2)",17,18444.2918942308,915.200221931434,0,1635.9434
+"260","~oni_avg2 * season2","~year2","~rain_sum2","Phi(~oni_avg2 * season2)p(~year2)f(~rain_sum2)",17,18446.7478942308,917.656221931433,0,1638.3991
+"469","~rain_cv2 + season2","~year2","~rain_cv2","Phi(~rain_cv2 + season2)p(~year2)f(~rain_cv2)",16,18465.3324124362,936.240740136833,0,1659.0042
+"80","~gpp_avg2 + season2 + sex","~year2","~rain_cv2","Phi(~gpp_avg2 + season2 + sex)p(~year2)f(~rain_cv2)",17,18467.6028942308,938.511221931436,0,1659.2541
+"396","~rain_cv_lag2 * season2","~year2","~gpp_avg2","Phi(~rain_cv_lag2 * season2)p(~year2)f(~gpp_avg2)",17,18475.7308942308,946.639221931433,0,1667.3821
+"60","~gpp_avg2 + season2","~year2","~rain_cv2","Phi(~gpp_avg2 + season2)p(~year2)f(~rain_cv2)",16,18476.9984124362,947.90674013683,0,1670.6698
+"907","~temp_cv2 + season2","~year2","~rain_cv2","Phi(~temp_cv2 + season2)p(~year2)f(~rain_cv2)",16,18479.9734124362,950.881740136832,0,1673.6445
+"231","~oni_avg2 + season2 + sex","~year2","~rain_cv_lag2","Phi(~oni_avg2 + season2 + sex)p(~year2)f(~rain_cv_lag2)",17,18486.6418942308,957.550221931433,0,1678.2932
+"284","~oni_avg2 * season2 + sex","~year2","~rain_cv_lag2","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~rain_cv_lag2)",18,18488.6635906222,959.571918322847,0,1678.2932
+"112","~gpp_avg2 * season2","~year2","~gpp_avg2","Phi(~gpp_avg2 * season2)p(~year2)f(~gpp_avg2)",17,18489.1168942308,960.025221931435,0,1680.768
+"760","~rain_sum2 + season2 + sex","~year2","~rain_cv2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_cv2)",17,18491.7578942308,962.666221931435,0,1683.4086
+"211","~oni_avg2 + season2","~year2","~rain_cv_lag2","Phi(~oni_avg2 + season2)p(~year2)f(~rain_cv_lag2)",16,18497.8544124362,968.76274013683,0,1691.5258
+"720","~rain_sum2 + season2","~year2","~rain_cv2","Phi(~rain_sum2 + season2)p(~year2)f(~rain_cv2)",16,18501.1894124362,972.097740136833,0,1694.8607
+"802","~rain_sum2 * season2","~year2","~rain_cv2","Phi(~rain_sum2 * season2)p(~year2)f(~rain_cv2)",17,18503.2098942308,974.118221931436,0,1694.8608
+"58","~gpp_avg2 + season2","~year2","~rain_cv_lag2","Phi(~gpp_avg2 + season2)p(~year2)f(~rain_cv_lag2)",16,18506.9964124362,977.90474013683,0,1700.6681
+"982","~temp_cv2 * season2 + sex","~year2","~gpp_avg2","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~gpp_avg2)",18,18519.5825906222,990.490918322848,0,1709.2116
+"591","~rain_sum_lag2 + season2 + sex","~time + sex","~rain_sum_lag2","Phi(~rain_sum_lag2 + season2 + sex)p(~time + sex)f(~rain_sum_lag2)",29,18521.6397285887,992.548056289328,0,1688.9502
+"525","~rain_cv2 * season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~rain_cv_lag2)",18,18525.1045906222,996.012918322849,0,1714.7335
+"758","~rain_sum2 + season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_cv_lag2)",17,18534.6888942308,1005.59722193144,0,1726.34
+"719","~rain_sum2 + season2","~year2","~rain_cv_lag2","Phi(~rain_sum2 + season2)p(~year2)f(~rain_cv_lag2)",16,18545.8624124362,1016.77074013683,0,1739.5342
+"958","~temp_cv2 * season2","~year2","~rain_cv_lag2","Phi(~temp_cv2 * season2)p(~year2)f(~rain_cv_lag2)",17,18546.2298942308,1017.13822193143,0,1737.8806
+"801","~rain_sum2 * season2","~year2","~rain_cv_lag2","Phi(~rain_sum2 * season2)p(~year2)f(~rain_cv_lag2)",17,18547.8838942308,1018.79222193144,0,1739.5347
+"522","~rain_cv2 * season2 + sex","~year2","~gpp_avg2","Phi(~rain_cv2 * season2 + sex)p(~year2)f(~gpp_avg2)",18,18554.7135906222,1025.62191832285,0,1744.3433
+"369","~rain_cv_lag2 + season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2 + sex)p(~year2)f(~rain_cv_lag2)",17,18564.3808942308,1035.28922193143,0,1756.0323
+"504","~rain_cv2 * season2","~year2","~gpp_avg2","Phi(~rain_cv2 * season2)p(~year2)f(~gpp_avg2)",17,18564.8008942308,1035.70922193143,0,1756.4521
+"167","~gpp_avg2 * season2 + sex","~year2","~rain_sum_lag2","Phi(~gpp_avg2 * season2 + sex)p(~year2)f(~rain_sum_lag2)",18,18567.2615906222,1038.16991832285,0,1756.8905
+"752","~rain_sum2 + season2 + sex","~year2","~gpp_avg2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~gpp_avg2)",17,18568.6658942308,1039.57422193143,0,1760.3168
+"346","~rain_cv_lag2 + season2","~year2","~rain_cv_lag2","Phi(~rain_cv_lag2 + season2)p(~year2)f(~rain_cv_lag2)",16,18575.8354124362,1046.74374013683,0,1769.5073
+"713","~rain_sum2 + season2","~year2","~gpp_avg2","Phi(~rain_sum2 + season2)p(~year2)f(~gpp_avg2)",16,18578.6334124362,1049.54174013683,0,1772.3047
+"122","~gpp_avg2 * season2","~year2","~rain_sum_lag2","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_sum_lag2)",17,18579.5318942308,1050.44022193144,0,1771.183
+"793","~rain_sum2 * season2","~year2","~gpp_avg2","Phi(~rain_sum2 * season2)p(~year2)f(~gpp_avg2)",17,18580.6538942308,1051.56222193144,0,1772.3046
+"213","~oni_avg2 + season2","~year2","~rain_sum_lag2","Phi(~oni_avg2 + season2)p(~year2)f(~rain_sum_lag2)",16,18609.2764124362,1080.18474013683,0,1802.9483
+"349","~rain_cv_lag2 + season2","~year2","~rain_sum_lag2","Phi(~rain_cv_lag2 + season2)p(~year2)f(~rain_sum_lag2)",16,18636.3894124362,1107.29774013683,0,1830.0614
+"762","~rain_sum2 + season2 + sex","~year2","~rain_sum_lag2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~rain_sum_lag2)",17,18642.6588942308,1113.56722193143,0,1834.3096
+"910","~temp_cv2 + season2","~year2","~temp_cv2","Phi(~temp_cv2 + season2)p(~year2)f(~temp_cv2)",16,18644.7704124362,1115.67874013683,0,1838.4421
+"962","~temp_cv2 * season2","~year2","~temp_cv2","Phi(~temp_cv2 * season2)p(~year2)f(~temp_cv2)",17,18646.7908942308,1117.69922193143,0,1838.4423
+"723","~rain_sum2 + season2","~year2","~rain_sum_lag2","Phi(~rain_sum2 + season2)p(~year2)f(~rain_sum_lag2)",16,18652.9694124362,1123.87774013683,0,1846.6411
+"805","~rain_sum2 * season2","~year2","~rain_sum_lag2","Phi(~rain_sum2 * season2)p(~year2)f(~rain_sum_lag2)",17,18654.9898942308,1125.89822193143,0,1846.6411
+"764","~rain_sum2 + season2 + sex","~year2","~temp_cv2","Phi(~rain_sum2 + season2 + sex)p(~year2)f(~temp_cv2)",17,18660.2008942308,1131.10922193143,0,1851.8518
+"848","~rain_sum2 * season2 + sex","~year2","~temp_cv2","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~temp_cv2)",18,18662.2225906222,1133.13091832285,0,1851.8521
+"840","~rain_sum2 * season2 + sex","~year2","~oni_avg2","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~oni_avg2)",18,18665.3285906222,1136.23691832285,0,1854.9577
+"626","~rain_sum_lag2 * season2","~year2","~oni_avg2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~oni_avg2)",17,18669.3218942308,1140.23022193143,0,1860.9734
+"728","~rain_sum2 + season2","~year2","~temp_cv2","Phi(~rain_sum2 + season2)p(~year2)f(~temp_cv2)",16,18670.3544124362,1141.26274013683,0,1864.0264
+"954","~temp_cv2 * season2","~year2","~gpp_avg2","Phi(~temp_cv2 * season2)p(~year2)f(~gpp_avg2)",17,18672.1848942308,1143.09322193143,0,1863.8355
+"811","~rain_sum2 * season2","~year2","~temp_cv2","Phi(~rain_sum2 * season2)p(~year2)f(~temp_cv2)",17,18672.3748942308,1143.28322193143,0,1864.0264
+"715","~rain_sum2 + season2","~year2","~oni_avg2","Phi(~rain_sum2 + season2)p(~year2)f(~oni_avg2)",16,18673.4954124362,1144.40374013683,0,1867.1667
+"796","~rain_sum2 * season2","~year2","~oni_avg2","Phi(~rain_sum2 * season2)p(~year2)f(~oni_avg2)",17,18675.5208942308,1146.42922193143,0,1867.172
+"118","~gpp_avg2 * season2","~year2","~rain_cv_lag2","Phi(~gpp_avg2 * season2)p(~year2)f(~rain_cv_lag2)",17,18719.3938942308,1190.30222193143,0,1911.0454
+"842","~rain_sum2 * season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_sum2 * season2 + sex)p(~year2)f(~rain_cv_lag2)",18,18763.1745906222,1234.08291832285,0,1952.8039
+"257","~oni_avg2 * season2","~year2","~rain_cv_lag2","Phi(~oni_avg2 * season2)p(~year2)f(~rain_cv_lag2)",17,18795.8888942308,1266.79722193144,0,1987.5402
+"650","~rain_sum_lag2 * season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_sum_lag2 * season2 + sex)p(~year2)f(~rain_cv_lag2)",18,18798.6135906222,1269.52191832285,0,1988.2433
+"400","~rain_cv_lag2 * season2","~year2","~rain_cv_lag2","Phi(~rain_cv_lag2 * season2)p(~year2)f(~rain_cv_lag2)",17,18807.7648942308,1278.67322193143,0,1999.4159
+"596","~rain_sum_lag2 + season2 + sex","~year2","~rain_cv_lag2","Phi(~rain_sum_lag2 + season2 + sex)p(~year2)f(~rain_cv_lag2)",17,18815.9478942308,1286.85622193143,0,2007.5987
+"959","~temp_cv2 * season2","~year2","~rain_cv2","Phi(~temp_cv2 * season2)p(~year2)f(~rain_cv2)",17,18841.5058942308,1312.41422193143,0,2033.1567
+"628","~rain_sum_lag2 * season2","~year2","~rain_cv_lag2","Phi(~rain_sum_lag2 * season2)p(~year2)f(~rain_cv_lag2)",17,18841.6498942308,1312.55822193143,0,2033.3013
+"572","~rain_sum_lag2 + season2","~year2","~rain_cv_lag2","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_cv_lag2)",16,18866.0364124362,1336.94474013683,0,2059.7079
+"924","~temp_cv2 + season2 + sex","~year2","~rain_cv2","Phi(~temp_cv2 + season2 + sex)p(~year2)f(~rain_cv2)",17,18908.6338942308,1379.54222193144,0,2100.2853
+"483","~rain_cv2 + season2 + sex","~year2","~gpp_avg2","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~gpp_avg2)",17,18950.5548942308,1421.46322193143,0,2142.2056
+"371","~rain_cv_lag2 + season2 + sex","~year2","~temp_cv2","Phi(~rain_cv_lag2 + season2 + sex)p(~year2)f(~temp_cv2)",17,18966.1678942308,1437.07622193143,0,2157.8191
+"344","~rain_cv_lag2 + season2","~year2","~oni_avg2","Phi(~rain_cv_lag2 + season2)p(~year2)f(~oni_avg2)",16,18969.3434124362,1440.25174013683,0,2163.0153
+"987","~temp_cv2 * season2 + sex","~year2","~temp_cv2","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~temp_cv2)",18,19025.0155906222,1495.92391832285,0,2214.6447
+"487","~rain_cv2 + season2 + sex","~year2","~rain_sum_lag2","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~rain_sum_lag2)",17,19083.2468942308,1554.15522193143,0,2274.8978
+"485","~rain_cv2 + season2 + sex","~year2","~oni_avg2","Phi(~rain_cv2 + season2 + sex)p(~year2)f(~oni_avg2)",17,19090.3288942308,1561.23722193143,0,2281.9799
+"573","~rain_sum_lag2 + season2","~year2","~rain_sum_lag2","Phi(~rain_sum_lag2 + season2)p(~year2)f(~rain_sum_lag2)",16,19125.3624124362,1596.27074013683,0,2319.0336
+"984","~temp_cv2 * season2 + sex","~year2","~oni_avg2","Phi(~temp_cv2 * season2 + sex)p(~year2)f(~oni_avg2)",18,19126.3205906222,1597.22891832285,0,2315.9499
+"263","~oni_avg2 * season2","~year2","~temp_cv2","Phi(~oni_avg2 * season2)p(~year2)f(~temp_cv2)",17,19127.9048942308,1598.81322193144,0,2319.5559
+"285","~oni_avg2 * season2 + sex","~year2","~rain_sum_lag2","Phi(~oni_avg2 * season2 + sex)p(~year2)f(~rain_sum_lag2)",18,19147.6145906222,1618.52291832285,0,2337.244
+"571","~rain_sum_lag2 + season2","~year2","~oni_avg2","Phi(~rain_sum_lag2 + season2)p(~year2)f(~oni_avg2)",16,19164.1344124362,1635.04274013683,0,2357.8059
+"685","~rain_sum2","~year2","~rain_sum_lag2","Phi(~rain_sum2)p(~year2)f(~rain_sum_lag2)",15,19616.5261441441,2087.43447184481,0,2812.2169
+"313","~rain_cv_lag2","~year2","~temp_cv2","Phi(~rain_cv_lag2)p(~year2)f(~temp_cv2)",15,19765.1601441441,2236.06847184481,0,2960.8513
